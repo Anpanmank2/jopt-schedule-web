@@ -52,8 +52,9 @@ function buildDayGroups(): DayGroup[] {
       let targetDate = evt.date;
 
       if (hour < 9) {
-        const d = new Date(evt.date + "T00:00:00");
-        d.setDate(d.getDate() - 1);
+        // Explicit UTC anchor — server/client must agree (React #418 fix)
+        const d = new Date(evt.date + "T00:00:00Z");
+        d.setUTCDate(d.getUTCDate() - 1);
         const prevDate = d.toISOString().slice(0, 10);
         if (grouped[prevDate] !== undefined) {
           targetDate = prevDate;
@@ -95,8 +96,13 @@ export default function SchedulePage() {
   const tabsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const today = new Date().toISOString().slice(0, 10);
-    const todayIdx = dayGroups.findIndex((d) => d.date === today);
+    // Local "today" in the user's timezone (client-only — no hydration concern)
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = String(now.getMonth() + 1).padStart(2, "0");
+    const d = String(now.getDate()).padStart(2, "0");
+    const today = `${y}-${m}-${d}`;
+    const todayIdx = dayGroups.findIndex((dg) => dg.date === today);
     if (todayIdx >= 0) {
       setSelectedIdx(todayIdx);
     }
@@ -143,14 +149,22 @@ export default function SchedulePage() {
           >
             {dayGroups.map((d, i) => {
               const active = i === selectedIdx;
-              const date = new Date(d.date + "T00:00:00");
-              const dayNum = date.getDate();
-              const weekday = date.toLocaleDateString("en-US", { weekday: "short" });
-              const month = date.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
+              // Explicit UTC — server and client must produce identical markup
+              const date = new Date(d.date + "T00:00:00Z");
+              const dayNum = date.getUTCDate();
+              const weekday = date.toLocaleDateString("en-US", {
+                weekday: "short",
+                timeZone: "UTC",
+              });
+              const month = date
+                .toLocaleDateString("en-US", { month: "short", timeZone: "UTC" })
+                .toUpperCase();
 
-              const prevDate = i > 0 ? new Date(dayGroups[i - 1].date + "T00:00:00") : null;
+              const prevDate =
+                i > 0 ? new Date(dayGroups[i - 1].date + "T00:00:00Z") : null;
               const showMonthLabel =
-                i === 0 || (prevDate && prevDate.getMonth() !== date.getMonth());
+                i === 0 ||
+                (prevDate && prevDate.getUTCMonth() !== date.getUTCMonth());
 
               return (
                 <div key={d.date} className="flex items-stretch shrink-0">
