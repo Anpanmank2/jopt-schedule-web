@@ -40,11 +40,6 @@ interface DayGroup {
 }
 
 function buildDayGroups(): DayGroup[] {
-  const dateLabels: Record<string, string> = {};
-  for (const day of rawData.days) {
-    dateLabels[day.date] = day.dayLabel;
-  }
-
   const grouped: Record<string, EventItem[]> = {};
 
   for (const day of rawData.days) {
@@ -94,22 +89,21 @@ function buildDayGroups(): DayGroup[] {
 
 const dayGroups = buildDayGroups();
 
-function getDefaultDayIndex(): number {
-  const today = new Date().toISOString().slice(0, 10);
-  const idx = dayGroups.findIndex((d) => d.date === today);
-  return idx >= 0 ? idx : 0;
-}
-
 export default function SchedulePage() {
-  const [selectedIdx, setSelectedIdx] = useState(getDefaultDayIndex);
+  // Start from index 0 to avoid hydration mismatch; useEffect jumps to today after mount.
+  const [selectedIdx, setSelectedIdx] = useState(0);
   const tabsRef = useRef<HTMLDivElement>(null);
 
-  const day = dayGroups[selectedIdx];
+  useEffect(() => {
+    const today = new Date().toISOString().slice(0, 10);
+    const todayIdx = dayGroups.findIndex((d) => d.date === today);
+    if (todayIdx >= 0) {
+      setSelectedIdx(todayIdx);
+    }
+  }, []);
 
   useEffect(() => {
-    const el = tabsRef.current?.children[selectedIdx] as
-      | HTMLElement
-      | undefined;
+    const el = tabsRef.current?.children[selectedIdx] as HTMLElement | undefined;
     el?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
@@ -117,88 +111,107 @@ export default function SchedulePage() {
     });
   }, [selectedIdx]);
 
+  const day = dayGroups[selectedIdx];
+
   const { filteredEvents, activeFilters, setFilter, filterSummary } = useEventFilter(
     day.events as Record<string, any>[]
   );
 
   return (
-    <div>
+    <div className="min-h-dvh bg-bg-secondary">
       {/* Page header */}
-      <header className="px-4 pt-5 pb-3 border-b border-border-default bg-white">
-        <p className="text-[10px] font-bold tracking-[2px] text-blue-900 uppercase">
-          JOPT 2026
-        </p>
-        <h1 className="text-lg font-semibold text-text-primary leading-tight mt-0.5">
-          Grand Final — Schedule
-        </h1>
-        <p className="text-[11px] text-text-muted mt-1">
-          2026-04-24 〜 05-06 / ベルサール高田馬場
-        </p>
+      <header className="bg-white border-b border-border-default">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 pt-6 md:pt-10 pb-4 md:pb-6">
+          <p className="text-[10px] md:text-xs font-bold tracking-[2px] text-blue-900 uppercase">
+            JOPT 2026
+          </p>
+          <h1 className="text-xl md:text-4xl font-semibold text-text-primary leading-tight mt-1 md:mt-2">
+            Grand Final — Schedule
+          </h1>
+          <p className="text-[11px] md:text-sm text-text-muted mt-1 md:mt-2">
+            2026-04-24 〜 05-06 / ベルサール高田馬場
+          </p>
+        </div>
       </header>
 
-      {/* Calendar strip — sticky at top (no outer header) */}
-      <div
-        ref={tabsRef}
-        className="flex items-stretch overflow-x-auto hide-scrollbar bg-bg-secondary border-b border-border-default sticky top-0 z-40"
-      >
-        {dayGroups.map((d, i) => {
-          const active = i === selectedIdx;
-          const date = new Date(d.date + "T00:00:00");
-          const dayNum = date.getDate();
-          const weekday = date.toLocaleDateString("en-US", { weekday: "short" });
-          const month = date.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
+      {/* Sticky day-tabs strip — full-width background, inner tabs contained */}
+      <div className="sticky top-0 z-40 bg-bg-secondary/95 backdrop-blur border-b border-border-default">
+        <div className="max-w-6xl mx-auto">
+          <div
+            ref={tabsRef}
+            className="flex items-stretch overflow-x-auto hide-scrollbar px-2 md:px-6 md:justify-center"
+          >
+            {dayGroups.map((d, i) => {
+              const active = i === selectedIdx;
+              const date = new Date(d.date + "T00:00:00");
+              const dayNum = date.getDate();
+              const weekday = date.toLocaleDateString("en-US", { weekday: "short" });
+              const month = date.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
 
-          const prevDate = i > 0 ? new Date(dayGroups[i - 1].date + "T00:00:00") : null;
-          const showMonthLabel = i === 0 || (prevDate && prevDate.getMonth() !== date.getMonth());
+              const prevDate = i > 0 ? new Date(dayGroups[i - 1].date + "T00:00:00") : null;
+              const showMonthLabel =
+                i === 0 || (prevDate && prevDate.getMonth() !== date.getMonth());
 
-          return (
-            <div key={d.date} className="flex items-stretch shrink-0">
-              {showMonthLabel && (
-                <div className="flex items-center px-2 bg-blue-900/10">
-                  <span className="text-[9px] font-bold text-blue-900 tracking-wider">
-                    {month}
-                  </span>
+              return (
+                <div key={d.date} className="flex items-stretch shrink-0">
+                  {showMonthLabel && (
+                    <div className="flex items-center px-2 md:px-3 bg-blue-900/10">
+                      <span className="text-[9px] md:text-[11px] font-bold text-blue-900 tracking-wider">
+                        {month}
+                      </span>
+                    </div>
+                  )}
+                  <button
+                    onClick={() => setSelectedIdx(i)}
+                    className={`shrink-0 flex flex-col items-center justify-center px-3 md:px-5 py-1.5 md:py-3 min-w-[44px] md:min-w-[64px] transition-colors ${
+                      active
+                        ? "bg-blue-900 text-white"
+                        : "text-text-muted hover:bg-bg-tertiary"
+                    }`}
+                  >
+                    <span className="text-sm md:text-base font-semibold leading-tight">
+                      {dayNum}
+                    </span>
+                    <span
+                      className={`text-[9px] md:text-[11px] leading-tight ${
+                        active ? "text-blue-200" : "text-text-muted"
+                      }`}
+                    >
+                      {weekday}
+                    </span>
+                  </button>
                 </div>
-              )}
-              <button
-                onClick={() => setSelectedIdx(i)}
-                className={`shrink-0 flex flex-col items-center justify-center px-3 py-1.5 min-w-[44px] transition-colors ${
-                  active
-                    ? "bg-blue-900 text-white"
-                    : "text-text-muted hover:bg-bg-tertiary"
-                }`}
-              >
-                <span className="text-sm font-semibold leading-tight">{dayNum}</span>
-                <span className={`text-[9px] leading-tight ${active ? "text-blue-200" : "text-text-muted"}`}>
-                  {weekday}
-                </span>
-              </button>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Filter */}
-      <EventFilter activeFilters={activeFilters} onFilterChange={setFilter} />
-
-      {/* Event count */}
-      <div className="px-4 py-2 text-xs text-text-muted">{filterSummary}</div>
-
-      {/* Event list */}
-      <div className="px-4 pb-10 space-y-3">
-        {filteredEvents.length === 0 ? (
-          <div className="text-center py-12 text-sm text-text-muted">
-            No events found
+              );
+            })}
           </div>
-        ) : (
-          filteredEvents.map((evt, i) => (
-            <EventCard
-              key={`${evt.eventNumber}-${evt.startTime}-${i}`}
-              event={evt as any}
-            />
-          ))
-        )}
+        </div>
       </div>
+
+      {/* Filter + event count + event list */}
+      <main className="max-w-6xl mx-auto px-2 md:px-6">
+        <EventFilter activeFilters={activeFilters} onFilterChange={setFilter} />
+
+        <div className="px-4 md:px-0 py-2 text-xs md:text-sm text-text-muted">
+          {filterSummary}
+        </div>
+
+        <div className="px-4 md:px-0 pb-10 md:pb-16">
+          {filteredEvents.length === 0 ? (
+            <div className="text-center py-16 text-sm md:text-base text-text-muted">
+              No events found
+            </div>
+          ) : (
+            <div className="grid gap-3 md:gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+              {filteredEvents.map((evt, i) => (
+                <EventCard
+                  key={`${evt.eventNumber}-${evt.startTime}-${i}`}
+                  event={evt as any}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </main>
     </div>
   );
 }

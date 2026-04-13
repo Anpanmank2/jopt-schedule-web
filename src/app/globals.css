@@ -45,10 +45,8 @@ html {
 }
 
 body {
-  background: var(--color-bg-primary);
+  background: var(--color-bg-secondary);
   color: var(--color-text-primary);
-  max-width: 430px;
-  margin: 0 auto;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
