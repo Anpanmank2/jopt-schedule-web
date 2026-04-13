@@ -78,6 +78,7 @@ export default function SchedulePage() {
   const [selectedIdx, setSelectedIdx] = useState<number | "all">("all");
   const [query, setQuery] = useState("");
   const tabsRef = useRef<HTMLDivElement>(null);
+  const firstRender = useRef(true);
 
   // Hydrate query from URL on client only (keeps initial SSR static)
   useEffect(() => {
@@ -121,11 +122,10 @@ export default function SchedulePage() {
       .filter((g) => g.events.length > 0);
   }, [selectedIdx, filteredEvents]);
 
+  // Center the active day pill in the horizontal tab strip
   useEffect(() => {
-    if (selectedIdx === "all") return;
-    // Scroll the active day pill into view when a single-day tab is selected.
-    // +1 offset accounts for the ALL button at index 0 in the tabs row.
-    const el = tabsRef.current?.children[selectedIdx + 1] as HTMLElement | undefined;
+    const tabIndex = selectedIdx === "all" ? 0 : selectedIdx + 1;
+    const el = tabsRef.current?.children[tabIndex] as HTMLElement | undefined;
     el?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
@@ -133,22 +133,20 @@ export default function SchedulePage() {
     });
   }, [selectedIdx]);
 
-  const handleDayClick = (i: number) => {
-    if (selectedIdx === "all") {
-      // Keep ALL selected, just jump to the day section
-      const date = dayGroups[i].date;
-      const section = document.getElementById(`day-${date}`);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    } else {
-      setSelectedIdx(i);
+  // Scroll the window back to the top when switching tabs (skip first mount)
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
     }
-  };
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [selectedIdx]);
 
   return (
     <div className="bg-bg-secondary">
-      {/* Page header (non-sticky) */}
+      {/* Page header (non-sticky) — includes eyebrow, h1, subtitle, and the search box */}
       <header className="bg-white border-b border-border-default">
         <div className="max-w-6xl mx-auto px-4 md:px-8 pt-6 md:pt-10 pb-4 md:pb-6">
           <p className="text-[10px] md:text-xs font-bold tracking-[2px] text-blue-900 uppercase">
@@ -160,10 +158,45 @@ export default function SchedulePage() {
           <p className="text-[11px] md:text-sm text-text-muted mt-1 md:mt-2">
             2026-04-24 〜 05-06 / ベルサール高田馬場
           </p>
+
+          <label className="mt-4 md:mt-5 flex items-center gap-2 bg-white border border-border-default rounded-full px-3 py-2 md:py-2.5 max-w-xl">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#888"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => updateQuery(e.target.value)}
+              placeholder="トーナメント名で検索..."
+              className="flex-1 text-sm md:text-base text-text-primary placeholder:text-text-muted bg-transparent outline-none"
+              aria-label="トーナメント名で検索"
+            />
+            {query && (
+              <button
+                type="button"
+                onClick={() => updateQuery("")}
+                className="text-text-muted text-xs px-1"
+                aria-label="検索をクリア"
+              >
+                ✕
+              </button>
+            )}
+          </label>
         </div>
       </header>
 
-      {/* Sticky day-tabs strip (ALL + per-day pills) */}
+      {/* Sticky wrapper — day-tab strip + filter pills, follows the scroll */}
       <div className="sticky top-0 z-40 bg-bg-secondary/95 backdrop-blur border-b border-border-default">
         <div className="max-w-6xl mx-auto">
           <div
@@ -220,7 +253,7 @@ export default function SchedulePage() {
                     </div>
                   )}
                   <button
-                    onClick={() => handleDayClick(i)}
+                    onClick={() => setSelectedIdx(i)}
                     className={`shrink-0 flex flex-col items-center justify-center px-3 md:px-5 py-1.5 md:py-3 min-w-[44px] md:min-w-[64px] transition-colors ${
                       active
                         ? "bg-blue-900 text-white"
@@ -242,51 +275,17 @@ export default function SchedulePage() {
               );
             })}
           </div>
+
+          {/* Filter pills (sticky together with day tabs) */}
+          <div className="border-t border-border-light bg-bg-secondary/80">
+            <EventFilter activeFilters={activeFilters} onFilterChange={setFilter} />
+          </div>
         </div>
       </div>
 
-      {/* Filter + search + count */}
+      {/* Non-sticky content */}
       <div className="max-w-6xl mx-auto px-2 md:px-6">
-        <EventFilter activeFilters={activeFilters} onFilterChange={setFilter} />
-
-        <div className="px-4 pt-1 pb-2">
-          <label className="flex items-center gap-2 bg-white border border-border-default rounded-full px-3 py-1.5 md:py-2">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#888"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden
-            >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => updateQuery(e.target.value)}
-              placeholder="トーナメント名で検索..."
-              className="flex-1 text-sm md:text-base text-text-primary placeholder:text-text-muted bg-transparent outline-none"
-              aria-label="トーナメント名で検索"
-            />
-            {query && (
-              <button
-                type="button"
-                onClick={() => updateQuery("")}
-                className="text-text-muted text-xs px-1"
-                aria-label="検索をクリア"
-              >
-                ✕
-              </button>
-            )}
-          </label>
-        </div>
-
-        <div className="px-4 pb-2 text-xs md:text-sm text-text-muted">
+        <div className="px-4 pt-2 pb-2 text-xs md:text-sm text-text-muted">
           {filterSummary}
         </div>
 
@@ -297,7 +296,7 @@ export default function SchedulePage() {
               <div className="max-w-2xl mx-auto">
                 {groupedForAll.map((dg) => (
                   <section key={dg.date} id={`day-${dg.date}`} className="mb-6">
-                    <h2 className="sticky top-[42px] md:top-[56px] z-30 bg-bg-secondary/95 backdrop-blur px-4 py-2 text-[11px] md:text-xs font-bold text-blue-900 uppercase tracking-wider border-b border-border-default flex items-baseline gap-2">
+                    <h2 className="sticky top-[156px] md:top-[172px] z-30 bg-bg-secondary/95 backdrop-blur px-4 py-2 text-[11px] md:text-xs font-bold text-blue-900 uppercase tracking-wider border-b border-border-default flex items-baseline gap-2">
                       <span>{dg.dayLabel}</span>
                       <span className="text-text-muted font-normal normal-case tracking-normal">
                         ({dg.events.length})
