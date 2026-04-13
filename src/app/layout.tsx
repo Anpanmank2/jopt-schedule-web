@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const notoSerifJP = Noto_Serif_JP({
   subsets: ["latin"],
@@ -9,9 +10,9 @@ const notoSerifJP = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
-  title: "JOPT 2026 Grand Final — Schedule",
+  title: "Japan Open Poker Tour 2026 (JOPT) | Grand Final Schedule",
   description:
-    "JOPT 2026 Grand Final トーナメントスケジュール（2026-04-24〜05-06 / ベルサール高田馬場）",
+    "Japan Open Poker Tour 2026 Grand Final のトーナメントスケジュール（2026-04-24〜05-06 / ベルサール高田馬場）",
 };
 
 export const viewport: Viewport = {
@@ -27,7 +28,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={notoSerifJP.className}>
-      <body>{children}</body>
+      <body className="flex flex-col min-h-dvh">
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

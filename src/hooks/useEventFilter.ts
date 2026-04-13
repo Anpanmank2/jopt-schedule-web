@@ -2,7 +2,10 @@
 import { useMemo, useState } from "react";
 import { FILTER_CONFIG } from "@/config/filterConfig";
 
-export function useEventFilter(events: Record<string, any>[]) {
+export function useEventFilter(
+  events: Record<string, any>[],
+  query: string = ""
+) {
   const [activeFilters, setActiveFilters] = useState<Record<string, string>>(() => {
     const defaults: Record<string, string> = {};
     for (const [key, cat] of Object.entries(FILTER_CONFIG)) {
@@ -24,7 +27,7 @@ export function useEventFilter(events: Record<string, any>[]) {
   }
 
   const filteredEvents = useMemo(() => {
-    return events.filter((event) => {
+    const base = events.filter((event) => {
       for (const [catKey, category] of Object.entries(FILTER_CONFIG)) {
         const selectedValue = activeFilters[catKey];
         if (selectedValue === "all") continue;
@@ -39,7 +42,8 @@ export function useEventFilter(events: Record<string, any>[]) {
             return o.label === selectedValue;
           });
           if (option && typeof option.value === "object") {
-            const numValue = typeof fieldValue === "number" ? fieldValue : parseFloat(fieldValue);
+            const numValue =
+              typeof fieldValue === "number" ? fieldValue : parseFloat(fieldValue);
             if (isNaN(numValue)) return false;
             if (numValue < option.value.min || numValue > option.value.max) return false;
           }
@@ -47,7 +51,16 @@ export function useEventFilter(events: Record<string, any>[]) {
       }
       return true;
     });
-  }, [events, activeFilters]);
+
+    const trimmed = query.trim();
+    if (!trimmed) return base;
+
+    const q = trimmed.normalize("NFKC").toLowerCase();
+    return base.filter((e) => {
+      const name = (e.name ?? "") as string;
+      return name.normalize("NFKC").toLowerCase().includes(q);
+    });
+  }, [events, activeFilters, query]);
 
   const filterSummary = useMemo(() => {
     const activeLabels: string[] = [];
@@ -61,12 +74,15 @@ export function useEventFilter(events: Record<string, any>[]) {
         if (opt) activeLabels.push(opt.label);
       }
     }
+    const trimmed = query.trim();
+    if (trimmed) activeLabels.push(`"${trimmed}"`);
+
     const count = filteredEvents.length;
     if (activeLabels.length === 0) {
       return `${count} events`;
     }
     return `Filtered: ${activeLabels.join(" × ")} — ${count} events`;
-  }, [activeFilters, filteredEvents]);
+  }, [activeFilters, filteredEvents, query]);
 
   return { filteredEvents, activeFilters, setFilter, resetFilters, filterSummary };
 }
