@@ -6,7 +6,7 @@ import EventCard from "@/components/EventCard";
 import EventRow from "@/components/EventRow";
 import EventFilter from "@/components/EventFilter";
 import { useEventFilter } from "@/hooks/useEventFilter";
-import type { EventData } from "@/components/EventDetail";
+import type { EventData, MultiDayInfo } from "@/components/EventDetail";
 
 interface EventItem extends EventData {
   date: string;
@@ -17,6 +17,21 @@ interface DayGroup {
   date: string;
   dayLabel: string;
   events: EventItem[];
+}
+
+const multiDayMeta: Record<string, MultiDayInfo> =
+  ((rawData.meta as Record<string, unknown>).multiDayEvents as Record<
+    string,
+    MultiDayInfo
+  >) ?? {};
+
+function attachMultiDay(evt: Record<string, any>): EventItem {
+  const metaEntry = multiDayMeta[evt.eventNumber];
+  const merged: EventItem = {
+    ...(evt as unknown as EventItem),
+    multiDay: metaEntry ?? (evt.multiDay as MultiDayInfo | null | undefined) ?? null,
+  };
+  return merged;
 }
 
 function buildDayGroups(): DayGroup[] {
@@ -43,10 +58,8 @@ function buildDayGroups(): DayGroup[] {
       if (!grouped[targetDate]) {
         grouped[targetDate] = [];
       }
-      const decorated: EventItem = {
-        ...(evt as unknown as EventItem),
-        _displayDate: targetDate,
-      };
+      const decorated = attachMultiDay(evt as unknown as Record<string, any>);
+      decorated._displayDate = targetDate;
       grouped[targetDate].push(decorated);
     }
   }
@@ -80,7 +93,6 @@ export default function SchedulePage() {
   const tabsRef = useRef<HTMLDivElement>(null);
   const firstRender = useRef(true);
 
-  // Hydrate query from URL on client only (keeps initial SSR static)
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
@@ -122,7 +134,6 @@ export default function SchedulePage() {
       .filter((g) => g.events.length > 0);
   }, [selectedIdx, filteredEvents]);
 
-  // Center the active day pill in the horizontal tab strip
   useEffect(() => {
     const tabIndex = selectedIdx === "all" ? 0 : selectedIdx + 1;
     const el = tabsRef.current?.children[tabIndex] as HTMLElement | undefined;
@@ -133,7 +144,6 @@ export default function SchedulePage() {
     });
   }, [selectedIdx]);
 
-  // Scroll the window back to the top when switching tabs (skip first mount)
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
@@ -146,8 +156,8 @@ export default function SchedulePage() {
 
   return (
     <div className="bg-bg-secondary">
-      {/* Page header (non-sticky) — includes eyebrow, h1, subtitle, and the search box */}
-      <header className="bg-white border-b border-border-default">
+      {/* Page header (non-sticky) */}
+      <header className="bg-gradient-to-b from-blue-50 via-white to-white border-b border-blue-200">
         <div className="max-w-6xl mx-auto px-4 md:px-8 pt-6 md:pt-10 pb-4 md:pb-6">
           <p className="text-[10px] md:text-xs font-bold tracking-[2px] text-blue-900 uppercase">
             Japan Open Poker Tour 2026
@@ -159,13 +169,13 @@ export default function SchedulePage() {
             2026-04-24 〜 05-06 / ベルサール高田馬場
           </p>
 
-          <label className="mt-4 md:mt-5 flex items-center gap-2 bg-white border border-border-default rounded-full px-3 py-2 md:py-2.5 max-w-xl">
+          <label className="mt-4 md:mt-5 flex items-center gap-2 bg-white border border-blue-200 rounded-full px-3 py-2 md:py-2.5 max-w-xl shadow-sm">
             <svg
               width="16"
               height="16"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#888"
+              stroke="#1a4b8c"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -196,8 +206,8 @@ export default function SchedulePage() {
         </div>
       </header>
 
-      {/* Sticky wrapper — day-tab strip + filter pills, follows the scroll */}
-      <div className="sticky top-0 z-40 bg-bg-secondary/95 backdrop-blur border-b border-border-default">
+      {/* Sticky wrapper — day-tab strip + filter pills */}
+      <div className="sticky top-0 z-40 bg-blue-50/95 backdrop-blur border-b border-blue-200 shadow-sm">
         <div className="max-w-6xl mx-auto">
           <div
             ref={tabsRef}
@@ -206,10 +216,10 @@ export default function SchedulePage() {
             {/* ALL tab */}
             <button
               onClick={() => setSelectedIdx("all")}
-              className={`shrink-0 flex flex-col items-center justify-center px-3 md:px-5 py-1.5 md:py-3 min-w-[52px] md:min-w-[72px] border-r border-border-light transition-colors ${
+              className={`shrink-0 flex flex-col items-center justify-center px-3 md:px-5 py-1.5 md:py-3 min-w-[52px] md:min-w-[72px] border-r border-blue-200/70 transition-colors ${
                 selectedIdx === "all"
                   ? "bg-blue-900 text-white"
-                  : "text-text-muted hover:bg-bg-tertiary"
+                  : "text-text-muted hover:bg-blue-100/60"
               }`}
             >
               <span className="text-sm md:text-base font-semibold leading-tight tracking-wider">
@@ -257,7 +267,7 @@ export default function SchedulePage() {
                     className={`shrink-0 flex flex-col items-center justify-center px-3 md:px-5 py-1.5 md:py-3 min-w-[44px] md:min-w-[64px] transition-colors ${
                       active
                         ? "bg-blue-900 text-white"
-                        : "text-text-muted hover:bg-bg-tertiary"
+                        : "text-text-muted hover:bg-blue-100/60"
                     }`}
                   >
                     <span className="text-sm md:text-base font-semibold leading-tight">
@@ -276,8 +286,8 @@ export default function SchedulePage() {
             })}
           </div>
 
-          {/* Filter pills (sticky together with day tabs) */}
-          <div className="border-t border-border-light bg-bg-secondary/80">
+          {/* Filter pills */}
+          <div className="border-t border-blue-200/60 bg-white/60">
             <EventFilter activeFilters={activeFilters} onFilterChange={setFilter} />
           </div>
         </div>
@@ -289,20 +299,19 @@ export default function SchedulePage() {
           {filterSummary}
         </div>
 
-        {/* Event list */}
         <div className="pb-10 md:pb-16">
           {selectedIdx === "all" ? (
             groupedForAll && groupedForAll.length > 0 ? (
               <div className="max-w-2xl mx-auto">
                 {groupedForAll.map((dg) => (
                   <section key={dg.date} id={`day-${dg.date}`} className="mb-6">
-                    <h2 className="sticky top-[156px] md:top-[172px] z-30 bg-bg-secondary/95 backdrop-blur px-4 py-2 text-[11px] md:text-xs font-bold text-blue-900 uppercase tracking-wider border-b border-border-default flex items-baseline gap-2">
+                    <h2 className="sticky top-[168px] md:top-[184px] z-30 bg-blue-50/95 backdrop-blur px-4 py-2 text-[11px] md:text-xs font-bold text-blue-900 uppercase tracking-wider border-b border-blue-200 flex items-baseline gap-2">
                       <span>{dg.dayLabel}</span>
                       <span className="text-text-muted font-normal normal-case tracking-normal">
                         ({dg.events.length})
                       </span>
                     </h2>
-                    <div className="divide-y divide-border-light bg-white border border-border-default border-t-0">
+                    <div className="divide-y divide-border-light bg-white border border-blue-100 border-t-0">
                       {dg.events.map((evt, i) => (
                         <EventRow
                           key={`${evt.eventNumber}-${evt.startTime}-${i}`}

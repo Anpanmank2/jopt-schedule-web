@@ -5,7 +5,413 @@
     "period": "2026-04-24 to 2026-05-06",
     "totalDays": 13,
     "totalEvents": 220,
-    "extractedAt": "2026-04-09"
+    "extractedAt": "2026-04-09",
+    "multiDayEvents": {
+      "#01": {
+        "name": "NLH Main Event",
+        "flights": [
+          {
+            "day": "Day 1A",
+            "date": "2026-05-02",
+            "start": "11:00",
+            "regClose": "18:15 (Lv.9)",
+            "endTime": "22:55"
+          },
+          {
+            "day": "Day 1B",
+            "date": "2026-05-02",
+            "start": "18:00",
+            "regClose": "01:15 (Lv.9)",
+            "endTime": "05:55"
+          },
+          {
+            "day": "Day 1C",
+            "date": "2026-05-03",
+            "start": "11:00",
+            "regClose": "18:15 (Lv.9)",
+            "endTime": "22:55"
+          },
+          {
+            "day": "Day 1D Turbo",
+            "date": "2026-05-03",
+            "start": "18:00",
+            "regClose": "21:10 (Lv.9)",
+            "endTime": "Pass rate reached"
+          },
+          {
+            "day": "Day 2",
+            "date": "2026-05-04",
+            "start": "11:00 Restart"
+          },
+          {
+            "day": "Day 3",
+            "date": "2026-05-05",
+            "start": "11:00 Restart"
+          }
+        ],
+        "day1EndLevel": 15,
+        "day1EndBlinds": "3,000 - 6,000",
+        "day1TurboLabel": "Day 1D Turbo",
+        "day1TurboStartLevel": null,
+        "day1TurboLevelTime": 20,
+        "day1TurboEndCondition": "Ends when average pass rate of Day 1A and 1B is reached. Day 2 restarts from Level 16 regardless.",
+        "day1TurboEndLevel": 20,
+        "day1TurboEndBlinds": "10,000 - 20,000",
+        "day2StartLevel": 16,
+        "day2StartBlinds": "4,000 - 8,000",
+        "day2LevelTime": 45,
+        "day2RestartNote": "Level.16から再開（ブラインドの途中で終了した場合も含む）",
+        "day2EndLevel": 28,
+        "day2EndBlinds": "60,000 - 120,000",
+        "day3StartLevel": 29,
+        "day3StartBlinds": "75,000 - 150,000",
+        "day3LevelTime": 45,
+        "totalLevels": 50
+      },
+      "#03": {
+        "name": "NLH Mini Main Event",
+        "flights": [
+          {
+            "day": "Day 1A",
+            "date": "2026-04-24",
+            "start": "18:00",
+            "regClose": "23:35 (Lv.9)",
+            "endTime": "03:50"
+          },
+          {
+            "day": "Day 1B",
+            "date": "2026-04-25",
+            "start": "11:00",
+            "regClose": "16:35 (Lv.9)",
+            "endTime": "20:50"
+          },
+          {
+            "day": "Day 1C",
+            "date": "2026-04-25",
+            "start": "16:00",
+            "regClose": "21:35 (Lv.9)",
+            "endTime": "01:50"
+          },
+          {
+            "day": "Day 1D Turbo",
+            "date": "2026-04-26",
+            "start": "10:00 Start Lv.4",
+            "regClose": "12:10 (Lv.9)",
+            "endTime": "14:30"
+          },
+          {
+            "day": "Day 2",
+            "date": "2026-04-26",
+            "start": "15:00 Restart"
+          }
+        ],
+        "day1EndLevel": 16,
+        "day1EndBlinds": "4,000 - 8,000",
+        "day1TurboLabel": "Day 1D Turbo",
+        "day1TurboStartLevel": 4,
+        "day1TurboLevelTime": 20,
+        "day1TurboEndCondition": null,
+        "day1TurboEndLevel": 16,
+        "day1TurboEndBlinds": "4,000 - 8,000",
+        "day2StartLevel": 17,
+        "day2StartBlinds": "5,000 - 10,000",
+        "day2LevelTime": 30,
+        "day2RestartNote": null,
+        "day2EndLevel": null,
+        "day2EndBlinds": null,
+        "day3StartLevel": null,
+        "day3StartBlinds": null,
+        "day3LevelTime": null,
+        "totalLevels": 50
+      },
+      "#33": {
+        "name": "NLH Colossus",
+        "flights": [
+          {
+            "day": "Day 1A",
+            "date": "2026-04-26",
+            "start": "15:00",
+            "regClose": "19:50 (Lv.9)",
+            "endTime": "21:50"
+          },
+          {
+            "day": "Day 1B",
+            "date": "2026-04-27",
+            "start": "11:00",
+            "regClose": "15:50 (Lv.9)",
+            "endTime": "17:50"
+          },
+          {
+            "day": "Day 1C",
+            "date": "2026-04-27",
+            "start": "16:00",
+            "regClose": "20:50 (Lv.9)",
+            "endTime": "22:50"
+          },
+          {
+            "day": "Day 1D",
+            "date": "2026-04-28",
+            "start": "11:00",
+            "regClose": "15:50 (Lv.9)",
+            "endTime": "17:50"
+          },
+          {
+            "day": "Day 1E",
+            "date": "2026-04-28",
+            "start": "16:00",
+            "regClose": "20:50 (Lv.9)",
+            "endTime": "22:50"
+          },
+          {
+            "day": "Day 1F Turbo",
+            "date": "2026-04-29",
+            "start": "10:00 Start Lv.4",
+            "regClose": "12:00 (Lv.9)",
+            "endTime": "13:20"
+          },
+          {
+            "day": "Day 2",
+            "date": "2026-04-29",
+            "start": "13:30 Restart"
+          }
+        ],
+        "day1EndLevel": 13,
+        "day1EndBlinds": "3,000 - 6,000",
+        "day1TurboLabel": "Day 1F Turbo",
+        "day1TurboStartLevel": 4,
+        "day1TurboLevelTime": 20,
+        "day1TurboEndCondition": null,
+        "day1TurboEndLevel": null,
+        "day1TurboEndBlinds": null,
+        "day2StartLevel": 14,
+        "day2StartBlinds": "4,000 - 8,000",
+        "day2LevelTime": 30,
+        "day2RestartNote": null,
+        "day2EndLevel": null,
+        "day2EndBlinds": null,
+        "day3StartLevel": null,
+        "day3StartBlinds": null,
+        "day3LevelTime": null,
+        "totalLevels": 42
+      },
+      "#46": {
+        "name": "10-Game MIX",
+        "flights": [
+          {
+            "day": "Day 1A",
+            "date": "2026-04-27",
+            "start": "14:00",
+            "regClose": "18:20 (Lv.8)",
+            "endTime": "21:30"
+          },
+          {
+            "day": "Day 1B",
+            "date": "2026-04-27",
+            "start": "18:00",
+            "regClose": "22:20 (Lv.8)",
+            "endTime": "01:30"
+          },
+          {
+            "day": "Day 1C",
+            "date": "2026-04-28",
+            "start": "14:00",
+            "regClose": "18:20 (Lv.8)",
+            "endTime": "21:30"
+          },
+          {
+            "day": "Day 2",
+            "date": "2026-04-29",
+            "start": "13:00 Restart"
+          }
+        ],
+        "day1EndLevel": 14,
+        "day1EndBlinds": "FL: 5,000/10,000 | STUD: 2,500/5,000 | PL/NL: -/7,500",
+        "day1TurboLabel": null,
+        "day1TurboStartLevel": null,
+        "day1TurboLevelTime": null,
+        "day1TurboEndCondition": null,
+        "day1TurboEndLevel": null,
+        "day1TurboEndBlinds": null,
+        "day2StartLevel": 15,
+        "day2StartBlinds": "FL: 6,000/12,000 | STUD: 3,000/6,000 | PL/NL: -/9,000",
+        "day2LevelTime": 30,
+        "day2RestartNote": "Special structure: each level has 3 game types (FL, STUD, PL/NL) with separate blinds. Day 2 total 27 levels.",
+        "day2EndLevel": null,
+        "day2EndBlinds": null,
+        "day3StartLevel": null,
+        "day3StartBlinds": null,
+        "day3LevelTime": null,
+        "totalLevels": 27
+      },
+      "#71": {
+        "name": "NLH Millions",
+        "flights": [
+          {
+            "day": "Day 1A",
+            "date": "2026-04-29",
+            "start": "13:00",
+            "regClose": "18:20 (Lv.10)",
+            "endTime": "21:00"
+          },
+          {
+            "day": "Day 1B",
+            "date": "2026-04-30",
+            "start": "11:00",
+            "regClose": "16:20 (Lv.10)",
+            "endTime": "19:00"
+          },
+          {
+            "day": "Day 1C",
+            "date": "2026-05-01",
+            "start": "11:00",
+            "regClose": "16:20 (Lv.10)",
+            "endTime": "19:00"
+          },
+          {
+            "day": "Day 1D",
+            "date": "2026-05-01",
+            "start": "15:00",
+            "regClose": "20:20 (Lv.10)",
+            "endTime": "23:00"
+          },
+          {
+            "day": "Day 1E Turbo",
+            "date": "2026-05-01",
+            "start": "20:00",
+            "regClose": "23:30 (Lv.10)",
+            "endTime": "01:20"
+          },
+          {
+            "day": "Day 2",
+            "date": "2026-05-02",
+            "start": "11:00 Restart"
+          }
+        ],
+        "day1EndLevel": 15,
+        "day1EndBlinds": "4,000 - 8,000",
+        "day1TurboLabel": "Day 1E Turbo",
+        "day1TurboStartLevel": null,
+        "day1TurboLevelTime": 20,
+        "day1TurboEndCondition": null,
+        "day1TurboEndLevel": 15,
+        "day1TurboEndBlinds": "4,000 - 8,000",
+        "day2StartLevel": 16,
+        "day2StartBlinds": "5,000 - 10,000",
+        "day2LevelTime": 30,
+        "day2RestartNote": null,
+        "day2EndLevel": null,
+        "day2EndBlinds": null,
+        "day3StartLevel": null,
+        "day3StartBlinds": null,
+        "day3LevelTime": null,
+        "totalLevels": 46
+      },
+      "#145": {
+        "name": "NLH Poker Players Championship",
+        "flights": [
+          {
+            "day": "Day 1A",
+            "date": "2026-05-04",
+            "start": "11:00",
+            "regClose": "17:10 (Lv.10)",
+            "endTime": "20:50"
+          },
+          {
+            "day": "Day 1B",
+            "date": "2026-05-04",
+            "start": "17:00",
+            "regClose": "23:10 (Lv.10)",
+            "endTime": "02:50"
+          },
+          {
+            "day": "Day 1C",
+            "date": "2026-05-05",
+            "start": "11:00",
+            "regClose": "17:10 (Lv.10)",
+            "endTime": "20:50"
+          },
+          {
+            "day": "Day 1D Turbo",
+            "date": "2026-05-05",
+            "start": "17:00",
+            "regClose": "20:30 (Lv.10)",
+            "endTime": "22:40"
+          },
+          {
+            "day": "Day 2",
+            "date": "2026-05-06",
+            "start": "11:00 Restart"
+          }
+        ],
+        "day1EndLevel": 16,
+        "day1EndBlinds": "5,000 - 10,000",
+        "day1TurboLabel": "Day 1D Turbo",
+        "day1TurboStartLevel": null,
+        "day1TurboLevelTime": 20,
+        "day1TurboEndCondition": null,
+        "day1TurboEndLevel": 16,
+        "day1TurboEndBlinds": "5,000 - 10,000",
+        "day2StartLevel": 17,
+        "day2StartBlinds": "6,000 - 12,000",
+        "day2LevelTime": 30,
+        "day2RestartNote": null,
+        "day2EndLevel": null,
+        "day2EndBlinds": null,
+        "day3StartLevel": null,
+        "day3StartBlinds": null,
+        "day3LevelTime": null,
+        "totalLevels": 46
+      },
+      "#147": {
+        "name": "PLO Championship",
+        "flights": [
+          {
+            "day": "Day 1A",
+            "date": "2026-05-04",
+            "start": "13:00",
+            "regClose": "17:50 (Lv.9)",
+            "endTime": "21:30"
+          },
+          {
+            "day": "Day 1B",
+            "date": "2026-05-04",
+            "start": "18:00",
+            "regClose": "22:50 (Lv.9)",
+            "endTime": "02:30"
+          },
+          {
+            "day": "Day 1C",
+            "date": "2026-05-05",
+            "start": "13:00",
+            "regClose": "17:50 (Lv.9)",
+            "endTime": "21:30"
+          },
+          {
+            "day": "Day 2",
+            "date": "2026-05-06",
+            "start": "12:00 Restart"
+          }
+        ],
+        "day1EndLevel": 16,
+        "day1EndBlinds": "4,000 - 8,000",
+        "day1TurboLabel": null,
+        "day1TurboStartLevel": null,
+        "day1TurboLevelTime": null,
+        "day1TurboEndCondition": null,
+        "day1TurboEndLevel": null,
+        "day1TurboEndBlinds": null,
+        "day2StartLevel": 17,
+        "day2StartBlinds": "5,000 - 10,000",
+        "day2LevelTime": 30,
+        "day2RestartNote": null,
+        "day2EndLevel": null,
+        "day2EndBlinds": null,
+        "day3StartLevel": null,
+        "day3StartBlinds": null,
+        "day3LevelTime": null,
+        "totalLevels": 42
+      }
+    }
   },
   "days": [
     {
@@ -27,7 +433,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -295,7 +701,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL 2-7 Triple Draw; 2,FL Badugi; play in the order mentioned above every 6 hands.",
           "structure": {
@@ -553,7 +959,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -696,7 +1102,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": 16,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "(s01)",
@@ -713,7 +1135,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -882,7 +1304,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -1175,7 +1597,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -1450,7 +1872,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -1685,7 +2107,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -1971,7 +2393,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL 2-7 Triple Draw         5,FL BadACEy; 2,FL Badugi                  6,FL Archie; 3,FL A-5 Triple Draw         7,FL 5-Card Draw Hi; 4,FL BaDEUCEy                8,FL Hidugi; play in the order mentioned above every 6 hands.",
           "structure": {
@@ -2227,7 +2649,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -2484,7 +2906,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -2731,7 +3153,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": null,
@@ -2764,7 +3186,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -3007,7 +3429,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -3190,7 +3612,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -3359,7 +3781,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -3502,7 +3924,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": 16,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#14",
@@ -3519,7 +3957,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -3816,7 +4254,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,NL Hold’em                 5,PL Omaha; 2,FL Seven Card Stud         6,FL Hold’em; 3,FL Omaha Hi-Lo 8 or Better 7,FL Seven Card Stud Hi-Lo; 4,FL Razz                    8,FL 2-7 Triple Draw; play in the order mentioned above every 6 hands.",
           "structure": null,
@@ -3856,7 +4294,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -4109,7 +4547,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -4391,7 +4829,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -4582,7 +5020,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -4725,7 +5163,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": 16,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#18",
@@ -4742,7 +5196,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -5046,7 +5500,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL BaDEUCEy; 1,FL BadACEy; play in the order mentioned above every 6 hands.",
           "structure": {
@@ -5292,7 +5746,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -5589,7 +6043,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -5889,7 +6343,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -6080,7 +6534,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -6361,7 +6815,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -6647,7 +7101,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -6887,7 +7341,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -7168,7 +7622,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -7415,7 +7869,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -7651,7 +8105,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -7894,7 +8348,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -8116,7 +8570,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -8285,7 +8739,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -8428,7 +8882,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": 16,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#30",
@@ -8445,7 +8915,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -8742,7 +9212,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL Hold'm; 2,FL Omaha Hi/Lo 8 or Better; 3,FL Razz; 4,FL Seven Card Stud; 5,FL Seven Card Stud Hi/Lo 8 or Better; play in the order mentioned above every 6 hands.",
           "structure": null,
@@ -8782,7 +9252,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -9359,7 +9829,23 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリン ク代1,000円を頂戴します。但し、 Day 1F Turbo通過者のDay 2開 始時はドリンク代を頂戴いたしません。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 13,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 14,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1F Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": null,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "(s07)",
@@ -9376,7 +9862,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -9545,7 +10031,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -9688,7 +10174,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": 16,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#34",
@@ -9705,7 +10207,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -10005,7 +10507,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1, FL Seven Card Stud; 2, FL Razz; 3, FL Seven Card Stud Hi/Lo 8 or Better; play in the order mentioned above every 6 hands.",
           "structure": null,
@@ -10043,7 +10545,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -10329,7 +10831,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -10589,7 +11091,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -10864,7 +11366,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -11150,7 +11652,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -11391,7 +11893,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -11638,7 +12140,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -11881,7 +12383,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -12367,7 +12869,23 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリン ク代1,000円を頂戴します。但し、 Day 1F Turbo通過者のDay 2開 始時はドリンク代を頂戴いたしません。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 13,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 14,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1F Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": null,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#43",
@@ -12384,7 +12902,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -12677,7 +13195,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -12957,7 +13475,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -13278,7 +13796,16 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリ ンク代1,000円を頂戴します。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 14,
+            "day1EndBlinds": "FL: 5,000/10,000 | STUD: 2,500/5,000 | PL/NL: -/7,500",
+            "day2StartLevel": 15,
+            "day2StartBlinds": "FL: 6,000/12,000 | STUD: 3,000/6,000 | PL/NL: -/9,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null
+          }
         },
         {
           "eventNumber": "#33",
@@ -13612,7 +14139,23 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリン ク代1,000円を頂戴します。但し、 Day 1F Turbo通過者のDay 2開 始時はドリンク代を頂戴いたしません。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 13,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 14,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1F Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": null,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "(s09)",
@@ -13629,7 +14172,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -13798,7 +14341,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -14095,7 +14638,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -14398,7 +14941,16 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリ ンク代1,000円を頂戴します。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 14,
+            "day1EndBlinds": "FL: 5,000/10,000 | STUD: 2,500/5,000 | PL/NL: -/7,500",
+            "day2StartLevel": 15,
+            "day2StartBlinds": "FL: 6,000/12,000 | STUD: 3,000/6,000 | PL/NL: -/9,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null
+          }
         },
         {
           "eventNumber": "#49",
@@ -14665,7 +15217,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -14958,7 +15510,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -15251,7 +15803,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -15498,7 +16050,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -15739,7 +16291,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -15986,7 +16538,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -16229,7 +16781,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -16715,7 +17267,23 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリン ク代1,000円を頂戴します。但し、 Day 1F Turbo通過者のDay 2開 始時はドリンク代を頂戴いたしません。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 13,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 14,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1F Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": null,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#56",
@@ -16732,7 +17300,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -17025,7 +17593,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -17346,7 +17914,16 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリ ンク代1,000円を頂戴します。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 14,
+            "day1EndBlinds": "FL: 5,000/10,000 | STUD: 2,500/5,000 | PL/NL: -/7,500",
+            "day2StartLevel": 15,
+            "day2StartBlinds": "FL: 6,000/12,000 | STUD: 3,000/6,000 | PL/NL: -/9,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null
+          }
         },
         {
           "eventNumber": "#58",
@@ -17363,7 +17940,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -17969,7 +18546,23 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリン ク代1,000円を頂戴します。但し、 Day 1F Turbo通過者のDay 2開 始時はドリンク代を頂戴いたしません。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 13,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 14,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1F Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": null,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "(s11)",
@@ -17986,7 +18579,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -18155,7 +18748,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -18455,7 +19048,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL Badugi; 2,FL Seven Card Stud Hi/Lo 8 or Better; 3,FL A-5 Triple Draw; 4,FL Seven Card Stud; 5,FL 2-7 Triple Draw; 6,FL Razz; play in the order mentioned above every 6 hands",
           "structure": null,
@@ -18496,7 +19089,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -18789,7 +19382,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -19053,7 +19646,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -19313,7 +19906,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -19599,7 +20192,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -19874,7 +20467,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -20158,7 +20751,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -20405,7 +20998,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": null,
@@ -20439,7 +21032,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -20682,7 +21275,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -21168,7 +21761,23 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリン ク代1,000円を頂戴します。但し、 Day 1F Turbo通過者のDay 2開 始時はドリンク代を頂戴いたしません。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 13,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 14,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1F Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": null,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#70",
@@ -21185,7 +21794,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -21566,7 +22175,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -21701,7 +22310,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1E Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 15,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#72",
@@ -21718,7 +22343,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL 2-7 Triple Draw; 2,FL Badugi; 3,FL A-5 Triple Draw; play in the order mentioned above every 6 hands.",
           "structure": {
@@ -21977,7 +22602,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -22569,7 +23194,23 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリン ク代1,000円を頂戴します。但し、 Day 1F Turbo通過者のDay 2開 始時はドリンク代を頂戴いたしません。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 13,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 14,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1F Turbo",
+              "startLevel": 4,
+              "levelTime": 20,
+              "endLevel": null,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#73",
@@ -22586,7 +23227,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -22868,7 +23509,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -23037,7 +23678,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -23338,7 +23979,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1, FL Seven Card Stud; 2, FL Razz; 3, FL Seven Card Stud Hi/Lo 8 or Better; 4, FL 2-7Razz; 5, FL Razzdugi; play in the order mentioned above every 6 hands.",
           "structure": null,
@@ -23378,7 +24019,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -23664,7 +24305,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -23964,7 +24605,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -24225,7 +24866,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -24511,7 +25152,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -24786,7 +25427,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -25020,7 +25661,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -25203,7 +25844,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -25446,7 +26087,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -25615,7 +26256,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -25750,7 +26391,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1E Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 15,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#84",
@@ -25767,7 +26424,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -26060,7 +26717,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -26353,7 +27010,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL Omaha Hi/Lo 8 or Better; 2,FL Seven Card Stud Hi/Lo 8 or Better; 3,FL Archie; play in the order mentioned above every 6 hands",
           "structure": null,
@@ -26393,7 +27050,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -26675,7 +27332,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1, FL 2-7 Triple Draw          5, FL 5card Draw Hi; 2, FL Badugi                   6, FL Archie; 3, NL 2-7 Single Draw          7, PL Badugi; 4, FL A-5 Triple Draw; play in the order mentioned above every 6 hands.",
           "structure": null,
@@ -26716,7 +27373,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -26885,7 +27542,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -27185,7 +27842,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": null,
@@ -27217,7 +27874,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -27514,7 +28171,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -27767,7 +28424,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -28053,7 +28710,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -28328,7 +28985,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL Drawmaha Hi            4,FL Drawmaha 0; 2,FL Drawmaha 2-7           5,FL Drawmaha 49; 3,FL Drawmaha Badugi; play in the order mentioned above every 6 hands.",
           "structure": {
@@ -28588,7 +29245,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -28835,7 +29492,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -29071,7 +29728,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -29314,7 +29971,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -29497,7 +30154,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -29666,7 +30323,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -29801,7 +30458,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1E Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 15,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#98",
@@ -29818,7 +30491,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -30111,7 +30784,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL 2-7 Triple Draw; 2,FL Badugi; 3,FL A-5 Triple Draw; play in the order mentioned above every 6 hands.",
           "structure": {
@@ -30381,7 +31054,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -30516,7 +31189,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1E Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 15,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#100",
@@ -30533,7 +31222,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -30822,7 +31511,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -31084,7 +31773,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -31253,7 +31942,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -31553,7 +32242,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": null,
@@ -31591,7 +32280,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -31884,7 +32573,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -32067,7 +32756,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -32360,7 +33049,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -32645,7 +33334,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -32780,7 +33469,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1E Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 15,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#107",
@@ -32797,7 +33502,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -33072,7 +33777,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1, FL Seven Card Stud; 2, FL Razz; 3, FL Seven Card Stud Hi/Lo 8 or Better; play in the order mentioned above every 6 hands.",
           "structure": null,
@@ -33110,7 +33815,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -33396,7 +34101,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -33647,7 +34352,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -33910,7 +34615,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -34157,7 +34862,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": null,
@@ -34191,7 +34896,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -34434,7 +35139,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -34626,7 +35331,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -34795,7 +35500,7 @@
           "gtdDisplay": null,
           "isMainEvent": true,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -35233,7 +35938,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": 28,
+            "day3StartLevel": 29,
+            "day3StartBlinds": "75,000 - 150,000",
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 20,
+              "endCondition": "Ends when average pass rate of Day 1A and 1B is reached. Day 2 restarts from Level 16 regardless."
+            }
+          }
         },
         {
           "eventNumber": "#115",
@@ -35250,7 +35971,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -35543,7 +36264,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -35678,7 +36399,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1E Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 15,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#116",
@@ -35695,7 +36432,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,NL 2-7 Single Draw; 2,FL 2-7 Triple Draw; 3,FL Seven Card Stud Hi-Lo 8 or Better; 4,PL Omaha; play in the order mentioned above every 6 hands.",
           "structure": null,
@@ -35734,7 +36471,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -36016,7 +36753,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -36185,7 +36922,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -36475,7 +37212,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -36728,7 +37465,7 @@
           "gtdDisplay": null,
           "isMainEvent": true,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -37130,7 +37867,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": 28,
+            "day3StartLevel": 29,
+            "day3StartBlinds": "75,000 - 150,000",
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 20,
+              "endCondition": "Ends when average pass rate of Day 1A and 1B is reached. Day 2 restarts from Level 16 regardless."
+            }
+          }
         },
         {
           "eventNumber": "#120",
@@ -37147,7 +37900,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -37433,7 +38186,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -37602,7 +38355,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -37902,7 +38655,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL 2-7 Triple Draw; 2,FL Omaha Hi/Lo 8 or Better; 3,FL Razz; 4,FL Seven Card Stud; 5,FL Seven Card Stud Hi/Lo 8 or Better; play in the order mentioned above every 6 hands",
           "structure": null,
@@ -37942,7 +38695,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -38228,7 +38981,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -38481,7 +39234,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -38756,7 +39509,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -39019,7 +39772,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -39266,7 +40019,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -39509,7 +40262,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -39732,7 +40485,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -39901,7 +40654,7 @@
           "gtdDisplay": null,
           "isMainEvent": true,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -40303,7 +41056,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": 28,
+            "day3StartLevel": 29,
+            "day3StartBlinds": "75,000 - 150,000",
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 20,
+              "endCondition": "Ends when average pass rate of Day 1A and 1B is reached. Day 2 restarts from Level 16 regardless."
+            }
+          }
         },
         {
           "eventNumber": "#130",
@@ -40320,7 +41089,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -40613,7 +41382,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": null,
@@ -40654,7 +41423,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1, NL Hold’em                  6, NL 2-7 Single Draw; 2, FL Razz                     7, FL Omaha Hi/Lo 8 or Be; 3, FL Hold’em                  8, PL Omaha; 4, FL Badugi                   9, FL 2-7 Triple Draw; 5, FL Seven Card Stud          10, FL Seven Card Stud Hi; play in the order mentioned above every 6 hands.",
           "structure": null,
@@ -40695,7 +41464,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -40977,7 +41746,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -41240,7 +42009,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL 2-7 Triple Draw; 2,FL Badugi; play in the order mentioned above every 6 hands.",
           "structure": {
@@ -41498,7 +42267,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -41667,7 +42436,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -41967,7 +42736,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -42271,7 +43040,7 @@
           "gtdDisplay": null,
           "isMainEvent": true,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -42673,7 +43442,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": 28,
+            "day3StartLevel": 29,
+            "day3StartBlinds": "75,000 - 150,000",
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 20,
+              "endCondition": "Ends when average pass rate of Day 1A and 1B is reached. Day 2 restarts from Level 16 regardless."
+            }
+          }
         },
         {
           "eventNumber": "#137",
@@ -42690,7 +43475,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -42943,7 +43728,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -43236,7 +44021,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -43522,7 +44307,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -43797,7 +44582,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -44057,7 +44842,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -44304,7 +45089,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": null,
@@ -44337,7 +45122,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -44580,7 +45365,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -44763,7 +45548,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -44932,7 +45717,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -45304,7 +46089,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "5,000 - 10,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "6,000 - 12,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 16,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#146",
@@ -45321,7 +46122,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -45618,7 +46419,7 @@
           "gtdDisplay": null,
           "isMainEvent": true,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -46020,7 +46821,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": 28,
+            "day3StartLevel": 29,
+            "day3StartBlinds": "75,000 - 150,000",
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 20,
+              "endCondition": "Ends when average pass rate of Day 1A and 1B is reached. Day 2 restarts from Level 16 regardless."
+            }
+          }
         },
         {
           "eventNumber": "#147",
@@ -46376,7 +47193,16 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリンク 代1,000円を頂戴します。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null
+          }
         },
         {
           "eventNumber": "#148",
@@ -46393,7 +47219,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL Omaha Hi/Lo 8 or Better; 2,FL Seven Card Stud Hi/Lo 8 or Better; 3,FL BaDEUCEy; 4,FL BadACEy; play in the order mentioned above every 6 hands",
           "structure": null,
@@ -46435,7 +47261,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -46717,7 +47543,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -46886,7 +47712,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -47176,7 +48002,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": null,
@@ -47209,7 +48035,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -47561,7 +48387,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "5,000 - 10,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "6,000 - 12,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 16,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#152",
@@ -47578,7 +48420,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -48203,7 +49045,16 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリンク 代1,000円を頂戴します。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null
+          }
         },
         {
           "eventNumber": "#153",
@@ -48220,7 +49071,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1, PL Big-O                    5, NL 5-Card Single Draw; 2, NL Hold’em                  6, PL Omaha; 3, NL 2-7 Single Draw          7, PL 2-7 Triple Draw; 4, PL Omaha Hi/Lo 8 or better; play in the order mentioned above every 6 hands.",
           "structure": null,
@@ -48260,7 +49111,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -48560,7 +49411,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -48846,7 +49697,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -49088,7 +49939,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -49335,7 +50186,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -49570,7 +50421,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -49813,7 +50664,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -49982,7 +50833,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -50334,7 +51185,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "5,000 - 10,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "6,000 - 12,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 16,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#160",
@@ -50351,7 +51218,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -50648,7 +51515,7 @@
           "gtdDisplay": null,
           "isMainEvent": true,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -51050,7 +51917,23 @@
               "rank": "3rd",
               "amount": "100,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 15,
+            "day1EndBlinds": "3,000 - 6,000",
+            "day2StartLevel": 16,
+            "day2StartBlinds": "4,000 - 8,000",
+            "day2EndLevel": 28,
+            "day3StartLevel": 29,
+            "day3StartBlinds": "75,000 - 150,000",
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 20,
+              "endCondition": "Ends when average pass rate of Day 1A and 1B is reached. Day 2 restarts from Level 16 regardless."
+            }
+          }
         },
         {
           "eventNumber": "#147",
@@ -51406,7 +52289,16 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリンク 代1,000円を頂戴します。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null
+          }
         },
         {
           "eventNumber": "#161",
@@ -51423,7 +52315,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -51705,7 +52597,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL Hold'm; 2,FL Omaha Hi/Lo 8 or Better; 3,FL Razz; 4,FL Seven Card Stud; 5,FL Seven Card Stud Hi/Lo 8 or Better; play in the order mentioned above every 6 hands.",
           "structure": null,
@@ -51745,7 +52637,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -51914,7 +52806,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -52214,7 +53106,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": "Advance to Day 2",
           "ruleNotes": null,
           "structure": {
@@ -52566,7 +53458,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "5,000 - 10,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "6,000 - 12,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 16,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#164",
@@ -52583,7 +53491,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -52880,7 +53788,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -53154,7 +54062,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -53447,7 +54355,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -53722,7 +54630,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -54008,7 +54916,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL 2-7 Triple Draw; 2,FL Badugi; 3,FL A-5 Triple Draw; play in the order mentioned above every 6 hands.",
           "structure": {
@@ -54267,7 +55175,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -54518,7 +55426,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -54759,7 +55667,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -55006,7 +55914,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -55250,7 +56158,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -55493,7 +56401,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -55662,7 +56570,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -55955,7 +56863,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -56248,7 +57156,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": true,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -56417,7 +57325,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": "Up to 3 re-entries per Day 1",
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -56769,7 +57677,23 @@
               "rank": "3rd",
               "amount": "50,000 COIN"
             }
-          ]
+          ],
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "5,000 - 10,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "6,000 - 12,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null,
+            "turbo": {
+              "label": "Day 1D Turbo",
+              "startLevel": null,
+              "levelTime": 20,
+              "endLevel": 16,
+              "endCondition": null
+            }
+          }
         },
         {
           "eventNumber": "#177",
@@ -56786,7 +57710,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -57090,7 +58014,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -57709,7 +58633,16 @@
             "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリンク 代1,000円を頂戴します。",
             "・ルールは JOPT Official Rule を採用します。"
           ],
-          "award": null
+          "award": null,
+          "multiDay": {
+            "day1EndLevel": 16,
+            "day1EndBlinds": "4,000 - 8,000",
+            "day2StartLevel": 17,
+            "day2StartBlinds": "5,000 - 10,000",
+            "day2EndLevel": null,
+            "day3StartLevel": null,
+            "day3StartBlinds": null
+          }
         },
         {
           "eventNumber": "#179",
@@ -57726,7 +58659,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL Badugi; 2,FL Seven Card Stud Hi/Lo 8 or Better; 3,FL A-5 Triple Draw; 4,FL Seven Card Stud; 5,FL 2-7 Triple Draw; 6,FL Razz; play in the order mentioned above every 6 hands",
           "structure": null,
@@ -57767,7 +58700,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -58064,7 +58997,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -58314,7 +59247,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -58589,7 +59522,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": "1,FL 2-7 Triple Draw; 2,FL Badugi; play in the order mentioned above every 6 hands.",
           "structure": {
@@ -58833,7 +59766,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -59089,7 +60022,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -59326,7 +60259,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {
@@ -59523,7 +60456,7 @@
           "gtdDisplay": null,
           "isMainEvent": false,
           "isSatellite": false,
-          "reentry": "No",
+          "reentry": null,
           "day2Condition": null,
           "ruleNotes": null,
           "structure": {

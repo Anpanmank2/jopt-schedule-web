@@ -11,7 +11,7 @@ type RangeFilterOption = {
 type FilterCategory = {
   label: string;
   key: string;
-  type: "exact" | "range";
+  type: "exact" | "range" | "multiDay";
   options: (ExactFilterOption | RangeFilterOption)[];
   default: string;
 };
@@ -28,7 +28,7 @@ export const FILTER_CONFIG: FilterConfig = {
       { label: "NLH", value: "NLH" },
       { label: "PLO", value: "PLO" },
       { label: "MIX", value: "MIX" },
-      { label: "SAT", value: "SAT" },
+      { label: "Satellite", value: "SAT" },
     ],
     default: "all",
   },
@@ -41,6 +41,17 @@ export const FILTER_CONFIG: FilterConfig = {
       { label: "Low Stake", value: { min: 0, max: 30000 } },
       { label: "Medium Stake", value: { min: 30001, max: 90000 } },
       { label: "High Stake", value: { min: 90001, max: Infinity } },
+    ],
+    default: "all",
+  },
+  multiDay: {
+    label: "Format",
+    key: "__multiDay",
+    type: "multiDay",
+    options: [
+      { label: "All", value: "all" },
+      { label: "Multi-Day Only", value: "multi" },
+      { label: "Single Day Only", value: "single" },
     ],
     default: "all",
   },

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import EventDetail, {
   BADGE_STYLES,
+  gameTypeLabel,
+  isHighRoller,
   type EventData,
 } from "./EventDetail";
 
@@ -14,27 +16,43 @@ export default function EventRow({ event }: { event: EventData }) {
     ? event.buyInDisplay.replace(/Â¥/g, "¥")
     : null;
 
+  const highRoller = isHighRoller(event.buyIn);
+
+  const rowBg = event.isMainEvent
+    ? "bg-blue-100/70 border-l-4 border-l-blue-900"
+    : highRoller
+    ? "bg-amber-50/70 border-l-4 border-l-amber-500"
+    : "bg-white border-l-4 border-l-transparent";
+
   return (
-    <div
-      className={event.isMainEvent ? "bg-blue-50/60" : "bg-white"}
-    >
+    <div className={rowBg}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 text-left hover:bg-bg-tertiary transition-colors"
+        className="w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 text-left hover:bg-bg-tertiary/60 transition-colors"
       >
         <span className="shrink-0 text-[10px] text-text-muted font-medium w-9 md:w-10 tabular-nums">
           {event.eventNumber}
         </span>
 
+        <span className="shrink-0 text-[11px] md:text-xs text-blue-900 font-bold tabular-nums w-10 md:w-11">
+          {event.startTime}
+        </span>
+
         <span
           className={`shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded ${badgeStyle}`}
         >
-          {event.gameType}
+          {gameTypeLabel(event.gameType)}
         </span>
 
         {event.isMainEvent && (
-          <span className="shrink-0 text-[8px] font-bold px-1 py-0.5 rounded bg-blue-700 text-white uppercase tracking-wider">
+          <span className="shrink-0 text-[8px] font-bold px-1 py-0.5 rounded bg-blue-900 text-white uppercase tracking-wider">
             MAIN
+          </span>
+        )}
+
+        {highRoller && !event.isMainEvent && (
+          <span className="shrink-0 text-[8px] font-bold px-1 py-0.5 rounded bg-amber-500 text-white uppercase tracking-wider">
+            HIGH
           </span>
         )}
 
@@ -42,12 +60,12 @@ export default function EventRow({ event }: { event: EventData }) {
           {event.name}
         </span>
 
-        <span className="shrink-0 text-[11px] md:text-xs text-text-secondary tabular-nums">
-          {event.startTime}
-        </span>
-
         {displayBuyIn && (
-          <span className="shrink-0 hidden sm:inline text-[11px] md:text-xs text-blue-900 font-medium tabular-nums">
+          <span
+            className={`shrink-0 text-[11px] md:text-xs font-semibold tabular-nums text-right ${
+              highRoller ? "text-amber-700" : "text-blue-900"
+            }`}
+          >
             {displayBuyIn}
           </span>
         )}
@@ -67,18 +85,13 @@ export default function EventRow({ event }: { event: EventData }) {
 
       {open && (
         <div className="px-3 md:px-4 py-3 bg-bg-secondary border-t border-border-light">
-          {displayBuyIn && (
-            <div className="flex items-center gap-3 mb-2 text-xs sm:hidden">
-              <span className="text-blue-900 font-medium">{displayBuyIn}</span>
+          {(event.gtdDisplay || event.startingChips) && (
+            <div className="flex items-center gap-3 mb-2 text-[10px] md:text-xs text-text-muted">
               {event.gtdDisplay && (
-                <span className="text-[10px] text-blue-700 font-medium">
-                  GTD {event.gtdDisplay}
-                </span>
+                <span className="text-blue-700 font-medium">GTD {event.gtdDisplay}</span>
               )}
               {event.startingChips && (
-                <span className="text-[10px] text-text-muted">
-                  {event.startingChips.toLocaleString("en-US")} chips
-                </span>
+                <span>{event.startingChips.toLocaleString("en-US")} chips</span>
               )}
             </div>
           )}

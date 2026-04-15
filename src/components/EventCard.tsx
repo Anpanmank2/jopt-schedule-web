@@ -4,6 +4,8 @@ import { useState } from "react";
 import EventDetail, {
   BADGE_STYLES,
   formatNumber,
+  gameTypeLabel,
+  isHighRoller,
   type EventData,
 } from "./EventDetail";
 
@@ -11,14 +13,21 @@ export default function EventCard({ event }: { event: EventData }) {
   const [open, setOpen] = useState(false);
 
   const badgeStyle = BADGE_STYLES[event.gameType] || "bg-blue-100 text-blue-900";
+  const highRoller = isHighRoller(event.buyIn);
 
   const borderColor = event.isMainEvent
-    ? "border-l-blue-700"
+    ? "border-l-blue-900"
+    : highRoller
+    ? "border-l-amber-500"
     : event.isSatellite
-    ? "border-l-blue-100"
+    ? "border-l-blue-200"
     : "border-l-blue-500";
 
-  const bgColor = event.isMainEvent ? "bg-blue-50" : "bg-white";
+  const bgColor = event.isMainEvent
+    ? "bg-blue-100/80"
+    : highRoller
+    ? "bg-amber-50/70"
+    : "bg-white";
 
   const displayBuyIn = event.buyInDisplay
     ? event.buyInDisplay.replace(/Â¥/g, "¥")
@@ -26,7 +35,7 @@ export default function EventCard({ event }: { event: EventData }) {
 
   return (
     <div
-      className={`border border-border-default rounded-lg overflow-hidden border-l-[3px] ${borderColor} ${bgColor}`}
+      className={`border border-border-default rounded-lg overflow-hidden border-l-[4px] ${borderColor} ${bgColor}`}
     >
       <button onClick={() => setOpen(!open)} className="w-full text-left p-3">
         <div className="flex items-center gap-1.5 mb-1">
@@ -36,11 +45,16 @@ export default function EventCard({ event }: { event: EventData }) {
           <span
             className={`inline-block text-[9px] font-bold px-1.5 py-0.5 rounded ${badgeStyle}`}
           >
-            {event.gameType}
+            {gameTypeLabel(event.gameType)}
           </span>
           {event.isMainEvent && (
-            <span className="inline-block bg-blue-700 text-white text-[8px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
+            <span className="inline-block bg-blue-900 text-white text-[8px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
               MAIN EVENT
+            </span>
+          )}
+          {highRoller && !event.isMainEvent && (
+            <span className="inline-block bg-amber-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
+              HIGH ROLLER
             </span>
           )}
         </div>
@@ -63,12 +77,14 @@ export default function EventCard({ event }: { event: EventData }) {
         </div>
 
         <div className="flex items-center gap-3 mt-1.5 text-xs text-text-secondary">
-          <span>Start {event.startTime}</span>
+          <span className="text-blue-900 font-semibold tabular-nums">
+            {event.startTime}
+          </span>
           {event.lateRegClose && (
-            <span className="text-text-muted">Late Reg {event.lateRegClose}</span>
+            <span className="text-text-muted">Close {event.lateRegClose}</span>
           )}
           {event.startingChips && (
-            <span className="text-text-muted">
+            <span className="text-text-muted tabular-nums">
               {formatNumber(event.startingChips)} chips
             </span>
           )}
@@ -76,7 +92,13 @@ export default function EventCard({ event }: { event: EventData }) {
 
         <div className="flex items-center gap-3 mt-1">
           {displayBuyIn && (
-            <span className="text-xs text-blue-900 font-medium">{displayBuyIn}</span>
+            <span
+              className={`text-xs font-semibold tabular-nums ${
+                highRoller ? "text-amber-700" : "text-blue-900"
+              }`}
+            >
+              {displayBuyIn}
+            </span>
           )}
           {event.gtdDisplay && (
             <span className="text-[10px] text-blue-700 font-medium">

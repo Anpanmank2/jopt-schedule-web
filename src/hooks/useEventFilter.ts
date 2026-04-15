@@ -2,6 +2,15 @@
 import { useMemo, useState } from "react";
 import { FILTER_CONFIG } from "@/config/filterConfig";
 
+function isMultiDay(event: Record<string, any>): boolean {
+  if (event.day2Condition) return true;
+  const md = event.multiDay;
+  if (md && md.day2StartLevel != null) return true;
+  const name = typeof event.name === "string" ? event.name : "";
+  if (/\/\s*Day/i.test(name)) return true;
+  return false;
+}
+
 export function useEventFilter(
   events: Record<string, any>[],
   query: string = ""
@@ -31,6 +40,13 @@ export function useEventFilter(
       for (const [catKey, category] of Object.entries(FILTER_CONFIG)) {
         const selectedValue = activeFilters[catKey];
         if (selectedValue === "all") continue;
+
+        if (category.type === "multiDay") {
+          const isMulti = isMultiDay(event);
+          if (selectedValue === "multi" && !isMulti) return false;
+          if (selectedValue === "single" && isMulti) return false;
+          continue;
+        }
 
         const fieldValue = event[category.key];
 

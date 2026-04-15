@@ -6,7 +6,7 @@ const GAME_ACTIVE_STYLES: Record<string, string> = {
   NLH: "bg-blue-700 text-white border-blue-700",
   PLO: "bg-purple-600 text-white border-purple-600",
   MIX: "bg-amber-500 text-white border-amber-500",
-  SAT: "bg-blue-100 text-blue-900 border-blue-100",
+  SAT: "bg-sky-200 text-blue-900 border-blue-300",
 };
 
 interface EventFilterProps {
@@ -16,13 +16,15 @@ interface EventFilterProps {
 
 export default function EventFilter({ activeFilters, onFilterChange }: EventFilterProps) {
   return (
-    <div className="px-4 pt-3 pb-1 space-y-2">
+    <div className="px-4 pt-3 pb-2 flex flex-col gap-2">
       {Object.entries(FILTER_CONFIG).map(([catKey, category]) => {
         const selected = activeFilters[catKey] || category.default;
 
         return (
-          <div key={catKey}>
-            <p className="text-[10px] text-text-muted font-medium mb-1">{category.label}</p>
+          <div key={catKey} className="flex flex-col gap-1">
+            <p className="text-[10px] text-text-muted font-medium leading-none">
+              {category.label}
+            </p>
             <div className="flex gap-1.5 overflow-x-auto hide-scrollbar">
               {category.options.map((option) => {
                 const optionValue = typeof option.value === "string"

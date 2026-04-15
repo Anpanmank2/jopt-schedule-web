@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/fetch-flickr-albums.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "fetch:flickr": "node scripts/fetch-flickr-albums.mjs"
   },
   "dependencies": {
     "next": "16.2.2",
