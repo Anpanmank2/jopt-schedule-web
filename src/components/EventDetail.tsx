@@ -153,6 +153,12 @@ function StructureTable({
   const displayLevels = getLimitedLevels(structure.levels, maxLevels);
   const bbCount = calcBBAtLevel(structure, startingChips);
   const day2StartLevel = multiDay?.day2StartLevel ?? null;
+  const day2StartBlinds = multiDay?.day2StartBlinds ?? null;
+  const day3StartLevel = multiDay?.day3StartLevel ?? null;
+  const day3StartBlinds = multiDay?.day3StartBlinds ?? null;
+  const day2StartExistsInTable =
+    day2StartLevel != null &&
+    displayLevels.some((lv) => !lv.break && lv.level === day2StartLevel);
   const colCount = hasAnte ? 4 : 3;
 
   return (
@@ -234,6 +240,28 @@ function StructureTable({
               </tr>
             );
           })}
+          {day2StartLevel != null && !day2StartExistsInTable && (
+            <tr className="bg-amber-50 border-t-2 border-amber-300">
+              <td
+                colSpan={colCount}
+                className="text-center py-1.5 px-1 text-amber-900 font-semibold text-[10px]"
+              >
+                ▶ D2 START — Lv.{day2StartLevel}
+                {day2StartBlinds ? ` (${day2StartBlinds})` : ""}
+              </td>
+            </tr>
+          )}
+          {day3StartLevel != null && (
+            <tr className="bg-amber-100/70 border-t border-amber-300">
+              <td
+                colSpan={colCount}
+                className="text-center py-1.5 px-1 text-amber-900 font-semibold text-[10px]"
+              >
+                ▶ D3 START — Lv.{day3StartLevel}
+                {day3StartBlinds ? ` (${day3StartBlinds})` : ""}
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
