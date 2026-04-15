@@ -104,6 +104,55 @@ export function isMultiDayEvent(event: EventData): boolean {
   return false;
 }
 
+type PhaseKind = "day1" | "day1Turbo" | "day2" | "day3";
+
+interface Phase {
+  kind: PhaseKind;
+  startLevel: number;
+  endLevel: number | null;
+  label: string;
+}
+
+function getEventPhase(event: EventData): Phase | null {
+  const md = event.multiDay;
+  if (!md) return null;
+  const n = event.name ?? "";
+
+  if (/\/\s*Day\s*3\s*$/i.test(n) && md.day3StartLevel != null) {
+    return {
+      kind: "day3",
+      startLevel: md.day3StartLevel,
+      endLevel: null,
+      label: "Day 3",
+    };
+  }
+  if (/\/\s*Day\s*2\s*$/i.test(n) && md.day2StartLevel != null) {
+    return {
+      kind: "day2",
+      startLevel: md.day2StartLevel,
+      endLevel: md.day2EndLevel ?? null,
+      label: "Day 2",
+    };
+  }
+  if (/\/\s*Day\s*1[A-Z]?\s*Turbo\s*$/i.test(n)) {
+    return {
+      kind: "day1Turbo",
+      startLevel: md.day1TurboStartLevel ?? 1,
+      endLevel: md.day1TurboEndLevel ?? md.day1EndLevel ?? null,
+      label: "Day 1 Turbo",
+    };
+  }
+  if (/\/\s*Day\s*1[A-Z]?\s*$/i.test(n)) {
+    return {
+      kind: "day1",
+      startLevel: 1,
+      endLevel: md.day1EndLevel ?? null,
+      label: "Day 1",
+    };
+  }
+  return null;
+}
+
 function formatBlinds(sb: number, bb: number): string {
   return `${formatNumber(sb)}/${formatNumber(bb)}`;
 }
@@ -142,15 +191,37 @@ function StructureTable({
   startingChips,
   multiDay,
   isMultiDay,
+  phase,
 }: {
   structure: Structure;
   startingChips: number | null;
   multiDay?: MultiDayInfo | null;
   isMultiDay: boolean;
+  phase: Phase | null;
 }) {
   const hasAnte = structure.columns.includes("BB Ante");
-  const maxLevels = isMultiDay ? 30 : 20;
-  const displayLevels = getLimitedLevels(structure.levels, maxLevels);
+
+  const filteredRaw: Level[] = phase
+    ? structure.levels.filter((lv) => {
+        if (lv.break) return true;
+        if (lv.level == null) return false;
+        if (lv.level < phase.startLevel) return false;
+        if (phase.endLevel != null && lv.level > phase.endLevel) return false;
+        return true;
+      })
+    : structure.levels;
+
+  const trimmed = [...filteredRaw];
+  while (trimmed.length && trimmed[0].break) trimmed.shift();
+  while (trimmed.length && trimmed[trimmed.length - 1].break) trimmed.pop();
+
+  const maxLevels =
+    phase && (phase.kind === "day2" || phase.kind === "day3")
+      ? 50
+      : isMultiDay
+      ? 30
+      : 20;
+  const displayLevels = getLimitedLevels(trimmed, maxLevels);
   const bbCount = calcBBAtLevel(structure, startingChips);
   const day2StartLevel = multiDay?.day2StartLevel ?? null;
   const day2StartBlinds = multiDay?.day2StartBlinds ?? null;
@@ -159,7 +230,32 @@ function StructureTable({
   const day2StartExistsInTable =
     day2StartLevel != null &&
     displayLevels.some((lv) => !lv.break && lv.level === day2StartLevel);
+  const showD2Synth =
+    phase?.kind !== "day2" &&
+    phase?.kind !== "day3" &&
+    day2StartLevel != null &&
+    !day2StartExistsInTable;
+  const showD3Synth = phase?.kind !== "day3" && day3StartLevel != null;
   const colCount = hasAnte ? 4 : 3;
+
+  const hasAnyLevel = displayLevels.some((l) => !l.break);
+  if (phase && (phase.kind === "day2" || phase.kind === "day3") && !hasAnyLevel) {
+    const startBlinds =
+      phase.kind === "day2" ? day2StartBlinds : day3StartBlinds;
+    return (
+      <div className="py-4 px-3 text-center text-xs text-text-secondary rounded-md border border-dashed border-amber-300 bg-amber-50">
+        <p className="font-bold text-amber-900 mb-1">
+          {phase.label} starts at Lv.{phase.startLevel}
+          {startBlinds ? ` (${startBlinds})` : ""}
+        </p>
+        <p className="text-[11px] text-text-muted leading-relaxed">
+          Full {phase.label} blind schedule is not provided in this data.
+          <br />
+          See any Day 1 row for the complete blind progression.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="overflow-x-auto -mx-1">
@@ -240,7 +336,7 @@ function StructureTable({
               </tr>
             );
           })}
-          {day2StartLevel != null && !day2StartExistsInTable && (
+          {showD2Synth && (
             <tr className="bg-amber-50 border-t-2 border-amber-300">
               <td
                 colSpan={colCount}
@@ -251,7 +347,7 @@ function StructureTable({
               </td>
             </tr>
           )}
-          {day3StartLevel != null && (
+          {showD3Synth && (
             <tr className="bg-amber-100/70 border-t border-amber-300">
               <td
                 colSpan={colCount}
@@ -465,6 +561,7 @@ export default function EventDetail({ event }: { event: EventData }) {
   const [activeTab, setActiveTab] = useState<TabKey>("info");
   const multiDay = event.multiDay ?? null;
   const isMultiDay = isMultiDayEvent(event);
+  const phase = getEventPhase(event);
 
   const tabs: { key: TabKey; label: string }[] = [
     { key: "info", label: "Info" },
@@ -499,6 +596,7 @@ export default function EventDetail({ event }: { event: EventData }) {
             startingChips={event.startingChips}
             multiDay={multiDay}
             isMultiDay={isMultiDay}
+            phase={phase}
           />
         ) : (
           <p className="text-xs text-text-muted py-4 text-center">
