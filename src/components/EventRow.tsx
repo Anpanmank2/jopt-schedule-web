@@ -30,13 +30,23 @@ export default function EventRow({ event }: { event: EventData }) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 text-left hover:bg-bg-tertiary/60 transition-colors"
       >
+        <span className="shrink-0 text-[11px] md:text-xs text-blue-900 font-bold tabular-nums w-10 md:w-11">
+          {event.startTime}
+        </span>
+
         <span className="shrink-0 text-[10px] text-text-muted font-medium w-9 md:w-10 tabular-nums">
           {event.eventNumber}
         </span>
 
-        <span className="shrink-0 text-[11px] md:text-xs text-blue-900 font-bold tabular-nums w-10 md:w-11">
-          {event.startTime}
-        </span>
+        {displayBuyIn && (
+          <span
+            className={`shrink-0 text-[11px] md:text-xs font-bold tabular-nums max-w-[88px] md:max-w-[140px] truncate ${
+              highRoller ? "text-amber-700" : "text-blue-900"
+            }`}
+          >
+            {displayBuyIn}
+          </span>
+        )}
 
         <span
           className={`shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded ${badgeStyle}`}
@@ -59,16 +69,6 @@ export default function EventRow({ event }: { event: EventData }) {
         <span className="flex-1 min-w-0 text-[13px] md:text-sm font-medium text-text-primary truncate">
           {event.name}
         </span>
-
-        {displayBuyIn && (
-          <span
-            className={`shrink-0 text-[11px] md:text-xs font-semibold tabular-nums text-right ${
-              highRoller ? "text-amber-700" : "text-blue-900"
-            }`}
-          >
-            {displayBuyIn}
-          </span>
-        )}
 
         <svg
           width="12"

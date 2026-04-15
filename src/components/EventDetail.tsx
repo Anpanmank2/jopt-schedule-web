@@ -279,6 +279,25 @@ function InfoPanel({ event }: { event: EventData }) {
 
   return (
     <div className="space-y-3 text-xs">
+      <div className="rounded-md bg-blue-900 text-white px-3 py-2">
+        <p className="text-[10px] font-bold tracking-[1px] text-blue-200 uppercase mb-1">
+          Schedule
+        </p>
+        <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-[10px] text-blue-200">Start</span>
+            <span className="text-sm font-bold tabular-nums">{event.startTime}</span>
+          </div>
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-[10px] text-blue-200">Late Reg Close</span>
+            <span className="text-sm font-bold tabular-nums">
+              {event.lateRegClose ?? "—"}
+              {event.lateRegLevel != null ? ` (Lv.${event.lateRegLevel})` : ""}
+            </span>
+          </div>
+        </div>
+      </div>
+
       {event.prize && (event.prize.total || event.prize.satellitePrize) && (
         <div>
           <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">

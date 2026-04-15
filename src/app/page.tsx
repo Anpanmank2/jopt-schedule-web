@@ -160,10 +160,10 @@ export default function SchedulePage() {
       <header className="bg-gradient-to-b from-blue-50 via-white to-white border-b border-blue-200">
         <div className="max-w-6xl mx-auto px-4 md:px-8 pt-6 md:pt-10 pb-4 md:pb-6">
           <p className="text-[10px] md:text-xs font-bold tracking-[2px] text-blue-900 uppercase">
-            Japan Open Poker Tour 2026
+            Japan Open Poker Tour
           </p>
           <h1 className="text-xl md:text-4xl font-semibold text-text-primary leading-tight mt-1 md:mt-2">
-            Grand Final — Schedule
+            2026 Grand Final — Schedule
           </h1>
           <p className="text-[11px] md:text-sm text-text-muted mt-1 md:mt-2">
             2026-04-24 〜 05-06 / ベルサール高田馬場
@@ -305,7 +305,7 @@ export default function SchedulePage() {
               <div className="max-w-2xl mx-auto">
                 {groupedForAll.map((dg) => (
                   <section key={dg.date} id={`day-${dg.date}`} className="mb-6">
-                    <h2 className="sticky top-[168px] md:top-[184px] z-30 bg-blue-50/95 backdrop-blur px-4 py-2 text-[11px] md:text-xs font-bold text-blue-900 uppercase tracking-wider border-b border-blue-200 flex items-baseline gap-2">
+                    <h2 className="sticky top-[216px] md:top-[232px] z-30 bg-blue-50/95 backdrop-blur px-4 py-2 text-[11px] md:text-xs font-bold text-blue-900 uppercase tracking-wider border-b border-blue-200 flex items-baseline gap-2">
                       <span>{dg.dayLabel}</span>
                       <span className="text-text-muted font-normal normal-case tracking-normal">
                         ({dg.events.length})

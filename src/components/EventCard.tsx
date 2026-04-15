@@ -76,24 +76,10 @@ export default function EventCard({ event }: { event: EventData }) {
           </svg>
         </div>
 
-        <div className="flex items-center gap-3 mt-1.5 text-xs text-text-secondary">
-          <span className="text-blue-900 font-semibold tabular-nums">
-            {event.startTime}
-          </span>
-          {event.lateRegClose && (
-            <span className="text-text-muted">Close {event.lateRegClose}</span>
-          )}
-          {event.startingChips && (
-            <span className="text-text-muted tabular-nums">
-              {formatNumber(event.startingChips)} chips
-            </span>
-          )}
-        </div>
-
-        <div className="flex items-center gap-3 mt-1">
+        <div className="flex items-center gap-3 mt-1.5">
           {displayBuyIn && (
             <span
-              className={`text-xs font-semibold tabular-nums ${
+              className={`text-sm font-bold tabular-nums ${
                 highRoller ? "text-amber-700" : "text-blue-900"
               }`}
             >
@@ -103,6 +89,24 @@ export default function EventCard({ event }: { event: EventData }) {
           {event.gtdDisplay && (
             <span className="text-[10px] text-blue-700 font-medium">
               GTD {event.gtdDisplay}
+            </span>
+          )}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-1 text-[11px] text-text-muted">
+          <span className="tabular-nums">
+            <span className="text-[9px] uppercase tracking-wider mr-1">Start</span>
+            {event.startTime}
+          </span>
+          {event.lateRegClose && (
+            <span className="tabular-nums">
+              <span className="text-[9px] uppercase tracking-wider mr-1">Close</span>
+              {event.lateRegClose}
+            </span>
+          )}
+          {event.startingChips && (
+            <span className="tabular-nums">
+              {formatNumber(event.startingChips)} chips
             </span>
           )}
         </div>
