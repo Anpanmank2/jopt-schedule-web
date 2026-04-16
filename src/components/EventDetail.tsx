@@ -571,15 +571,15 @@ export default function EventDetail({ event }: { event: EventData }) {
 
   return (
     <div className="space-y-3">
-      <div className="flex border-b border-border-default">
+      <div className="flex gap-1 bg-bg-tertiary/80 rounded-lg p-1">
         {tabs.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`px-3 py-1.5 text-[10px] font-bold tracking-[1px] uppercase transition-colors ${
+            className={`flex-1 px-3 py-2 text-[10px] font-bold tracking-[1px] uppercase rounded-md transition-all ${
               activeTab === tab.key
-                ? "text-blue-900 border-b-2 border-blue-900"
-                : "text-text-muted hover:text-text-secondary"
+                ? "bg-blue-900 text-white shadow-sm"
+                : "text-text-muted hover:bg-white/60 hover:text-text-secondary"
             }`}
           >
             {tab.label}
