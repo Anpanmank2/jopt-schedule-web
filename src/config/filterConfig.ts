@@ -32,27 +32,4 @@ export const FILTER_CONFIG: FilterConfig = {
     ],
     default: "all",
   },
-  stake: {
-    label: "Stake",
-    key: "buyIn",
-    type: "range",
-    options: [
-      { label: "All", value: "all" },
-      { label: "Low Stake", value: { min: 0, max: 30000 } },
-      { label: "Medium Stake", value: { min: 30001, max: 90000 } },
-      { label: "High Stake", value: { min: 90001, max: Infinity } },
-    ],
-    default: "all",
-  },
-  multiDay: {
-    label: "Format",
-    key: "__multiDay",
-    type: "multiDay",
-    options: [
-      { label: "All", value: "all" },
-      { label: "Multi-Day Only", value: "multi" },
-      { label: "Single Day Only", value: "single" },
-    ],
-    default: "all",
-  },
 };

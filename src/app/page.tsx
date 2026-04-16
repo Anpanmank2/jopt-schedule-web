@@ -305,7 +305,7 @@ export default function SchedulePage() {
               <div className="max-w-2xl mx-auto">
                 {groupedForAll.map((dg) => (
                   <section key={dg.date} id={`day-${dg.date}`} className="mb-6">
-                    <h2 className="sticky top-[216px] md:top-[232px] z-30 bg-blue-50/95 backdrop-blur px-4 py-2 text-[11px] md:text-xs font-bold text-blue-900 uppercase tracking-wider border-b border-blue-200 flex items-baseline gap-2">
+                    <h2 className="sticky top-[112px] md:top-[128px] z-30 bg-blue-50/95 backdrop-blur px-4 py-2 text-[11px] md:text-xs font-bold text-blue-900 uppercase tracking-wider border-b border-blue-200 flex items-baseline gap-2">
                       <span>{dg.dayLabel}</span>
                       <span className="text-text-muted font-normal normal-case tracking-normal">
                         ({dg.events.length})
