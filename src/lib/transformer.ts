@@ -228,16 +228,19 @@ function extractGames(games: any): string[] | null {
 // Main transformer
 // ---------------------------------------------------------------------------
 
+/**
+ * 1 tournament → 1 entry (single day) or N entries (multi-day, schedules ごとに分離)
+ * Owner 指示 (2026-04-21): Day ごと別 entry に展開 (Day 1A / Day 1B / Day 2 等を個別 event として表示)
+ */
 export function transformTournament(
   t: any,
   opts: { currentMultiDayMap?: Record<string, any>; year?: number } = {}
-): TransformedEvent {
+): TransformedEvent[] {
   const { currentMultiDayMap = {}, year = 2026 } = opts;
 
   const isMainEvent = deriveIsMainEvent(t);
   const isSatellite = deriveIsSatellite(t);
   const gameType = deriveGameType(t, isSatellite);
-  const firstSchedule = t.schedules?.[0] || null;
 
   let eventNumber: string = t.number || "";
   if (!eventNumber) {
@@ -249,45 +252,86 @@ export function transformTournament(
     else if (t.tab_name) eventNumber = t.tab_name;
   }
 
-  const name =
+  const baseName =
     t.event_title?.replace(/^#\d+\s+/, "").replace(/^\(s\d+\)\s+/, "") ||
     t.base_title?.replace(/^\(s\d+\)\s+/, "") ||
     t.tab_name ||
     "";
 
   const { buyIn, buyInDisplay, feeDetail } = parseFeeLines(t.fee_chips?.fee_lines);
+  const schedules: any[] = Array.isArray(t.schedules) ? t.schedules : [];
+  const multiDay = currentMultiDayMap[eventNumber] || null;
 
-  return {
-    eventNumber,
-    name,
-    gameType,
-    date: (firstSchedule ? parseDate(firstSchedule.start_date, year) : null) ?? "",
-    startTime: firstSchedule?.start_time || "",
-    lateRegClose: firstSchedule
-      ? buildLateRegClose(firstSchedule.reg_close_time, firstSchedule.reg_close_level)
-      : null,
-    lateRegLevel: firstSchedule?.reg_close_level
-      ? parseInt(firstSchedule.reg_close_level, 10) || null
-      : null,
-    startingChips: parseChips(t.chips),
-    buyIn,
-    buyInDisplay,
-    gtd: null,
-    gtdDisplay: null,
-    isMainEvent,
-    isSatellite,
-    reentry: t.re_entry_note?.trim() || null,
-    day2Condition: t.day2_advance_note?.trim() || null,
-    ruleNotes: null,
-    structure: transformStructure(t.structure?.rows, firstSchedule?.reg_close_level),
-    prize: transformPrize(t.prize),
-    feeDetail,
-    games: extractGames(t.games),
-    bounty: null,
-    notes: normalizeNotes(t.notes),
-    award: null,
-    multiDay: currentMultiDayMap[eventNumber] || null,
-  };
+  // schedules 空なら 1 entry (date/startTime 空)
+  if (schedules.length === 0) {
+    return [
+      {
+        eventNumber,
+        name: baseName,
+        gameType,
+        date: "",
+        startTime: "",
+        lateRegClose: null,
+        lateRegLevel: null,
+        startingChips: parseChips(t.chips),
+        buyIn,
+        buyInDisplay,
+        gtd: null,
+        gtdDisplay: null,
+        isMainEvent,
+        isSatellite,
+        reentry: t.re_entry_note?.trim() || null,
+        day2Condition: t.day2_advance_note?.trim() || null,
+        ruleNotes: null,
+        structure: transformStructure(t.structure?.rows, undefined),
+        prize: transformPrize(t.prize),
+        feeDetail,
+        games: extractGames(t.games),
+        bounty: null,
+        notes: normalizeNotes(t.notes),
+        award: null,
+        multiDay,
+      },
+    ];
+  }
+
+  // schedules 複数 → 各 Day を個別 entry に展開
+  // schedules 1件 → 1 entry (従来通り、name に Day suffix 無し)
+  return schedules.map((sched) => {
+    const isMultiDay = schedules.length > 1;
+    const dayLabel = sched.day_name?.trim() || "";
+    const displayName = isMultiDay && dayLabel ? `${baseName} / ${dayLabel}` : baseName;
+
+    return {
+      eventNumber,
+      name: displayName,
+      gameType,
+      date: parseDate(sched.start_date, year) ?? "",
+      startTime: sched.start_time || "",
+      lateRegClose: buildLateRegClose(sched.reg_close_time, sched.reg_close_level),
+      lateRegLevel: sched.reg_close_level
+        ? parseInt(sched.reg_close_level, 10) || null
+        : null,
+      startingChips: parseChips(t.chips),
+      buyIn,
+      buyInDisplay,
+      gtd: null,
+      gtdDisplay: null,
+      isMainEvent,
+      isSatellite,
+      reentry: t.re_entry_note?.trim() || null,
+      day2Condition: t.day2_advance_note?.trim() || null,
+      ruleNotes: null,
+      structure: transformStructure(t.structure?.rows, sched.reg_close_level),
+      prize: transformPrize(t.prize),
+      feeDetail,
+      games: extractGames(t.games),
+      bounty: null,
+      notes: normalizeNotes(t.notes),
+      award: null,
+      multiDay,
+    };
+  });
 }
 
 function formatDayLabel(isoDate: string): string {
@@ -297,25 +341,50 @@ function formatDayLabel(isoDate: string): string {
   return `${m}/${d} ${weekdays[dayObj.getUTCDay()]}`;
 }
 
+/**
+ * 同じ eventNumber を持つ tournament 群 (例: #01 の tab:Main + tab:2Day4Flight) を 1 つに merge:
+ *  - structure.rows: 多い方を採用 (display に必要な full blind structure を失わない)
+ *  - schedules:      多い方を採用 (全 Day を失わない)
+ *  - fee_chips:      空でない方を採用
+ *  - sponsor_variant: true を優先 (冠スポンサー名を保つ)
+ *  - その他フィールド: 優先 entry からコピー、欠けていれば他 entry で補完
+ */
+function mergeTournamentsSameNumber(group: any[]): any {
+  if (group.length === 1) return group[0];
+  // primary: sponsor_variant 優先 → 先頭採用
+  const primary =
+    group.find((t) => t.is_sponsor_variant) || group[0];
+  const longestStructure = group.reduce((best, t) =>
+    (t.structure?.rows?.length ?? 0) > (best.structure?.rows?.length ?? 0) ? t : best,
+    group[0]
+  );
+  const longestSchedules = group.reduce((best, t) =>
+    (t.schedules?.length ?? 0) > (best.schedules?.length ?? 0) ? t : best,
+    group[0]
+  );
+  const hasFee = group.find((t) => t.fee_chips?.fee_lines?.length);
+  return {
+    ...primary,
+    structure: longestStructure.structure ?? primary.structure,
+    schedules: longestSchedules.schedules ?? primary.schedules,
+    fee_chips: hasFee?.fee_chips ?? primary.fee_chips,
+    notes: primary.notes?.length ? primary.notes : (group.find((t) => t.notes?.length)?.notes ?? primary.notes),
+  };
+}
+
 export function transform(extract: any, currentData: any = null): TransformedData {
   const rawTournaments: any[] = (extract.tournaments || []).filter(
     (t: any) => t.category === "TOURNAMENT"
   );
 
-  // sponsor variant dedup: 同じ number が複数あれば is_sponsor_variant: true を優先
-  const byNumber = new Map<string, any>();
+  // 同一 number の entry 群を merge (sponsor variant + 2Day4Flight 等をデータ結合)
+  const grouped = new Map<string, any[]>();
   for (const t of rawTournaments) {
     const key = t.number || `${t.tab_name}::${t.event_title}`;
-    if (!byNumber.has(key)) {
-      byNumber.set(key, t);
-    } else {
-      const existing = byNumber.get(key);
-      if (!existing.is_sponsor_variant && t.is_sponsor_variant) {
-        byNumber.set(key, t);
-      }
-    }
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key)!.push(t);
   }
-  const tournaments = [...byNumber.values()];
+  const tournaments = [...grouped.values()].map(mergeTournamentsSameNumber);
 
   // multiDay merge map (現行 data.json の eventNumber → multiDay 値)
   const currentMultiDayMap: Record<string, any> = {};
@@ -332,7 +401,8 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     }
   }
 
-  const events = tournaments.map((t) =>
+  // 各 tournament を 1〜N entry に展開 (multi-day は Day ごと)
+  const events: TransformedEvent[] = tournaments.flatMap((t) =>
     transformTournament(t, { currentMultiDayMap })
   );
 
