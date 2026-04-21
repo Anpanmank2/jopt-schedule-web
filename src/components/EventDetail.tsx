@@ -25,6 +25,28 @@ export interface Prize {
   satellitePrize?: string | null;
 }
 
+export interface AwardEntry {
+  rank: string;
+  prize: string;
+}
+
+export interface AwardSection {
+  header: string;
+  subsectionLeft: string;
+  subsectionDay2: string;
+  allDay1: AwardEntry[];
+  day2: AwardEntry[];
+  description: string;
+}
+
+export interface AwardData {
+  chipLeader: AwardSection | null;
+  sprinter: AwardSection | null;
+  currencyNote: string | null;
+}
+
+// Legacy flat-list form (existing data.json). Kept for backward compat but
+// new transformer output uses AwardData instead.
 export interface Award {
   rank: string;
   amount: string;
@@ -74,8 +96,9 @@ export interface EventData {
   games: string[] | null;
   bounty: string | null;
   notes: string[] | null;
-  award: Award[] | null;
+  award: AwardData | null;
   multiDay?: MultiDayInfo | null;
+  stackPerRound?: { label: string; rounds: string[] } | null;
 }
 
 export const BADGE_STYLES: Record<string, string> = {
@@ -369,6 +392,50 @@ function StructureTable({
   );
 }
 
+function AwardSectionBlock({ section }: { section: AwardSection }) {
+  const hasAllDay1 = section.allDay1.length > 0;
+  const hasDay2 = section.day2.length > 0;
+  if (!hasAllDay1 && !hasDay2 && !section.description) return null;
+  return (
+    <div className="mb-1">
+      <p className="text-[11px] font-semibold text-blue-900">{section.header || "Award"}</p>
+      {hasAllDay1 && (
+        <div className="mt-0.5">
+          {section.subsectionLeft && (
+            <p className="text-[10px] text-text-muted">{section.subsectionLeft}</p>
+          )}
+          <div className="flex flex-wrap gap-x-3 gap-y-0.5">
+            {section.allDay1.map((a, i) => (
+              <span key={i} className="text-[11px] text-text-secondary">
+                {a.rank}: {a.prize}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+      {hasDay2 && (
+        <div className="mt-0.5">
+          {section.subsectionDay2 && (
+            <p className="text-[10px] text-text-muted">{section.subsectionDay2}</p>
+          )}
+          <div className="flex flex-wrap gap-x-3 gap-y-0.5">
+            {section.day2.map((a, i) => (
+              <span key={i} className="text-[11px] text-text-secondary">
+                {a.rank}: {a.prize}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+      {section.description && (
+        <p className="text-[10px] text-text-muted mt-0.5 leading-relaxed">
+          {section.description}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function InfoPanel({ event }: { event: EventData }) {
   const displayFee = event.feeDetail ? event.feeDetail.replace(/Â¥/g, "¥") : null;
   const md = event.multiDay ?? null;
@@ -527,18 +594,40 @@ function InfoPanel({ event }: { event: EventData }) {
         </div>
       )}
 
-      {event.award && event.award.length > 0 && (
+      {event.award &&
+        (event.award.chipLeader ||
+          event.award.sprinter ||
+          event.award.currencyNote) && (
+          <div>
+            <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
+              Special Award
+            </p>
+            {event.award.chipLeader && (
+              <AwardSectionBlock section={event.award.chipLeader} />
+            )}
+            {event.award.sprinter && (
+              <AwardSectionBlock section={event.award.sprinter} />
+            )}
+            {event.award.currencyNote && (
+              <p className="text-text-muted text-[10px] italic mt-1">
+                {event.award.currencyNote}
+              </p>
+            )}
+          </div>
+        )}
+
+      {event.stackPerRound && event.stackPerRound.rounds.length > 0 && (
         <div>
           <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-            Special Award
+            {event.stackPerRound.label}
           </p>
-          <div className="flex flex-wrap gap-x-3 gap-y-0.5">
-            {event.award.map((a, i) => (
-              <span key={i} className="text-text-secondary">
-                {a.rank}: {a.amount}
-              </span>
+          <ul className="space-y-1">
+            {event.stackPerRound.rounds.map((r, i) => (
+              <li key={i} className="text-text-secondary text-[11px] leading-relaxed">
+                {r}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
 

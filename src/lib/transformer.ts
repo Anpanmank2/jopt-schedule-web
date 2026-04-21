@@ -47,13 +47,14 @@ export interface TransformedEvent {
   day2Condition: string | null;
   ruleNotes: string | null;
   structure: TransformedStructure | null;
-  prize: { total: string | null; inPrize: string | null } | null;
+  prize: { total: string | null; inPrize: string | null; satellitePrize: string | null } | null;
   feeDetail: string | null;
   games: string[] | null;
   bounty: string | null;
   notes: string[] | null;
-  award: unknown;
+  award: AwardData | null;
   multiDay: Record<string, unknown> | null;
+  stackPerRound: { label: string; rounds: string[] } | null;
 }
 
 export interface TransformedDay {
@@ -209,9 +210,22 @@ export function transformStructure(
   };
 }
 
-function transformPrize(p: any): { total: string | null; inPrize: string | null } | null {
+function transformPrize(
+  p: any
+): { total: string | null; inPrize: string | null; satellitePrize: string | null } | null {
   if (!p) return null;
-  return { total: p.total || null, inPrize: p.in_prize || null };
+  let satellitePrize: string | null = null;
+  const sat = Array.isArray(p.satellite_awards) ? p.satellite_awards[0] : null;
+  if (sat && (sat.award || sat.target)) {
+    const award = (sat.award || "").replace(/\s+/g, " ").trim();
+    const target = (sat.target || "").replace(/\s+/g, " ").trim();
+    satellitePrize = target ? `${award} - ${target}` : award;
+  }
+  return {
+    total: p.total || null,
+    inPrize: p.in_prize || null,
+    satellitePrize,
+  };
 }
 
 function normalizeNotes(notes: string[] | undefined): string[] | null {
@@ -222,6 +236,59 @@ function normalizeNotes(notes: string[] | undefined): string[] | null {
 function extractGames(games: any): string[] | null {
   if (!games || !Array.isArray(games.items) || games.items.length === 0) return null;
   return games.items;
+}
+
+function transformStackPerRound(spr: any): { label: string; rounds: string[] } | null {
+  if (!spr) return null;
+  const rounds: string[] = Array.isArray(spr.rounds) ? spr.rounds.filter((r: any) => typeof r === "string" && r.trim()) : [];
+  if (rounds.length === 0) return null;
+  return { label: spr.label?.trim() || "Stack Per Round", rounds };
+}
+
+export interface AwardSectionData {
+  header: string;
+  subsectionLeft: string;
+  subsectionDay2: string;
+  allDay1: { rank: string; prize: string }[];
+  day2: { rank: string; prize: string }[];
+  description: string;
+}
+
+export interface AwardData {
+  chipLeader: AwardSectionData | null;
+  sprinter: AwardSectionData | null;
+  currencyNote: string | null;
+}
+
+function transformAwardSection(s: any): AwardSectionData | null {
+  if (!s) return null;
+  const pick = (arr: any): { rank: string; prize: string }[] =>
+    Array.isArray(arr)
+      ? arr
+          .map((x: any) => ({ rank: (x.rank || "").trim(), prize: (x.prize || "").trim() }))
+          .filter((x) => x.rank || x.prize)
+      : [];
+  const allDay1 = pick(s.all_day1);
+  const day2 = pick(s.day2);
+  const header = (s.header || "").trim();
+  if (!header && allDay1.length === 0 && day2.length === 0) return null;
+  return {
+    header,
+    subsectionLeft: (s.subsection_header_left || "").trim(),
+    subsectionDay2: (s.subsection_header_day2 || "").trim(),
+    allDay1,
+    day2,
+    description: (s.description || "").trim(),
+  };
+}
+
+function transformAward(a: any): AwardData | null {
+  if (!a) return null;
+  const chipLeader = transformAwardSection(a.chip_leader);
+  const sprinter = transformAwardSection(a.sprinter);
+  const currencyNote = (a.currency_note || "").trim() || null;
+  if (!chipLeader && !sprinter && !currencyNote) return null;
+  return { chipLeader, sprinter, currencyNote };
 }
 
 // ---------------------------------------------------------------------------
@@ -289,8 +356,9 @@ export function transformTournament(
         games: extractGames(t.games),
         bounty: null,
         notes: normalizeNotes(t.notes),
-        award: null,
+        award: transformAward(t.award),
         multiDay,
+        stackPerRound: transformStackPerRound(t.stack_per_round),
       },
     ];
   }
@@ -328,8 +396,9 @@ export function transformTournament(
       games: extractGames(t.games),
       bounty: null,
       notes: normalizeNotes(t.notes),
-      award: null,
+      award: transformAward(t.award),
       multiDay,
+      stackPerRound: transformStackPerRound(t.stack_per_round),
     };
   });
 }
@@ -414,14 +483,21 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     byDate[e.date].push(e);
   }
 
+  // 同一時刻内は eventNumber の数値部分で昇順 tie-break (#02 < #03 < #04, (s01) < (s02))
+  const eventNumberOrd = (en: string): number => {
+    const m = en.match(/(\d+)/);
+    return m ? parseInt(m[1], 10) : Number.MAX_SAFE_INTEGER;
+  };
   const days: TransformedDay[] = Object.entries(byDate)
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([date, evts]) => ({
       date,
       dayLabel: formatDayLabel(date),
-      events: evts.sort((a, b) =>
-        (a.startTime || "").localeCompare(b.startTime || "")
-      ),
+      events: evts.sort((a, b) => {
+        const t = (a.startTime || "").localeCompare(b.startTime || "");
+        if (t !== 0) return t;
+        return eventNumberOrd(a.eventNumber) - eventNumberOrd(b.eventNumber);
+      }),
     }));
 
   return {
