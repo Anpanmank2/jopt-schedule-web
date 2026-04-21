@@ -1,12 +1,19 @@
 "use client";
 
 import { useState, useEffect, useMemo, useRef } from "react";
-import rawData from "@/data/jopt_gf2026_data.json";
+import extractRaw from "@/data/extract.json";
+import currentRaw from "@/data/jopt_gf2026_data.json";
+import { transform } from "@/lib/transformer";
 import EventCard from "@/components/EventCard";
 import EventRow from "@/components/EventRow";
 import EventFilter from "@/components/EventFilter";
 import { useEventFilter } from "@/hooks/useEventFilter";
 import type { EventData, MultiDayInfo } from "@/components/EventDetail";
+
+// extract.json (SSOT) を transformer 経由で display shape に変換。
+// feature/backend-split: ビルド時に計算されたものが bundle に含まれる。
+// 将来は /api/schedule から fetch に切り替える (runtime Blob ingest 対応時)。
+const rawData = transform(extractRaw, currentRaw);
 
 interface EventItem extends EventData {
   date: string;

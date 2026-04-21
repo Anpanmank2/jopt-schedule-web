@@ -32,8 +32,8 @@ export interface TransformedEvent {
   eventNumber: string;
   name: string;
   gameType: string;
-  date: string | null;
-  startTime: string | null;
+  date: string;
+  startTime: string;
   lateRegClose: string | null;
   lateRegLevel: number | null;
   startingChips: number | null;
@@ -261,8 +261,8 @@ export function transformTournament(
     eventNumber,
     name,
     gameType,
-    date: firstSchedule ? parseDate(firstSchedule.start_date, year) : null,
-    startTime: firstSchedule?.start_time || null,
+    date: (firstSchedule ? parseDate(firstSchedule.start_date, year) : null) ?? "",
+    startTime: firstSchedule?.start_time || "",
     lateRegClose: firstSchedule
       ? buildLateRegClose(firstSchedule.reg_close_time, firstSchedule.reg_close_level)
       : null,

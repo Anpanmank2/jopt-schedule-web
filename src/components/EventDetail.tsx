@@ -80,8 +80,13 @@ export interface EventData {
 
 export const BADGE_STYLES: Record<string, string> = {
   NLH: "bg-blue-700 text-white",
+  NL: "bg-blue-700 text-white",
   PLO: "bg-purple-600 text-white",
+  PL: "bg-purple-600 text-white",
   MIX: "bg-amber-500 text-white",
+  "10-Game MIX": "bg-amber-500 text-white",
+  FL: "bg-amber-600 text-white",
+  "PL Badugi": "bg-amber-600 text-white",
   SAT: "bg-sky-200 text-blue-900 border border-blue-300",
 };
 
