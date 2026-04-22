@@ -594,10 +594,17 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     byDate[e.date].push(e);
   }
 
-  // 同一時刻内は eventNumber の数値部分で昇順 tie-break (#02 < #03 < #04, (s01) < (s02))
-  const eventNumberOrd = (en: string): number => {
-    const m = en.match(/(\d+)/);
-    return m ? parseInt(m[1], 10) : Number.MAX_SAFE_INTEGER;
+  // 同一 startTime 内の sort 規則 (Owner 決定 2026-04-22):
+  //   1. Main (#NN)      ← 先頭、eventNumber 昇順
+  //   2. Satellite (sNN)  ← 次、eventNumber 昇順
+  //   3. 特殊 (ジュニア等) ← 最後、名前順
+  // categoryOrd: カテゴリ [0=Main, 1=Satellite, 2=Special], 内部順 [eventNumber 数値 or 0]
+  const eventSortKey = (en: string): [number, number] => {
+    const mHash = en.match(/^#(\d+)$/);
+    if (mHash) return [0, parseInt(mHash[1], 10)];
+    const mSat = en.match(/^\(s(\d+)\)$/);
+    if (mSat) return [1, parseInt(mSat[1], 10)];
+    return [2, Number.MAX_SAFE_INTEGER];
   };
   const days: TransformedDay[] = Object.entries(byDate)
     .sort(([a], [b]) => a.localeCompare(b))
@@ -607,7 +614,11 @@ export function transform(extract: any, currentData: any = null): TransformedDat
       events: evts.sort((a, b) => {
         const t = (a.startTime || "").localeCompare(b.startTime || "");
         if (t !== 0) return t;
-        return eventNumberOrd(a.eventNumber) - eventNumberOrd(b.eventNumber);
+        const [ca, oa] = eventSortKey(a.eventNumber);
+        const [cb, ob] = eventSortKey(b.eventNumber);
+        if (ca !== cb) return ca - cb;
+        if (oa !== ob) return oa - ob;
+        return (a.eventNumber || "").localeCompare(b.eventNumber || "");
       }),
     }));
 
