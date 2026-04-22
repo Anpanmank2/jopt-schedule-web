@@ -552,6 +552,14 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           e.notes = legacyN;
         }
       }
+      // day2EndLevel enrichment: meta.multiDayEvents から structure へ流す
+      // (EventDetail.tsx の isDay2End は structure.day2EndLevel を参照する)
+      if (e.structure && e.structure.day2EndLevel == null) {
+        const mde = currentData?.meta?.multiDayEvents?.[e.eventNumber];
+        if (mde?.day2EndLevel != null) {
+          e.structure = { ...e.structure, day2EndLevel: mde.day2EndLevel };
+        }
+      }
     }
   }
 
