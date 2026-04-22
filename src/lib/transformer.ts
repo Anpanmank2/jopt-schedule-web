@@ -475,41 +475,63 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     transformTournament(t, { currentMultiDayMap })
   );
 
-  // Legacy structure fallback: extract.json の Day 2 Structure が抜けている event に対して
-  // currentData(jopt_gf2026_data.json) の structure.levels を採用する。
-  // 根本解決は Apps Script 側の Day 2 anchor 検出改善だが、GF Day 1 まで時間が無いため暫定対応。
-  // 条件: legacy の non-break level 数 > 現 transformer 出力の non-break level 数
+  // Legacy fallback: extract.json 側で structure / notes が欠落している event に対して
+  // currentData(jopt_gf2026_data.json) の対応フィールドを採用する。
+  // 根本解決は Apps Script 側 (Day 2 anchor 検出 / extractNotes の入れ子対応) だが、
+  // GF Day 1 まで時間が無いため transformer 側で暫定 post-processing する。
+  // 条件: legacy の件数 > 現 transformer 出力の件数 の場合のみ legacy を採用
   if (Array.isArray(currentData?.days)) {
     const legacyStructure = new Map<string, TransformedStructure>();
+    const legacyNotes = new Map<string, string[]>();
     for (const d of currentData.days) {
       for (const e of d.events || []) {
-        if (!e.eventNumber || !e.structure?.levels?.length) continue;
-        const nonBreakCount = e.structure.levels.filter(
-          (l: any) => !l.break
-        ).length;
-        const existing = legacyStructure.get(e.eventNumber);
-        const existingCount = existing
-          ? existing.levels.filter((l: any) => !l.break).length
-          : 0;
-        if (!existing || nonBreakCount > existingCount) {
-          legacyStructure.set(e.eventNumber, e.structure);
+        if (!e.eventNumber) continue;
+        // structure (non-break level 数が最大のものを保持)
+        if (Array.isArray(e.structure?.levels) && e.structure.levels.length) {
+          const nonBreakCount = e.structure.levels.filter(
+            (l: any) => !l.break
+          ).length;
+          const existing = legacyStructure.get(e.eventNumber);
+          const existingCount = existing
+            ? existing.levels.filter((l: any) => !l.break).length
+            : 0;
+          if (!existing || nonBreakCount > existingCount) {
+            legacyStructure.set(e.eventNumber, e.structure);
+          }
+        }
+        // notes (件数が最大のものを保持)
+        if (Array.isArray(e.notes) && e.notes.length) {
+          const existing = legacyNotes.get(e.eventNumber);
+          if (!existing || e.notes.length > existing.length) {
+            legacyNotes.set(e.eventNumber, e.notes);
+          }
         }
       }
     }
     for (const e of events) {
-      const legacy = legacyStructure.get(e.eventNumber);
-      if (!legacy) continue;
-      const cur = e.structure;
-      const curCount = cur
-        ? cur.levels.filter((l: any) => !l.break).length
-        : 0;
-      const legCount = legacy.levels.filter((l: any) => !l.break).length;
-      if (legCount > curCount) {
-        e.structure = {
-          ...legacy,
-          lateRegCloseAfterLevel:
-            cur?.lateRegCloseAfterLevel ?? legacy.lateRegCloseAfterLevel ?? null,
-        };
+      // structure fallback
+      const legacyStr = legacyStructure.get(e.eventNumber);
+      if (legacyStr) {
+        const cur = e.structure;
+        const curCount = cur
+          ? cur.levels.filter((l: any) => !l.break).length
+          : 0;
+        const legCount = legacyStr.levels.filter((l: any) => !l.break).length;
+        if (legCount > curCount) {
+          e.structure = {
+            ...legacyStr,
+            lateRegCloseAfterLevel:
+              cur?.lateRegCloseAfterLevel ?? legacyStr.lateRegCloseAfterLevel ?? null,
+          };
+        }
+      }
+      // notes fallback
+      const legacyN = legacyNotes.get(e.eventNumber);
+      if (legacyN) {
+        const curCount = e.notes?.length ?? 0;
+        if (legacyN.length > curCount) {
+          e.notes = legacyN;
+        }
       }
     }
   }
