@@ -25,6 +25,7 @@ export interface TransformedStructure {
   columns: string[];
   lateRegCloseAfterLevel: number | null;
   day2EndLevel: number | null;
+  isMultiDay: boolean;
   levels: TransformedLevel[];
 }
 
@@ -172,7 +173,8 @@ export function deriveGameType(t: any, isSatellite: boolean): string {
 
 export function transformStructure(
   rows: any[] | undefined,
-  regCloseLevel: string | undefined
+  regCloseLevel: string | undefined,
+  isMultiDay: boolean = false
 ): TransformedStructure | null {
   if (!Array.isArray(rows) || rows.length === 0) return null;
   const levels: TransformedLevel[] = [];
@@ -206,6 +208,7 @@ export function transformStructure(
     columns: ["Level", "Blinds", "BB Ante", "Minutes"],
     lateRegCloseAfterLevel,
     day2EndLevel: null,
+    isMultiDay,
     levels,
   };
 }
@@ -350,7 +353,11 @@ export function transformTournament(
         reentry: t.re_entry_note?.trim() || null,
         day2Condition: t.day2_advance_note?.trim() || null,
         ruleNotes: null,
-        structure: transformStructure(t.structure?.rows, undefined),
+        structure: transformStructure(
+          t.structure?.rows,
+          undefined,
+          !!t.is_multi_day
+        ),
         prize: transformPrize(t.prize),
         feeDetail,
         games: extractGames(t.games),
@@ -390,7 +397,11 @@ export function transformTournament(
       reentry: t.re_entry_note?.trim() || null,
       day2Condition: t.day2_advance_note?.trim() || null,
       ruleNotes: null,
-      structure: transformStructure(t.structure?.rows, sched.reg_close_level),
+      structure: transformStructure(
+        t.structure?.rows,
+        sched.reg_close_level,
+        isMultiDay || !!t.is_multi_day
+      ),
       prize: transformPrize(t.prize),
       feeDetail,
       games: extractGames(t.games),
@@ -522,6 +533,14 @@ export function transform(extract: any, currentData: any = null): TransformedDat
             ...legacyStr,
             lateRegCloseAfterLevel:
               cur?.lateRegCloseAfterLevel ?? legacyStr.lateRegCloseAfterLevel ?? null,
+            // legacy data.json 側には isMultiDay フィールドが無いので、
+            // multiDay 情報有無 / day2EndLevel 有無から判定して保持
+            isMultiDay:
+              cur?.isMultiDay ??
+              !!(
+                legacyStr.day2EndLevel != null ||
+                currentData?.meta?.multiDayEvents?.[e.eventNumber]?.day2StartLevel != null
+              ),
           };
         }
       }
@@ -533,6 +552,29 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           e.notes = legacyN;
         }
       }
+    }
+  }
+
+  // 単日トーナメント: structure を 30 non-break level + その間に挟まる break で slice
+  // Owner 指示 (2026-04-22): ペルソナは JOPT 顧客、単日は 30 levels までで十分
+  // Multi-day は phase filter (Day 1/2/3) で既に区切られているため対象外
+  const SINGLE_DAY_LEVEL_CAP = 30;
+  for (const e of events) {
+    if (!e.structure || e.structure.isMultiDay) continue;
+    const levels = e.structure.levels;
+    let nonBreakCount = 0;
+    let cutIdx = levels.length;
+    for (let i = 0; i < levels.length; i++) {
+      if (!levels[i].break) nonBreakCount++;
+      if (nonBreakCount > SINGLE_DAY_LEVEL_CAP) {
+        cutIdx = i;
+        break;
+      }
+    }
+    // 末尾 break 行は削ぎ落とす (視覚的に break で終わるのは不自然)
+    while (cutIdx > 0 && levels[cutIdx - 1]?.break) cutIdx--;
+    if (cutIdx < levels.length) {
+      e.structure = { ...e.structure, levels: levels.slice(0, cutIdx) };
     }
   }
 

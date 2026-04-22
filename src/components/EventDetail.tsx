@@ -16,6 +16,7 @@ export interface Structure {
   columns: string[];
   lateRegCloseAfterLevel: number | null;
   day2EndLevel: number | null;
+  isMultiDay?: boolean;
   levels: Level[];
 }
 
@@ -243,12 +244,15 @@ function StructureTable({
   while (trimmed.length && trimmed[0].break) trimmed.shift();
   while (trimmed.length && trimmed[trimmed.length - 1].break) trimmed.pop();
 
+  // Owner 指示 (2026-04-22): 単日トーナメントは 30 レベルまで記載。
+  // Multi-day は phase filter (Day 1/2/3) で Day 範囲に絞られるため phase 基準で cap 決定。
+  // 単日 cap は transformer 側でも slice 済 (SINGLE_DAY_LEVEL_CAP=30) のため二重保険。
   const maxLevels =
     phase && (phase.kind === "day2" || phase.kind === "day3")
       ? 50
       : isMultiDay
-      ? 30
-      : 20;
+      ? 50
+      : 30;
   const displayLevels = getLimitedLevels(trimmed, maxLevels);
   const bbCount = calcBBAtLevel(structure, startingChips);
   const day2StartLevel = multiDay?.day2StartLevel ?? null;
@@ -320,12 +324,23 @@ function StructureTable({
               structure.day2EndLevel != null && lv.level === structure.day2EndLevel;
             const isDay2Start =
               day2StartLevel != null && lv.level === day2StartLevel;
+            // Day 1 End: phase=day1 のとき最終 Level を amber でマーク (Owner 指示 2026-04-22)
+            const isDay1End =
+              phase?.kind === "day1" &&
+              phase.endLevel != null &&
+              lv.level === phase.endLevel;
+            // Day 3 Start: phase=day3 のとき開始 Level を amber でマーク
+            const isDay3Start =
+              phase?.kind === "day3" &&
+              day3StartLevel != null &&
+              lv.level === day3StartLevel;
 
-            const rowBg = isDay2Start
-              ? "bg-amber-50"
-              : isLateRegClose
-              ? "bg-blue-50"
-              : "";
+            const rowBg =
+              isDay1End || isDay2Start || isDay3Start
+                ? "bg-amber-50"
+                : isLateRegClose
+                ? "bg-blue-50"
+                : "";
 
             return (
               <tr
@@ -339,6 +354,11 @@ function StructureTable({
                       CLOSE {bbCount}BB
                     </span>
                   )}
+                  {isDay1End && (
+                    <span className="ml-1 text-[8px] text-amber-800 font-bold">
+                      D1 END
+                    </span>
+                  )}
                   {isDay2Start && (
                     <span className="ml-1 text-[8px] text-amber-700 font-bold">
                       D2 START
@@ -347,6 +367,11 @@ function StructureTable({
                   {isDay2End && (
                     <span className="ml-1 text-[8px] text-blue-900 font-bold">
                       D2 END
+                    </span>
+                  )}
+                  {isDay3Start && (
+                    <span className="ml-1 text-[8px] text-amber-700 font-bold">
+                      D3 START
                     </span>
                   )}
                 </td>
