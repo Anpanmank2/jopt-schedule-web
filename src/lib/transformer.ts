@@ -475,6 +475,45 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     transformTournament(t, { currentMultiDayMap })
   );
 
+  // Legacy structure fallback: extract.json の Day 2 Structure が抜けている event に対して
+  // currentData(jopt_gf2026_data.json) の structure.levels を採用する。
+  // 根本解決は Apps Script 側の Day 2 anchor 検出改善だが、GF Day 1 まで時間が無いため暫定対応。
+  // 条件: legacy の non-break level 数 > 現 transformer 出力の non-break level 数
+  if (Array.isArray(currentData?.days)) {
+    const legacyStructure = new Map<string, TransformedStructure>();
+    for (const d of currentData.days) {
+      for (const e of d.events || []) {
+        if (!e.eventNumber || !e.structure?.levels?.length) continue;
+        const nonBreakCount = e.structure.levels.filter(
+          (l: any) => !l.break
+        ).length;
+        const existing = legacyStructure.get(e.eventNumber);
+        const existingCount = existing
+          ? existing.levels.filter((l: any) => !l.break).length
+          : 0;
+        if (!existing || nonBreakCount > existingCount) {
+          legacyStructure.set(e.eventNumber, e.structure);
+        }
+      }
+    }
+    for (const e of events) {
+      const legacy = legacyStructure.get(e.eventNumber);
+      if (!legacy) continue;
+      const cur = e.structure;
+      const curCount = cur
+        ? cur.levels.filter((l: any) => !l.break).length
+        : 0;
+      const legCount = legacy.levels.filter((l: any) => !l.break).length;
+      if (legCount > curCount) {
+        e.structure = {
+          ...legacy,
+          lateRegCloseAfterLevel:
+            cur?.lateRegCloseAfterLevel ?? legacy.lateRegCloseAfterLevel ?? null,
+        };
+      }
+    }
+  }
+
   // 日別グルーピング
   const byDate: Record<string, TransformedEvent[]> = {};
   for (const e of events) {
