@@ -9,6 +9,7 @@ import EventRow from "@/components/EventRow";
 import EventFilter from "@/components/EventFilter";
 import { useEventFilter } from "@/hooks/useEventFilter";
 import type { EventData, MultiDayInfo } from "@/components/EventDetail";
+import { EVENT_CONFIG } from "@/config/eventConfig";
 
 // extract.json (SSOT) を transformer 経由で display shape に変換。
 // feature/backend-split: ビルド時に計算されたものが bundle に含まれる。
@@ -167,13 +168,13 @@ export default function SchedulePage() {
       <header className="bg-gradient-to-b from-blue-50 via-white to-white border-b border-blue-200">
         <div className="max-w-6xl mx-auto px-4 md:px-8 pt-6 md:pt-10 pb-4 md:pb-6">
           <p className="text-[10px] md:text-xs font-bold tracking-[2px] text-blue-900 uppercase">
-            Japan Open Poker Tour
+            {EVENT_CONFIG.organizer}
           </p>
           <h1 className="text-xl md:text-4xl font-semibold text-text-primary leading-tight mt-1 md:mt-2">
-            2026 Grand Final — Schedule
+            {EVENT_CONFIG.eventShortTitle}
           </h1>
           <p className="text-[11px] md:text-sm text-text-muted mt-1 md:mt-2">
-            2026-04-24 〜 05-06 / ベルサール高田馬場
+            {EVENT_CONFIG.dateRangeVenue}
           </p>
 
           <label className="mt-4 md:mt-5 flex items-center gap-2 bg-white border border-blue-200 rounded-full px-3 py-2 md:py-2.5 max-w-xl shadow-sm">

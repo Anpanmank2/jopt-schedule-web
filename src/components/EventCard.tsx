@@ -100,7 +100,7 @@ export default function EventCard({ event }: { event: EventData }) {
           </span>
           {event.lateRegClose && (
             <span className="tabular-nums">
-              <span className="text-[9px] uppercase tracking-wider mr-1">Close</span>
+              <span className="text-[9px] uppercase tracking-wider mr-1">Reg. Close</span>
               {event.lateRegClose}
             </span>
           )}

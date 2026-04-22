@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import PhotoPanel from "./PhotoPanel";
+import { EVENT_CONFIG } from "@/config/eventConfig";
 
 export interface Level {
   level?: number;
@@ -122,8 +123,23 @@ export function formatNumber(n: number): string {
   return n.toLocaleString("en-US");
 }
 
+/**
+ * Prize の数値文字列を $ 付きカンマ区切り整数に整形する。
+ * Owner 指示 (2026-04-22): 通貨は $ 表記、小数点第一位繰上げ = ceil で整数化。
+ * 例: "13699.66" → "$13,700", "3206.58" → "$3,207"
+ * 入力が非数値・空なら原文を返す。
+ */
+export function formatPrize(raw: string | null | undefined): string | null {
+  if (raw == null) return null;
+  const trimmed = String(raw).trim();
+  if (!trimmed) return null;
+  const n = parseFloat(trimmed.replace(/,/g, ""));
+  if (!Number.isFinite(n)) return trimmed;
+  return `$${Math.ceil(n).toLocaleString("en-US")}`;
+}
+
 export function isHighRoller(buyIn: number | null): boolean {
-  return buyIn != null && buyIn >= 100000;
+  return buyIn != null && buyIn >= EVENT_CONFIG.HIGH_ROLLER_THRESHOLD;
 }
 
 export function isMultiDayEvent(event: EventData): boolean {
@@ -482,7 +498,7 @@ function InfoPanel({ event }: { event: EventData }) {
             <span className="text-sm font-bold tabular-nums">{event.startTime}</span>
           </div>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-[10px] text-blue-200">Late Reg Close</span>
+            <span className="text-[10px] text-blue-200">Reg. Close</span>
             <span className="text-sm font-bold tabular-nums">
               {event.lateRegClose ?? "—"}
               {event.lateRegLevel != null ? ` (Lv.${event.lateRegLevel})` : ""}
@@ -500,7 +516,7 @@ function InfoPanel({ event }: { event: EventData }) {
             {event.prize.total && (
               <div>
                 <span className="text-text-muted">Total: </span>
-                <span className="font-semibold text-text-primary">{event.prize.total}</span>
+                <span className="font-semibold text-text-primary">{formatPrize(event.prize.total)}</span>
               </div>
             )}
             {event.prize.inPrize && (

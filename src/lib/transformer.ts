@@ -12,6 +12,8 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { EVENT_CONFIG } from "@/config/eventConfig";
+
 export interface TransformedLevel {
   level?: number;
   sb?: number;
@@ -33,6 +35,7 @@ export interface TransformedEvent {
   eventNumber: string;
   name: string;
   gameType: string;
+  gameCategory: "Hold'em" | "Omaha" | "Other" | "Satellite";
   date: string;
   startTime: string;
   lateRegClose: string | null;
@@ -135,7 +138,7 @@ export function parseFeeLines(feeLines: string[] | undefined): {
   return { buyIn, buyInDisplay, feeDetail };
 }
 
-export function parseDate(str: string | undefined, year = 2026): string | null {
+export function parseDate(str: string | undefined, year = EVENT_CONFIG.year): string | null {
   if (!str) return null;
   const m = str.match(/^(\d{2})[./](\d{2})/);
   if (!m) return null;
@@ -169,6 +172,34 @@ export function deriveGameType(t: any, isSatellite: boolean): string {
   if (t.game_type) return t.game_type;
   if (isSatellite) return "SAT";
   return "";
+}
+
+/**
+ * gameCategory: 4 バケット (Hold'em / Omaha / Other / Satellite) に正規化。
+ * Owner 指示 (2026-04-22):
+ *  - NLH / NL 系 / ジュニア / STARS TABLE → Hold'em
+ *  - PLO / PLO8 のみ → Omaha (FLO は Other)
+ *  - その他 (FL, FLO, MIX, PL, 10-Game MIX 等) → Other
+ *  - Satellite は最優先で Satellite カテゴリ
+ */
+export function deriveGameCategory(
+  t: any,
+  isSatellite: boolean,
+  gameType: string
+): "Hold'em" | "Omaha" | "Other" | "Satellite" {
+  if (isSatellite) return "Satellite";
+  const title = String(t.event_title || t.base_title || t.tab_name || "");
+  // Owner 明示の特殊 event (ジュニア / STARS TABLE) は Hold'em
+  if (/ジュニア|STARS\s*TABLE/i.test(title)) return "Hold'em";
+  // NLH Heads-up 等 name に NLH を含む
+  if (/NLH|Hold'?em/i.test(title)) return "Hold'em";
+  const gt = gameType.trim();
+  // Hold'em: NLH / NL / NL ○○ (NL Stud 等)
+  if (gt === "NLH" || gt === "NL" || /^NL\s/.test(gt)) return "Hold'em";
+  // Omaha: PLO / PLO8 (FLO, FLO8 は除外)
+  if (gt === "PLO" || gt === "PLO8") return "Omaha";
+  // 明示的に Other: FL 系 / FLO / PL 系 / MIX 系 / Big Bet MIX / 10-Game MIX / Stud / HORSE 等
+  return "Other";
 }
 
 export function transformStructure(
@@ -306,11 +337,12 @@ export function transformTournament(
   t: any,
   opts: { currentMultiDayMap?: Record<string, any>; year?: number } = {}
 ): TransformedEvent[] {
-  const { currentMultiDayMap = {}, year = 2026 } = opts;
+  const { currentMultiDayMap = {}, year = EVENT_CONFIG.year } = opts;
 
   const isMainEvent = deriveIsMainEvent(t);
   const isSatellite = deriveIsSatellite(t);
   const gameType = deriveGameType(t, isSatellite);
+  const gameCategory = deriveGameCategory(t, isSatellite, gameType);
 
   let eventNumber: string = t.number || "";
   if (!eventNumber) {
@@ -339,6 +371,7 @@ export function transformTournament(
         eventNumber,
         name: baseName,
         gameType,
+        gameCategory,
         date: "",
         startTime: "",
         lateRegClose: null,
@@ -381,6 +414,7 @@ export function transformTournament(
       eventNumber,
       name: displayName,
       gameType,
+      gameCategory,
       date: parseDate(sched.start_date, year) ?? "",
       startTime: sched.start_time || "",
       lateRegClose: buildLateRegClose(sched.reg_close_time, sched.reg_close_level),
@@ -486,14 +520,16 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     transformTournament(t, { currentMultiDayMap })
   );
 
-  // Legacy fallback: extract.json 側で structure / notes が欠落している event に対して
+  // Legacy fallback: extract.json 側で structure / notes / lateRegClose が欠落している event に対して
   // currentData(jopt_gf2026_data.json) の対応フィールドを採用する。
-  // 根本解決は Apps Script 側 (Day 2 anchor 検出 / extractNotes の入れ子対応) だが、
+  // 根本解決は Apps Script 側 (Day 2 anchor 検出 / extractNotes の入れ子対応 / reg_close_time extraction) だが、
   // GF Day 1 まで時間が無いため transformer 側で暫定 post-processing する。
-  // 条件: legacy の件数 > 現 transformer 出力の件数 の場合のみ legacy を採用
+  // 条件: legacy の値 > 現 transformer 出力の値 (欠落 null) の場合のみ legacy を採用
   if (Array.isArray(currentData?.days)) {
     const legacyStructure = new Map<string, TransformedStructure>();
     const legacyNotes = new Map<string, string[]>();
+    // lateRegClose は (eventNumber, startTime) をキーにする (multi-flight 対応)
+    const legacyLateRegClose = new Map<string, { lateRegClose: string; lateRegLevel: number | null }>();
     for (const d of currentData.days) {
       for (const e of d.events || []) {
         if (!e.eventNumber) continue;
@@ -516,6 +552,14 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           if (!existing || e.notes.length > existing.length) {
             legacyNotes.set(e.eventNumber, e.notes);
           }
+        }
+        // lateRegClose (eventNumber + startTime がキー)
+        if (typeof e.lateRegClose === "string" && e.lateRegClose.trim()) {
+          const key = `${e.eventNumber}@${e.startTime || ""}`;
+          legacyLateRegClose.set(key, {
+            lateRegClose: e.lateRegClose,
+            lateRegLevel: e.lateRegLevel ?? null,
+          });
         }
       }
     }
@@ -552,6 +596,17 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           e.notes = legacyN;
         }
       }
+      // lateRegClose fallback (extract の reg_close_time 欠落時に legacy 値を採用)
+      if (!e.lateRegClose) {
+        const lrcKey = `${e.eventNumber}@${e.startTime || ""}`;
+        const legacyLRC = legacyLateRegClose.get(lrcKey);
+        if (legacyLRC) {
+          e.lateRegClose = legacyLRC.lateRegClose;
+          if (e.lateRegLevel == null && legacyLRC.lateRegLevel != null) {
+            e.lateRegLevel = legacyLRC.lateRegLevel;
+          }
+        }
+      }
       // day2EndLevel enrichment: meta.multiDayEvents から structure へ流す
       // (EventDetail.tsx の isDay2End は structure.day2EndLevel を参照する)
       if (e.structure && e.structure.day2EndLevel == null) {
@@ -566,7 +621,7 @@ export function transform(extract: any, currentData: any = null): TransformedDat
   // 単日トーナメント: structure を 30 non-break level + その間に挟まる break で slice
   // Owner 指示 (2026-04-22): ペルソナは JOPT 顧客、単日は 30 levels までで十分
   // Multi-day は phase filter (Day 1/2/3) で既に区切られているため対象外
-  const SINGLE_DAY_LEVEL_CAP = 30;
+  const SINGLE_DAY_LEVEL_CAP = EVENT_CONFIG.SINGLE_DAY_LEVEL_CAP;
   for (const e of events) {
     if (!e.structure || e.structure.isMultiDay) continue;
     const levels = e.structure.levels;
@@ -624,8 +679,8 @@ export function transform(extract: any, currentData: any = null): TransformedDat
 
   return {
     meta: {
-      eventName: extract.event?.eventName || "JOPT 2026 Grand Final",
-      venue: "Bellesalle Takadanobaba",
+      eventName: extract.event?.eventName || EVENT_CONFIG.eventName,
+      venue: EVENT_CONFIG.venue,
       totalEvents: events.length,
       extractedAt: extract.event?.extracted_at || new Date().toISOString(),
       source: "extract.json transformer (feature/backend-split)",
