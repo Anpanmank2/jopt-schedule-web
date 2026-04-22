@@ -79,6 +79,7 @@ export interface EventData {
   eventNumber: string;
   name: string;
   gameType: string;
+  gameCategory?: "Hold'em" | "Omaha" | "Other" | "Satellite";
   startTime: string;
   lateRegClose: string | null;
   lateRegLevel: number | null;
@@ -104,19 +105,45 @@ export interface EventData {
 }
 
 export const BADGE_STYLES: Record<string, string> = {
+  // 具体 gameType → 専用色
   NLH: "bg-blue-700 text-white",
   NL: "bg-blue-700 text-white",
   PLO: "bg-purple-600 text-white",
-  PL: "bg-purple-600 text-white",
+  PLO8: "bg-purple-600 text-white",
+  PL: "bg-amber-600 text-white",
   MIX: "bg-amber-500 text-white",
   "10-Game MIX": "bg-amber-500 text-white",
+  "Big Bet MIX": "bg-amber-500 text-white",
   FL: "bg-amber-600 text-white",
+  FLO: "bg-amber-600 text-white",
+  FLO8: "bg-amber-600 text-white",
+  Stud: "bg-amber-600 text-white",
   "PL Badugi": "bg-amber-600 text-white",
   SAT: "bg-sky-200 text-blue-900 border border-blue-300",
+  // gameCategory fallback (gameType が空のときの badge 色)
+  "Hold'em": "bg-blue-700 text-white",
+  Omaha: "bg-purple-600 text-white",
+  Other: "bg-amber-500 text-white",
+  Satellite: "bg-sky-200 text-blue-900 border border-blue-300",
 };
 
 export function gameTypeLabel(gameType: string): string {
   return gameType === "SAT" ? "Satellite" : gameType;
+}
+
+/**
+ * event 用 badge ラベル + スタイルを決定する。
+ * gameType が空 (extract から取れなかった特殊 event) の場合は gameCategory を表示。
+ * Owner 決定 (2026-04-22): ジュニア / STARS TABLE / FL&PL/NL 等で badge 白抜きを防ぐ。
+ */
+export function resolveEventBadge(event: EventData): { label: string; style: string } {
+  const keySpecific: string = event.gameType || "";
+  const keyCategory: string = event.gameCategory || "";
+  const hasSpecific = keySpecific.trim().length > 0;
+  const effectiveKey: string = hasSpecific ? keySpecific : keyCategory;
+  const style = BADGE_STYLES[effectiveKey] || "bg-blue-100 text-blue-900";
+  const label = hasSpecific ? gameTypeLabel(keySpecific) : keyCategory;
+  return { label, style };
 }
 
 export function formatNumber(n: number): string {
