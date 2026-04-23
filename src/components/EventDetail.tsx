@@ -694,27 +694,35 @@ function InfoPanel({ event }: { event: EventData }) {
         </div>
       )}
 
-      {event.award &&
-        (event.award.chipLeader ||
-          event.award.sprinter ||
-          event.award.currencyNote) && (
+      {(() => {
+        // Owner 指示 2026-04-24: Special Award header は **中身がある時のみ** 表示する。
+        // `chipLeader` / `sprinter` object が存在しても中身 (allDay1/day2/description)
+        // が全部空なら header も描画しない。
+        const hasSection = (s: AwardSection | null | undefined) =>
+          !!s && (s.allDay1.length > 0 || s.day2.length > 0 || s.description.trim().length > 0);
+        const hasChip = hasSection(event.award?.chipLeader);
+        const hasSprint = hasSection(event.award?.sprinter);
+        const hasNote = !!(event.award?.currencyNote && event.award.currencyNote.trim().length > 0);
+        if (!hasChip && !hasSprint && !hasNote) return null;
+        return (
           <div>
             <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
               Special Award
             </p>
-            {event.award.chipLeader && (
-              <AwardSectionBlock section={event.award.chipLeader} />
+            {hasChip && (
+              <AwardSectionBlock section={event.award!.chipLeader!} />
             )}
-            {event.award.sprinter && (
-              <AwardSectionBlock section={event.award.sprinter} />
+            {hasSprint && (
+              <AwardSectionBlock section={event.award!.sprinter!} />
             )}
-            {event.award.currencyNote && (
+            {hasNote && (
               <p className="text-text-muted text-[10px] italic mt-1">
-                {event.award.currencyNote}
+                {event.award!.currencyNote}
               </p>
             )}
           </div>
-        )}
+        );
+      })()}
 
       {event.sponsorship && event.sponsorship.items.length > 0 && (
         <div>
