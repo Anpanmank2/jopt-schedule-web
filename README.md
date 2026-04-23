@@ -9,12 +9,15 @@
 
 ## 機能
 
-- **ALL モード（初期値）**：全 13 日間 220 トーナメントを日別セクション + sticky day header で一覧
+- **ALL モード（初期値）**：全 13 日間 257 トーナメントを日別セクション + sticky day header で一覧
 - **日別モード**：日付タブをクリックして1日分を詳細カードで表示
 - **day-jump pills**：ALL 時に日付タブをクリックすると該当 day section へスムーズスクロール
-- **検索**：トーナメント名（部分一致・全角半角正規化・大小無視）で絞り込み
+- **検索**：event name / eventNumber / gameType / gameCategory いずれかに部分一致（全角半角正規化・大小無視）
   - URL に `?q=xxx` として保持 → SNS でシェアしてもフィルタ済み結果が再現される
-- **Game/Stake フィルタ**：NLH/PLO/MIX/SAT × Low/Medium/High Stake、検索と AND 連携
+- **Game Category フィルタ（4 カテゴリ、v2.5 改訂）**：Hold'em / Omaha / Other / Satellite、検索と AND 連携
+- **Satellite Seat 付与率表示（v2.5）**：Satellite event の Prize 部に「Seat 付与率: N エントリーにつき 1 Seat」を自動表示
+- **Multi-day Structure**：Day 1/Day 2/Day 3 の phase filter で該当 Day 範囲のみ表示、D1 END / D2 START / D2 END / D3 START バッジ + CLOSE NBB マーカー
+- **Sponsorship セクション**：スポンサー付き event（#33 Colossus 等）の協賛品情報を独立表示
 - **レスポンシブ**：モバイル〜デスクトップ 1列、各カード/行は `max-w-2xl` 中央寄せ
 
 ## 技術スタック
@@ -26,14 +29,27 @@
 - フォント: Noto Serif JP（Google Fonts）
 - デプロイ: Vercel（手動 `npx vercel --prod`）
 
-## データ更新フロー
+## データ更新フロー（v2.5 改訂）
 
-スケジュール本体は `src/data/jopt_gf2026_data.json` に静的に持つ。
+v2.5 から **transformer 方式**に変更。データソースは 3 層優先順位:
 
-1. 運営がローカルで `src/data/jopt_gf2026_data.json` を編集
-2. `git commit && git push origin main`
-3. `npx vercel --prod --yes` で本番デプロイ
-4. キャッシュバストして目視確認
+| 優先 | ファイル | 用途 |
+|---|---|---|
+| 1 | `src/data/pdf-overrides.json` | Owner 提供 PDF の正式値（Day 2 structure / reg close / notes override） |
+| 2 | `src/data/extract.json` | Google Sheets Apps Script export（SSOT、約 10MB） |
+| 3 | `src/data/jopt_gf2026_data.json` | legacy 手作業 snapshot（structure/notes fallback のみ有効、scalar 値 fallback は無効） |
+
+`src/lib/transformer.ts` が `/api/schedule` runtime endpoint でこの 3 層を merge した結果を返す。
+
+更新手順:
+
+1. **通常の schedule 更新**: 運営が Google Sheets 編集 → Apps Script で `extract.json` 更新 → commit
+2. **Day 2 structure / reg close 等 PDF のみの情報**: `pdf-overrides.json` の該当 event セクションに追記
+3. **extract 側 notes 混線等の復旧**: `pdf-overrides.json` の `notes` field で override（例: `#33 Colossus`）
+4. **全件監査**: `node scripts/audit-report.mjs` で transformed vs current の差分を確認
+5. `git commit && git push origin main`
+6. `npx vercel --prod --yes` で本番デプロイ
+7. キャッシュバストして目視確認
 
 リアルタイム更新は不要（GF 期間前日までに確定データを反映する運用）。
 
@@ -78,7 +94,15 @@ src/
 ├── config/
 │   └── filterConfig.ts   # Game/Stake フィルタ定義
 └── data/
-    └── jopt_gf2026_data.json  # 220トーナメント (59,731行)
+    ├── extract.json               # Google Sheets SSOT export (約 10MB)
+    ├── pdf-overrides.json         # Owner 提供 PDF の正式値（structure/reg close/notes）
+    └── jopt_gf2026_data.json      # legacy 手作業 snapshot（fallback 専用）
+
+scripts/
+├── transform-extract.mjs          # CLI 版 transformer（audit 用）
+├── diff-vs-current.mjs            # legacy vs transformed の差分
+├── audit-report.mjs               # 全 event × 全 field 数値監査
+└── fetch-flickr-albums.mjs        # Flickr メタ取得（prebuild）
 
 public/
 └── jopt-logo.png         # フッター用 JOPT ロゴ（1022x1218 RGBA）
