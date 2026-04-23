@@ -26,6 +26,7 @@ export interface Prize {
   inPrize: string | null;
   satellitePrize?: string | null;
   note?: string | null;
+  rankPrizes?: { rank: string; description: string }[];
 }
 
 export interface AwardEntry {
@@ -537,50 +538,65 @@ function InfoPanel({ event }: { event: EventData }) {
         </div>
       </div>
 
-      {event.prize && (event.prize.total || event.prize.satellitePrize) && (
-        <div>
-          <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-            Prize
-          </p>
-          <div className="flex flex-wrap gap-x-4 gap-y-1">
-            {event.prize.total && (
-              <div>
-                <span className="text-text-muted">Total: </span>
-                <span className="font-semibold text-text-primary">{formatPrize(event.prize.total)}</span>
-              </div>
-            )}
-            {event.prize.inPrize && (
-              <div>
-                <span className="text-text-muted">In Prize: </span>
-                <span className="font-medium text-text-primary">{event.prize.inPrize}</span>
-              </div>
-            )}
-            {event.prize.satellitePrize && (
-              <div>
-                <span className="text-text-muted">Satellite Prize: </span>
-                <span className="font-medium text-text-primary">{event.prize.satellitePrize}</span>
-              </div>
-            )}
-            {event.isSatellite && event.seatRatio && (() => {
-              const [num, den] = event.seatRatio.split("/");
-              if (!num || !den) return null;
-              return (
-                <div>
-                  <span className="text-text-muted">Seat 付与率: </span>
-                  <span className="font-medium text-text-primary">
-                    {den} エントリーにつき {num} Seat
-                  </span>
-                </div>
-              );
-            })()}
-          </div>
-          {event.prize.note && (
-            <p className="text-text-muted text-[10px] italic mt-1 whitespace-pre-wrap leading-relaxed">
-              {event.prize.note}
+      {event.prize &&
+        (event.prize.total ||
+          event.prize.satellitePrize ||
+          (event.prize.rankPrizes?.length ?? 0) > 0) && (
+          <div>
+            <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
+              Prize
             </p>
-          )}
-        </div>
-      )}
+            <div className="flex flex-wrap gap-x-4 gap-y-1">
+              {event.prize.total && (
+                <div>
+                  <span className="text-text-muted">Total: </span>
+                  <span className="font-semibold text-text-primary">{formatPrize(event.prize.total)}</span>
+                </div>
+              )}
+              {event.prize.inPrize && (
+                <div>
+                  <span className="text-text-muted">In Prize: </span>
+                  <span className="font-medium text-text-primary">{event.prize.inPrize}</span>
+                </div>
+              )}
+              {event.prize.satellitePrize && (
+                <div>
+                  <span className="text-text-muted">Satellite Prize: </span>
+                  <span className="font-medium text-text-primary">{event.prize.satellitePrize}</span>
+                </div>
+              )}
+              {event.isSatellite && event.seatRatio && (() => {
+                const [num, den] = event.seatRatio.split("/");
+                if (!num || !den) return null;
+                return (
+                  <div>
+                    <span className="text-text-muted">Seat 付与率: </span>
+                    <span className="font-medium text-text-primary">
+                      {den} エントリーにつき {num} Seat
+                    </span>
+                  </div>
+                );
+              })()}
+            </div>
+            {(event.prize.rankPrizes?.length ?? 0) > 0 && (
+              <div className="mt-1 space-y-1">
+                {event.prize.rankPrizes!.map((rp, i) => (
+                  <div key={i}>
+                    <p className="text-[11px] font-semibold text-blue-900">{rp.rank}</p>
+                    <p className="text-[11px] text-text-secondary whitespace-pre-wrap leading-relaxed">
+                      {rp.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {event.prize.note && (
+              <p className="text-text-muted text-[10px] italic mt-1 whitespace-pre-wrap leading-relaxed">
+                {event.prize.note}
+              </p>
+            )}
+          </div>
+        )}
 
       {showMultiDay && md && (
         <div className="rounded-md border border-blue-200 bg-blue-50/70 p-2">

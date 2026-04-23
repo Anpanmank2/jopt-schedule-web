@@ -53,7 +53,13 @@ export interface TransformedEvent {
   day2Condition: string | null;
   ruleNotes: string | null;
   structure: TransformedStructure | null;
-  prize: { total: string | null; inPrize: string | null; satellitePrize: string | null; note: string | null } | null;
+  prize: {
+    total: string | null;
+    inPrize: string | null;
+    satellitePrize: string | null;
+    note: string | null;
+    rankPrizes: { rank: string; description: string }[];
+  } | null;
   feeDetail: string | null;
   games: string[] | null;
   bounty: { label: string; items: { rank: string; description: string }[] } | null;
@@ -249,7 +255,13 @@ export function transformStructure(
 
 function transformPrize(
   p: any
-): { total: string | null; inPrize: string | null; satellitePrize: string | null; note: string | null } | null {
+): {
+  total: string | null;
+  inPrize: string | null;
+  satellitePrize: string | null;
+  note: string | null;
+  rankPrizes: { rank: string; description: string }[];
+} | null {
   if (!p) return null;
   let satellitePrize: string | null = null;
   const sat = Array.isArray(p.satellite_awards) ? p.satellite_awards[0] : null;
@@ -258,11 +270,23 @@ function transformPrize(
     const target = (sat.target || "").replace(/\s+/g, " ").trim();
     satellitePrize = target ? `${award} - ${target}` : award;
   }
+  // rank_prizes: 通常 event は未入力、ジュニア等は rank 別の豪華賞品リスト
+  // (例: "1st: ・お食事券 40,000円分\n・図書カード ...")。description は
+  // 改行区切りの箇条書きなので UI 側で whitespace-pre-wrap で表示する。
+  const rankPrizes = Array.isArray(p.rank_prizes)
+    ? p.rank_prizes
+        .map((x: any) => ({
+          rank: String(x.rank || "").trim(),
+          description: String(x.description || "").trim(),
+        }))
+        .filter((x: { rank: string; description: string }) => x.rank && x.description)
+    : [];
   return {
     total: p.total || null,
     inPrize: p.in_prize || null,
     satellitePrize,
     note: typeof p.note === "string" && p.note.trim() ? p.note.trim() : null,
+    rankPrizes,
   };
 }
 
