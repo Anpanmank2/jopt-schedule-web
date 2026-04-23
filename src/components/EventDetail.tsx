@@ -25,6 +25,8 @@ export interface Prize {
   total: string | null;
   inPrize: string | null;
   satellitePrize?: string | null;
+  note?: string | null;
+  rankPrizes?: { rank: string; description: string }[];
 }
 
 export interface AwardEntry {
@@ -98,7 +100,7 @@ export interface EventData {
   prize: Prize | null;
   feeDetail: string | null;
   games: string[] | null;
-  bounty: string | null;
+  bounty: { label: string; items: { rank: string; description: string }[] } | null;
   notes: string[] | null;
   award: AwardData | null;
   sponsorship?: { label: string; items: { rank: string; description: string }[] } | null;
@@ -536,45 +538,65 @@ function InfoPanel({ event }: { event: EventData }) {
         </div>
       </div>
 
-      {event.prize && (event.prize.total || event.prize.satellitePrize) && (
-        <div>
-          <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-            Prize
-          </p>
-          <div className="flex flex-wrap gap-x-4 gap-y-1">
-            {event.prize.total && (
-              <div>
-                <span className="text-text-muted">Total: </span>
-                <span className="font-semibold text-text-primary">{formatPrize(event.prize.total)}</span>
-              </div>
-            )}
-            {event.prize.inPrize && (
-              <div>
-                <span className="text-text-muted">In Prize: </span>
-                <span className="font-medium text-text-primary">{event.prize.inPrize}</span>
-              </div>
-            )}
-            {event.prize.satellitePrize && (
-              <div>
-                <span className="text-text-muted">Satellite Prize: </span>
-                <span className="font-medium text-text-primary">{event.prize.satellitePrize}</span>
-              </div>
-            )}
-            {event.isSatellite && event.seatRatio && (() => {
-              const [num, den] = event.seatRatio.split("/");
-              if (!num || !den) return null;
-              return (
+      {event.prize &&
+        (event.prize.total ||
+          event.prize.satellitePrize ||
+          (event.prize.rankPrizes?.length ?? 0) > 0) && (
+          <div>
+            <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
+              Prize
+            </p>
+            <div className="flex flex-wrap gap-x-4 gap-y-1">
+              {event.prize.total && (
                 <div>
-                  <span className="text-text-muted">Seat 付与率: </span>
-                  <span className="font-medium text-text-primary">
-                    {den} エントリーにつき {num} Seat
-                  </span>
+                  <span className="text-text-muted">Total: </span>
+                  <span className="font-semibold text-text-primary">{formatPrize(event.prize.total)}</span>
                 </div>
-              );
-            })()}
+              )}
+              {event.prize.inPrize && (
+                <div>
+                  <span className="text-text-muted">In Prize: </span>
+                  <span className="font-medium text-text-primary">{event.prize.inPrize}</span>
+                </div>
+              )}
+              {event.prize.satellitePrize && (
+                <div>
+                  <span className="text-text-muted">Satellite Prize: </span>
+                  <span className="font-medium text-text-primary">{event.prize.satellitePrize}</span>
+                </div>
+              )}
+              {event.isSatellite && event.seatRatio && (() => {
+                const [num, den] = event.seatRatio.split("/");
+                if (!num || !den) return null;
+                return (
+                  <div>
+                    <span className="text-text-muted">Seat 付与率: </span>
+                    <span className="font-medium text-text-primary">
+                      {den} エントリーにつき {num} Seat
+                    </span>
+                  </div>
+                );
+              })()}
+            </div>
+            {(event.prize.rankPrizes?.length ?? 0) > 0 && (
+              <div className="mt-1 space-y-1">
+                {event.prize.rankPrizes!.map((rp, i) => (
+                  <div key={i}>
+                    <p className="text-[11px] font-semibold text-blue-900">{rp.rank}</p>
+                    <p className="text-[11px] text-text-secondary whitespace-pre-wrap leading-relaxed">
+                      {rp.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {event.prize.note && (
+              <p className="text-text-muted text-[10px] italic mt-1 whitespace-pre-wrap leading-relaxed">
+                {event.prize.note}
+              </p>
+            )}
           </div>
-        </div>
-      )}
+        )}
 
       {showMultiDay && md && (
         <div className="rounded-md border border-blue-200 bg-blue-50/70 p-2">
@@ -635,12 +657,24 @@ function InfoPanel({ event }: { event: EventData }) {
         </div>
       )}
 
-      {event.bounty && (
+      {event.bounty && event.bounty.items.length > 0 && (
         <div>
           <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-            Bounty
+            {event.bounty.label || "Bounty"}
           </p>
-          <p className="text-text-primary font-medium">{event.bounty}</p>
+          <ul className="space-y-1">
+            {event.bounty.items.map((it, i) => (
+              <li key={i} className="text-text-secondary text-[11px] leading-relaxed">
+                <span className="font-semibold text-text-primary">{it.rank}</span>
+                {it.description && (
+                  <>
+                    <span className="mx-1">:</span>
+                    <span>{it.description}</span>
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
@@ -676,32 +710,41 @@ function InfoPanel({ event }: { event: EventData }) {
         </div>
       )}
 
-      {event.award &&
-        (event.award.chipLeader ||
-          event.award.sprinter ||
-          event.award.currencyNote) && (
+      {(() => {
+        // Owner 指示 2026-04-25: ラベル定義整理
+        //   award          = マルチデイの chipLeader/sprinter (本セクション)
+        //   special award  = 協賛トナメの協賛品 (下の sponsorship セクション)
+        // 中身 (allDay1/day2/description) が全部空ならヘッダーごと非表示。
+        const hasSection = (s: AwardSection | null | undefined) =>
+          !!s && (s.allDay1.length > 0 || s.day2.length > 0 || s.description.trim().length > 0);
+        const hasChip = hasSection(event.award?.chipLeader);
+        const hasSprint = hasSection(event.award?.sprinter);
+        const hasNote = !!(event.award?.currencyNote && event.award.currencyNote.trim().length > 0);
+        if (!hasChip && !hasSprint && !hasNote) return null;
+        return (
           <div>
             <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-              Special Award
+              Award
             </p>
-            {event.award.chipLeader && (
-              <AwardSectionBlock section={event.award.chipLeader} />
+            {hasChip && (
+              <AwardSectionBlock section={event.award!.chipLeader!} />
             )}
-            {event.award.sprinter && (
-              <AwardSectionBlock section={event.award.sprinter} />
+            {hasSprint && (
+              <AwardSectionBlock section={event.award!.sprinter!} />
             )}
-            {event.award.currencyNote && (
+            {hasNote && (
               <p className="text-text-muted text-[10px] italic mt-1">
-                {event.award.currencyNote}
+                {event.award!.currencyNote}
               </p>
             )}
           </div>
-        )}
+        );
+      })()}
 
       {event.sponsorship && event.sponsorship.items.length > 0 && (
         <div>
           <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-            {event.sponsorship.label}
+            Special Award
           </p>
           <ul className="space-y-1">
             {event.sponsorship.items.map((it, i) => (

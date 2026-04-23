@@ -53,10 +53,16 @@ export interface TransformedEvent {
   day2Condition: string | null;
   ruleNotes: string | null;
   structure: TransformedStructure | null;
-  prize: { total: string | null; inPrize: string | null; satellitePrize: string | null } | null;
+  prize: {
+    total: string | null;
+    inPrize: string | null;
+    satellitePrize: string | null;
+    note: string | null;
+    rankPrizes: { rank: string; description: string }[];
+  } | null;
   feeDetail: string | null;
   games: string[] | null;
-  bounty: string | null;
+  bounty: { label: string; items: { rank: string; description: string }[] } | null;
   notes: string[] | null;
   award: AwardData | null;
   sponsorship: { label: string; items: { rank: string; description: string }[] } | null;
@@ -249,7 +255,13 @@ export function transformStructure(
 
 function transformPrize(
   p: any
-): { total: string | null; inPrize: string | null; satellitePrize: string | null } | null {
+): {
+  total: string | null;
+  inPrize: string | null;
+  satellitePrize: string | null;
+  note: string | null;
+  rankPrizes: { rank: string; description: string }[];
+} | null {
   if (!p) return null;
   let satellitePrize: string | null = null;
   const sat = Array.isArray(p.satellite_awards) ? p.satellite_awards[0] : null;
@@ -258,11 +270,45 @@ function transformPrize(
     const target = (sat.target || "").replace(/\s+/g, " ").trim();
     satellitePrize = target ? `${award} - ${target}` : award;
   }
+  // rank_prizes: 通常 event は未入力、ジュニア等は rank 別の豪華賞品リスト
+  // (例: "1st: ・お食事券 40,000円分\n・図書カード ...")。description は
+  // 改行区切りの箇条書きなので UI 側で whitespace-pre-wrap で表示する。
+  const rankPrizes = Array.isArray(p.rank_prizes)
+    ? p.rank_prizes
+        .map((x: any) => ({
+          rank: String(x.rank || "").trim(),
+          description: String(x.description || "").trim(),
+        }))
+        .filter((x: { rank: string; description: string }) => x.rank && x.description)
+    : [];
   return {
     total: p.total || null,
     inPrize: p.in_prize || null,
     satellitePrize,
+    note: typeof p.note === "string" && p.note.trim() ? p.note.trim() : null,
+    rankPrizes,
   };
+}
+
+/**
+ * Bounty section を transformer 出力形式に整形。Sheets の Bounty 欄は rank/description
+ * 型で sponsorship と同一構造のため、共通整形関数を流用せず専用関数に分離している
+ * (将来 rank/description 以外の形式が来た時に拡張しやすい)。Owner 指示 2026-04-24。
+ */
+function transformBounty(
+  b: any
+): { label: string; items: { rank: string; description: string }[] } | null {
+  if (!b) return null;
+  const items = Array.isArray(b.items)
+    ? b.items
+        .map((it: any) => ({
+          rank: String(it.rank || "").trim(),
+          description: String(it.description || "").trim(),
+        }))
+        .filter((it: any) => it.rank || it.description)
+    : [];
+  if (items.length === 0) return null;
+  return { label: (b.label || "Bounty").trim(), items };
 }
 
 function normalizeNotes(notes: string[] | undefined): string[] | null {
@@ -286,7 +332,21 @@ function extractSeatRatio(name: string | undefined, isSatellite: boolean): strin
 
 function extractGames(games: any): string[] | null {
   if (!games || !Array.isArray(games.items) || games.items.length === 0) return null;
-  return games.items;
+  // Sheets セルが「1,FL 2-7 Triple Draw」「2,FL Badugi」のように先頭に順序番号
+  // ("N,") を含む形式で入っている。UI に "1,FL ..." と表示されると違和感があるため
+  // transformer 側で先頭の `数字,(空白)*` を除去する。Owner 指示 2026-04-24。
+  //
+  // さらに 2026-04-25: Sheets のセルズレで "1,000" 等の「数字とカンマのみ」の
+  // ゴースト item が混入するケースがある (#46 / #131 で実例)。N, prefix 除去後の
+  // 残りが空 or 数字のみなら item 自体を filter して UI 混乱を防ぐ。
+  const normalized: string[] = games.items
+    .map((g: any) =>
+      typeof g === "string" ? g.replace(/^\s*\d+\s*,\s*/, "").trim() : g
+    )
+    .filter(
+      (g: any) => typeof g === "string" && g.length > 0 && !/^[\d,\s]+$/.test(g)
+    );
+  return normalized.length > 0 ? normalized : null;
 }
 
 function transformSponsorship(
@@ -373,13 +433,14 @@ export function transformTournament(
 ): TransformedEvent[] {
   const { currentMultiDayMap = {}, year = EVENT_CONFIG.year } = opts;
 
-  // メタタブ skip (Owner 指示 2026-04-24): number 空かつ event_title / base_title 空の
-  // tab はテンプレート / 設定タブ (例: 2Day4Flight, アンティなし, FL&Stud, FL&NL,
-  // FL&PL/NL, PL/NL, Stud, サテ) で event ではない。schedules を持つと UI に紛れ込み
-  // (例 7/21 という GF 範囲外の日付セクションが追加されてしまう) ため早期 return。
-  // event_title === "#" のような placeholder も同様に除外。
+  // メタタブ skip (Owner 指示 2026-04-24): number 空の tab はテンプレート / 設定タブ
+  // で event ではない (例: 2Day4Flight, アンティなし, FL&Stud, FL&NL, FL&PL/NL, PL/NL,
+  // Stud, サテ)。schedules を持つと UI に紛れ込み 7/21 等のゴースト日付を生む。
+  // 判定強化: event_title が空 / "#" placeholder / 日付のみ (例 "05.02 Sat.") の
+  // いずれかなら metadata tab として早期 return。
   const titleStr = (t.event_title || t.base_title || "").trim();
-  const isMetadataTab = !t.number && (!titleStr || titleStr === "#");
+  const isDateOnlyTitle = /^\d{1,2}\.\d{1,2}(\s+[A-Za-z]{3}\.?)?$/.test(titleStr);
+  const isMetadataTab = !t.number && (!titleStr || titleStr === "#" || isDateOnlyTitle);
   if (isMetadataTab) return [];
 
   const isMainEvent = deriveIsMainEvent(t);
@@ -438,7 +499,7 @@ export function transformTournament(
         prize: transformPrize(t.prize),
         feeDetail,
         games: extractGames(t.games),
-        bounty: null,
+        bounty: transformBounty(t.bounty),
         notes: normalizeNotes(t.notes),
         award: transformAward(t.award),
         sponsorship: transformSponsorship(t.sponsorship),
@@ -485,7 +546,7 @@ export function transformTournament(
       prize: transformPrize(t.prize),
       feeDetail,
       games: extractGames(t.games),
-      bounty: null,
+      bounty: transformBounty(t.bounty),
       notes: normalizeNotes(t.notes),
       award: transformAward(t.award),
       sponsorship: transformSponsorship(t.sponsorship),
@@ -682,6 +743,17 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     if (Array.isArray(ov.notes)) {
       e.notes = ov.notes.slice();
     }
+    // single-event 用 reg close 直接 override (flight 無 event 例: #07 PLO Heads-up)
+    if (ov.regClose && typeof ov.regClose === "object") {
+      const rc = ov.regClose as { time?: string; level?: number | null };
+      if (rc.time) {
+        e.lateRegClose = buildLateRegClose(
+          rc.time,
+          rc.level != null ? String(rc.level) : ""
+        );
+        e.lateRegLevel = rc.level ?? null;
+      }
+    }
     // reg close override (flight suffix で dispatch)
     if (ov.regCloseByFlight && typeof ov.regCloseByFlight === "object") {
       const flightMatch = (e.name || "").match(/\/\s*(Day\s*\d+[A-Z]?(?:\s*Turbo)?|Day\s*\d+)\s*$/i);
@@ -696,6 +768,29 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           e.lateRegLevel = null;
         }
       }
+    }
+    // award override (Owner 指示 2026-04-25): Apps Script の sprinter 抽出漏れ
+    // に対する手動上書き。chipLeader / sprinter / currencyNote を section 別に
+    // partial merge する。camelCase (transformer 後の形) で記述することに注意。
+    if (ov.award && typeof ov.award === "object") {
+      const cur = e.award || { chipLeader: null, sprinter: null, currencyNote: null };
+      if (ov.award.chipLeader !== undefined) cur.chipLeader = ov.award.chipLeader;
+      if (ov.award.sprinter !== undefined) cur.sprinter = ov.award.sprinter;
+      if (ov.award.currencyNote !== undefined) cur.currencyNote = ov.award.currencyNote;
+      e.award = cur;
+    }
+  }
+
+  // Re-entry / Day2Condition と Notes の重複除去 (Owner 指示 2026-04-24):
+  // Sheets の `re_entry_note` / `day2_advance_note` と `notes` に同一文字列が両方
+  // 入っている event (Tag Team / Main / Mini Main 等) で UI で 2 重表示されていた
+  // 問題を解消。補足 field 側を null にして notes を唯一の出典とする。
+  for (const e of events) {
+    if (e.reentry && Array.isArray(e.notes) && e.notes.includes(e.reentry)) {
+      e.reentry = null;
+    }
+    if (e.day2Condition && Array.isArray(e.notes) && e.notes.includes(e.day2Condition)) {
+      e.day2Condition = null;
     }
   }
 
