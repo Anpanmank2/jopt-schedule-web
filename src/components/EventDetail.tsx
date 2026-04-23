@@ -226,7 +226,8 @@ function getEventPhase(event: EventData): Phase | null {
   return null;
 }
 
-function formatBlinds(sb: number, bb: number): string {
+function formatBlinds(sb: number | null | undefined, bb: number | null | undefined): string {
+  if (sb == null || bb == null) return "—";
   return `${formatNumber(sb)}/${formatNumber(bb)}`;
 }
 
@@ -420,11 +421,11 @@ function StructureTable({
                   )}
                 </td>
                 <td className="py-1 px-1 text-center text-text-primary font-medium tabular-nums">
-                  {formatBlinds(lv.sb!, lv.bb!)}
+                  {formatBlinds(lv.sb, lv.bb)}
                 </td>
                 {hasAnte && (
                   <td className="py-1 px-1 text-center text-text-secondary tabular-nums">
-                    {formatNumber(lv.ante!)}
+                    {lv.ante != null ? formatNumber(lv.ante) : "—"}
                   </td>
                 )}
                 <td className="py-1 px-1 text-center text-text-secondary tabular-nums">
