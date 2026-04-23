@@ -373,6 +373,15 @@ export function transformTournament(
 ): TransformedEvent[] {
   const { currentMultiDayMap = {}, year = EVENT_CONFIG.year } = opts;
 
+  // メタタブ skip (Owner 指示 2026-04-24): number 空かつ event_title / base_title 空の
+  // tab はテンプレート / 設定タブ (例: 2Day4Flight, アンティなし, FL&Stud, FL&NL,
+  // FL&PL/NL, PL/NL, Stud, サテ) で event ではない。schedules を持つと UI に紛れ込み
+  // (例 7/21 という GF 範囲外の日付セクションが追加されてしまう) ため早期 return。
+  // event_title === "#" のような placeholder も同様に除外。
+  const titleStr = (t.event_title || t.base_title || "").trim();
+  const isMetadataTab = !t.number && (!titleStr || titleStr === "#");
+  if (isMetadataTab) return [];
+
   const isMainEvent = deriveIsMainEvent(t);
   const isSatellite = deriveIsSatellite(t);
   const gameType = deriveGameType(t, isSatellite);
