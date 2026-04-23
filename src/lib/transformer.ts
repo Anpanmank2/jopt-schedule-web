@@ -286,7 +286,12 @@ function extractSeatRatio(name: string | undefined, isSatellite: boolean): strin
 
 function extractGames(games: any): string[] | null {
   if (!games || !Array.isArray(games.items) || games.items.length === 0) return null;
-  return games.items;
+  // Sheets セルが「1,FL 2-7 Triple Draw」「2,FL Badugi」のように先頭に順序番号
+  // ("N,") を含む形式で入っている。UI に "1,FL ..." と表示されると違和感があるため
+  // transformer 側で先頭の `数字,(空白)*` を除去する。Owner 指示 2026-04-24。
+  return games.items.map((g: any) =>
+    typeof g === "string" ? g.replace(/^\s*\d+\s*,\s*/, "") : g
+  );
 }
 
 function transformSponsorship(
@@ -681,6 +686,17 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     // notes override (extract 側 source data が他 event の notes と混線した場合の復元)
     if (Array.isArray(ov.notes)) {
       e.notes = ov.notes.slice();
+    }
+    // single-event 用 reg close 直接 override (flight 無 event 例: #07 PLO Heads-up)
+    if (ov.regClose && typeof ov.regClose === "object") {
+      const rc = ov.regClose as { time?: string; level?: number | null };
+      if (rc.time) {
+        e.lateRegClose = buildLateRegClose(
+          rc.time,
+          rc.level != null ? String(rc.level) : ""
+        );
+        e.lateRegLevel = rc.level ?? null;
+      }
     }
     // reg close override (flight suffix で dispatch)
     if (ov.regCloseByFlight && typeof ov.regCloseByFlight === "object") {

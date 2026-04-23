@@ -81,6 +81,10 @@
         ]
       }
     },
+    "#07": {
+      "_source": "Owner 指示 2026-04-24: PLO Heads-up の Reg.Close は 19:45 (Lv 不明、Round 形式 event のため level 概念なし)",
+      "regClose": { "time": "19:45", "level": null }
+    },
     "#33": {
       "_source": "HP用レートFIX - Colossus.pdf",
       "_notesSource": "legacy.jopt_gf2026_data.json — Owner 2026-04-23 指摘: extract.json の #33 notes に #05 3on3 Tag Team ルール混入。legacy に canonical Colossus notes があるため override",
