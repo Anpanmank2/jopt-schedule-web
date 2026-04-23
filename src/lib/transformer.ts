@@ -48,6 +48,7 @@ export interface TransformedEvent {
   gtdDisplay: string | null;
   isMainEvent: boolean;
   isSatellite: boolean;
+  seatRatio: string | null;
   reentry: string | null;
   day2Condition: string | null;
   ruleNotes: string | null;
@@ -266,7 +267,21 @@ function transformPrize(
 
 function normalizeNotes(notes: string[] | undefined): string[] | null {
   if (!Array.isArray(notes) || notes.length === 0) return null;
-  return notes;
+  // 行頭の全角スペース (Ideographic Space U+3000) を除去。
+  // 元データ (extract/legacy) でインデント目的に全角スペースが 1-2 個混入しており、
+  // UI 上で 1 文字ぶん字下がりに見える違和感を除去する。Owner 指摘 2026-04-24。
+  return notes.map((n) => (typeof n === "string" ? n.replace(/^\u3000+/, "") : n));
+}
+
+/**
+ * Satellite name の末尾 "at X/Y" から seat 付与率 (X/Y) を抽出。
+ * 例: "Satellite to NLH Good Game 500 at 1/12" → "1/12"。
+ * 1/12 は「12 エントリーにつき 1 Seat」の仕様。Owner 指示 2026-04-24。
+ */
+function extractSeatRatio(name: string | undefined, isSatellite: boolean): string | null {
+  if (!isSatellite || !name) return null;
+  const m = name.match(/at (\d+)\/(\d+)\b/);
+  return m ? `${m[1]}/${m[2]}` : null;
 }
 
 function extractGames(games: any): string[] | null {
@@ -402,6 +417,7 @@ export function transformTournament(
         gtdDisplay: null,
         isMainEvent,
         isSatellite,
+        seatRatio: extractSeatRatio(baseName, isSatellite),
         reentry: t.re_entry_note?.trim() || null,
         day2Condition: t.day2_advance_note?.trim() || null,
         ruleNotes: null,
@@ -448,6 +464,7 @@ export function transformTournament(
       gtdDisplay: null,
       isMainEvent,
       isSatellite,
+      seatRatio: extractSeatRatio(baseName, isSatellite),
       reentry: t.re_entry_note?.trim() || null,
       day2Condition: t.day2_advance_note?.trim() || null,
       ruleNotes: null,

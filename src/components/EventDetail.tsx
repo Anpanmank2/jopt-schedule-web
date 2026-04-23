@@ -90,6 +90,7 @@ export interface EventData {
   gtdDisplay: string | null;
   isMainEvent: boolean;
   isSatellite: boolean;
+  seatRatio: string | null;
   reentry: string | null;
   day2Condition: string | null;
   ruleNotes: string | null;
@@ -560,6 +561,18 @@ function InfoPanel({ event }: { event: EventData }) {
                 <span className="font-medium text-text-primary">{event.prize.satellitePrize}</span>
               </div>
             )}
+            {event.isSatellite && event.seatRatio && (() => {
+              const [num, den] = event.seatRatio.split("/");
+              if (!num || !den) return null;
+              return (
+                <div>
+                  <span className="text-text-muted">Seat 付与率: </span>
+                  <span className="font-medium text-text-primary">
+                    {den} エントリーにつき {num} Seat
+                  </span>
+                </div>
+              );
+            })()}
           </div>
         </div>
       )}
