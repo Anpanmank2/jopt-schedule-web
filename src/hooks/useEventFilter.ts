@@ -71,10 +71,18 @@ export function useEventFilter(
     const trimmed = query.trim();
     if (!trimmed) return base;
 
+    // 検索対象: name + eventNumber + gameType + gameCategory (Owner 決定 2026-04-22)
     const q = trimmed.normalize("NFKC").toLowerCase();
     return base.filter((e) => {
-      const name = (e.name ?? "") as string;
-      return name.normalize("NFKC").toLowerCase().includes(q);
+      const fields = [
+        e.name ?? "",
+        e.eventNumber ?? "",
+        e.gameType ?? "",
+        e.gameCategory ?? "",
+      ] as string[];
+      return fields.some((f) =>
+        String(f).normalize("NFKC").toLowerCase().includes(q)
+      );
     });
   }, [events, activeFilters, query]);
 

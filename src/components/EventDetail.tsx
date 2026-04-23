@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import PhotoPanel from "./PhotoPanel";
+import { EVENT_CONFIG } from "@/config/eventConfig";
 
 export interface Level {
   level?: number;
@@ -16,6 +17,7 @@ export interface Structure {
   columns: string[];
   lateRegCloseAfterLevel: number | null;
   day2EndLevel: number | null;
+  isMultiDay?: boolean;
   levels: Level[];
 }
 
@@ -25,6 +27,28 @@ export interface Prize {
   satellitePrize?: string | null;
 }
 
+export interface AwardEntry {
+  rank: string;
+  prize: string;
+}
+
+export interface AwardSection {
+  header: string;
+  subsectionLeft: string;
+  subsectionDay2: string;
+  allDay1: AwardEntry[];
+  day2: AwardEntry[];
+  description: string;
+}
+
+export interface AwardData {
+  chipLeader: AwardSection | null;
+  sprinter: AwardSection | null;
+  currencyNote: string | null;
+}
+
+// Legacy flat-list form (existing data.json). Kept for backward compat but
+// new transformer output uses AwardData instead.
 export interface Award {
   rank: string;
   amount: string;
@@ -55,6 +79,7 @@ export interface EventData {
   eventNumber: string;
   name: string;
   gameType: string;
+  gameCategory?: "Hold'em" | "Omaha" | "Other" | "Satellite";
   startTime: string;
   lateRegClose: string | null;
   lateRegLevel: number | null;
@@ -65,6 +90,7 @@ export interface EventData {
   gtdDisplay: string | null;
   isMainEvent: boolean;
   isSatellite: boolean;
+  seatRatio: string | null;
   reentry: string | null;
   day2Condition: string | null;
   ruleNotes: string | null;
@@ -74,27 +100,75 @@ export interface EventData {
   games: string[] | null;
   bounty: string | null;
   notes: string[] | null;
-  award: Award[] | null;
+  award: AwardData | null;
+  sponsorship?: { label: string; items: { rank: string; description: string }[] } | null;
   multiDay?: MultiDayInfo | null;
+  stackPerRound?: { label: string; rounds: string[] } | null;
 }
 
 export const BADGE_STYLES: Record<string, string> = {
+  // 具体 gameType → 専用色
   NLH: "bg-blue-700 text-white",
+  NL: "bg-blue-700 text-white",
   PLO: "bg-purple-600 text-white",
+  PLO8: "bg-purple-600 text-white",
+  PL: "bg-amber-600 text-white",
   MIX: "bg-amber-500 text-white",
+  "10-Game MIX": "bg-amber-500 text-white",
+  "Big Bet MIX": "bg-amber-500 text-white",
+  FL: "bg-amber-600 text-white",
+  FLO: "bg-amber-600 text-white",
+  FLO8: "bg-amber-600 text-white",
+  Stud: "bg-amber-600 text-white",
+  "PL Badugi": "bg-amber-600 text-white",
   SAT: "bg-sky-200 text-blue-900 border border-blue-300",
+  // gameCategory fallback (gameType が空のときの badge 色)
+  "Hold'em": "bg-blue-700 text-white",
+  Omaha: "bg-purple-600 text-white",
+  Other: "bg-amber-500 text-white",
+  Satellite: "bg-sky-200 text-blue-900 border border-blue-300",
 };
 
 export function gameTypeLabel(gameType: string): string {
   return gameType === "SAT" ? "Satellite" : gameType;
 }
 
+/**
+ * event 用 badge ラベル + スタイルを決定する。
+ * gameType が空 (extract から取れなかった特殊 event) の場合は gameCategory を表示。
+ * Owner 決定 (2026-04-22): ジュニア / STARS TABLE / FL&PL/NL 等で badge 白抜きを防ぐ。
+ */
+export function resolveEventBadge(event: EventData): { label: string; style: string } {
+  const keySpecific: string = event.gameType || "";
+  const keyCategory: string = event.gameCategory || "";
+  const hasSpecific = keySpecific.trim().length > 0;
+  const effectiveKey: string = hasSpecific ? keySpecific : keyCategory;
+  const style = BADGE_STYLES[effectiveKey] || "bg-blue-100 text-blue-900";
+  const label = hasSpecific ? gameTypeLabel(keySpecific) : keyCategory;
+  return { label, style };
+}
+
 export function formatNumber(n: number): string {
   return n.toLocaleString("en-US");
 }
 
+/**
+ * Prize の数値文字列を $ 付きカンマ区切り整数に整形する。
+ * Owner 指示 (2026-04-22): 通貨は $ 表記、小数点第一位繰上げ = ceil で整数化。
+ * 例: "13699.66" → "$13,700", "3206.58" → "$3,207"
+ * 入力が非数値・空なら原文を返す。
+ */
+export function formatPrize(raw: string | null | undefined): string | null {
+  if (raw == null) return null;
+  const trimmed = String(raw).trim();
+  if (!trimmed) return null;
+  const n = parseFloat(trimmed.replace(/,/g, ""));
+  if (!Number.isFinite(n)) return trimmed;
+  return `$${Math.ceil(n).toLocaleString("en-US")}`;
+}
+
 export function isHighRoller(buyIn: number | null): boolean {
-  return buyIn != null && buyIn >= 100000;
+  return buyIn != null && buyIn >= EVENT_CONFIG.HIGH_ROLLER_THRESHOLD;
 }
 
 export function isMultiDayEvent(event: EventData): boolean {
@@ -153,7 +227,8 @@ function getEventPhase(event: EventData): Phase | null {
   return null;
 }
 
-function formatBlinds(sb: number, bb: number): string {
+function formatBlinds(sb: number | null | undefined, bb: number | null | undefined): string {
+  if (sb == null || bb == null) return "—";
   return `${formatNumber(sb)}/${formatNumber(bb)}`;
 }
 
@@ -215,12 +290,15 @@ function StructureTable({
   while (trimmed.length && trimmed[0].break) trimmed.shift();
   while (trimmed.length && trimmed[trimmed.length - 1].break) trimmed.pop();
 
+  // Owner 指示 (2026-04-22): 単日トーナメントは 30 レベルまで記載。
+  // Multi-day は phase filter (Day 1/2/3) で Day 範囲に絞られるため phase 基準で cap 決定。
+  // 単日 cap は transformer 側でも slice 済 (SINGLE_DAY_LEVEL_CAP=30) のため二重保険。
   const maxLevels =
     phase && (phase.kind === "day2" || phase.kind === "day3")
       ? 50
       : isMultiDay
-      ? 30
-      : 20;
+      ? 50
+      : 30;
   const displayLevels = getLimitedLevels(trimmed, maxLevels);
   const bbCount = calcBBAtLevel(structure, startingChips);
   const day2StartLevel = multiDay?.day2StartLevel ?? null;
@@ -292,12 +370,23 @@ function StructureTable({
               structure.day2EndLevel != null && lv.level === structure.day2EndLevel;
             const isDay2Start =
               day2StartLevel != null && lv.level === day2StartLevel;
+            // Day 1 End: phase=day1 のとき最終 Level を amber でマーク (Owner 指示 2026-04-22)
+            const isDay1End =
+              phase?.kind === "day1" &&
+              phase.endLevel != null &&
+              lv.level === phase.endLevel;
+            // Day 3 Start: phase=day3 のとき開始 Level を amber でマーク
+            const isDay3Start =
+              phase?.kind === "day3" &&
+              day3StartLevel != null &&
+              lv.level === day3StartLevel;
 
-            const rowBg = isDay2Start
-              ? "bg-amber-50"
-              : isLateRegClose
-              ? "bg-blue-50"
-              : "";
+            const rowBg =
+              isDay1End || isDay2Start || isDay3Start
+                ? "bg-amber-50"
+                : isLateRegClose
+                ? "bg-blue-50"
+                : "";
 
             return (
               <tr
@@ -311,6 +400,11 @@ function StructureTable({
                       CLOSE {bbCount}BB
                     </span>
                   )}
+                  {isDay1End && (
+                    <span className="ml-1 text-[8px] text-amber-800 font-bold">
+                      D1 END
+                    </span>
+                  )}
                   {isDay2Start && (
                     <span className="ml-1 text-[8px] text-amber-700 font-bold">
                       D2 START
@@ -321,13 +415,18 @@ function StructureTable({
                       D2 END
                     </span>
                   )}
+                  {isDay3Start && (
+                    <span className="ml-1 text-[8px] text-amber-700 font-bold">
+                      D3 START
+                    </span>
+                  )}
                 </td>
                 <td className="py-1 px-1 text-center text-text-primary font-medium tabular-nums">
-                  {formatBlinds(lv.sb!, lv.bb!)}
+                  {formatBlinds(lv.sb, lv.bb)}
                 </td>
                 {hasAnte && (
                   <td className="py-1 px-1 text-center text-text-secondary tabular-nums">
-                    {formatNumber(lv.ante!)}
+                    {lv.ante != null ? formatNumber(lv.ante) : "—"}
                   </td>
                 )}
                 <td className="py-1 px-1 text-center text-text-secondary tabular-nums">
@@ -364,6 +463,50 @@ function StructureTable({
   );
 }
 
+function AwardSectionBlock({ section }: { section: AwardSection }) {
+  const hasAllDay1 = section.allDay1.length > 0;
+  const hasDay2 = section.day2.length > 0;
+  if (!hasAllDay1 && !hasDay2 && !section.description) return null;
+  return (
+    <div className="mb-1">
+      <p className="text-[11px] font-semibold text-blue-900">{section.header || "Award"}</p>
+      {hasAllDay1 && (
+        <div className="mt-0.5">
+          {section.subsectionLeft && (
+            <p className="text-[10px] text-text-muted">{section.subsectionLeft}</p>
+          )}
+          <div className="flex flex-wrap gap-x-3 gap-y-0.5">
+            {section.allDay1.map((a, i) => (
+              <span key={i} className="text-[11px] text-text-secondary">
+                {a.rank}: {a.prize}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+      {hasDay2 && (
+        <div className="mt-0.5">
+          {section.subsectionDay2 && (
+            <p className="text-[10px] text-text-muted">{section.subsectionDay2}</p>
+          )}
+          <div className="flex flex-wrap gap-x-3 gap-y-0.5">
+            {section.day2.map((a, i) => (
+              <span key={i} className="text-[11px] text-text-secondary">
+                {a.rank}: {a.prize}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+      {section.description && (
+        <p className="text-[10px] text-text-muted mt-0.5 leading-relaxed">
+          {section.description}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function InfoPanel({ event }: { event: EventData }) {
   const displayFee = event.feeDetail ? event.feeDetail.replace(/Â¥/g, "¥") : null;
   const md = event.multiDay ?? null;
@@ -385,7 +528,7 @@ function InfoPanel({ event }: { event: EventData }) {
             <span className="text-sm font-bold tabular-nums">{event.startTime}</span>
           </div>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-[10px] text-blue-200">Late Reg Close</span>
+            <span className="text-[10px] text-blue-200">Reg. Close</span>
             <span className="text-sm font-bold tabular-nums">
               {event.lateRegClose ?? "—"}
               {event.lateRegLevel != null ? ` (Lv.${event.lateRegLevel})` : ""}
@@ -403,7 +546,7 @@ function InfoPanel({ event }: { event: EventData }) {
             {event.prize.total && (
               <div>
                 <span className="text-text-muted">Total: </span>
-                <span className="font-semibold text-text-primary">{event.prize.total}</span>
+                <span className="font-semibold text-text-primary">{formatPrize(event.prize.total)}</span>
               </div>
             )}
             {event.prize.inPrize && (
@@ -418,6 +561,18 @@ function InfoPanel({ event }: { event: EventData }) {
                 <span className="font-medium text-text-primary">{event.prize.satellitePrize}</span>
               </div>
             )}
+            {event.isSatellite && event.seatRatio && (() => {
+              const [num, den] = event.seatRatio.split("/");
+              if (!num || !den) return null;
+              return (
+                <div>
+                  <span className="text-text-muted">Seat 付与率: </span>
+                  <span className="font-medium text-text-primary">
+                    {den} エントリーにつき {num} Seat
+                  </span>
+                </div>
+              );
+            })()}
           </div>
         </div>
       )}
@@ -522,18 +677,61 @@ function InfoPanel({ event }: { event: EventData }) {
         </div>
       )}
 
-      {event.award && event.award.length > 0 && (
+      {event.award &&
+        (event.award.chipLeader ||
+          event.award.sprinter ||
+          event.award.currencyNote) && (
+          <div>
+            <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
+              Special Award
+            </p>
+            {event.award.chipLeader && (
+              <AwardSectionBlock section={event.award.chipLeader} />
+            )}
+            {event.award.sprinter && (
+              <AwardSectionBlock section={event.award.sprinter} />
+            )}
+            {event.award.currencyNote && (
+              <p className="text-text-muted text-[10px] italic mt-1">
+                {event.award.currencyNote}
+              </p>
+            )}
+          </div>
+        )}
+
+      {event.sponsorship && event.sponsorship.items.length > 0 && (
         <div>
           <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-            Special Award
+            {event.sponsorship.label}
           </p>
-          <div className="flex flex-wrap gap-x-3 gap-y-0.5">
-            {event.award.map((a, i) => (
-              <span key={i} className="text-text-secondary">
-                {a.rank}: {a.amount}
-              </span>
+          <ul className="space-y-1">
+            {event.sponsorship.items.map((it, i) => (
+              <li key={i} className="text-text-secondary text-[11px] leading-relaxed">
+                <span className="font-semibold text-text-primary">{it.rank}</span>
+                {it.description && (
+                  <>
+                    <span className="mx-1">:</span>
+                    <span>{it.description}</span>
+                  </>
+                )}
+              </li>
             ))}
-          </div>
+          </ul>
+        </div>
+      )}
+
+      {event.stackPerRound && event.stackPerRound.rounds.length > 0 && (
+        <div>
+          <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
+            {event.stackPerRound.label}
+          </p>
+          <ul className="space-y-1">
+            {event.stackPerRound.rounds.map((r, i) => (
+              <li key={i} className="text-text-secondary text-[11px] leading-relaxed">
+                {r}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 

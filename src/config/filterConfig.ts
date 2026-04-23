@@ -18,17 +18,26 @@ type FilterCategory = {
 
 export type FilterConfig = Record<string, FilterCategory>;
 
+/**
+ * Filter カテゴリ定義。
+ * Owner 決定 (2026-04-22):
+ *   - NLH → Hold'em 表示
+ *   - PLO → Omaha 表示
+ *   - MIX → Other 表示
+ *   - Satellite はそのまま
+ * gameCategory (transformer 側で 4 バケットに正規化済) を key に使用。
+ */
 export const FILTER_CONFIG: FilterConfig = {
   game: {
     label: "Game",
-    key: "gameType",
+    key: "gameCategory",
     type: "exact",
     options: [
       { label: "All", value: "all" },
-      { label: "NLH", value: "NLH" },
-      { label: "PLO", value: "PLO" },
-      { label: "MIX", value: "MIX" },
-      { label: "Satellite", value: "SAT" },
+      { label: "Hold'em", value: "Hold'em" },
+      { label: "Omaha", value: "Omaha" },
+      { label: "Other", value: "Other" },
+      { label: "Satellite", value: "Satellite" },
     ],
     default: "all",
   },

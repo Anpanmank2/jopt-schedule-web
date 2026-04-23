@@ -2,17 +2,16 @@
 
 import { useState } from "react";
 import EventDetail, {
-  BADGE_STYLES,
   formatNumber,
-  gameTypeLabel,
   isHighRoller,
+  resolveEventBadge,
   type EventData,
 } from "./EventDetail";
 
 export default function EventCard({ event }: { event: EventData }) {
   const [open, setOpen] = useState(false);
 
-  const badgeStyle = BADGE_STYLES[event.gameType] || "bg-blue-100 text-blue-900";
+  const badge = resolveEventBadge(event);
   const highRoller = isHighRoller(event.buyIn);
 
   const borderColor = event.isMainEvent
@@ -43,9 +42,9 @@ export default function EventCard({ event }: { event: EventData }) {
             {event.eventNumber}
           </span>
           <span
-            className={`inline-block text-[9px] font-bold px-1.5 py-0.5 rounded ${badgeStyle}`}
+            className={`inline-block text-[9px] font-bold px-1.5 py-0.5 rounded ${badge.style}`}
           >
-            {gameTypeLabel(event.gameType)}
+            {badge.label}
           </span>
           {event.isMainEvent && (
             <span className="inline-block bg-blue-900 text-white text-[8px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
@@ -100,7 +99,7 @@ export default function EventCard({ event }: { event: EventData }) {
           </span>
           {event.lateRegClose && (
             <span className="tabular-nums">
-              <span className="text-[9px] uppercase tracking-wider mr-1">Close</span>
+              <span className="text-[9px] uppercase tracking-wider mr-1">Reg. Close</span>
               {event.lateRegClose}
             </span>
           )}

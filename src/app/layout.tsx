@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { EVENT_CONFIG } from "@/config/eventConfig";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -10,9 +11,8 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "Japan Open Poker Tour 2026 (JOPT) | Grand Final Schedule",
-  description:
-    "Japan Open Poker Tour 2026 Grand Final のトーナメントスケジュール（2026-04-24〜05-06 / ベルサール高田馬場）",
+  title: `${EVENT_CONFIG.organizer} ${EVENT_CONFIG.year} (JOPT) | Grand Final Schedule`,
+  description: `${EVENT_CONFIG.organizer} ${EVENT_CONFIG.year} Grand Final のトーナメントスケジュール（${EVENT_CONFIG.dateRangeVenue}）`,
 };
 
 export const viewport: Viewport = {

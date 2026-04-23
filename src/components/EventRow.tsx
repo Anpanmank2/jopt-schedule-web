@@ -2,16 +2,15 @@
 
 import { useState } from "react";
 import EventDetail, {
-  BADGE_STYLES,
-  gameTypeLabel,
   isHighRoller,
+  resolveEventBadge,
   type EventData,
 } from "./EventDetail";
 
 export default function EventRow({ event }: { event: EventData }) {
   const [open, setOpen] = useState(false);
 
-  const badgeStyle = BADGE_STYLES[event.gameType] || "bg-blue-100 text-blue-900";
+  const badge = resolveEventBadge(event);
   const displayBuyIn = event.buyInDisplay
     ? event.buyInDisplay.replace(/Â¥/g, "¥")
     : null;
@@ -49,9 +48,9 @@ export default function EventRow({ event }: { event: EventData }) {
         )}
 
         <span
-          className={`shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded ${badgeStyle}`}
+          className={`shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded ${badge.style}`}
         >
-          {gameTypeLabel(event.gameType)}
+          {badge.label}
         </span>
 
         {event.isMainEvent && (

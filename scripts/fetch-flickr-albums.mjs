@@ -9,7 +9,8 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.resolve(__dirname, "..", "src/data/flickr-albums.json");
 
-const USER_ID = "190979093@N07";
+// Flickr user id: env override (NEXT_PUBLIC_FLICKR_USER_ID) で上書き可
+const USER_ID = (process.env.NEXT_PUBLIC_FLICKR_USER_ID || "190979093@N07").trim();
 const ALBUMS_URL = `https://www.flickr.com/photos/${USER_ID}/albums/`;
 
 const EMPTY = { fetchedAt: new Date().toISOString(), albums: [] };

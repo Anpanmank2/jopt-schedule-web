@@ -1,12 +1,13 @@
 "use client";
 import { FILTER_CONFIG } from "@/config/filterConfig";
 
+// gameCategory アクティブ色 (Owner 指示 2026-04-22: NLH→Hold'em / PLO→Omaha / MIX→Other)
 const GAME_ACTIVE_STYLES: Record<string, string> = {
   all: "bg-blue-900 text-white border-blue-900",
-  NLH: "bg-blue-700 text-white border-blue-700",
-  PLO: "bg-purple-600 text-white border-purple-600",
-  MIX: "bg-amber-500 text-white border-amber-500",
-  SAT: "bg-sky-200 text-blue-900 border-blue-300",
+  "Hold'em": "bg-blue-700 text-white border-blue-700",
+  Omaha: "bg-purple-600 text-white border-purple-600",
+  Other: "bg-amber-500 text-white border-amber-500",
+  Satellite: "bg-sky-200 text-blue-900 border-blue-300",
 };
 
 interface EventFilterProps {

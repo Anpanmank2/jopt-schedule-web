@@ -2,8 +2,9 @@
 
 import type { EventData } from "./EventDetail";
 import flickrAlbums from "@/data/flickr-albums.json";
+import { EVENT_CONFIG } from "@/config/eventConfig";
 
-const FLICKR_USER_ID = "190979093@N07";
+const FLICKR_USER_ID = EVENT_CONFIG.flickrUserId;
 const FLICKR_ALBUMS_ROOT = `https://www.flickr.com/photos/${FLICKR_USER_ID}/albums/`;
 
 type FlickrAlbumEntry = {
