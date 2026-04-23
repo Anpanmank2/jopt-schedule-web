@@ -400,13 +400,14 @@ export function transformTournament(
 ): TransformedEvent[] {
   const { currentMultiDayMap = {}, year = EVENT_CONFIG.year } = opts;
 
-  // メタタブ skip (Owner 指示 2026-04-24): number 空かつ event_title / base_title 空の
-  // tab はテンプレート / 設定タブ (例: 2Day4Flight, アンティなし, FL&Stud, FL&NL,
-  // FL&PL/NL, PL/NL, Stud, サテ) で event ではない。schedules を持つと UI に紛れ込み
-  // (例 7/21 という GF 範囲外の日付セクションが追加されてしまう) ため早期 return。
-  // event_title === "#" のような placeholder も同様に除外。
+  // メタタブ skip (Owner 指示 2026-04-24): number 空の tab はテンプレート / 設定タブ
+  // で event ではない (例: 2Day4Flight, アンティなし, FL&Stud, FL&NL, FL&PL/NL, PL/NL,
+  // Stud, サテ)。schedules を持つと UI に紛れ込み 7/21 等のゴースト日付を生む。
+  // 判定強化: event_title が空 / "#" placeholder / 日付のみ (例 "05.02 Sat.") の
+  // いずれかなら metadata tab として早期 return。
   const titleStr = (t.event_title || t.base_title || "").trim();
-  const isMetadataTab = !t.number && (!titleStr || titleStr === "#");
+  const isDateOnlyTitle = /^\d{1,2}\.\d{1,2}(\s+[A-Za-z]{3}\.?)?$/.test(titleStr);
+  const isMetadataTab = !t.number && (!titleStr || titleStr === "#" || isDateOnlyTitle);
   if (isMetadataTab) return [];
 
   const isMainEvent = deriveIsMainEvent(t);
@@ -737,14 +738,16 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     }
   }
 
-  // Re-entry と Notes の重複除去 (Owner 指示 2026-04-24):
-  // Sheets の `re_entry_note` 列と `notes` 配列の同一文字列が両方入っている event
-  // (Tag Team 系 / Main Event 等 14 件) で UI で 2 重表示されていた問題を解消。
-  // re_entry_note が notes 内に完全一致で存在するなら、reentry 側を null にして
-  // notes 側 (より多情報) を唯一の出典とする。
+  // Re-entry / Day2Condition と Notes の重複除去 (Owner 指示 2026-04-24):
+  // Sheets の `re_entry_note` / `day2_advance_note` と `notes` に同一文字列が両方
+  // 入っている event (Tag Team / Main / Mini Main 等) で UI で 2 重表示されていた
+  // 問題を解消。補足 field 側を null にして notes を唯一の出典とする。
   for (const e of events) {
     if (e.reentry && Array.isArray(e.notes) && e.notes.includes(e.reentry)) {
       e.reentry = null;
+    }
+    if (e.day2Condition && Array.isArray(e.notes) && e.notes.includes(e.day2Condition)) {
+      e.day2Condition = null;
     }
   }
 
