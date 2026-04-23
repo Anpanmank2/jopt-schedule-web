@@ -100,6 +100,7 @@ export interface EventData {
   bounty: string | null;
   notes: string[] | null;
   award: AwardData | null;
+  sponsorship?: { label: string; items: { rank: string; description: string }[] } | null;
   multiDay?: MultiDayInfo | null;
   stackPerRound?: { label: string; rounds: string[] } | null;
 }
@@ -683,6 +684,27 @@ function InfoPanel({ event }: { event: EventData }) {
             )}
           </div>
         )}
+
+      {event.sponsorship && event.sponsorship.items.length > 0 && (
+        <div>
+          <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
+            {event.sponsorship.label}
+          </p>
+          <ul className="space-y-1">
+            {event.sponsorship.items.map((it, i) => (
+              <li key={i} className="text-text-secondary text-[11px] leading-relaxed">
+                <span className="font-semibold text-text-primary">{it.rank}</span>
+                {it.description && (
+                  <>
+                    <span className="mx-1">:</span>
+                    <span>{it.description}</span>
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {event.stackPerRound && event.stackPerRound.rounds.length > 0 && (
         <div>

@@ -13,6 +13,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { EVENT_CONFIG } from "@/config/eventConfig";
+import pdfOverrides from "@/data/pdf-overrides.json";
 
 export interface TransformedLevel {
   level?: number;
@@ -57,6 +58,7 @@ export interface TransformedEvent {
   bounty: string | null;
   notes: string[] | null;
   award: AwardData | null;
+  sponsorship: { label: string; items: { rank: string; description: string }[] } | null;
   multiDay: Record<string, unknown> | null;
   stackPerRound: { label: string; rounds: string[] } | null;
 }
@@ -272,6 +274,23 @@ function extractGames(games: any): string[] | null {
   return games.items;
 }
 
+function transformSponsorship(
+  sp: any
+): { label: string; items: { rank: string; description: string }[] } | null {
+  if (!sp) return null;
+  const label: string = (sp.label || "").replace(/Sponsoredship/i, "Sponsorship").trim();
+  const items = Array.isArray(sp.items)
+    ? sp.items
+        .map((it: any) => ({
+          rank: String(it.rank || "").trim(),
+          description: String(it.description || "").trim(),
+        }))
+        .filter((it: any) => it.rank || it.description)
+    : [];
+  if (!label && items.length === 0) return null;
+  return { label: label || "Sponsorship", items };
+}
+
 function transformStackPerRound(spr: any): { label: string; rounds: string[] } | null {
   if (!spr) return null;
   const rounds: string[] = Array.isArray(spr.rounds) ? spr.rounds.filter((r: any) => typeof r === "string" && r.trim()) : [];
@@ -397,6 +416,7 @@ export function transformTournament(
         bounty: null,
         notes: normalizeNotes(t.notes),
         award: transformAward(t.award),
+        sponsorship: transformSponsorship(t.sponsorship),
         multiDay,
         stackPerRound: transformStackPerRound(t.stack_per_round),
       },
@@ -442,6 +462,7 @@ export function transformTournament(
       bounty: null,
       notes: normalizeNotes(t.notes),
       award: transformAward(t.award),
+      sponsorship: transformSponsorship(t.sponsorship),
       multiDay,
       stackPerRound: transformStackPerRound(t.stack_per_round),
     };
@@ -596,23 +617,53 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           e.notes = legacyN;
         }
       }
-      // lateRegClose fallback (extract の reg_close_time 欠落時に legacy 値を採用)
-      if (!e.lateRegClose) {
-        const lrcKey = `${e.eventNumber}@${e.startTime || ""}`;
-        const legacyLRC = legacyLateRegClose.get(lrcKey);
-        if (legacyLRC) {
-          e.lateRegClose = legacyLRC.lateRegClose;
-          if (e.lateRegLevel == null && legacyLRC.lateRegLevel != null) {
-            e.lateRegLevel = legacyLRC.lateRegLevel;
-          }
-        }
-      }
+      // lateRegClose の legacy fallback は撤去 (Owner 指示 2026-04-23):
+      // legacy data.json は 2026-04-09 snapshot で誤値が残っている。
+      // extract null のとき legacy を持ち上げると誤値が表示されるため撤去。
+      // 正しい値は PDF override (下記) or extract から供給される。
+      // 参考: 以前の実装は #07 PLO HU を 20:10、#62 3on3 を 20:20 として復元していたが、
+      // Owner により両方とも誤値と判明。
+      void legacyLateRegClose;
       // day2EndLevel enrichment: meta.multiDayEvents から structure へ流す
       // (EventDetail.tsx の isDay2End は structure.day2EndLevel を参照する)
       if (e.structure && e.structure.day2EndLevel == null) {
         const mde = currentData?.meta?.multiDayEvents?.[e.eventNumber];
         if (mde?.day2EndLevel != null) {
           e.structure = { ...e.structure, day2EndLevel: mde.day2EndLevel };
+        }
+      }
+    }
+  }
+
+  // PDF override 適用 (Owner 指示 2026-04-23):
+  // src/data/pdf-overrides.json に転記した正式 PDF 値 (structure / reg close) を
+  // extract/legacy より優先して event に反映。Sheets 側の誤値や Day 2 未登録を上書き。
+  const pdfEvents: Record<string, any> = (pdfOverrides as any).events || {};
+  for (const e of events) {
+    const ov = pdfEvents[e.eventNumber];
+    if (!ov) continue;
+    // structure override (Day 1+2 通しの levels)
+    if (ov.structure && Array.isArray(ov.structure.levels)) {
+      e.structure = {
+        columns: ov.structure.columns || ["Level", "Blinds", "BB Ante", "Minutes"],
+        lateRegCloseAfterLevel: ov.structure.lateRegCloseAfterLevel ?? null,
+        day2EndLevel: ov.structure.day2EndLevel ?? null,
+        isMultiDay: true,
+        levels: ov.structure.levels,
+      };
+    }
+    // reg close override (flight suffix で dispatch)
+    if (ov.regCloseByFlight && typeof ov.regCloseByFlight === "object") {
+      const flightMatch = (e.name || "").match(/\/\s*(Day\s*\d+[A-Z]?(?:\s*Turbo)?|Day\s*\d+)\s*$/i);
+      const flightKey = flightMatch ? flightMatch[1].trim() : null;
+      if (flightKey && flightKey in ov.regCloseByFlight) {
+        const rc = ov.regCloseByFlight[flightKey];
+        if (rc && typeof rc === "object") {
+          e.lateRegClose = buildLateRegClose(rc.time, rc.level != null ? String(rc.level) : "");
+          e.lateRegLevel = rc.level ?? null;
+        } else if (rc === null) {
+          e.lateRegClose = null;
+          e.lateRegLevel = null;
         }
       }
     }
