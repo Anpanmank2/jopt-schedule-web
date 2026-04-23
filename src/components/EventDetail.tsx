@@ -695,9 +695,10 @@ function InfoPanel({ event }: { event: EventData }) {
       )}
 
       {(() => {
-        // Owner 指示 2026-04-24: Special Award header は **中身がある時のみ** 表示する。
-        // `chipLeader` / `sprinter` object が存在しても中身 (allDay1/day2/description)
-        // が全部空なら header も描画しない。
+        // Owner 指示 2026-04-25: ラベル定義整理
+        //   award          = マルチデイの chipLeader/sprinter (本セクション)
+        //   special award  = 協賛トナメの協賛品 (下の sponsorship セクション)
+        // 中身 (allDay1/day2/description) が全部空ならヘッダーごと非表示。
         const hasSection = (s: AwardSection | null | undefined) =>
           !!s && (s.allDay1.length > 0 || s.day2.length > 0 || s.description.trim().length > 0);
         const hasChip = hasSection(event.award?.chipLeader);
@@ -707,7 +708,7 @@ function InfoPanel({ event }: { event: EventData }) {
         return (
           <div>
             <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-              Special Award
+              Award
             </p>
             {hasChip && (
               <AwardSectionBlock section={event.award!.chipLeader!} />
@@ -727,7 +728,7 @@ function InfoPanel({ event }: { event: EventData }) {
       {event.sponsorship && event.sponsorship.items.length > 0 && (
         <div>
           <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-            {event.sponsorship.label}
+            Special Award
           </p>
           <ul className="space-y-1">
             {event.sponsorship.items.map((it, i) => (
