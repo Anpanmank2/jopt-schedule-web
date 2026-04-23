@@ -769,6 +769,16 @@ export function transform(extract: any, currentData: any = null): TransformedDat
         }
       }
     }
+    // award override (Owner 指示 2026-04-25): Apps Script の sprinter 抽出漏れ
+    // に対する手動上書き。chipLeader / sprinter / currencyNote を section 別に
+    // partial merge する。camelCase (transformer 後の形) で記述することに注意。
+    if (ov.award && typeof ov.award === "object") {
+      const cur = e.award || { chipLeader: null, sprinter: null, currencyNote: null };
+      if (ov.award.chipLeader !== undefined) cur.chipLeader = ov.award.chipLeader;
+      if (ov.award.sprinter !== undefined) cur.sprinter = ov.award.sprinter;
+      if (ov.award.currencyNote !== undefined) cur.currencyNote = ov.award.currencyNote;
+      e.award = cur;
+    }
   }
 
   // Re-entry / Day2Condition と Notes の重複除去 (Owner 指示 2026-04-24):

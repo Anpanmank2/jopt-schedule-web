@@ -79,6 +79,19 @@
           { "level": 49, "sb": 10000000, "bb": 15000000, "ante": 15000000, "time": 30 },
           { "level": 50, "sb": 10000000, "bb": 20000000, "ante": 20000000, "time": 30 }
         ]
+      },
+      "award": {
+        "_note": "Owner 指示 2026-04-25: Apps Script の sprinter 抽出漏れを手動上書き。Sheets 修正後に削除可",
+        "sprinter": {
+          "header": "Sprinter",
+          "subsectionLeft": "Each Day 1",
+          "subsectionDay2": "",
+          "allDay1": [
+            { "rank": "1st", "prize": "100,000 COIN" }
+          ],
+          "day2": [],
+          "description": "Sprinter賞はDay 1A,B,C,D Turboにて40万点にいち早く到達したプレイヤーに授与。"
+        }
       }
     },
     "#07": {
