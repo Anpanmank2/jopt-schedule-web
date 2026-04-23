@@ -3,7 +3,7 @@
     "source": "Players Guide / JOPT 2026 Grand Final",
     "tournaments_count": 256,
     "day_entries_count": 271,
-    "extracted_at": "2026-04-23T10:58:15.601Z"
+    "extracted_at": "2026-04-23T11:11:55.682Z"
   },
   "tournaments": [
     {
@@ -15799,7 +15799,11 @@
           "1,FL 2-7 Triple Draw",
           "2,FL Badugi",
           "3,FL A-5 Triple Draw",
-          "4,FL BaDEUCEy"
+          "4,FL BaDEUCEy",
+          "5,FL BadACEy",
+          "6,FL Archie",
+          "7,FL 5-Card Draw Hi",
+          "8,FL Hidugi"
         ],
         "rotation_note": ""
       },
@@ -26658,7 +26662,11 @@
           "1,NL Hold’em",
           "2,FL Seven Card Stud",
           "3,FL Omaha Hi-Lo 8 or Better",
-          "4,FL Razz"
+          "4,FL Razz",
+          "5,PL Omaha",
+          "6,FL Hold’em",
+          "7,FL Seven Card Stud Hi-Lo 8 or Better",
+          "8,FL 2-7 Triple Draw"
         ],
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
@@ -87190,10 +87198,16 @@
       "games": {
         "items": [
           "1, NL Hold’em",
+          "1,000",
           "2, FL Razz",
           "3, FL Hold’em",
           "4, FL Badugi",
-          "5, FL Seven Card Stud"
+          "5, FL Seven Card Stud",
+          "6, NL 2-7 Single Draw",
+          "7, FL Omaha Hi/Lo 8 or Better",
+          "8, PL Omaha",
+          "9, FL 2-7 Triple Draw",
+          "10, FL Seven Card Stud Hi/Lo 8 or Better"
         ],
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
@@ -164229,7 +164243,10 @@
           "1, FL 2-7 Triple Draw",
           "2, FL Badugi",
           "3, NL 2-7 Single Draw",
-          "4, FL A-5 Triple Draw"
+          "4, FL A-5 Triple Draw",
+          "5, FL 5-Card Draw Hi",
+          "6, FL Archie",
+          "7, PL Badugi"
         ],
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
@@ -176111,7 +176128,9 @@
         "items": [
           "1,FL Drawmaha Hi",
           "2,FL Drawmaha 2-7",
-          "3,FL Drawmaha Badugi"
+          "3,FL Drawmaha Badugi",
+          "4,FL Drawmaha 0",
+          "5,FL Drawmaha 49"
         ],
         "rotation_note": ""
       },
@@ -250114,10 +250133,16 @@
       "games": {
         "items": [
           "1, NL Hold’em",
+          "1,000",
           "2, FL Razz",
           "3, FL Hold’em",
           "4, FL Badugi",
-          "5, FL Seven Card Stud"
+          "5, FL Seven Card Stud",
+          "6, NL 2-7 Single Draw",
+          "7, FL Omaha Hi/Lo 8 or Better",
+          "8, PL Omaha",
+          "9, FL 2-7 Triple Draw",
+          "10, FL Seven Card Stud Hi/Lo 8 or Better"
         ],
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
@@ -291931,7 +291956,10 @@
           "1, PL Big-O",
           "2, NL Hold’em",
           "3, NL 2-7 Single Draw",
-          "4, PL Omaha Hi/Lo 8 or better"
+          "4, PL Omaha Hi/Lo 8 or better",
+          "5, NL 5-Card Draw Hi",
+          "6, PL Omaha",
+          "7, PL 2-7 Triple Draw"
         ],
         "rotation_note": "play in the order mentioned above every 6 hands."
       },

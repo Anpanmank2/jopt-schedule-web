@@ -335,9 +335,18 @@ function extractGames(games: any): string[] | null {
   // Sheets セルが「1,FL 2-7 Triple Draw」「2,FL Badugi」のように先頭に順序番号
   // ("N,") を含む形式で入っている。UI に "1,FL ..." と表示されると違和感があるため
   // transformer 側で先頭の `数字,(空白)*` を除去する。Owner 指示 2026-04-24。
-  return games.items.map((g: any) =>
-    typeof g === "string" ? g.replace(/^\s*\d+\s*,\s*/, "") : g
-  );
+  //
+  // さらに 2026-04-25: Sheets のセルズレで "1,000" 等の「数字とカンマのみ」の
+  // ゴースト item が混入するケースがある (#46 / #131 で実例)。N, prefix 除去後の
+  // 残りが空 or 数字のみなら item 自体を filter して UI 混乱を防ぐ。
+  const normalized: string[] = games.items
+    .map((g: any) =>
+      typeof g === "string" ? g.replace(/^\s*\d+\s*,\s*/, "").trim() : g
+    )
+    .filter(
+      (g: any) => typeof g === "string" && g.length > 0 && !/^[\d,\s]+$/.test(g)
+    );
+  return normalized.length > 0 ? normalized : null;
 }
 
 function transformSponsorship(
