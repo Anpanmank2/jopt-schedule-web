@@ -531,7 +531,6 @@ function InfoPanel({ event }: { event: EventData }) {
             <span className="text-[10px] text-blue-200">Reg. Close</span>
             <span className="text-sm font-bold tabular-nums">
               {event.lateRegClose ?? "—"}
-              {event.lateRegLevel != null ? ` (Lv.${event.lateRegLevel})` : ""}
             </span>
           </div>
         </div>
