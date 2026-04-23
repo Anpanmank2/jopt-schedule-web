@@ -3,7 +3,7 @@
     "source": "Players Guide / JOPT 2026 Grand Final",
     "tournaments_count": 256,
     "day_entries_count": 271,
-    "extracted_at": "2026-04-23T07:01:43.708Z"
+    "extracted_at": "2026-04-23T07:18:20.065Z"
   },
   "tournaments": [
     {
@@ -143037,10 +143037,10 @@
     },
     {
       "tab_name": "GG10004",
-      "event_title": "ｐ",
-      "number": "",
-      "game_type": "",
-      "base_title": "ｐ",
+      "event_title": "#77 NLH Good Game 1000",
+      "number": "#77",
+      "game_type": "NLH",
+      "base_title": "Good Game 1000",
       "is_multi_day": false,
       "chips": "100,000 Chips",
       "schedules": [
@@ -144970,9 +144970,9 @@
       "day_entries": [
         {
           "day_name": "Day 1",
-          "display_title": "ｐ",
-          "number": "",
-          "game_type": "",
+          "display_title": "NLH Good Game 1000",
+          "number": "#77",
+          "game_type": "NLH",
           "start_date": "04.29 Wed.",
           "end_date": "04.29 Wed.",
           "start_time": "19:00",
@@ -366819,9 +366819,9 @@
     },
     {
       "day_name": "Day 1",
-      "display_title": "ｐ",
-      "number": "",
-      "game_type": "",
+      "display_title": "NLH Good Game 1000",
+      "number": "#77",
+      "game_type": "NLH",
       "start_date": "04.29 Wed.",
       "end_date": "04.29 Wed.",
       "start_time": "19:00",
@@ -366834,7 +366834,7 @@
       "end_of_day_notes": [],
       "source_row": 6,
       "tab_name": "GG10004",
-      "tournament_number": ""
+      "tournament_number": "#77"
     },
     {
       "day_name": "Day 1",
