@@ -3,7 +3,7 @@
     "source": "Players Guide / JOPT 2026 Grand Final",
     "tournaments_count": 256,
     "day_entries_count": 271,
-    "extracted_at": "2026-04-23T07:18:20.065Z"
+    "extracted_at": "2026-04-23T09:47:12.313Z"
   },
   "tournaments": [
     {
@@ -1369,6 +1369,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -3331,6 +3335,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -4395,6 +4403,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -6055,6 +6067,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -7103,6 +7119,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -9072,6 +9092,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -10871,6 +10895,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -12357,6 +12385,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -14216,6 +14248,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -15768,6 +15804,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -17425,6 +17465,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -19016,6 +19060,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -20447,6 +20495,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -22041,6 +22093,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -23197,6 +23253,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -24245,6 +24305,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -26151,6 +26215,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -26595,6 +26663,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -28180,6 +28252,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -30034,6 +30110,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -31082,6 +31162,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -33040,6 +33124,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -34533,6 +34621,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -36440,8 +36532,24 @@
         "rotation_note": ""
       },
       "sponsorship": {
-        "label": "",
-        "items": []
+        "label": "Sponsored",
+        "items": [
+          {
+            "rank": "1st-3rd",
+            "description": "1 Month Free Pran",
+            "row": 24
+          }
+        ]
+      },
+      "bounty": {
+        "label": "Bounty",
+        "items": [
+          {
+            "rank": "1 Bounty",
+            "description": "10,000 COIN",
+            "row": 21
+          }
+        ]
       },
       "stack_per_round": {
         "label": "",
@@ -38398,6 +38506,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -39551,6 +39663,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -41336,6 +41452,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -43190,6 +43310,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -44673,6 +44797,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -46475,6 +46603,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -48066,6 +48198,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -49549,6 +49685,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -51143,6 +51283,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -52529,6 +52673,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -53577,6 +53725,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -54923,6 +55075,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -56835,6 +56991,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -57355,6 +57515,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -58701,6 +58865,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -60336,6 +60504,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -62814,6 +62986,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -63964,6 +64140,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -65922,6 +66102,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -67568,6 +67752,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -69422,6 +69610,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -71054,6 +71246,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -72853,6 +73049,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -74707,6 +74907,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -76189,6 +76393,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -77783,6 +77991,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -79374,6 +79586,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -80422,6 +80638,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -82334,6 +82554,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -84131,6 +84355,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -86037,6 +86265,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -86966,6 +87198,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -88068,6 +88304,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -89978,6 +90218,16 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "Bounty",
+        "items": [
+          {
+            "rank": "1 Bounty",
+            "description": "10,000 COIN",
+            "row": 21
+          }
+        ]
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -91777,6 +92027,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -93364,6 +93618,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -95270,6 +95528,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -97173,6 +97435,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -98764,6 +99030,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -100246,6 +100516,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -101845,6 +102119,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -103436,6 +103714,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -104484,6 +104766,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -106390,6 +106676,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -108290,6 +108580,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -110196,6 +110490,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -111244,6 +111542,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -113202,6 +113504,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -113723,6 +114029,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands"
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -115635,6 +115945,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -117386,6 +117700,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "Stack Per Round(Starting Blinds)",
         "rounds": [
@@ -119023,6 +119341,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -120877,6 +121199,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -122676,6 +123002,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -124416,6 +124746,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -126007,6 +126341,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -127439,6 +127777,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -129033,6 +129375,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -130081,6 +130427,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -131987,6 +132337,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -133017,6 +133371,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -134692,6 +135050,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -136546,6 +136908,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -137594,6 +137960,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -139553,6 +139923,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -141153,6 +141527,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -143004,6 +143382,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -144962,6 +145344,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -146595,6 +146981,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -148455,6 +148845,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -150254,6 +150648,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -151686,6 +152084,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -153280,6 +153682,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -154433,6 +154839,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -156027,6 +156437,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -157075,6 +157489,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -158997,6 +159415,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -160900,6 +161322,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -161422,6 +161848,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands"
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -163276,6 +163706,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -163800,6 +164234,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -164851,6 +165289,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -166809,6 +167251,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -166951,6 +167397,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -168861,6 +169311,16 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "Bounty",
+        "items": [
+          {
+            "rank": "1 Bounty",
+            "description": "6,000 COIN",
+            "row": 21
+          }
+        ]
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -170443,6 +170903,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -172297,6 +172761,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -174096,6 +174564,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -175644,6 +176116,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -177238,6 +177714,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -178721,6 +179201,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -180315,6 +180799,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -181471,6 +181959,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -182519,6 +183011,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -184422,6 +184918,21 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "Sponsored",
+        "items": [
+          {
+            "rank": "1st-3rd",
+            "description": "TLPT Voucher $1,000",
+            "row": 21
+          },
+          {
+            "rank": "4th-9th",
+            "description": "TLPT Voucher $550",
+            "row": 22
+          }
+        ]
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -186062,6 +186573,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -187968,6 +188483,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -189664,6 +190183,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -190712,6 +191235,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -192670,6 +193197,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -193720,6 +194251,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -194880,6 +195415,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -196783,6 +197322,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -198762,6 +199305,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -200545,6 +201092,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -202347,6 +202898,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -203993,6 +204548,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -205847,6 +206406,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -207495,6 +208058,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -209131,6 +209698,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -210722,6 +211293,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -212154,6 +212729,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -213748,6 +214327,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -214957,6 +215540,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -216005,6 +216592,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -217911,6 +218502,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -218354,6 +218949,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -219680,6 +220279,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -221534,6 +222137,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -222582,6 +223189,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -224562,6 +225173,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -226144,6 +226759,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -227998,6 +228617,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -229046,6 +229669,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -231004,6 +231631,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -231524,6 +232155,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands"
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -233384,6 +234019,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -235235,6 +235874,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -236817,6 +237460,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -238619,6 +239266,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -240206,6 +240857,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -241800,6 +242455,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -243391,6 +244050,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -244828,6 +245491,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -245876,6 +246543,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -247788,6 +248459,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -248998,6 +249673,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -249443,6 +250122,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -251297,6 +251980,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -252986,6 +253673,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "Stack Per Round(Starting Blinds)",
         "rounds": [
@@ -254580,6 +255271,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -255628,6 +256323,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -257583,6 +258282,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -259561,6 +260264,41 @@
           }
         ]
       },
+      "bounty": {
+        "label": "Bounty",
+        "items": [
+          {
+            "rank": "1st  prize",
+            "description": "1,000,000 COIN",
+            "row": 21
+          },
+          {
+            "rank": "2nd  prize",
+            "description": "300,000 COIN ×2",
+            "row": 22
+          },
+          {
+            "rank": "3rd  prize",
+            "description": "200,000 COIN ×5",
+            "row": 23
+          },
+          {
+            "rank": "4th  prize",
+            "description": "100,000 COIN ×11",
+            "row": 24
+          },
+          {
+            "rank": "5th  prize",
+            "description": "40,000 COIN ×29",
+            "row": 25
+          },
+          {
+            "rank": "6th  prize",
+            "description": "10,000 COIN ×47",
+            "row": 26
+          }
+        ]
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -261144,6 +261882,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -263108,6 +263850,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -264959,6 +265705,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -266758,6 +267508,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -268340,6 +269094,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -269934,6 +270692,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -271365,6 +272127,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -272959,6 +273725,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -274115,6 +274885,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -275163,6 +275937,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -276228,6 +277006,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -278217,6 +278999,10 @@
             "row": 23
           }
         ]
+      },
+      "bounty": {
+        "label": "",
+        "items": []
       },
       "stack_per_round": {
         "label": "",
@@ -280269,6 +281055,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -280845,6 +281635,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands"
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -282699,6 +283493,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -283903,6 +284701,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -285888,6 +286690,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -287530,6 +288336,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -289384,6 +290194,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -291122,6 +291936,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -293083,6 +293901,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -294940,6 +295762,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -296791,6 +297617,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -298274,6 +299104,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -299868,6 +300702,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -301350,6 +302188,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -302944,6 +303786,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -303992,6 +304838,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -305898,6 +306748,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -307749,6 +308603,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -308269,6 +309127,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -309320,6 +310182,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -311278,6 +312144,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -313185,6 +314055,16 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "Bounty",
+        "items": [
+          {
+            "rank": "1 Bounty",
+            "description": "30,000 COIN",
+            "row": 21
+          }
+        ]
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -314917,6 +315797,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -316880,6 +317764,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -318676,6 +319564,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -320536,6 +321428,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -322387,6 +323283,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -323974,6 +324874,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -325625,6 +326529,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -327108,6 +328016,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -328699,6 +329611,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -330294,6 +331210,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -331885,6 +332805,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -332933,6 +333857,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -334836,6 +335764,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -336748,6 +337680,10 @@
           }
         ]
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -337796,6 +338732,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -339767,6 +340707,16 @@
           }
         ]
       },
+      "bounty": {
+        "label": "Bounty",
+        "items": [
+          {
+            "rank": "1 Bounty",
+            "description": "300,000 COIN",
+            "row": 21
+          }
+        ]
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -341671,6 +342621,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -342192,6 +343146,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands"
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -344102,6 +345060,16 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "Bounty",
+        "items": [
+          {
+            "rank": "1 Bounty",
+            "description": "10,000 COIN",
+            "row": 21
+          }
+        ]
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -345640,6 +346608,16 @@
       "sponsorship": {
         "label": "",
         "items": []
+      },
+      "bounty": {
+        "label": "Bounty",
+        "items": [
+          {
+            "rank": "1 Bounty",
+            "description": "5,000 COIN",
+            "row": 21
+          }
+        ]
       },
       "stack_per_round": {
         "label": "",
@@ -347440,6 +348418,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -348926,6 +349908,10 @@
         "rotation_note": "play in the order mentioned above every 6 hands."
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -350574,6 +351560,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -352114,6 +353104,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -353400,6 +354394,10 @@
         "rotation_note": ""
       },
       "sponsorship": {
+        "label": "",
+        "items": []
+      },
+      "bounty": {
         "label": "",
         "items": []
       },
@@ -354942,6 +355940,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -354986,10 +355988,10 @@
     },
     {
       "tab_name": "2Day4Flight",
-      "event_title": "",
+      "event_title": "05.02 Sat.",
       "number": "",
       "game_type": "",
-      "base_title": "",
+      "base_title": "05.02 Sat.",
       "is_multi_day": true,
       "chips": "Chips",
       "schedules": [
@@ -357854,6 +358856,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -357862,7 +358868,7 @@
       "day_entries": [
         {
           "day_name": "Day 1A",
-          "display_title": "/ Day 1A",
+          "display_title": "05.02 Sat. / Day 1A",
           "number": "",
           "game_type": "",
           "start_date": "05.02 Sat.",
@@ -357879,7 +358885,7 @@
         },
         {
           "day_name": "Day 1B",
-          "display_title": "/ Day 1B",
+          "display_title": "05.02 Sat. / Day 1B",
           "number": "",
           "game_type": "",
           "start_date": "05.02 Sat.",
@@ -357896,7 +358902,7 @@
         },
         {
           "day_name": "Day 1C",
-          "display_title": "/ Day 1C",
+          "display_title": "05.02 Sat. / Day 1C",
           "number": "",
           "game_type": "",
           "start_date": "05.02 Sat.",
@@ -357913,7 +358919,7 @@
         },
         {
           "day_name": "Day 1D",
-          "display_title": "/ Day 1D",
+          "display_title": "05.02 Sat. / Day 1D",
           "number": "",
           "game_type": "",
           "start_date": "05.02 Sat.",
@@ -357930,7 +358936,7 @@
         },
         {
           "day_name": "Day 1E",
-          "display_title": "/ Day 1E",
+          "display_title": "05.02 Sat. / Day 1E",
           "number": "",
           "game_type": "",
           "start_date": "05.02 Sat.",
@@ -357947,7 +358953,7 @@
         },
         {
           "day_name": "Day 2",
-          "display_title": "/ Day 2",
+          "display_title": "05.02 Sat. / Day 2",
           "number": "",
           "game_type": "",
           "start_date": "07.21 Mon.",
@@ -357969,10 +358975,10 @@
     },
     {
       "tab_name": "サテ",
-      "event_title": "",
+      "event_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
-      "base_title": "",
+      "base_title": "05.01 Fri.",
       "is_multi_day": false,
       "chips": "Chips",
       "schedules": [
@@ -358886,6 +359892,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -358894,7 +359904,7 @@
       "day_entries": [
         {
           "day_name": "Day 1",
-          "display_title": "",
+          "display_title": "05.01 Fri.",
           "number": "",
           "game_type": "",
           "start_date": "05.01 Fri.",
@@ -358916,10 +359926,10 @@
     },
     {
       "tab_name": "アンティなし",
-      "event_title": "",
+      "event_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
-      "base_title": "",
+      "base_title": "05.01 Fri.",
       "is_multi_day": false,
       "chips": "Chips",
       "schedules": [
@@ -359771,6 +360781,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -359779,7 +360793,7 @@
       "day_entries": [
         {
           "day_name": "Day 1",
-          "display_title": "",
+          "display_title": "05.01 Fri.",
           "number": "",
           "game_type": "",
           "start_date": "05.01 Fri.",
@@ -359801,10 +360815,10 @@
     },
     {
       "tab_name": "アンティのみ",
-      "event_title": "",
+      "event_title": "Sun.",
       "number": "",
       "game_type": "",
-      "base_title": "",
+      "base_title": "Sun.",
       "is_multi_day": false,
       "chips": "Chips",
       "schedules": [],
@@ -360719,6 +361733,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -360731,10 +361749,10 @@
     },
     {
       "tab_name": "AoF",
-      "event_title": "#",
+      "event_title": "Sun.",
       "number": "",
       "game_type": "",
-      "base_title": "#",
+      "base_title": "Sun.",
       "is_multi_day": false,
       "chips": "AoF Satellite 2,000 chips / 6-max 15,000 chips",
       "schedules": [],
@@ -361025,6 +362043,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -361037,10 +362059,10 @@
     },
     {
       "tab_name": "Stud",
-      "event_title": "",
+      "event_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
-      "base_title": "",
+      "base_title": "05.01 Fri.",
       "is_multi_day": false,
       "chips": "Chips",
       "schedules": [
@@ -362500,6 +363522,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -362508,7 +363534,7 @@
       "day_entries": [
         {
           "day_name": "Day 1",
-          "display_title": "",
+          "display_title": "05.01 Fri.",
           "number": "",
           "game_type": "",
           "start_date": "05.01 Fri.",
@@ -362537,10 +363563,10 @@
     },
     {
       "tab_name": "FL&Stud",
-      "event_title": "",
+      "event_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
-      "base_title": "",
+      "base_title": "05.01 Fri.",
       "is_multi_day": false,
       "chips": "Chips",
       "schedules": [
@@ -363028,6 +364054,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -363036,7 +364066,7 @@
       "day_entries": [
         {
           "day_name": "Day 1",
-          "display_title": "",
+          "display_title": "05.01 Fri.",
           "number": "",
           "game_type": "",
           "start_date": "05.01 Fri.",
@@ -363058,10 +364088,10 @@
     },
     {
       "tab_name": "FL&NL",
-      "event_title": "",
+      "event_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
-      "base_title": "",
+      "base_title": "05.01 Fri.",
       "is_multi_day": false,
       "chips": "Chips",
       "schedules": [
@@ -363549,6 +364579,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -363557,7 +364591,7 @@
       "day_entries": [
         {
           "day_name": "Day 1",
-          "display_title": "",
+          "display_title": "05.01 Fri.",
           "number": "",
           "game_type": "",
           "start_date": "05.01 Fri.",
@@ -363579,10 +364613,10 @@
     },
     {
       "tab_name": "FL&PL/NL",
-      "event_title": "",
+      "event_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
-      "base_title": "",
+      "base_title": "05.01 Fri.",
       "is_multi_day": false,
       "chips": "Chips",
       "schedules": [
@@ -364070,6 +365104,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -364078,7 +365116,7 @@
       "day_entries": [
         {
           "day_name": "Day 1",
-          "display_title": "",
+          "display_title": "05.01 Fri.",
           "number": "",
           "game_type": "",
           "start_date": "05.01 Fri.",
@@ -364100,10 +365138,10 @@
     },
     {
       "tab_name": "PL/NL",
-      "event_title": "",
+      "event_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
-      "base_title": "",
+      "base_title": "05.01 Fri.",
       "is_multi_day": false,
       "chips": "Chips",
       "schedules": [
@@ -364591,6 +365629,10 @@
         "label": "",
         "items": []
       },
+      "bounty": {
+        "label": "",
+        "items": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -364599,7 +365641,7 @@
       "day_entries": [
         {
           "day_name": "Day 1",
-          "display_title": "",
+          "display_title": "05.01 Fri.",
           "number": "",
           "game_type": "",
           "start_date": "05.01 Fri.",
@@ -369555,7 +370597,7 @@
     },
     {
       "day_name": "Day 1A",
-      "display_title": "/ Day 1A",
+      "display_title": "05.02 Sat. / Day 1A",
       "number": "",
       "game_type": "",
       "start_date": "05.02 Sat.",
@@ -369574,7 +370616,7 @@
     },
     {
       "day_name": "Day 1B",
-      "display_title": "/ Day 1B",
+      "display_title": "05.02 Sat. / Day 1B",
       "number": "",
       "game_type": "",
       "start_date": "05.02 Sat.",
@@ -369593,7 +370635,7 @@
     },
     {
       "day_name": "Day 1C",
-      "display_title": "/ Day 1C",
+      "display_title": "05.02 Sat. / Day 1C",
       "number": "",
       "game_type": "",
       "start_date": "05.02 Sat.",
@@ -369612,7 +370654,7 @@
     },
     {
       "day_name": "Day 1D",
-      "display_title": "/ Day 1D",
+      "display_title": "05.02 Sat. / Day 1D",
       "number": "",
       "game_type": "",
       "start_date": "05.02 Sat.",
@@ -369631,7 +370673,7 @@
     },
     {
       "day_name": "Day 1E",
-      "display_title": "/ Day 1E",
+      "display_title": "05.02 Sat. / Day 1E",
       "number": "",
       "game_type": "",
       "start_date": "05.02 Sat.",
@@ -369650,7 +370692,7 @@
     },
     {
       "day_name": "Day 2",
-      "display_title": "/ Day 2",
+      "display_title": "05.02 Sat. / Day 2",
       "number": "",
       "game_type": "",
       "start_date": "07.21 Mon.",
@@ -369669,7 +370711,7 @@
     },
     {
       "day_name": "Day 1",
-      "display_title": "",
+      "display_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
       "start_date": "05.01 Fri.",
@@ -369688,7 +370730,7 @@
     },
     {
       "day_name": "Day 1",
-      "display_title": "",
+      "display_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
       "start_date": "05.01 Fri.",
@@ -369707,7 +370749,7 @@
     },
     {
       "day_name": "Day 1",
-      "display_title": "",
+      "display_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
       "start_date": "05.01 Fri.",
@@ -369726,7 +370768,7 @@
     },
     {
       "day_name": "Day 1",
-      "display_title": "",
+      "display_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
       "start_date": "05.01 Fri.",
@@ -369745,7 +370787,7 @@
     },
     {
       "day_name": "Day 1",
-      "display_title": "",
+      "display_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
       "start_date": "05.01 Fri.",
@@ -369764,7 +370806,7 @@
     },
     {
       "day_name": "Day 1",
-      "display_title": "",
+      "display_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
       "start_date": "05.01 Fri.",
@@ -369783,7 +370825,7 @@
     },
     {
       "day_name": "Day 1",
-      "display_title": "",
+      "display_title": "05.01 Fri.",
       "number": "",
       "game_type": "",
       "start_date": "05.01 Fri.",

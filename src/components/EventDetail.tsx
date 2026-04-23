@@ -25,6 +25,7 @@ export interface Prize {
   total: string | null;
   inPrize: string | null;
   satellitePrize?: string | null;
+  note?: string | null;
 }
 
 export interface AwardEntry {
@@ -98,7 +99,7 @@ export interface EventData {
   prize: Prize | null;
   feeDetail: string | null;
   games: string[] | null;
-  bounty: string | null;
+  bounty: { label: string; items: { rank: string; description: string }[] } | null;
   notes: string[] | null;
   award: AwardData | null;
   sponsorship?: { label: string; items: { rank: string; description: string }[] } | null;
@@ -573,6 +574,11 @@ function InfoPanel({ event }: { event: EventData }) {
               );
             })()}
           </div>
+          {event.prize.note && (
+            <p className="text-text-muted text-[10px] italic mt-1 whitespace-pre-wrap leading-relaxed">
+              {event.prize.note}
+            </p>
+          )}
         </div>
       )}
 
@@ -635,12 +641,24 @@ function InfoPanel({ event }: { event: EventData }) {
         </div>
       )}
 
-      {event.bounty && (
+      {event.bounty && event.bounty.items.length > 0 && (
         <div>
           <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-            Bounty
+            {event.bounty.label || "Bounty"}
           </p>
-          <p className="text-text-primary font-medium">{event.bounty}</p>
+          <ul className="space-y-1">
+            {event.bounty.items.map((it, i) => (
+              <li key={i} className="text-text-secondary text-[11px] leading-relaxed">
+                <span className="font-semibold text-text-primary">{it.rank}</span>
+                {it.description && (
+                  <>
+                    <span className="mx-1">:</span>
+                    <span>{it.description}</span>
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 

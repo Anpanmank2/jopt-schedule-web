@@ -53,10 +53,10 @@ export interface TransformedEvent {
   day2Condition: string | null;
   ruleNotes: string | null;
   structure: TransformedStructure | null;
-  prize: { total: string | null; inPrize: string | null; satellitePrize: string | null } | null;
+  prize: { total: string | null; inPrize: string | null; satellitePrize: string | null; note: string | null } | null;
   feeDetail: string | null;
   games: string[] | null;
-  bounty: string | null;
+  bounty: { label: string; items: { rank: string; description: string }[] } | null;
   notes: string[] | null;
   award: AwardData | null;
   sponsorship: { label: string; items: { rank: string; description: string }[] } | null;
@@ -249,7 +249,7 @@ export function transformStructure(
 
 function transformPrize(
   p: any
-): { total: string | null; inPrize: string | null; satellitePrize: string | null } | null {
+): { total: string | null; inPrize: string | null; satellitePrize: string | null; note: string | null } | null {
   if (!p) return null;
   let satellitePrize: string | null = null;
   const sat = Array.isArray(p.satellite_awards) ? p.satellite_awards[0] : null;
@@ -262,7 +262,29 @@ function transformPrize(
     total: p.total || null,
     inPrize: p.in_prize || null,
     satellitePrize,
+    note: typeof p.note === "string" && p.note.trim() ? p.note.trim() : null,
   };
+}
+
+/**
+ * Bounty section を transformer 出力形式に整形。Sheets の Bounty 欄は rank/description
+ * 型で sponsorship と同一構造のため、共通整形関数を流用せず専用関数に分離している
+ * (将来 rank/description 以外の形式が来た時に拡張しやすい)。Owner 指示 2026-04-24。
+ */
+function transformBounty(
+  b: any
+): { label: string; items: { rank: string; description: string }[] } | null {
+  if (!b) return null;
+  const items = Array.isArray(b.items)
+    ? b.items
+        .map((it: any) => ({
+          rank: String(it.rank || "").trim(),
+          description: String(it.description || "").trim(),
+        }))
+        .filter((it: any) => it.rank || it.description)
+    : [];
+  if (items.length === 0) return null;
+  return { label: (b.label || "Bounty").trim(), items };
 }
 
 function normalizeNotes(notes: string[] | undefined): string[] | null {
@@ -443,7 +465,7 @@ export function transformTournament(
         prize: transformPrize(t.prize),
         feeDetail,
         games: extractGames(t.games),
-        bounty: null,
+        bounty: transformBounty(t.bounty),
         notes: normalizeNotes(t.notes),
         award: transformAward(t.award),
         sponsorship: transformSponsorship(t.sponsorship),
@@ -490,7 +512,7 @@ export function transformTournament(
       prize: transformPrize(t.prize),
       feeDetail,
       games: extractGames(t.games),
-      bounty: null,
+      bounty: transformBounty(t.bounty),
       notes: normalizeNotes(t.notes),
       award: transformAward(t.award),
       sponsorship: transformSponsorship(t.sponsorship),
@@ -712,6 +734,17 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           e.lateRegLevel = null;
         }
       }
+    }
+  }
+
+  // Re-entry と Notes の重複除去 (Owner 指示 2026-04-24):
+  // Sheets の `re_entry_note` 列と `notes` 配列の同一文字列が両方入っている event
+  // (Tag Team 系 / Main Event 等 14 件) で UI で 2 重表示されていた問題を解消。
+  // re_entry_note が notes 内に完全一致で存在するなら、reentry 側を null にして
+  // notes 側 (より多情報) を唯一の出典とする。
+  for (const e of events) {
+    if (e.reentry && Array.isArray(e.notes) && e.notes.includes(e.reentry)) {
+      e.reentry = null;
     }
   }
 
