@@ -83,6 +83,7 @@
     },
     "#33": {
       "_source": "HP用レートFIX - Colossus.pdf",
+      "_notesSource": "legacy.jopt_gf2026_data.json — Owner 2026-04-23 指摘: extract.json の #33 notes に #05 3on3 Tag Team ルール混入。legacy に canonical Colossus notes があるため override",
       "regCloseByFlight": {
         "Day 1A": { "time": "19:50", "level": 9 },
         "Day 1B": { "time": "15:50", "level": 9 },
@@ -91,7 +92,16 @@
         "Day 1E": { "time": "20:50", "level": 9 },
         "Day 1F Turbo": { "time": "12:10", "level": 10 },
         "Day 2": null
-      }
+      },
+      "notes": [
+        "・同一Day 1でのリエントリーは3度まで認められます。",
+        "・シートリドローは Day 2スタート時、ファイナルテーブルスタート時、及びTDの判断で行われます。ただし、Day 1F Turboについては Day 2開始時のシートリドローは行いません。",
+        "・複数のDay 1を通過した場合、最も多くのスタック数を獲得したDay 1を採用し、他Day 1での通過スタックは放棄となります。",
+        "・Day 2に進出したプレイヤーにのみプライズ獲得の権利が与えられます。",
+        "・Day 1F Turboはlevel 4からスタートし、1 level 20分で進行します。",
+        "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリンク代1,000円を頂戴します。但し、Day 1F Turbo通過者のDay 2開始時はドリンク代を頂戴いたしません。",
+        "・ルールは JOPT Official Rule を採用します。"
+      ]
     },
     "#46": {
       "_source": "HP用レートFIX - 10-Game（全体）.pdf",

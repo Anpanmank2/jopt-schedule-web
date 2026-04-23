@@ -652,6 +652,10 @@ export function transform(extract: any, currentData: any = null): TransformedDat
         levels: ov.structure.levels,
       };
     }
+    // notes override (extract 側 source data が他 event の notes と混線した場合の復元)
+    if (Array.isArray(ov.notes)) {
+      e.notes = ov.notes.slice();
+    }
     // reg close override (flight suffix で dispatch)
     if (ov.regCloseByFlight && typeof ov.regCloseByFlight === "object") {
       const flightMatch = (e.name || "").match(/\/\s*(Day\s*\d+[A-Z]?(?:\s*Turbo)?|Day\s*\d+)\s*$/i);
