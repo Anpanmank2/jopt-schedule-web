@@ -273589,10 +273589,10 @@
     },
     {
       "tab_name": "Deepstack8",
-      "event_title": "#123 NLH Deepstack NOTH STER Sponsored by JT",
+      "event_title": "#123 NLH Deepstack NORTH STAR Sponsored by JT",
       "number": "#123",
       "game_type": "NLH",
-      "base_title": "Deepstack NOTH STER Sponsored by JT",
+      "base_title": "Deepstack NORTH STAR Sponsored by JT",
       "is_multi_day": false,
       "chips": "30,000 Chips",
       "schedules": [
@@ -275766,7 +275766,7 @@
       "day_entries": [
         {
           "day_name": "Day 1",
-          "display_title": "NLH Deepstack NOTH STER Sponsored by JT",
+          "display_title": "NLH Deepstack NORTH STAR Sponsored by JT",
           "number": "#123",
           "game_type": "NLH",
           "start_date": "05.02 Sat.",
@@ -275784,7 +275784,7 @@
       ],
       "no": 162,
       "category": "TOURNAMENT",
-      "is_sponsor_variant": false
+      "is_sponsor_variant": true
     },
     {
       "tab_name": "Deepstack8（協賛なし）",
@@ -277977,7 +277977,7 @@
       ],
       "no": 163,
       "category": "TOURNAMENT",
-      "is_sponsor_variant": true
+      "is_sponsor_variant": false
     },
     {
       "tab_name": "FLO8",
@@ -348607,7 +348607,7 @@
       ],
       "no": 201,
       "category": "TOURNAMENT",
-      "is_sponsor_variant": false
+      "is_sponsor_variant": true
     },
     {
       "tab_name": "Deepstack10（協賛なし）",
@@ -350800,7 +350800,7 @@
       ],
       "no": 202,
       "category": "TOURNAMENT",
-      "is_sponsor_variant": true
+      "is_sponsor_variant": false
     },
     {
       "tab_name": "PL 2-7 TD",
@@ -434010,7 +434010,7 @@
     },
     {
       "day_name": "Day 1",
-      "display_title": "NLH Deepstack NOTH STER Sponsored by JT",
+      "display_title": "NLH Deepstack NORTH STAR Sponsored by JT",
       "number": "#123",
       "game_type": "NLH",
       "start_date": "05.02 Sat.",
