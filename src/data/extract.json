@@ -3,7 +3,7 @@
     "source": "Players Guide / JOPT 2026 Grand Final",
     "tournaments_count": 256,
     "day_entries_count": 271,
-    "extracted_at": "2026-04-23T11:11:55.682Z"
+    "extracted_at": "2026-04-24T05:27:54.996Z"
   },
   "tournaments": [
     {
@@ -1375,6 +1375,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -3339,6 +3347,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -4379,11 +4395,16 @@
         },
         "sprinter": {
           "header": "Sprinter",
-          "subsection_header_left": "",
+          "subsection_header_left": "Each Day 1",
           "subsection_header_day2": "",
-          "all_day1": [],
+          "all_day1": [
+            {
+              "rank": "1st",
+              "prize": "100,000 COIN"
+            }
+          ],
           "day2": [],
-          "description": ""
+          "description": "Sprinter賞はDay 1A,B,C,D Turboにて40万点にいち早く到達したプレイヤーに授与。"
         },
         "currency_note": "AwardはPOKERWEB COINにて付与されます。"
       },
@@ -4409,6 +4430,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -6071,6 +6100,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -7125,6 +7162,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -9096,6 +9141,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -10899,6 +10952,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -12392,13 +12453,22 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "Stack Per Round(Starting Blinds)",
         "rounds": [
           "1st Round： 50,000 Chips (200-400)",
           "2nd Round：100,000 Chips (400-800)",
           "3rd Round： 200,000 Chips (1,000-1,500)",
-          "4th Round： 400,000 Chips (1,500-3,000)"
+          "4th Round： 400,000 Chips (1,500-3,000)",
+          "Final Round： 800,000 Chips (3,000-6,000)"
         ],
         "raw_text": "1st Round： 50,000 Chips (200-400)\n2nd Round：100,000 Chips (400-800)\n3rd Round： 200,000 Chips (1,000-1,500)\n4th Round： 400,000 Chips (1,500-3,000)\nFinal Round： 800,000 Chips (3,000-6,000)"
       },
@@ -14252,6 +14322,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -15814,6 +15892,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -17473,6 +17559,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -19068,6 +19162,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -20505,6 +20607,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -22101,6 +22211,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -23261,6 +23379,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -24315,6 +24441,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -26223,6 +26357,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -26677,6 +26819,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -28266,6 +28416,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -30122,6 +30280,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -31176,6 +31342,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -33136,6 +33310,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -34635,6 +34817,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -36558,6 +36748,14 @@
             "row": 21
           }
         ]
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -38518,6 +38716,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -39677,6 +39883,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -41466,6 +41680,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -43322,6 +43544,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -44811,6 +45041,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -46615,6 +46853,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -48210,6 +48456,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -49699,6 +49953,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -51295,6 +51557,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -52685,6 +52955,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -53739,6 +54017,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -55075,8 +55361,15 @@
         },
         "currency_note": ""
       },
-      "notes": [],
-      "re_entry_note": "",
+      "notes": [
+        "・本トーナメントへの参加には、事前応募が必要です。",
+        "・リエントリーはできません。",
+        "・本トーナメントは「ダブルスタック方式」を採用しております。初期スタックは10,000点とし、途中でチップを失った場合でも、受付締切時刻までであれば10,000点で再参加が可能です。なお、受付締切時までに初期スタックが残っている場合は、追加で10,000点が追加されます。",
+        "・参加賞のタイミーセットは先着50人のみで、無くなり次第終了です。",
+        "・事前応募の受付は4月20日までとなります。",
+        "・ルールは JOPT Official Rule を適用いたします。"
+      ],
+      "re_entry_note": "・リエントリーはできません。",
       "day2_advance_note": "",
       "games": {
         "items": [],
@@ -55089,6 +55382,99 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "Awards",
+        "sections": [
+          {
+            "header": "Each selects 1.",
+            "items": [
+              "Nintendo Switch2",
+              "0",
+              "iPad mini (第7世代)",
+              "0",
+              "ディズニーペアチケット",
+              "0",
+              "0"
+            ]
+          }
+        ]
+      },
+      "benefits": {
+        "label": "Benefits",
+        "sections": [
+          {
+            "header": "Participation Prize",
+            "items": [
+              "・限定カードプロテクター",
+              "・タイミーセット",
+              "　(ボールペン・メモ帳・ぬいぐるみ)",
+              "0",
+              "・詳細はホームページをご確認ください。",
+              "0"
+            ]
+          },
+          {
+            "header": "FT Prize",
+            "items": [
+              "限定金属カードプロテクター",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        ]
       },
       "stack_per_round": {
         "label": "",
@@ -57003,6 +57389,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -57529,6 +57923,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -58865,8 +59267,19 @@
         },
         "currency_note": ""
       },
-      "notes": [],
-      "re_entry_note": "",
+      "notes": [
+        "・リエントリーはできません。",
+        "・本トーナメントは「ダブルスタック方式」を採用しております。初期スタックは10,000点とし、途中でチップを失った場合でも、受付締切時刻までであれば10,000点で再参加が可能です。なお、受付締切時までに初期スタックが残っている場合は、追加で10,000点が追加されます。",
+        "・着席できるのはお子様のみとし、保護者の方は席にお座りいただけません。",
+        "・相談カードは1チームにつき5枚お渡しいたします。",
+        "・アクション時に相談カードを使用することで、保護者の方と30秒間の相談が可能です。",
+        "・保護者の方がアクションを決定することはできません。",
+        "・保護者の方はカードおよびチップに触れることはできません。プレイは必ずお子様ご本人に行っていただきます。",
+        "・相談カードを5枚すべて使用した場合、それ以降の相談はできません。",
+        "・参加賞のタイミーセットは先着50組のみで、無くなり次第終了です。",
+        "・ルールは「JOPT Official Rule」を適用いたします。"
+      ],
+      "re_entry_note": "・リエントリーはできません。",
       "day2_advance_note": "",
       "games": {
         "items": [],
@@ -58879,6 +59292,99 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "Awards",
+        "sections": [
+          {
+            "header": "Each selects 1.",
+            "items": [
+              "Nintendo Switch2",
+              "0",
+              "iPad mini (第7世代)",
+              "0",
+              "ディズニーペアチケット",
+              "0",
+              "0"
+            ]
+          }
+        ]
+      },
+      "benefits": {
+        "label": "Benefits",
+        "sections": [
+          {
+            "header": "Participation Prize",
+            "items": [
+              "・限定カードプロテクター",
+              "・タイミーセット",
+              "　(ボールペン・メモ帳・ぬいぐるみ)",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "header": "FT Prize",
+            "items": [
+              "限定金属カードプロテクター",
+              "0",
+              "0",
+              "0",
+              "0",
+              "・詳細はホームページをご確認ください。",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        ]
       },
       "stack_per_round": {
         "label": "",
@@ -60518,6 +61024,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -62998,6 +63512,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -64154,6 +64676,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -66114,6 +66644,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -67766,6 +68304,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -69622,6 +70168,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -71260,6 +71814,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -73063,6 +73625,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -74919,6 +75489,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -76407,6 +76985,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -78003,6 +78589,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -79598,6 +80192,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -80652,6 +81254,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -82566,6 +83176,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -84369,6 +84987,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -86277,6 +86903,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -87218,6 +87852,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -88324,6 +88966,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -90242,6 +90892,14 @@
           }
         ]
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -92045,6 +92703,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -93638,6 +94304,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -95546,6 +96220,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -97453,6 +98135,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -99048,6 +99738,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -100536,6 +101234,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -102137,6 +102843,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -103732,6 +104446,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -104786,6 +105508,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -106694,6 +107424,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -108600,6 +109338,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -110508,6 +111254,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -111562,6 +112316,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -113522,6 +114284,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -114049,6 +114819,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -115963,6 +116741,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -117698,6 +118484,16 @@
         "currency_note": ""
       },
       "notes": [
+        "・参加108チームから、108 → 36 → 12 → 4 → 2 → 1 の計5回戦を行います。",
+        "　※各ラウンドで勝ち上がった1チームが次のステージへ進出します。",
+        "・1,2,3回戦は3チーム×各チーム3人の9名で1テーブルを構成します。",
+        "・4,5回戦は2チーム×各チーム3人の6名で1テーブルを構成します。",
+        "・テーブル内に残っているプレイヤーが 全員同じチームになった時点で、その試合は終了します。",
+        "　例：残り2名になり、どちらもAチームのプレイヤーだった場合",
+        "　→その時点で終了（Aチームが次ラウンド進出）",
+        "・マックしたハンドに関する発言や、ハンドが特定できるような具体的な発言は禁止です。",
+        "・エントリー時に3名いない場合、チームメンバーが来るまで置きバケとなります。",
+        "・ルールは JOPT Official Rule を採用します。",
         "・事前予約を受け付けますが、エントリー上限に達していない場合に限り、当日受付が可能です。",
         "・着席後のメンバー変更や、同一人物が別のチームで二重にエントリーすることは認められません。",
         "・スタックはトーナメント開始と同時に置かれます。",
@@ -117718,13 +118514,22 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "Stack Per Round(Starting Blinds)",
         "rounds": [
           "1st Round：        20,000 Chips (200-400)",
           "2nd Round：       60,000 Chips (500-1,000)",
           "3rd Round：      180,000 Chips (1,500-3,000)",
-          "4th Round：      360,000 Chips (3,000-6,000)"
+          "4th Round：      360,000 Chips (3,000-6,000)",
+          "Final Round：   720,000 Chips (6,000-12,000)"
         ],
         "raw_text": "1st Round：        20,000 Chips (200-400)\n2nd Round：       60,000 Chips (500-1,000)\n3rd Round：      180,000 Chips (1,500-3,000)\n4th Round：      360,000 Chips (3,000-6,000)\nFinal Round：   720,000 Chips (6,000-12,000)"
       },
@@ -119361,6 +120166,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -121217,6 +122030,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -123020,6 +123841,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -124764,6 +125593,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -126359,6 +127196,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -127797,6 +128642,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -129393,6 +130246,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -130447,6 +131308,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -132355,6 +133224,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -133362,11 +134239,16 @@
         },
         "sprinter": {
           "header": "Sprinter",
-          "subsection_header_left": "",
+          "subsection_header_left": "Each Day 1",
           "subsection_header_day2": "",
-          "all_day1": [],
+          "all_day1": [
+            {
+              "rank": "1st",
+              "prize": "100,000 COIN"
+            }
+          ],
           "day2": [],
-          "description": ""
+          "description": "Sprinter賞はDay 1A,B,C,D,E Turboにて40万点にいち早く到達したプレイヤーに授与。"
         },
         "currency_note": "AwardはPOKERWEB COINにて付与されます。"
       },
@@ -133391,6 +134273,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -135070,6 +135960,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -136926,6 +137824,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -137980,6 +138886,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -139941,6 +140855,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -141547,6 +142469,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -143402,6 +144332,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -145362,6 +146300,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -147001,6 +147947,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -148863,6 +149817,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -150666,6 +151628,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -152104,6 +153074,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -153700,6 +154678,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -154859,6 +155845,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -156455,6 +157449,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -157509,6 +158511,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -159433,6 +160443,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -161340,6 +162358,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -161868,6 +162894,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -163724,6 +164758,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -164257,6 +165299,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -165312,6 +166362,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -167272,6 +168330,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -167420,6 +168486,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -169338,6 +170412,14 @@
           }
         ]
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -170926,6 +172008,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -172782,6 +173872,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -174585,6 +175683,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -176141,6 +177247,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -177737,6 +178851,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -179226,6 +180348,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -180822,6 +181952,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -181982,6 +183120,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -183036,6 +184182,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -184955,6 +186109,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -186598,6 +187760,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -188506,6 +189676,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -190206,6 +191384,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -191260,6 +192446,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -193220,6 +194414,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -194277,12 +195479,21 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "Stack Per Round(Starting Blinds)",
         "rounds": [
           "1st Round：   50,000 Chips (500-1,000)",
           "2nd Round： 100,000 Chips (1,000-2,000)",
-          "3rd Round：  200,000 Chips (2,000-4,000)"
+          "3rd Round：  200,000 Chips (2,000-4,000)",
+          "Final Round： 400,000 Chips (4,000-8,000)"
         ],
         "raw_text": "1st Round：   50,000 Chips (500-1,000)\n2nd Round： 100,000 Chips (1,000-2,000)\n3rd Round：  200,000 Chips (2,000-4,000)\nFinal Round： 400,000 Chips (4,000-8,000)"
       },
@@ -195440,6 +196651,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -197347,6 +198566,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -199328,6 +200555,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -201117,6 +202352,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -202921,6 +204164,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -204573,6 +205824,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -206429,6 +207688,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -208081,6 +209348,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -209721,6 +210996,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -211316,6 +212599,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -212754,6 +214045,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -214350,6 +215649,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -215563,6 +216870,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -216617,6 +217932,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -218525,6 +219848,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -218974,6 +220305,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -220304,6 +221643,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -222160,6 +223507,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -223214,6 +224569,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -225196,6 +226559,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -226784,6 +228155,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -228640,6 +230019,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -229694,6 +231081,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -231654,6 +233049,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -232180,6 +233583,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -234042,6 +235453,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -235897,6 +237316,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -237485,6 +238912,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -239289,6 +240724,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -240882,6 +242325,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -242478,6 +243929,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -244073,6 +245532,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -245514,6 +246981,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -246568,6 +248043,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -248482,6 +249965,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -249696,6 +251187,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -250153,6 +251652,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -252009,6 +253516,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -253702,13 +255217,22 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "Stack Per Round(Starting Blinds)",
         "rounds": [
           "1st Round：   100,000 Chips (300-500)",
           "2nd Round：  200,000 Chips (500-1,000)",
           "3rd Round：   400,000 Chips (1,000-2,000)",
-          "4th Round：   800,000 Chips (2,000-4,000)"
+          "4th Round：   800,000 Chips (2,000-4,000)",
+          "Final Round：1,600,000 Chips (4,000-8,000)"
         ],
         "raw_text": "1st Round：   100,000 Chips (300-500)\n2nd Round：  200,000 Chips (500-1,000)\n3rd Round：   400,000 Chips (1,000-2,000)\n4th Round：   800,000 Chips (2,000-4,000)\nFinal Round：1,600,000 Chips (4,000-8,000)"
       },
@@ -255300,6 +256824,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -256354,6 +257886,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -258313,6 +259853,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -260324,6 +261872,14 @@
           }
         ]
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -261913,6 +263469,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -263879,6 +265443,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -265734,6 +267306,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -267537,6 +269117,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -269125,6 +270713,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -270721,6 +272317,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -272158,6 +273762,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -273754,6 +275366,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -274914,6 +276534,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -275969,6 +277597,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -277008,11 +278644,16 @@
         },
         "sprinter": {
           "header": "Sprinter",
-          "subsection_header_left": "",
+          "subsection_header_left": "Each Day 1",
           "subsection_header_day2": "",
-          "all_day1": [],
+          "all_day1": [
+            {
+              "rank": "1st",
+              "prize": "100,000 COIN"
+            }
+          ],
           "day2": [],
-          "description": ""
+          "description": "Sprinter賞はDay 1A,B,C,D Turboにて40万点にいち早く到達したプレイヤーに授与。"
         },
         "currency_note": "AwardはPOKERWEB COINにて付与されます。"
       },
@@ -277037,6 +278678,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -279028,6 +280677,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -281084,6 +282741,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -281666,6 +283331,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -283522,6 +285195,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -284732,6 +286413,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -286719,6 +288408,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -288367,6 +290064,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -290223,6 +291928,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -291970,6 +293683,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -293933,6 +295654,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -295794,6 +297523,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -297649,6 +299386,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -299138,6 +300883,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -300734,6 +302487,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -302222,6 +303983,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -303818,6 +305587,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -304872,6 +306649,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -306780,6 +308565,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -308635,6 +310428,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -309161,6 +310962,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -310216,6 +312025,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -312176,6 +313993,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -314093,6 +315918,14 @@
           }
         ]
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -315831,6 +317664,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -317796,6 +319637,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -319598,6 +321447,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -321460,6 +323317,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -323315,6 +325180,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -324908,6 +326781,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -326561,6 +328442,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -328050,6 +329939,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -329645,6 +331542,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -331242,6 +333147,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -332837,6 +334750,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -333891,6 +335812,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -335798,6 +337727,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -337712,6 +339649,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -338766,6 +340711,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -340745,6 +342698,14 @@
           }
         ]
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -342653,6 +344614,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -343180,6 +345149,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -345098,6 +347075,14 @@
           }
         ]
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -346646,6 +348631,14 @@
             "row": 21
           }
         ]
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -348450,6 +350443,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -349942,6 +351943,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -351592,6 +353601,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -353136,6 +355153,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -354428,6 +356453,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -355971,6 +358004,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -358858,11 +360899,16 @@
         },
         "sprinter": {
           "header": "Sprinter",
-          "subsection_header_left": "",
+          "subsection_header_left": "Each Day 1",
           "subsection_header_day2": "",
-          "all_day1": [],
+          "all_day1": [
+            {
+              "rank": "1st",
+              "prize": "100,000 Coin"
+            }
+          ],
           "day2": [],
-          "description": ""
+          "description": "Sprinter賞はDay 1A,B,C,D Turboにて40万点にいち早く到達したプレイヤーに授与。"
         },
         "currency_note": "AwardはPOKERWEB COINにて付与されます。"
       },
@@ -358887,6 +360933,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -359924,6 +361978,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -360812,6 +362874,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -361765,6 +363835,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -362074,6 +364152,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -363554,6 +365640,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -364086,6 +366180,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -364610,6 +366712,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
@@ -365136,6 +367246,14 @@
         "label": "",
         "items": []
       },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
+      },
       "stack_per_round": {
         "label": "",
         "rounds": [],
@@ -365660,6 +367778,14 @@
       "bounty": {
         "label": "",
         "items": []
+      },
+      "awards": {
+        "label": "",
+        "sections": []
+      },
+      "benefits": {
+        "label": "",
+        "sections": []
       },
       "stack_per_round": {
         "label": "",
