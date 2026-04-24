@@ -378851,7 +378851,7 @@
       ],
       "no": 217,
       "category": "TOURNAMENT",
-      "is_sponsor_variant": false
+      "is_sponsor_variant": true
     },
     {
       "tab_name": "Deepstack11（協賛なし）",
@@ -381044,7 +381044,7 @@
       ],
       "no": 218,
       "category": "TOURNAMENT",
-      "is_sponsor_variant": true
+      "is_sponsor_variant": false
     },
     {
       "tab_name": "TD MIX2",

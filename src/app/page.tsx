@@ -5,7 +5,6 @@ import extractRaw from "@/data/extract.json";
 import currentRaw from "@/data/jopt_gf2026_data.json";
 import { transform } from "@/lib/transformer";
 import EventCard from "@/components/EventCard";
-import EventRow from "@/components/EventRow";
 import EventFilter from "@/components/EventFilter";
 import { useEventFilter } from "@/hooks/useEventFilter";
 import type { EventData, MultiDayInfo } from "@/components/EventDetail";
@@ -319,9 +318,9 @@ export default function SchedulePage() {
                         ({dg.events.length})
                       </span>
                     </h2>
-                    <div className="divide-y divide-border-light bg-white border border-blue-100 border-t-0">
+                    <div className="flex flex-col gap-3 px-4 md:px-0 pt-3">
                       {dg.events.map((evt, i) => (
-                        <EventRow
+                        <EventCard
                           key={`${evt.eventNumber}-${evt.startTime}-${i}`}
                           event={evt}
                         />
