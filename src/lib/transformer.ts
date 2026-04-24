@@ -241,6 +241,18 @@ export function transformStructure(
       levels.push({ break: true, time: breakMin });
     }
   }
+  // 健全性チェック (Owner 指示 2026-04-26):
+  // Apps Script が FL/Stud/MIX/PLO Bombpot 系シートの blind/ante 列を抽出
+  // 失敗した event (#12 #15 #31 #35 #46 #60 #68 #75 #86 #88 #108 #113 #116
+  // #122 #131 #143 #148 #151 #162 #179 等) では rows に {level: N} のみが
+  // 並び sb/bb/ante 全て空となり、UI で「Lv1 — — 0min」のような壊れた
+  // テーブルが表示される。全 level で sb/bb/ante いずれも無い場合は
+  // structure 自体を null にして UI 側で「Structure not available」と
+  // 表示させる (Apps Script 側修正までの暫定対応)。
+  const hasAnyBlindData = levels.some(
+    (l) => !l.break && (l.sb != null || l.bb != null || l.ante != null)
+  );
+  if (!hasAnyBlindData) return null;
   const lateRegCloseAfterLevel = regCloseLevel
     ? parseInt(regCloseLevel, 10) || null
     : null;
