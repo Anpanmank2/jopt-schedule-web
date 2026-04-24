@@ -779,6 +779,36 @@ export function transform(extract: any, currentData: any = null): TransformedDat
       if (ov.award.currencyNote !== undefined) cur.currencyNote = ov.award.currencyNote;
       e.award = cur;
     }
+    // turbo flight override (Owner 指示 2026-04-26): Day 1D Turbo 等の特殊 flight が
+    // 同じ structure を共有しつつ「特定 level から開始」「level time 短縮」する場合の
+    // 上書き。例: #03 Mini Main の Day 1D Turbo は Lv.4 開始 / 各 level 20 分
+    // (Sheets master notes に記載されているが extract.json には structure に
+    // 反映されないため override で対応)。
+    if (ov.turboFlight && typeof ov.turboFlight === "object" && e.structure) {
+      const tf = ov.turboFlight as {
+        matchSuffix?: string;
+        startLevel?: number;
+        levelTime?: number;
+      };
+      if (
+        typeof tf.matchSuffix === "string" &&
+        (e.name || "").endsWith(tf.matchSuffix) &&
+        Array.isArray(e.structure.levels)
+      ) {
+        const startLv = tf.startLevel;
+        const startIdx =
+          startLv != null
+            ? e.structure.levels.findIndex((l) => l.level === startLv)
+            : -1;
+        const sliced = startIdx > 0 ? e.structure.levels.slice(startIdx) : e.structure.levels;
+        e.structure = {
+          ...e.structure,
+          levels: sliced.map((l) =>
+            l.break || tf.levelTime == null ? l : { ...l, time: tf.levelTime }
+          ),
+        };
+      }
+    }
   }
 
   // Re-entry / Day2Condition と Notes の重複除去 (Owner 指示 2026-04-24):

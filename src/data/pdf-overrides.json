@@ -4,6 +4,12 @@
   "events": {
     "#03": {
       "_source": "HP用レートFIX - Mini Main.pdf",
+      "turboFlight": {
+        "_note": "Owner 指示 2026-04-26 + Sheets notes [4]: Day 1D Turbo は Lv.4 開始、各 level 20 分",
+        "matchSuffix": "Day 1D Turbo",
+        "startLevel": 4,
+        "levelTime": 20
+      },
       "regCloseByFlight": {
         "Day 1A": { "time": "23:35", "level": 9 },
         "Day 1B": { "time": "16:35", "level": 9 },
