@@ -414,7 +414,21 @@ function transformAward(a: any): AwardData | null {
   if (!a) return null;
   const chipLeader = transformAwardSection(a.chip_leader);
   const sprinter = transformAwardSection(a.sprinter);
-  const currencyNote = (a.currency_note || "").trim() || null;
+  // 2026-04-26 インシデント対応:
+  // Sheets `award.currency_note` セルに Bounty event の notes 全文が
+  // コピペされているケースがあり (#47 Knockout Legends / #164 Climax Bounty
+  // 等)、chip_leader / sprinter が中身空 (header のみ) でも currency_note
+  // だけ非空のため UI で「Award セクションに notes コピペ」が表示される
+  // 障害が発生した。
+  // 対策: chip/sprint 主要 section に中身がない event では currency_note も
+  // ghost と判定して採用しない。Award の本来の意味から逸脱しない event のみ
+  // currencyNote が表示される。
+  const hasContent = (s: AwardSectionData | null) =>
+    !!s && (s.allDay1.length > 0 || s.day2.length > 0 || s.description.trim().length > 0);
+  const currencyNote =
+    hasContent(chipLeader) || hasContent(sprinter)
+      ? (a.currency_note || "").trim() || null
+      : null;
   if (!chipLeader && !sprinter && !currencyNote) return null;
   return { chipLeader, sprinter, currencyNote };
 }
@@ -696,14 +710,14 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           };
         }
       }
-      // notes fallback
-      const legacyN = legacyNotes.get(e.eventNumber);
-      if (legacyN) {
-        const curCount = e.notes?.length ?? 0;
-        if (legacyN.length > curCount) {
-          e.notes = legacyN;
-        }
-      }
+      // notes の legacy fallback は撤去 (2026-04-26 インシデント対応):
+      // 2026-04-09 snapshot の jopt_gf2026_data.json には現仕様と乖離した notes
+      // (例: #141 PLO Hi/Lo 8 or better に「・最大7maxで進行します。」が含まれる
+      // が現 Sheets には無い) が残っており、件数比較で legacy を採用すると
+      // 本番に誤情報が混入する。lateRegClose と同じ理由で削除。
+      // 正しい notes は extract.json (Sheets 由来) のみを source of truth とする。
+      // memory: feedback_legacy_fallback_risk.md
+      void legacyNotes;
       // lateRegClose の legacy fallback は撤去 (Owner 指示 2026-04-23):
       // legacy data.json は 2026-04-09 snapshot で誤値が残っている。
       // extract null のとき legacy を持ち上げると誤値が表示されるため撤去。
