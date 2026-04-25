@@ -789,9 +789,17 @@ export function transform(extract: any, currentData: any = null): TransformedDat
         if (rc && typeof rc === "object") {
           e.lateRegClose = buildLateRegClose(rc.time, rc.level != null ? String(rc.level) : "");
           e.lateRegLevel = rc.level ?? null;
+          // StructureTable の CLOSE バッジは structure.lateRegCloseAfterLevel を見るため
+          // flight 別に structure を clone して上書き (Owner 確認 2026-04-25)
+          if (rc.level != null && e.structure) {
+            e.structure = { ...e.structure, lateRegCloseAfterLevel: rc.level };
+          }
         } else if (rc === null) {
           e.lateRegClose = null;
           e.lateRegLevel = null;
+          if (e.structure) {
+            e.structure = { ...e.structure, lateRegCloseAfterLevel: null };
+          }
         }
       }
     }

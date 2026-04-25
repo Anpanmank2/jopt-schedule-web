@@ -68,12 +68,19 @@ export interface MultiDayInfo {
   day3StartLevel?: number | null;
   day3StartBlinds?: string | null;
   day3LevelTime?: number | null;
-  day1TurboLabel?: string | null;
-  day1TurboStartLevel?: number | null;
-  day1TurboLevelTime?: number | null;
-  day1TurboEndLevel?: number | null;
-  day1TurboEndBlinds?: string | null;
-  day1TurboEndCondition?: string | null;
+  /**
+   * Day 1 Turbo flight (例: Day 1F Turbo) の特殊仕様。
+   * transformer が legacy data の event-level multiDay (nested) からそのまま渡す。
+   * 旧 flat 表現 (`day1TurboLabel`, `day1TurboStartLevel` 等) は API から廃止済 (2026-04-25)。
+   */
+  turbo?: {
+    label?: string | null;
+    startLevel?: number | null;
+    levelTime?: number | null;
+    endLevel?: number | null;
+    endBlinds?: string | null;
+    endCondition?: string | null;
+  } | null;
   totalLevels?: number | null;
 }
 
@@ -213,9 +220,9 @@ function getEventPhase(event: EventData): Phase | null {
   if (/\/\s*Day\s*1[A-Z]?\s*Turbo\s*$/i.test(n)) {
     return {
       kind: "day1Turbo",
-      startLevel: md.day1TurboStartLevel ?? 1,
-      endLevel: md.day1TurboEndLevel ?? md.day1EndLevel ?? null,
-      label: "Day 1 Turbo",
+      startLevel: md.turbo?.startLevel ?? 1,
+      endLevel: md.turbo?.endLevel ?? md.day1EndLevel ?? null,
+      label: md.turbo?.label ?? "Day 1 Turbo",
     };
   }
   if (/\/\s*Day\s*1[A-Z]?\s*$/i.test(n)) {
@@ -280,6 +287,9 @@ function StructureTable({
 
   const filteredRaw: Level[] = phase
     ? structure.levels.filter((lv) => {
+        // Day 1 Turbo: 元 30 分 structure の break (Lv.4/Lv.8 後 等) は不要。
+        // 代わりに reg close level 直後に 10 分 break を合成挿入する (下記 displayLevels)
+        if (phase.kind === "day1Turbo" && lv.break) return false;
         if (lv.break) return true;
         if (lv.level == null) return false;
         if (lv.level < phase.startLevel) return false;
@@ -292,6 +302,14 @@ function StructureTable({
   while (trimmed.length && trimmed[0].break) trimmed.shift();
   while (trimmed.length && trimmed[trimmed.length - 1].break) trimmed.pop();
 
+  // Day 1 Turbo phase は level time を turbo.levelTime で上書き (例: 30 → 20 分)
+  // 加えて reg close level (= structure.lateRegCloseAfterLevel) 直後に 10 分 break を
+  // 合成挿入する (Owner 仕様 2026-04-25: 「Lv.9 後で 10 分ブレイク」)
+  const turboLevelTime =
+    phase?.kind === "day1Turbo" ? multiDay?.turbo?.levelTime ?? null : null;
+  const turboRegCloseLevel =
+    phase?.kind === "day1Turbo" ? structure.lateRegCloseAfterLevel ?? null : null;
+
   // Owner 指示 (2026-04-22): 単日トーナメントは 30 レベルまで記載。
   // Multi-day は phase filter (Day 1/2/3) で Day 範囲に絞られるため phase 基準で cap 決定。
   // 単日 cap は transformer 側でも slice 済 (SINGLE_DAY_LEVEL_CAP=30) のため二重保険。
@@ -301,7 +319,21 @@ function StructureTable({
       : isMultiDay
       ? 50
       : 30;
-  const displayLevels = getLimitedLevels(trimmed, maxLevels);
+  const displayLevels = (() => {
+    const base = getLimitedLevels(trimmed, maxLevels).map((lv) =>
+      lv.break || turboLevelTime == null ? lv : { ...lv, time: turboLevelTime }
+    );
+    if (turboRegCloseLevel == null) return base;
+    // Day 1 Turbo: reg close level の直後に 10 分 break を 1 件だけ合成挿入
+    const result: Level[] = [];
+    for (const lv of base) {
+      result.push(lv);
+      if (!lv.break && lv.level === turboRegCloseLevel) {
+        result.push({ break: true, time: 10 } as Level);
+      }
+    }
+    return result;
+  })();
   const bbCount = calcBBAtLevel(structure, startingChips);
   const day2StartLevel = multiDay?.day2StartLevel ?? null;
   const day2StartBlinds = multiDay?.day2StartBlinds ?? null;
@@ -516,7 +548,7 @@ function InfoPanel({ event }: { event: EventData }) {
     md != null &&
     (md.day2StartLevel != null ||
       md.day3StartLevel != null ||
-      md.day1TurboEndCondition != null);
+      md.turbo != null);
 
   return (
     <div className="space-y-3 text-xs">
@@ -637,13 +669,25 @@ function InfoPanel({ event }: { event: EventData }) {
               {md.day2RestartNote}
             </p>
           )}
-          {md.day1TurboEndCondition && (
-            <p className="text-[11px] text-text-secondary mt-1 leading-relaxed">
-              <span className="font-medium text-blue-900">
-                {md.day1TurboLabel ?? "Turbo"}:{" "}
-              </span>
-              {md.day1TurboEndCondition}
-            </p>
+          {md.turbo && (
+            <div className="text-[11px] text-text-secondary mt-1 leading-relaxed">
+              <p>
+                <span className="font-medium text-blue-900">
+                  {md.turbo.label ?? "Day 1 Turbo"}:{" "}
+                </span>
+                {md.turbo.startLevel != null && (
+                  <span className="tabular-nums">Lv.{md.turbo.startLevel} 開始</span>
+                )}
+                {md.turbo.levelTime != null && (
+                  <span className="tabular-nums">
+                    {md.turbo.startLevel != null ? " / " : ""}各 {md.turbo.levelTime} 分 / Lv
+                  </span>
+                )}
+              </p>
+              {md.turbo.endCondition && (
+                <p className="mt-0.5">{md.turbo.endCondition}</p>
+              )}
+            </div>
           )}
         </div>
       )}
