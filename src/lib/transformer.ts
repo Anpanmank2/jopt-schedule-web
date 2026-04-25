@@ -20,6 +20,10 @@ export interface TransformedLevel {
   sb?: number;
   bb?: number;
   ante?: number;
+  /** Stud event 用: Bring-in 額 (1st street の最低 bet) */
+  bringIn?: number;
+  /** Stud event 用: Completion 額 (Bring-in に対して complete bet するときの上限) */
+  completion?: number;
   time: number;
   break?: boolean;
 }
@@ -29,6 +33,8 @@ export interface TransformedStructure {
   lateRegCloseAfterLevel: number | null;
   day2EndLevel: number | null;
   isMultiDay: boolean;
+  /** Stud 系 (FL Stud / NL Seven Card Stud 等). UI で Bring-in/Completion 列を表示する */
+  isStud?: boolean;
   levels: TransformedLevel[];
 }
 
@@ -65,6 +71,9 @@ export interface TransformedEvent {
   bounty: { label: string; items: { rank: string; description: string }[] } | null;
   notes: string[] | null;
   award: AwardData | null;
+  /** ジュニア event 等の「景品リスト」(Sheets master の Awards / Benefits 由来) */
+  awards: { label: string; sections: { header: string; items: string[] }[] } | null;
+  benefits: { label: string; sections: { header: string; items: string[] }[] } | null;
   sponsorship: { label: string; items: { rank: string; description: string }[] } | null;
   multiDay: Record<string, unknown> | null;
   stackPerRound: { label: string; rounds: string[] } | null;
@@ -211,6 +220,34 @@ export function deriveGameCategory(
   return "Other";
 }
 
+/**
+ * Sheets master の Awards / Benefits セクション (label + sections[{header, items}])
+ * を取り込む。"0" や空文字は noise として filter (Sheets の merged cell や
+ * 空行が "0" として export されるため)。ジュニア event 等で利用される。
+ */
+export function transformAwardsList(
+  src: any
+): { label: string; sections: { header: string; items: string[] }[] } | null {
+  if (!src || typeof src !== "object") return null;
+  const rawSections = Array.isArray(src.sections) ? src.sections : [];
+  const cleanSections = rawSections
+    .map((s: any) => ({
+      header: typeof s?.header === "string" ? s.header : "",
+      items: Array.isArray(s?.items)
+        ? s.items.filter(
+            (it: any) =>
+              typeof it === "string" && it.trim() !== "" && it.trim() !== "0"
+          )
+        : [],
+    }))
+    .filter((s: { header: string; items: string[] }) => s.items.length > 0);
+  if (cleanSections.length === 0) return null;
+  return {
+    label: typeof src.label === "string" && src.label.trim() ? src.label : "Awards",
+    sections: cleanSections,
+  };
+}
+
 export function transformStructure(
   rows: any[] | undefined,
   regCloseLevel: string | undefined,
@@ -232,6 +269,21 @@ export function transformStructure(
       const ante = parseInt(row.ante.replace(/,/g, ""), 10);
       if (Number.isFinite(ante)) level.ante = ante;
     }
+    // FL Stud 用: raw_cols から Bring-in / Completion を抽出 (Owner 仕様 2026-04-25)
+    // 判定 gate: row.cells に "Bring-in/Completion" key が存在する場合のみ。
+    // NL Stud (cells が All Ante / Minutes) では raw_cols[5] に別 column のゴミ (chips
+    // 等) が混入するため、cells key で FL Stud だけを限定する
+    if (level.sb == null && level.bb == null && row.cells && Array.isArray(row.raw_cols)) {
+      const cellKeys = Object.keys(row.cells);
+      const isFlStudRow = cellKeys.includes("Bring-in/Completion");
+      if (isFlStudRow) {
+        const cols = row.raw_cols as string[];
+        const bi = cols[2] ? parseInt(String(cols[2]).replace(/,/g, ""), 10) : NaN;
+        const co = cols[5] ? parseInt(String(cols[5]).replace(/,/g, ""), 10) : NaN;
+        if (Number.isFinite(bi)) level.bringIn = bi;
+        if (Number.isFinite(co)) level.completion = co;
+      }
+    }
     levels.push(level);
     if (row.break_after) {
       const breakMin =
@@ -250,17 +302,38 @@ export function transformStructure(
   // structure 自体を null にして UI 側で「Structure not available」と
   // 表示させる (Apps Script 側修正までの暫定対応)。
   const hasAnyBlindData = levels.some(
-    (l) => !l.break && (l.sb != null || l.bb != null || l.ante != null)
+    (l) =>
+      !l.break &&
+      (l.sb != null || l.bb != null || l.ante != null || l.bringIn != null)
   );
   if (!hasAnyBlindData) return null;
+  // Stud 系判定:
+  //   sb/bb 全 null && bringIn or completion 存在 → FL Stud (4 列: Lv./Ante/Bring-in-Completion/Min.)
+  //   sb/bb 全 null && bringIn/completion 共に無し && ante 存在  → NL Stud (3 列: Lv./ALL Ante/Min.)
+  // Owner 確認 2026-04-25: NL Stud は「全員で Ante を出していくスタイル」のため
+  // ALL Ante 表記の 3 列構造で表示する
+  const nonBreak = levels.filter((l) => !l.break);
+  const allBlindsNull =
+    nonBreak.length > 0 && nonBreak.every((l) => l.sb == null && l.bb == null);
+  const hasStudLimits =
+    nonBreak.some((l) => l.bringIn != null || l.completion != null);
+  const hasAnte = nonBreak.some((l) => l.ante != null);
+  const isFlStud = allBlindsNull && hasStudLimits;
+  const isAllAnte = allBlindsNull && !hasStudLimits && hasAnte;
+  const isStud = isFlStud || isAllAnte;
   const lateRegCloseAfterLevel = regCloseLevel
     ? parseInt(regCloseLevel, 10) || null
     : null;
+  let columns: string[];
+  if (isFlStud) columns = ["Level", "Ante", "Bring-in/Completion", "Minutes"];
+  else if (isAllAnte) columns = ["Level", "ALL Ante", "Minutes"];
+  else columns = ["Level", "Blinds", "BB Ante", "Minutes"];
   return {
-    columns: ["Level", "Blinds", "BB Ante", "Minutes"],
+    columns,
     lateRegCloseAfterLevel,
     day2EndLevel: null,
     isMultiDay,
+    isStud,
     levels,
   };
 }
@@ -528,6 +601,8 @@ export function transformTournament(
         bounty: transformBounty(t.bounty),
         notes: normalizeNotes(t.notes),
         award: transformAward(t.award),
+        awards: transformAwardsList(t.awards),
+        benefits: transformAwardsList(t.benefits),
         sponsorship: transformSponsorship(t.sponsorship),
         multiDay,
         stackPerRound: transformStackPerRound(t.stack_per_round),
@@ -575,6 +650,8 @@ export function transformTournament(
       bounty: transformBounty(t.bounty),
       notes: normalizeNotes(t.notes),
       award: transformAward(t.award),
+      awards: transformAwardsList(t.awards),
+      benefits: transformAwardsList(t.benefits),
       sponsorship: transformSponsorship(t.sponsorship),
       multiDay,
       stackPerRound: transformStackPerRound(t.stack_per_round),
@@ -706,7 +783,11 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           ? cur.levels.filter((l: any) => !l.break).length
           : 0;
         const legCount = legacyStr.levels.filter((l: any) => !l.break).length;
-        if (legCount > curCount) {
+        // Stud event (FL Stud / NL Stud) は transformer が raw_cols から正しく
+        // ante/bringIn/completion を抽出しているため legacy fallback で上書き
+        // しない (Owner 確認 2026-04-25)。legacy data.json は Hold'em 用の
+        // sb/bb/ante しか持たないため上書きすると Stud 列表記が壊れる。
+        if (legCount > curCount && !cur?.isStud) {
           e.structure = {
             ...legacyStr,
             lateRegCloseAfterLevel:

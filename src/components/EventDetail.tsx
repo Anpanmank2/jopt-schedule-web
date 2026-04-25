@@ -9,6 +9,10 @@ export interface Level {
   sb?: number;
   bb?: number;
   ante?: number;
+  /** Stud event 用: Bring-in 額 */
+  bringIn?: number;
+  /** Stud event 用: Completion 額 */
+  completion?: number;
   time: number;
   break?: boolean;
 }
@@ -18,6 +22,8 @@ export interface Structure {
   lateRegCloseAfterLevel: number | null;
   day2EndLevel: number | null;
   isMultiDay?: boolean;
+  /** Stud 系 (FL Stud / NL Seven Card Stud 等). UI で Bring-in/Completion 列を表示 */
+  isStud?: boolean;
   levels: Level[];
 }
 
@@ -110,6 +116,9 @@ export interface EventData {
   bounty: { label: string; items: { rank: string; description: string }[] } | null;
   notes: string[] | null;
   award: AwardData | null;
+  /** ジュニア event 等の景品リスト (Sheets master の Awards / Benefits 由来) */
+  awards?: { label: string; sections: { header: string; items: string[] }[] } | null;
+  benefits?: { label: string; sections: { header: string; items: string[] }[] } | null;
   sponsorship?: { label: string; items: { rank: string; description: string }[] } | null;
   multiDay?: MultiDayInfo | null;
   stackPerRound?: { label: string; rounds: string[] } | null;
@@ -283,7 +292,11 @@ function StructureTable({
   isMultiDay: boolean;
   phase: Phase | null;
 }) {
-  const hasAnte = structure.columns.includes("BB Ante");
+  const isStud = !!structure.isStud;
+  // NL Stud は ALL Ante 1 列のみの 3 列構造 (Owner 仕様 2026-04-25)
+  const isAllAnte = structure.columns.includes("ALL Ante");
+  // FL Stud は Ante + Bring-in/Completion の 4 列。Hold'em/Omaha は BB Ante 列の有無で 3 or 4 列
+  const hasAnte = !isAllAnte && (isStud || structure.columns.includes("BB Ante"));
 
   const filteredRaw: Level[] = phase
     ? structure.levels.filter((lv) => {
@@ -375,9 +388,13 @@ function StructureTable({
         <thead>
           <tr className="border-b border-border-default">
             <th className="text-center py-1 px-1 font-medium text-text-muted">Lv.</th>
-            <th className="text-center py-1 px-1 font-medium text-text-muted">Blinds</th>
+            <th className="text-center py-1 px-1 font-medium text-text-muted">
+              {isAllAnte ? "ALL Ante" : isStud ? "Ante" : "Blinds"}
+            </th>
             {hasAnte && (
-              <th className="text-center py-1 px-1 font-medium text-text-muted">Ante</th>
+              <th className="text-center py-1 px-1 font-medium text-text-muted">
+                {isStud ? "Bring-in/Completion" : "Ante"}
+              </th>
             )}
             <th className="text-center py-1 px-1 font-medium text-text-muted">Min.</th>
           </tr>
@@ -456,11 +473,21 @@ function StructureTable({
                   )}
                 </td>
                 <td className="py-1 px-1 text-center text-text-primary font-medium tabular-nums">
-                  {formatBlinds(lv.sb, lv.bb)}
+                  {isStud || isAllAnte
+                    ? lv.ante != null
+                      ? formatNumber(lv.ante)
+                      : "—"
+                    : formatBlinds(lv.sb, lv.bb)}
                 </td>
                 {hasAnte && (
                   <td className="py-1 px-1 text-center text-text-secondary tabular-nums">
-                    {lv.ante != null ? formatNumber(lv.ante) : "—"}
+                    {isStud
+                      ? lv.bringIn != null && lv.completion != null
+                        ? `${formatNumber(lv.bringIn)} - ${formatNumber(lv.completion)}`
+                        : "—"
+                      : lv.ante != null
+                      ? formatNumber(lv.ante)
+                      : "—"}
                   </td>
                 )}
                 <td className="py-1 px-1 text-center text-text-secondary tabular-nums">
@@ -784,6 +811,51 @@ function InfoPanel({ event }: { event: EventData }) {
           </div>
         );
       })()}
+
+      {/* Awards / Benefits (Sheets master の景品リスト由来。ジュニア event 等で利用) */}
+      {event.awards && event.awards.sections.length > 0 && (
+        <div>
+          <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
+            {event.awards.label || "Awards"}
+          </p>
+          {event.awards.sections.map((s, i) => (
+            <div key={i} className="mb-1">
+              {s.header && (
+                <p className="text-[11px] font-semibold text-blue-900">{s.header}</p>
+              )}
+              <ul className="space-y-0.5 mt-0.5">
+                {s.items.map((it, j) => (
+                  <li key={j} className="text-[11px] text-text-secondary leading-relaxed">
+                    {it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {event.benefits && event.benefits.sections.length > 0 && (
+        <div>
+          <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
+            {event.benefits.label || "Benefits"}
+          </p>
+          {event.benefits.sections.map((s, i) => (
+            <div key={i} className="mb-1">
+              {s.header && (
+                <p className="text-[11px] font-semibold text-blue-900">{s.header}</p>
+              )}
+              <ul className="space-y-0.5 mt-0.5">
+                {s.items.map((it, j) => (
+                  <li key={j} className="text-[11px] text-text-secondary leading-relaxed">
+                    {it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
 
       {event.sponsorship && event.sponsorship.items.length > 0 && (
         <div>
