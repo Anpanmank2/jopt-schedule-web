@@ -341,11 +341,12 @@ export function transformStructure(
     }
     levels.push(level);
     if (row.break_after) {
-      const breakMin =
-        parseInt(row.secondary_minutes, 10) ||
-        parseInt((row.minutes ?? "").split("/")[1], 10) ||
-        10;
-      levels.push({ break: true, time: breakMin });
+      // JOPT 全 event break = 10 分固定 (Owner 確認 2026-04-26)。
+      // 旧コードは secondary_minutes / minutes split[1] を break 時間と誤解釈していたが、
+      // それらは Day 2+ play pace (例: '30*/20' の 20 = Day 2 短縮レベル時間) であり
+      // break 時間ではない。#33 Colossus / #01 Main / #03 Mini Main / #71 Millions /
+      // #145 PPC で Lv.X 後の break が誤って 20 分表示されていた問題を修正。
+      levels.push({ break: true, time: 10 });
     }
   }
   // 健全性チェック (Owner 指示 2026-04-26):
