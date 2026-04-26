@@ -974,6 +974,59 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     }
   }
 
+  // extraEvents inject (緊急 event 追加用、Sheets master 再 extract 反映待ち):
+  // pdf-overrides.json の "extraEvents" 配列を読み込み、events に push する。
+  // templateFromName が指定された場合、既存 event を find して structure /
+  // startingChips / notes / prize / feeDetail / reentry を継承する。
+  // 個別 field は extra 側で override 可能。
+  const extraEvents = (pdfOverrides as any).extraEvents;
+  if (Array.isArray(extraEvents)) {
+    for (const extra of extraEvents) {
+      if (!extra || typeof extra !== "object") continue;
+      let template: TransformedEvent | undefined;
+      if (typeof extra.templateFromName === "string") {
+        const escaped = extra.templateFromName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        template = events.find((ev) => new RegExp(escaped).test(ev.name));
+      }
+      const buyIn = typeof extra.buyIn === "number" ? extra.buyIn : null;
+      events.push({
+        eventNumber: extra.eventNumber || "",
+        name: extra.name || "",
+        gameType: extra.gameType ?? template?.gameType ?? "SAT",
+        gameCategory: extra.gameCategory ?? template?.gameCategory ?? "Satellite",
+        date: extra.date || "",
+        startTime: extra.startTime || "",
+        lateRegClose: extra.lateRegClose ?? null,
+        lateRegLevel: extra.lateRegLevel ?? null,
+        startingChips: extra.startingChips ?? template?.startingChips ?? null,
+        buyIn,
+        buyInDisplay:
+          extra.buyInDisplay ??
+          (buyIn != null ? `¥${buyIn.toLocaleString()}` : null),
+        gtd: extra.gtd ?? null,
+        gtdDisplay: extra.gtdDisplay ?? null,
+        isMainEvent: !!extra.isMainEvent,
+        isSatellite: extra.isSatellite ?? true,
+        seatRatio: extra.seatRatio ?? template?.seatRatio ?? null,
+        reentry: extra.reentry ?? template?.reentry ?? null,
+        day2Condition: extra.day2Condition ?? null,
+        ruleNotes: extra.ruleNotes ?? null,
+        structure: extra.structure ?? template?.structure ?? null,
+        prize: extra.prize ?? template?.prize ?? null,
+        feeDetail: extra.feeDetail ?? template?.feeDetail ?? null,
+        games: extra.games ?? null,
+        bounty: extra.bounty ?? null,
+        notes: extra.notes ?? template?.notes ?? null,
+        award: extra.award ?? null,
+        awards: extra.awards ?? null,
+        benefits: extra.benefits ?? null,
+        sponsorship: extra.sponsorship ?? null,
+        multiDay: extra.multiDay ?? null,
+        stackPerRound: extra.stackPerRound ?? null,
+      });
+    }
+  }
+
   // 日別グルーピング
   const byDate: Record<string, TransformedEvent[]> = {};
   for (const e of events) {

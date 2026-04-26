@@ -255,5 +255,21 @@
         ]
       }
     }
-  }
+  },
+  "extraEvents": [
+    {
+      "_source": "Owner 緊急追加 2026-04-26: GG500 系の追加サテライト。Sheets master 反映待ち。再 extract 後は Sheets から自動取り込みされるため本 entry は削除する",
+      "eventNumber": "(s37)",
+      "name": "(s37) Satellite to NLH Good Game 500 at 1/8",
+      "templateFromName": "Satellite to NLH Good Game 500 at 1/12",
+      "date": "2026-04-26",
+      "startTime": "19:00",
+      "lateRegClose": "20:00 (Lv.4)",
+      "lateRegLevel": 4,
+      "buyIn": 7000,
+      "buyInDisplay": "¥7,000",
+      "feeDetail": "¥7,000 (including ¥636 consumption tax)",
+      "seatRatio": "1/8"
+    }
+  ]
 }
