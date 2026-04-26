@@ -80,6 +80,8 @@ export interface TransformedEvent {
     rankPrizes: { rank: string; description: string }[];
   } | null;
   feeDetail: string | null;
+  /** card 用 短縮チケットエントリ表記 (例: "1 Ticket + ¥8,000"). チケット非対応 event は null */
+  ticketEntry: string | null;
   games: string[] | null;
   bounty: { label: string; items: { rank: string; description: string }[] } | null;
   notes: string[] | null;
@@ -135,19 +137,39 @@ export function parseChips(str: string | null | undefined): number | null {
   return null;
 }
 
+/**
+ * チケットエントリ表記を card 用に短縮整形 (Owner 指示 2026-04-26)。
+ * 例: "1 JOPT Ticket + ¥8,000(including ¥727 consumption tax)" → "1 Ticket + ¥8,000"
+ *     "3 JOPT Tickets + ¥8,000 (including ¥727 consumption tax)" → "3 Tickets + ¥8,000"
+ * 消費税注記は detail 側 feeDetail で別途表示するため card では削除。
+ */
+function buildTicketEntry(line: string): string {
+  // "JOPT " 部分を除去 (重複表現の冗長さを削減)、tax 注記カット
+  return line
+    .replace(/JOPT\s+/i, "")
+    .replace(/\s*\(including[^)]*\)/i, "")
+    .trim();
+}
+
 export function parseFeeLines(feeLines: string[] | undefined): {
   buyIn: number | null;
   buyInDisplay: string | null;
   feeDetail: string | null;
+  ticketEntry: string | null;
 } {
   if (!Array.isArray(feeLines) || feeLines.length === 0) {
-    return { buyIn: null, buyInDisplay: null, feeDetail: null };
+    return { buyIn: null, buyInDisplay: null, feeDetail: null, ticketEntry: null };
   }
   const feeDetail = feeLines.join("\n");
   let buyIn: number | null = null;
   let buyInDisplay: string | null = null;
+  let ticketEntry: string | null = null;
   for (const line of feeLines) {
-    if (/JOPT\s+Ticket/i.test(line)) continue;
+    if (/JOPT\s+Ticket/i.test(line)) {
+      // 最初に出現したチケットエントリ行を card 表示用に短縮形で保持
+      if (ticketEntry === null) ticketEntry = buildTicketEntry(line);
+      continue;
+    }
     if (/Pre-registration/i.test(line)) {
       buyInDisplay = line;
       continue;
@@ -166,7 +188,7 @@ export function parseFeeLines(feeLines: string[] | undefined): {
     const ticketLine = feeLines.find((l) => /JOPT\s+Ticket/i.test(l));
     if (ticketLine) buyInDisplay = ticketLine;
   }
-  return { buyIn, buyInDisplay, feeDetail };
+  return { buyIn, buyInDisplay, feeDetail, ticketEntry };
 }
 
 export function parseDate(str: string | undefined, year = EVENT_CONFIG.year): string | null {
@@ -642,7 +664,7 @@ export function transformTournament(
     t.tab_name ||
     "";
 
-  const { buyIn, buyInDisplay, feeDetail } = parseFeeLines(t.fee_chips?.fee_lines);
+  const { buyIn, buyInDisplay, feeDetail, ticketEntry } = parseFeeLines(t.fee_chips?.fee_lines);
   const schedules: any[] = Array.isArray(t.schedules) ? t.schedules : [];
   const multiDay = currentMultiDayMap[eventNumber] || null;
 
@@ -676,6 +698,7 @@ export function transformTournament(
         ),
         prize: transformPrize(t.prize),
         feeDetail,
+        ticketEntry,
         games: extractGames(t.games),
         bounty: transformBounty(t.bounty),
         notes: normalizeNotes(t.notes),
@@ -725,6 +748,7 @@ export function transformTournament(
       ),
       prize: transformPrize(t.prize),
       feeDetail,
+      ticketEntry,
       games: extractGames(t.games),
       bounty: transformBounty(t.bounty),
       notes: normalizeNotes(t.notes),
@@ -1083,6 +1107,7 @@ export function transform(extract: any, currentData: any = null): TransformedDat
         structure: extra.structure ?? template?.structure ?? null,
         prize: extra.prize ?? template?.prize ?? null,
         feeDetail: extra.feeDetail ?? template?.feeDetail ?? null,
+        ticketEntry: extra.ticketEntry ?? template?.ticketEntry ?? null,
         games: extra.games ?? null,
         bounty: extra.bounty ?? null,
         notes: extra.notes ?? template?.notes ?? null,

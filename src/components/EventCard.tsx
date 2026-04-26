@@ -75,7 +75,7 @@ export default function EventCard({ event }: { event: EventData }) {
           </svg>
         </div>
 
-        <div className="flex items-center gap-3 mt-1.5">
+        <div className="flex items-center flex-wrap gap-x-3 gap-y-0.5 mt-1.5">
           {displayBuyIn && (
             <span
               className={`text-sm font-bold tabular-nums ${
@@ -83,6 +83,13 @@ export default function EventCard({ event }: { event: EventData }) {
               }`}
             >
               {displayBuyIn}
+            </span>
+          )}
+          {/* チケットエントリ表記 (Owner 指示 2026-04-26): #01 Main / #03 Mini Main /
+              #62 3on3 / #71 Millions 等で「JOPT Ticket + ¥X,XXX」エントリ option を card で見える化 */}
+          {event.ticketEntry && (
+            <span className="text-[11px] text-blue-700 font-medium tabular-nums">
+              or {event.ticketEntry}
             </span>
           )}
           {event.gtdDisplay && (

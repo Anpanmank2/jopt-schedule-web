@@ -134,6 +134,8 @@ export interface EventData {
   structure: Structure | null;
   prize: Prize | null;
   feeDetail: string | null;
+  /** card 用 短縮チケットエントリ表記 (例: "1 Ticket + ¥8,000"). チケット非対応 event は null */
+  ticketEntry: string | null;
   games: string[] | null;
   bounty: { label: string; items: { rank: string; description: string }[] } | null;
   notes: string[] | null;
@@ -887,7 +889,9 @@ function InfoPanel({ event }: { event: EventData }) {
           <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
             Entry Fee
           </p>
-          <p className="text-text-secondary">{displayFee}</p>
+          {/* fee_lines は改行区切りで複数 entry option (例: "1 JOPT Ticket + ¥8,000\n¥80,000")
+              を保持するため whitespace-pre-line で line break を保つ (Owner 指示 2026-04-26) */}
+          <p className="text-text-secondary whitespace-pre-line">{displayFee}</p>
         </div>
       )}
 
