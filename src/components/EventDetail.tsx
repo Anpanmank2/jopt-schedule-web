@@ -3,6 +3,24 @@
 import { useState } from "react";
 import PhotoPanel from "./PhotoPanel";
 import { EVENT_CONFIG } from "@/config/eventConfig";
+import structurePdfManifest from "@/data/structure-pdf-manifest.json";
+
+// rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E. 等) で
+// 上流 Apps Script の blind/minutes 抽出が不完全な event は PDF Players Guide を
+// PNG 画像化して直接表示する (Owner 指示 2026-04-26)。
+// 値: 各 event の page 数 (1 PDF = 1-3 page)。
+// 画像: public/structure-pdfs/{eventNumber}-p{page}.png (例: 46-p1.png, 46-p2.png, 46-p3.png)
+// manifest 更新は scripts/convert-structure-pdfs.mjs を再実行 (PDF 追加/差替時)
+const STRUCTURE_PDF_PAGES = structurePdfManifest as Record<string, number>;
+
+export interface GameVariant {
+  /** "FL" | "STUD" | "PL / NL" | "PL/NL" 等 */
+  type: string;
+  /** transformer で完成形 string 化済み (例: "-", "100", "- / 300") */
+  ante: string;
+  /** transformer で完成形 string 化済み (例: "300 - 500", "100 - 200")。UI 側での再 format 禁止 */
+  blinds: string;
+}
 
 export interface Level {
   level?: number;
@@ -15,6 +33,8 @@ export interface Level {
   completion?: number;
   time: number;
   break?: boolean;
+  /** rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E. 等) で 1 level 内に複数 game variant が並ぶ場合の variant 配列 */
+  gameVariants?: GameVariant[];
 }
 
 export interface Structure {
@@ -24,6 +44,8 @@ export interface Structure {
   isMultiDay?: boolean;
   /** Stud 系 (FL Stud / NL Seven Card Stud 等). UI で Bring-in/Completion 列を表示 */
   isStud?: boolean;
+  /** rotation game (MIX / HORSE 等). UI で Lv./Type/Ante/Blinds/Min. の 5 列構造 + variant rowSpan で表示 */
+  isMixRotation?: boolean;
   levels: Level[];
 }
 
@@ -378,6 +400,147 @@ function StructureTable({
           <br />
           See any Day 1 row for the complete blind progression.
         </p>
+      </div>
+    );
+  }
+
+  // rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E. 等) は 5 列 + variant rowSpan で別描画
+  // 通常 Hold'em / PLO / Stud branch (下記 main return) と完全分離 (Owner 仕様 2026-04-26)
+  if (structure.isMixRotation) {
+    const rotationColCount = 5;
+    return (
+      <div className="overflow-x-auto -mx-1">
+        <table className="w-full text-[10px]">
+          <thead>
+            <tr className="border-b border-border-default">
+              <th className="text-center py-1 px-1 font-medium text-text-muted">Lv.</th>
+              <th className="text-center py-1 px-1 font-medium text-text-muted">Type</th>
+              <th className="text-center py-1 px-1 font-medium text-text-muted">Ante</th>
+              <th className="text-center py-1 px-1 font-medium text-text-muted">Blinds</th>
+              <th className="text-center py-1 px-1 font-medium text-text-muted">Min.</th>
+            </tr>
+          </thead>
+          <tbody>
+            {displayLevels.map((lv, i) => {
+              if (lv.break) {
+                return (
+                  <tr key={`break-${i}`} className="bg-bg-tertiary">
+                    <td
+                      colSpan={rotationColCount}
+                      className="text-center py-1 px-1 text-text-muted italic"
+                    >
+                      Break — {lv.time} min.
+                    </td>
+                  </tr>
+                );
+              }
+              const variants = lv.gameVariants && lv.gameVariants.length > 0
+                ? lv.gameVariants
+                : [{ type: "—", ante: "—", blinds: "—" }];
+              const rowSpan = variants.length;
+              const isLateRegClose =
+                structure.lateRegCloseAfterLevel != null &&
+                lv.level === structure.lateRegCloseAfterLevel;
+              const isDay2End =
+                structure.day2EndLevel != null && lv.level === structure.day2EndLevel;
+              const isDay2Start =
+                day2StartLevel != null && lv.level === day2StartLevel;
+              const isDay1End =
+                phase?.kind === "day1" &&
+                phase.endLevel != null &&
+                lv.level === phase.endLevel;
+              const isDay3Start =
+                phase?.kind === "day3" &&
+                day3StartLevel != null &&
+                lv.level === day3StartLevel;
+              const rowBg =
+                isDay1End || isDay2Start || isDay3Start
+                  ? "bg-amber-50"
+                  : isLateRegClose
+                  ? "bg-blue-50"
+                  : "";
+              return variants.map((v, vi) => (
+                <tr
+                  key={`lv-${lv.level}-${i}-${vi}`}
+                  className={`${vi === variants.length - 1 ? "border-b border-border-light" : ""} ${rowBg}`}
+                >
+                  {vi === 0 && (
+                    <td
+                      rowSpan={rowSpan}
+                      className="py-1 px-1 text-center text-text-secondary tabular-nums align-top"
+                    >
+                      {lv.level}
+                      {isLateRegClose && (
+                        <span className="ml-1 text-[8px] text-blue-700 font-bold">
+                          {bbCount != null ? `CLOSE ${bbCount}BB` : "CLOSE"}
+                        </span>
+                      )}
+                      {isDay1End && (
+                        <span className="ml-1 text-[8px] text-amber-800 font-bold">
+                          D1 END
+                        </span>
+                      )}
+                      {isDay2Start && (
+                        <span className="ml-1 text-[8px] text-amber-700 font-bold">
+                          D2 START
+                        </span>
+                      )}
+                      {isDay2End && (
+                        <span className="ml-1 text-[8px] text-blue-900 font-bold">
+                          D2 END
+                        </span>
+                      )}
+                      {isDay3Start && (
+                        <span className="ml-1 text-[8px] text-amber-700 font-bold">
+                          D3 START
+                        </span>
+                      )}
+                    </td>
+                  )}
+                  <td className="py-1 px-1 text-center text-text-primary font-medium whitespace-nowrap">
+                    {v.type}
+                  </td>
+                  <td className="py-1 px-1 text-center text-text-secondary tabular-nums whitespace-nowrap">
+                    {v.ante}
+                  </td>
+                  <td className="py-1 px-1 text-center text-text-primary font-medium tabular-nums whitespace-nowrap">
+                    {v.blinds}
+                  </td>
+                  {vi === 0 && (
+                    <td
+                      rowSpan={rowSpan}
+                      className="py-1 px-1 text-center text-text-secondary tabular-nums align-top"
+                    >
+                      {lv.time > 0 ? lv.time : "—"}
+                    </td>
+                  )}
+                </tr>
+              ));
+            })}
+            {showD2Synth && (
+              <tr className="bg-amber-50 border-t-2 border-amber-300">
+                <td
+                  colSpan={rotationColCount}
+                  className="text-center py-1.5 px-1 text-amber-900 font-semibold text-[10px]"
+                >
+                  ▶ D2 START — Lv.{day2StartLevel}
+                  {day2StartBlinds ? ` (${day2StartBlinds})` : ""}
+                </td>
+              </tr>
+            )}
+            {showD3Synth && (
+              <tr className="bg-amber-100/70 border-t border-amber-300">
+                <td
+                  colSpan={rotationColCount}
+                  className="text-center py-1.5 px-1 text-amber-900 font-semibold text-[10px]"
+                >
+                  ▶ D3 START — Lv.{day3StartLevel}
+                  {day3StartBlinds ? ` (${day3StartBlinds})` : ""}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     );
   }
@@ -946,19 +1109,44 @@ export default function EventDetail({ event }: { event: EventData }) {
       {activeTab === "info" && <InfoPanel event={event} />}
 
       {activeTab === "structure" &&
-        (event.structure ? (
-          <StructureTable
-            structure={event.structure}
-            startingChips={event.startingChips}
-            multiDay={multiDay}
-            isMultiDay={isMultiDay}
-            phase={phase}
-          />
-        ) : (
-          <p className="text-xs text-text-muted py-4 text-center">
-            Structure not available
-          </p>
-        ))}
+        (() => {
+          // PDF 画像 fallback: rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E.) は
+          // 上流 Apps Script 抽出が不完全 (val2 / minutes 欠落) のため Players Guide PDF を
+          // PNG 画像化して直接表示。table 描画より優先 (Owner 指示 2026-04-26)
+          const evKey = (event.eventNumber || "").replace(/^#/, "");
+          const pageCount = STRUCTURE_PDF_PAGES[evKey];
+          if (pageCount) {
+            return (
+              <div className="space-y-2">
+                {Array.from({ length: pageCount }).map((_, i) => (
+                  <img
+                    key={i}
+                    src={`/structure-pdfs/${evKey}-p${i + 1}.png`}
+                    alt={`${event.eventNumber} structure page ${i + 1} of ${pageCount}`}
+                    className="w-full h-auto block"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+            );
+          }
+          if (event.structure) {
+            return (
+              <StructureTable
+                structure={event.structure}
+                startingChips={event.startingChips}
+                multiDay={multiDay}
+                isMultiDay={isMultiDay}
+                phase={phase}
+              />
+            );
+          }
+          return (
+            <p className="text-xs text-text-muted py-4 text-center">
+              Structure not available
+            </p>
+          );
+        })()}
 
       {activeTab === "photo" && <PhotoPanel event={event} />}
     </div>

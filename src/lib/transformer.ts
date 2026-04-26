@@ -15,6 +15,15 @@
 import { EVENT_CONFIG } from "@/config/eventConfig";
 import pdfOverrides from "@/data/pdf-overrides.json";
 
+export interface GameVariant {
+  /** "FL" | "STUD" | "PL / NL" | "PL/NL" 等 (PDF Type 列の表記をそのまま) */
+  type: string;
+  /** transformer で完成形 string 化済み. 例: "-", "100", "- / 300" (PL/NL の SB/BB ante 形式) */
+  ante: string;
+  /** transformer で完成形 string 化済み. 例: "300 - 500" (FL の low/high), "200 - 500" (STUD bring-in/completion), "100 - 200" (PL/NL SB/BB). UI 側での再 format 禁止 (memory feedback_format_responsibility_split.md) */
+  blinds: string;
+}
+
 export interface TransformedLevel {
   level?: number;
   sb?: number;
@@ -26,6 +35,8 @@ export interface TransformedLevel {
   completion?: number;
   time: number;
   break?: boolean;
+  /** rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E. 等) で 1 level 内に 2-3 game variant が並ぶ場合の variant 配列 */
+  gameVariants?: GameVariant[];
 }
 
 export interface TransformedStructure {
@@ -35,6 +46,8 @@ export interface TransformedStructure {
   isMultiDay: boolean;
   /** Stud 系 (FL Stud / NL Seven Card Stud 等). UI で Bring-in/Completion 列を表示する */
   isStud?: boolean;
+  /** rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E. 等). UI で Lv./Type/Ante/Blinds/Min. の 5 列構造 + variant rowSpan で表示 */
+  isMixRotation?: boolean;
   levels: TransformedLevel[];
 }
 
@@ -248,6 +261,22 @@ export function transformAwardsList(
   };
 }
 
+/**
+ * rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E. 等) の 1 variant の blinds を
+ * PDF Players Guide 表記に揃えて完成形 string で返す.
+ * - val1 / val2 はカンマ区切り済み生 string (extract.json の games[].val1 / val2)
+ * - val2 が空文字の場合 (一部 STUD 系で 1 値しか持たない) は val1 のみ返す
+ * UI 側での再 format は禁止 (memory feedback_format_responsibility_split.md).
+ */
+function formatRotationBlinds(val1: string | null | undefined, val2: string | null | undefined): string {
+  const v1 = (val1 ?? "").trim();
+  const v2 = (val2 ?? "").trim();
+  if (!v1 && !v2) return "-";
+  if (!v2) return v1;
+  if (!v1) return v2;
+  return `${v1} - ${v2}`;
+}
+
 export function transformStructure(
   rows: any[] | undefined,
   regCloseLevel: string | undefined,
@@ -284,6 +313,32 @@ export function transformStructure(
         if (Number.isFinite(co)) level.completion = co;
       }
     }
+    // rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E. 等) の variant 抽出 (Owner 指示 2026-04-26):
+    //   1 level 内に複数 game type (FL / STUD / PL / NL 等) が並ぶ MIX 系 event。
+    //   row.games 配列に各 variant の {type, ante, val1, val2, minutes} が入っている。
+    //   sb/bb/ante/bringIn が直下に無く games[] のみ持つ row が rotation level。
+    //   level.time は最初の game の minutes (PDF 上 1 level 単位の duration)
+    if (
+      Array.isArray(row.games) &&
+      row.games.length > 0 &&
+      level.sb == null &&
+      level.bb == null &&
+      level.ante == null &&
+      level.bringIn == null
+    ) {
+      const variants = (row.games as any[]).map((g) => ({
+        type: String(g.type ?? "").trim(),
+        ante: String(g.ante ?? "").trim() || "-",
+        blinds: formatRotationBlinds(g.val1, g.val2),
+      }));
+      level.gameVariants = variants;
+      // rotation row の Min. は最初の variant の minutes 列に記載 (PDF 仕様)。
+      // 末尾の "*" (break marker) は parseInt で自然に剥がれる。
+      if (level.time === 0 && row.games[0]?.minutes) {
+        const m = parseInt(String(row.games[0].minutes), 10);
+        if (Number.isFinite(m)) level.time = m;
+      }
+    }
     levels.push(level);
     if (row.break_after) {
       const breakMin =
@@ -304,28 +359,38 @@ export function transformStructure(
   const hasAnyBlindData = levels.some(
     (l) =>
       !l.break &&
-      (l.sb != null || l.bb != null || l.ante != null || l.bringIn != null)
+      (l.sb != null ||
+        l.bb != null ||
+        l.ante != null ||
+        l.bringIn != null ||
+        (l.gameVariants && l.gameVariants.length > 0))
   );
   if (!hasAnyBlindData) return null;
-  // Stud 系判定:
-  //   sb/bb 全 null && bringIn or completion 存在 → FL Stud (4 列: Lv./Ante/Bring-in-Completion/Min.)
-  //   sb/bb 全 null && bringIn/completion 共に無し && ante 存在  → NL Stud (3 列: Lv./ALL Ante/Min.)
-  // Owner 確認 2026-04-25: NL Stud は「全員で Ante を出していくスタイル」のため
-  // ALL Ante 表記の 3 列構造で表示する
+  // 構造判定優先順:
+  //   1. rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E.): gameVariants を持つ level が 1 つでも有り
+  //      → 5 列 (Lv./Type/Ante/Blinds/Min.). UI で variant を rowSpan 描画
+  //   2. FL Stud: sb/bb 全 null && bringIn or completion 存在 → 4 列 (Lv./Ante/Bring-in-Completion/Min.)
+  //   3. NL Stud (ALL Ante): sb/bb 全 null && bringIn/completion 無し && ante 存在 → 3 列 (Lv./ALL Ante/Min.)
+  //   4. 通常 Hold'em / PLO: 既存 4 列 (Lv./Blinds/BB Ante/Min.)
+  // Owner 確認 2026-04-25 / 2026-04-26
   const nonBreak = levels.filter((l) => !l.break);
+  const isMixRotation = nonBreak.some(
+    (l) => l.gameVariants && l.gameVariants.length > 0
+  );
   const allBlindsNull =
     nonBreak.length > 0 && nonBreak.every((l) => l.sb == null && l.bb == null);
   const hasStudLimits =
     nonBreak.some((l) => l.bringIn != null || l.completion != null);
   const hasAnte = nonBreak.some((l) => l.ante != null);
-  const isFlStud = allBlindsNull && hasStudLimits;
-  const isAllAnte = allBlindsNull && !hasStudLimits && hasAnte;
+  const isFlStud = !isMixRotation && allBlindsNull && hasStudLimits;
+  const isAllAnte = !isMixRotation && allBlindsNull && !hasStudLimits && hasAnte;
   const isStud = isFlStud || isAllAnte;
   const lateRegCloseAfterLevel = regCloseLevel
     ? parseInt(regCloseLevel, 10) || null
     : null;
   let columns: string[];
-  if (isFlStud) columns = ["Level", "Ante", "Bring-in/Completion", "Minutes"];
+  if (isMixRotation) columns = ["Level", "Type", "Ante", "Blinds", "Minutes"];
+  else if (isFlStud) columns = ["Level", "Ante", "Bring-in/Completion", "Minutes"];
   else if (isAllAnte) columns = ["Level", "ALL Ante", "Minutes"];
   else columns = ["Level", "Blinds", "BB Ante", "Minutes"];
   return {
@@ -334,6 +399,7 @@ export function transformStructure(
     day2EndLevel: null,
     isMultiDay,
     isStud,
+    isMixRotation,
     levels,
   };
 }
@@ -795,11 +861,13 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           ? cur.levels.filter((l: any) => !l.break).length
           : 0;
         const legCount = legacyStr.levels.filter((l: any) => !l.break).length;
-        // Stud event (FL Stud / NL Stud) は transformer が raw_cols から正しく
-        // ante/bringIn/completion を抽出しているため legacy fallback で上書き
-        // しない (Owner 確認 2026-04-25)。legacy data.json は Hold'em 用の
-        // sb/bb/ante しか持たないため上書きすると Stud 列表記が壊れる。
-        if (legCount > curCount && !cur?.isStud) {
+        // Stud event (FL Stud / NL Stud) と rotation MIX (HORSE / B.E.A.S.T. /
+        // T.O.R.S.E. / 8-Game / 10-Game / Triple Draw 等) は transformer が
+        // raw_cols / games[] から正しく抽出しているため legacy fallback で
+        // 上書きしない (Owner 確認 2026-04-25 / 2026-04-26)。legacy data.json は
+        // Hold'em 用の sb/bb/ante しか持たないため上書きすると Stud / rotation
+        // の列表記が壊れる。
+        if (legCount > curCount && !cur?.isStud && !cur?.isMixRotation) {
           e.structure = {
             ...legacyStr,
             lateRegCloseAfterLevel:
