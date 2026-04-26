@@ -718,6 +718,9 @@ export function transformTournament(
     const isMultiDay = schedules.length > 1;
     const dayLabel = sched.day_name?.trim() || "";
     const displayName = isMultiDay && dayLabel ? `${baseName} / ${dayLabel}` : baseName;
+    // Day 2 / Day 3 etc. は Day 1 通過者の継続 day。
+    // 新規エントリは受け付けないため fee / ticket / buyIn は表示しない (Owner 指示 2026-04-26)
+    const isContinuationDay = /^Day\s*[2-9]/i.test(dayLabel);
 
     return {
       eventNumber,
@@ -731,8 +734,8 @@ export function transformTournament(
         ? parseInt(sched.reg_close_level, 10) || null
         : null,
       startingChips: parseChips(t.chips),
-      buyIn,
-      buyInDisplay,
+      buyIn: isContinuationDay ? null : buyIn,
+      buyInDisplay: isContinuationDay ? null : buyInDisplay,
       gtd: null,
       gtdDisplay: null,
       isMainEvent,
@@ -747,8 +750,8 @@ export function transformTournament(
         isMultiDay || !!t.is_multi_day
       ),
       prize: transformPrize(t.prize),
-      feeDetail,
-      ticketEntry,
+      feeDetail: isContinuationDay ? null : feeDetail,
+      ticketEntry: isContinuationDay ? null : ticketEntry,
       games: extractGames(t.games),
       bounty: transformBounty(t.bounty),
       notes: normalizeNotes(t.notes),
