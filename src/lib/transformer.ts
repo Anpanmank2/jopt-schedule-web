@@ -398,10 +398,22 @@ function transformBounty(
 
 function normalizeNotes(notes: string[] | undefined): string[] | null {
   if (!Array.isArray(notes) || notes.length === 0) return null;
-  // 行頭の全角スペース (Ideographic Space U+3000) を除去。
-  // 元データ (extract/legacy) でインデント目的に全角スペースが 1-2 個混入しており、
-  // UI 上で 1 文字ぶん字下がりに見える違和感を除去する。Owner 指摘 2026-04-24。
-  return notes.map((n) => (typeof n === "string" ? n.replace(/^\u3000+/, "") : n));
+  return notes.map((n) => {
+    if (typeof n !== "string") return n;
+    // 行頭の全角スペース (Ideographic Space U+3000) を除去。
+    // 元データ (extract/legacy) でインデント目的に全角スペースが 1-2 個混入しており、
+    // UI 上で 1 文字ぶん字下がりに見える違和感を除去する。Owner 指摘 2026-04-24。
+    let out = n.replace(/^\u3000+/, "");
+    // Satellite voucher 有効期限の文言を上流仕様 (次回 JOPT Tokyo #02 まで) に合わせる。
+    // Owner 確認 2026-04-26 (カスタマーチーム指摘): プレイヤーズガイド表記「1 年」は誤り、
+    // 取得バウチャーは次回大会 JOPT Tokyo #02 まで有効が正しい。Sheets master の修正
+    // 待たずに transformer 層で文字列置換 (35 satellite event 全件に効く)
+    out = out.replace(
+      /Voucherの有効期限は1年間です。JOPT\s*Tokyoでのみご使用いただけます。?/g,
+      "取得した Voucher は次回 JOPT Tokyo #02 までご使用いただけます。JOPT Tokyo でのみご使用いただけます。"
+    );
+    return out;
+  });
 }
 
 /**
@@ -959,6 +971,59 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     while (cutIdx > 0 && levels[cutIdx - 1]?.break) cutIdx--;
     if (cutIdx < levels.length) {
       e.structure = { ...e.structure, levels: levels.slice(0, cutIdx) };
+    }
+  }
+
+  // extraEvents inject (緊急 event 追加用、Sheets master 再 extract 反映待ち):
+  // pdf-overrides.json の "extraEvents" 配列を読み込み、events に push する。
+  // templateFromName が指定された場合、既存 event を find して structure /
+  // startingChips / notes / prize / feeDetail / reentry を継承する。
+  // 個別 field は extra 側で override 可能。
+  const extraEvents = (pdfOverrides as any).extraEvents;
+  if (Array.isArray(extraEvents)) {
+    for (const extra of extraEvents) {
+      if (!extra || typeof extra !== "object") continue;
+      let template: TransformedEvent | undefined;
+      if (typeof extra.templateFromName === "string") {
+        const escaped = extra.templateFromName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        template = events.find((ev) => new RegExp(escaped).test(ev.name));
+      }
+      const buyIn = typeof extra.buyIn === "number" ? extra.buyIn : null;
+      events.push({
+        eventNumber: extra.eventNumber || "",
+        name: extra.name || "",
+        gameType: extra.gameType ?? template?.gameType ?? "SAT",
+        gameCategory: extra.gameCategory ?? template?.gameCategory ?? "Satellite",
+        date: extra.date || "",
+        startTime: extra.startTime || "",
+        lateRegClose: extra.lateRegClose ?? null,
+        lateRegLevel: extra.lateRegLevel ?? null,
+        startingChips: extra.startingChips ?? template?.startingChips ?? null,
+        buyIn,
+        buyInDisplay:
+          extra.buyInDisplay ??
+          (buyIn != null ? `¥${buyIn.toLocaleString()}` : null),
+        gtd: extra.gtd ?? null,
+        gtdDisplay: extra.gtdDisplay ?? null,
+        isMainEvent: !!extra.isMainEvent,
+        isSatellite: extra.isSatellite ?? true,
+        seatRatio: extra.seatRatio ?? template?.seatRatio ?? null,
+        reentry: extra.reentry ?? template?.reentry ?? null,
+        day2Condition: extra.day2Condition ?? null,
+        ruleNotes: extra.ruleNotes ?? null,
+        structure: extra.structure ?? template?.structure ?? null,
+        prize: extra.prize ?? template?.prize ?? null,
+        feeDetail: extra.feeDetail ?? template?.feeDetail ?? null,
+        games: extra.games ?? null,
+        bounty: extra.bounty ?? null,
+        notes: extra.notes ?? template?.notes ?? null,
+        award: extra.award ?? null,
+        awards: extra.awards ?? null,
+        benefits: extra.benefits ?? null,
+        sponsorship: extra.sponsorship ?? null,
+        multiDay: extra.multiDay ?? null,
+        stackPerRound: extra.stackPerRound ?? null,
+      });
     }
   }
 
