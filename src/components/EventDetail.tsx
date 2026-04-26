@@ -611,9 +611,12 @@ function StructureTable({
               >
                 <td className="py-1 px-1 text-center text-text-secondary tabular-nums">
                   {lv.level}
-                  {isLateRegClose && bbCount != null && (
+                  {/* CLOSE marker は bb 持つ event (Hold'em/PLO) では BB 換算付き、
+                      Stud / ALL Ante / Bombpot 等 bb 不在の event では "CLOSE" のみ表示
+                      (Owner 指示 2026-04-28/29 #75 5-Game Stud / #12 #68 #143 PLO DBBP) */}
+                  {isLateRegClose && (
                     <span className="ml-1 text-[8px] text-blue-700 font-bold">
-                      CLOSE {bbCount}BB
+                      {bbCount != null ? `CLOSE ${bbCount}BB` : "CLOSE"}
                     </span>
                   )}
                   {isDay1End && (
@@ -735,6 +738,10 @@ function AwardSectionBlock({ section }: { section: AwardSection }) {
 
 function InfoPanel({ event }: { event: EventData }) {
   const displayFee = event.feeDetail ? event.feeDetail.replace(/Â¥/g, "¥") : null;
+  // rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E.) では variant 別 blinds が
+  // pipe 区切り長文になるため Multi-Day Restart の blinds 括弧表記を抑制し
+  // Lv.X だけ表示する (Owner 指示 2026-04-27)
+  const isMixRotation = !!event.structure?.isMixRotation;
   const md = event.multiDay ?? null;
   const showMultiDay =
     md != null &&
@@ -827,13 +834,17 @@ function InfoPanel({ event }: { event: EventData }) {
           <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
             Multi-Day Restart
           </p>
+          {/* rotation game (MIX / HORSE 等) は variant 別の blinds 文字列 (例:
+              "FL: 5,000/10,000 | STUD: 2,500/5,000 | PL/NL: -/7,500") が長く Owner 指示
+              (2026-04-27) でレベル表記のみに簡略化。Hold'em / PLO の通常 event は従来通り
+              Lv.X (X-X) 表記を維持 */}
           <div className="flex flex-wrap gap-x-4 gap-y-1">
             {md.day1EndLevel != null && (
               <div>
                 <span className="text-text-muted">Day 1 End: </span>
                 <span className="font-medium text-text-primary tabular-nums">
                   Lv.{md.day1EndLevel}
-                  {md.day1EndBlinds ? ` (${md.day1EndBlinds})` : ""}
+                  {!isMixRotation && md.day1EndBlinds ? ` (${md.day1EndBlinds})` : ""}
                 </span>
               </div>
             )}
@@ -842,7 +853,7 @@ function InfoPanel({ event }: { event: EventData }) {
                 <span className="text-text-muted">Day 2 Start: </span>
                 <span className="font-semibold text-blue-900 tabular-nums">
                   Lv.{md.day2StartLevel}
-                  {md.day2StartBlinds ? ` (${md.day2StartBlinds})` : ""}
+                  {!isMixRotation && md.day2StartBlinds ? ` (${md.day2StartBlinds})` : ""}
                 </span>
               </div>
             )}
@@ -851,7 +862,7 @@ function InfoPanel({ event }: { event: EventData }) {
                 <span className="text-text-muted">Day 3 Start: </span>
                 <span className="font-semibold text-blue-900 tabular-nums">
                   Lv.{md.day3StartLevel}
-                  {md.day3StartBlinds ? ` (${md.day3StartBlinds})` : ""}
+                  {!isMixRotation && md.day3StartBlinds ? ` (${md.day3StartBlinds})` : ""}
                 </span>
               </div>
             )}

@@ -1002,6 +1002,20 @@ export function transform(extract: any, currentData: any = null): TransformedDat
       if (ov.award.currencyNote !== undefined) cur.currencyNote = ov.award.currencyNote;
       e.award = cur;
     }
+    // sponsorship override (Owner 指示 2026-04-30): Apps Script の Sponsoredship 抽出が
+    // 1st のみ / 短縮文言になる場合に正規 prize description (コラボグッズ込み等) を
+    // PDF / Owner 提供画像から手動上書き。例: #30 VITAS / #84 BURGER KING Whopper Stack
+    if (ov.sponsorship && typeof ov.sponsorship === "object" && Array.isArray(ov.sponsorship.items)) {
+      e.sponsorship = {
+        label: typeof ov.sponsorship.label === "string" && ov.sponsorship.label.trim()
+          ? ov.sponsorship.label
+          : (e.sponsorship?.label ?? "Sponsorship"),
+        items: ov.sponsorship.items.map((it: any) => ({
+          rank: String(it.rank ?? "").trim(),
+          description: String(it.description ?? "").trim(),
+        })),
+      };
+    }
     // turbo flight override (Owner 指示 2026-04-26): Day 1D Turbo 等の特殊 flight が
     // 同じ structure を共有しつつ「特定 level から開始」「level time 短縮」する場合の
     // 上書き。例: #03 Mini Main の Day 1D Turbo は Lv.4 開始 / 各 level 20 分

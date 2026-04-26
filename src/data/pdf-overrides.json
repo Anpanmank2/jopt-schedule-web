@@ -254,6 +254,30 @@
           { "level": 37, "sb": 500000, "bb": 1000000, "time": 30 }
         ]
       }
+    },
+    "#30": {
+      "_source": "Owner 提供画像 2026-04-30: VITAS sponsor 1位/2位/3位 詳細",
+      "_note": "extract.json は 1st のみ (Protein Special Gift Set) で 2位/3位 抜け。Owner 提供画像から正規データを override",
+      "sponsorship": {
+        "label": "Sponsorship",
+        "items": [
+          { "rank": "1位", "description": "VITAS ギフトセット1年分" },
+          { "rank": "2位", "description": "VITAS ギフトセット" },
+          { "rank": "3位", "description": "VITAS ギフトセット" }
+        ]
+      }
+    },
+    "#84": {
+      "_source": "Owner 提供画像 2026-04-30: BURGER KING Whopper sponsor 1st/2nd/3rd 詳細",
+      "_note": "extract.json は基本 description のみ。Owner 提供画像から正規データ (コラボベースボールシャツ + コラボブランケット + BKデック 含む) を override",
+      "sponsorship": {
+        "label": "Sponsorship",
+        "items": [
+          { "rank": "1st", "description": "Whopper 1年分 + コラボベースボールシャツ + コラボブランケット + BKデック" },
+          { "rank": "2nd", "description": "Whopper 半年分 + コラボベースボールシャツ + コラボブランケット + BKデック" },
+          { "rank": "3rd", "description": "Whopper 3ヶ月分 + コラボベースボールシャツ + コラボブランケット + BKデック" }
+        ]
+      }
     }
   },
   "extraEvents": [
