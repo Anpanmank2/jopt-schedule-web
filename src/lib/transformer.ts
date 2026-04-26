@@ -398,10 +398,22 @@ function transformBounty(
 
 function normalizeNotes(notes: string[] | undefined): string[] | null {
   if (!Array.isArray(notes) || notes.length === 0) return null;
-  // 行頭の全角スペース (Ideographic Space U+3000) を除去。
-  // 元データ (extract/legacy) でインデント目的に全角スペースが 1-2 個混入しており、
-  // UI 上で 1 文字ぶん字下がりに見える違和感を除去する。Owner 指摘 2026-04-24。
-  return notes.map((n) => (typeof n === "string" ? n.replace(/^\u3000+/, "") : n));
+  return notes.map((n) => {
+    if (typeof n !== "string") return n;
+    // 行頭の全角スペース (Ideographic Space U+3000) を除去。
+    // 元データ (extract/legacy) でインデント目的に全角スペースが 1-2 個混入しており、
+    // UI 上で 1 文字ぶん字下がりに見える違和感を除去する。Owner 指摘 2026-04-24。
+    let out = n.replace(/^\u3000+/, "");
+    // Satellite voucher 有効期限の文言を上流仕様 (次回 JOPT Tokyo #02 まで) に合わせる。
+    // Owner 確認 2026-04-26 (カスタマーチーム指摘): プレイヤーズガイド表記「1 年」は誤り、
+    // 取得バウチャーは次回大会 JOPT Tokyo #02 まで有効が正しい。Sheets master の修正
+    // 待たずに transformer 層で文字列置換 (35 satellite event 全件に効く)
+    out = out.replace(
+      /Voucherの有効期限は1年間です。JOPT\s*Tokyoでのみご使用いただけます。?/g,
+      "取得した Voucher は次回 JOPT Tokyo #02 までご使用いただけます。JOPT Tokyo でのみご使用いただけます。"
+    );
+    return out;
+  });
 }
 
 /**
