@@ -15,6 +15,14 @@
 import { EVENT_CONFIG } from "@/config/eventConfig";
 import pdfOverrides from "@/data/pdf-overrides.json";
 
+/** Photo タブで表示する外部リンク (Owner 指示 2026-04-28: event ごとに遷移先を override 可能に) */
+export interface PhotoLink {
+  /** 遷移先サービス名 (例: "Flickr" / "Instagram" / "X") */
+  label: string;
+  /** 完全 URL (target="_blank" で開く) */
+  url: string;
+}
+
 export interface GameVariant {
   /** "FL" | "STUD" | "PL / NL" | "PL/NL" 等 (PDF Type 列の表記をそのまま) */
   type: string;
@@ -92,6 +100,8 @@ export interface TransformedEvent {
   sponsorship: { label: string; items: { rank: string; description: string }[] } | null;
   multiDay: Record<string, unknown> | null;
   stackPerRound: { label: string; rounds: string[] } | null;
+  /** Photo タブの遷移先 manual override. 配列空 or null の場合は Flickr matching → 公式 fallback の順 */
+  photoOverride: PhotoLink[] | null;
 }
 
 export interface TransformedDay {
@@ -708,6 +718,7 @@ export function transformTournament(
         sponsorship: transformSponsorship(t.sponsorship),
         multiDay,
         stackPerRound: transformStackPerRound(t.stack_per_round),
+        photoOverride: null,
       },
     ];
   }
@@ -761,6 +772,7 @@ export function transformTournament(
       sponsorship: transformSponsorship(t.sponsorship),
       multiDay,
       stackPerRound: transformStackPerRound(t.stack_per_round),
+      photoOverride: null,
     };
   });
 }
@@ -1016,6 +1028,20 @@ export function transform(extract: any, currentData: any = null): TransformedDat
         })),
       };
     }
+    // photoOverride (Owner 指示 2026-04-28): event ごとに Photo タブ遷移先 URL を直接指定。
+    // 単一 object も配列も受け付ける。何も指定がなければ null のまま (Flickr matching に委譲)。
+    if (ov.photoOverride !== undefined && ov.photoOverride !== null) {
+      const raw = ov.photoOverride;
+      const arr = Array.isArray(raw) ? raw : [raw];
+      const links: PhotoLink[] = arr
+        .filter((x: any) => x && typeof x.url === "string" && x.url.trim())
+        .map((x: any) => ({
+          label: typeof x.label === "string" && x.label.trim() ? x.label.trim() : "Flickr",
+          url: x.url.trim(),
+        }));
+      if (links.length > 0) e.photoOverride = links;
+    }
+
     // turbo flight override (Owner 指示 2026-04-26): Day 1D Turbo 等の特殊 flight が
     // 同じ structure を共有しつつ「特定 level から開始」「level time 短縮」する場合の
     // 上書き。例: #03 Mini Main の Day 1D Turbo は Lv.4 開始 / 各 level 20 分
@@ -1134,6 +1160,7 @@ export function transform(extract: any, currentData: any = null): TransformedDat
         sponsorship: extra.sponsorship ?? null,
         multiDay: extra.multiDay ?? null,
         stackPerRound: extra.stackPerRound ?? null,
+        photoOverride: null,
       });
     }
   }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import PhotoPanel from "./PhotoPanel";
 import { EVENT_CONFIG } from "@/config/eventConfig";
 import structurePdfManifest from "@/data/structure-pdf-manifest.json";
@@ -112,6 +113,11 @@ export interface MultiDayInfo {
   totalLevels?: number | null;
 }
 
+export interface PhotoLink {
+  label: string;
+  url: string;
+}
+
 export interface EventData {
   eventNumber: string;
   name: string;
@@ -146,6 +152,8 @@ export interface EventData {
   sponsorship?: { label: string; items: { rank: string; description: string }[] } | null;
   multiDay?: MultiDayInfo | null;
   stackPerRound?: { label: string; rounds: string[] } | null;
+  /** Photo タブの遷移先 manual override (Owner 指示 2026-04-28). null 時は Flickr matching → 公式 fallback */
+  photoOverride?: PhotoLink[] | null;
 }
 
 export const BADGE_STYLES: Record<string, string> = {
@@ -737,6 +745,7 @@ function AwardSectionBlock({ section }: { section: AwardSection }) {
 }
 
 function InfoPanel({ event }: { event: EventData }) {
+  const tDetail = useTranslations("event_detail");
   const displayFee = event.feeDetail ? event.feeDetail.replace(/Â¥/g, "¥") : null;
   // rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E.) では variant 別 blinds が
   // pipe 区切り長文になるため Multi-Day Restart の blinds 括弧表記を抑制し

@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "description": "{organizer} {year} Grand Final のトーナメントスケジュール（{dateRangeVenue}）"
+  },
+  "header": {
+    "search_placeholder": "トーナメント名で検索...",
+    "search_aria": "トーナメント名で検索",
+    "clear_search": "検索をクリア",
+    "language_switcher_aria": "言語を切り替え"
+  },
+  "card": {
+    "tap_to_close": "タップで閉じる",
+    "no_events_found": "該当するトーナメントが見つかりません"
+  },
+  "filter": {
+    "category_game": "ゲーム種別",
+    "all": "すべて",
+    "result_count": "{count} events",
+    "result_filtered": "Filtered: {filters} — {count} events"
+  },
+  "photo": {
+    "open_in_flickr": "{label} でアルバムを開く",
+    "open_in_flickr_default": "Flickr でアルバムを開く",
+    "no_album_yet_line1": "このトーナメント単体の写真アルバムは準備中です。",
+    "no_album_yet_line2": "JOPT 公式フォトアルバムで全体をご覧いただけます。",
+    "official_album_link": "JOPT 公式フォトアルバムを見る"
+  },
+  "event_detail": {
+    "seat_ratio_label": "Seat 付与率: ",
+    "seat_ratio_format": "{den} エントリーにつき {num} Seat",
+    "turbo_start_level": "Lv.{level} 開始",
+    "turbo_each_minutes": "各 {time} 分 / Lv"
+  },
+  "event_meta": {
+    "date_range_venue": "2026-04-24 〜 05-06 / ベルサール高田馬場"
+  },
+  "language": {
+    "ja": "JP",
+    "en": "EN",
+    "ko": "KOR",
+    "ko_beta": "KOR (Beta)"
+  }
+}

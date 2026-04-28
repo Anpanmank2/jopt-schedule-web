@@ -1,5 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { FILTER_CONFIG } from "@/config/filterConfig";
 
 function isMultiDay(event: Record<string, any>): boolean {
@@ -15,6 +16,7 @@ export function useEventFilter(
   events: Record<string, any>[],
   query: string = ""
 ) {
+  const tFilter = useTranslations("filter");
   const [activeFilters, setActiveFilters] = useState<Record<string, string>>(() => {
     const defaults: Record<string, string> = {};
     for (const [key, cat] of Object.entries(FILTER_CONFIG)) {
@@ -103,10 +105,13 @@ export function useEventFilter(
 
     const count = filteredEvents.length;
     if (activeLabels.length === 0) {
-      return `${count} events`;
+      return tFilter("result_count", { count });
     }
-    return `Filtered: ${activeLabels.join(" × ")} — ${count} events`;
-  }, [activeFilters, filteredEvents, query]);
+    return tFilter("result_filtered", {
+      filters: activeLabels.join(" × "),
+      count,
+    });
+  }, [activeFilters, filteredEvents, query, tFilter]);
 
   return { filteredEvents, activeFilters, setFilter, resetFilters, filterSummary };
 }

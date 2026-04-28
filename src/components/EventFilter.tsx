@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { FILTER_CONFIG } from "@/config/filterConfig";
 
 // gameCategory アクティブ色 (Owner 指示 2026-04-22: NLH→Hold'em / PLO→Omaha / MIX→Other)
@@ -16,6 +17,10 @@ interface EventFilterProps {
 }
 
 export default function EventFilter({ activeFilters, onFilterChange }: EventFilterProps) {
+  const t = useTranslations("filter");
+  const labelKey = (catKey: string): string =>
+    catKey === "game" ? "category_game" : catKey;
+
   return (
     <div className="px-4 pt-3 pb-2 flex flex-col gap-2">
       {Object.entries(FILTER_CONFIG).map(([catKey, category]) => {
@@ -24,7 +29,7 @@ export default function EventFilter({ activeFilters, onFilterChange }: EventFilt
         return (
           <div key={catKey} className="flex flex-col gap-1">
             <p className="text-[10px] text-text-muted font-medium leading-none">
-              {category.label}
+              {t(labelKey(catKey))}
             </p>
             <div className="flex gap-1.5 overflow-x-auto hide-scrollbar">
               {category.options.map((option) => {

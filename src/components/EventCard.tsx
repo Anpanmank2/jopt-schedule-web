@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import EventDetail, {
   formatNumber,
   isHighRoller,
@@ -9,6 +10,7 @@ import EventDetail, {
 } from "./EventDetail";
 
 export default function EventCard({ event }: { event: EventData }) {
+  const t = useTranslations("card");
   const [open, setOpen] = useState(false);
 
   const badge = resolveEventBadge(event);
@@ -135,7 +137,7 @@ export default function EventCard({ event }: { event: EventData }) {
             >
               <polyline points="18 15 12 9 6 15" />
             </svg>
-            タップで閉じる
+            {t("tap_to_close")}
           </button>
         </div>
       )}
