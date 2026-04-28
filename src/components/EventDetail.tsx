@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import PhotoPanel from "./PhotoPanel";
 import { EVENT_CONFIG } from "@/config/eventConfig";
 import structurePdfManifest from "@/data/structure-pdf-manifest.json";
+import { localizeText, localizeArray } from "@/lib/i18n-data";
 
 // rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E. 等) で
 // 上流 Apps Script の blind/minutes 抽出が不完全な event は PDF Players Guide を
@@ -701,21 +702,22 @@ function StructureTable({
 }
 
 function AwardSectionBlock({ section }: { section: AwardSection }) {
+  const locale = useLocale();
   const hasAllDay1 = section.allDay1.length > 0;
   const hasDay2 = section.day2.length > 0;
   if (!hasAllDay1 && !hasDay2 && !section.description) return null;
   return (
     <div className="mb-1">
-      <p className="text-[11px] font-semibold text-blue-900">{section.header || "Award"}</p>
+      <p className="text-[11px] font-semibold text-blue-900">{localizeText(section.header, locale) || "Award"}</p>
       {hasAllDay1 && (
         <div className="mt-0.5">
           {section.subsectionLeft && (
-            <p className="text-[10px] text-text-muted">{section.subsectionLeft}</p>
+            <p className="text-[10px] text-text-muted">{localizeText(section.subsectionLeft, locale)}</p>
           )}
           <div className="flex flex-wrap gap-x-3 gap-y-0.5">
             {section.allDay1.map((a, i) => (
               <span key={i} className="text-[11px] text-text-secondary">
-                {a.rank}: {a.prize}
+                {a.rank}: {localizeText(a.prize, locale)}
               </span>
             ))}
           </div>
@@ -724,12 +726,12 @@ function AwardSectionBlock({ section }: { section: AwardSection }) {
       {hasDay2 && (
         <div className="mt-0.5">
           {section.subsectionDay2 && (
-            <p className="text-[10px] text-text-muted">{section.subsectionDay2}</p>
+            <p className="text-[10px] text-text-muted">{localizeText(section.subsectionDay2, locale)}</p>
           )}
           <div className="flex flex-wrap gap-x-3 gap-y-0.5">
             {section.day2.map((a, i) => (
               <span key={i} className="text-[11px] text-text-secondary">
-                {a.rank}: {a.prize}
+                {a.rank}: {localizeText(a.prize, locale)}
               </span>
             ))}
           </div>
@@ -737,7 +739,7 @@ function AwardSectionBlock({ section }: { section: AwardSection }) {
       )}
       {section.description && (
         <p className="text-[10px] text-text-muted mt-0.5 leading-relaxed">
-          {section.description}
+          {localizeText(section.description, locale)}
         </p>
       )}
     </div>
@@ -746,6 +748,7 @@ function AwardSectionBlock({ section }: { section: AwardSection }) {
 
 function InfoPanel({ event }: { event: EventData }) {
   const tDetail = useTranslations("event_detail");
+  const locale = useLocale();
   const displayFee = event.feeDetail ? event.feeDetail.replace(/Â¥/g, "¥") : null;
   // rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E.) では variant 別 blinds が
   // pipe 区切り長文になるため Multi-Day Restart の blinds 括弧表記を抑制し
@@ -832,7 +835,7 @@ function InfoPanel({ event }: { event: EventData }) {
             )}
             {event.prize.note && (
               <p className="text-text-muted text-[10px] italic mt-1 whitespace-pre-wrap leading-relaxed">
-                {event.prize.note}
+                {localizeText(event.prize.note, locale)}
               </p>
             )}
           </div>
@@ -878,7 +881,7 @@ function InfoPanel({ event }: { event: EventData }) {
           </div>
           {md.day2RestartNote && (
             <p className="text-[11px] text-text-secondary mt-1 leading-relaxed">
-              {md.day2RestartNote}
+              {localizeText(md.day2RestartNote as string, locale)}
             </p>
           )}
           {md.turbo && (
@@ -897,7 +900,7 @@ function InfoPanel({ event }: { event: EventData }) {
                 )}
               </p>
               {md.turbo.endCondition && (
-                <p className="mt-0.5">{md.turbo.endCondition}</p>
+                <p className="mt-0.5">{localizeText(md.turbo.endCondition as string, locale)}</p>
               )}
             </div>
           )}
@@ -927,7 +930,7 @@ function InfoPanel({ event }: { event: EventData }) {
                 {it.description && (
                   <>
                     <span className="mx-1">:</span>
-                    <span>{it.description}</span>
+                    <span>{localizeText(it.description, locale)}</span>
                   </>
                 )}
               </li>
@@ -938,16 +941,17 @@ function InfoPanel({ event }: { event: EventData }) {
 
       {(event.reentry && event.reentry !== "No") || event.day2Condition ? (
         <div className="flex flex-wrap gap-x-4 gap-y-1">
+          {/* event.reentry / event.day2Condition は data 由来日本語の可能性あり → localize */}
           {event.reentry && event.reentry !== "No" && (
             <div>
               <span className="text-text-muted">Re-entry: </span>
-              <span className="font-medium text-text-primary">{event.reentry}</span>
+              <span className="font-medium text-text-primary">{localizeText(event.reentry, locale)}</span>
             </div>
           )}
           {event.day2Condition && (
             <div>
               <span className="text-text-muted">Day 2: </span>
-              <span className="font-medium text-text-primary">{event.day2Condition}</span>
+              <span className="font-medium text-text-primary">{localizeText(event.day2Condition, locale)}</span>
             </div>
           )}
         </div>
@@ -992,7 +996,7 @@ function InfoPanel({ event }: { event: EventData }) {
             )}
             {hasNote && (
               <p className="text-text-muted text-[10px] italic mt-1">
-                {event.award!.currencyNote}
+                {localizeText(event.award!.currencyNote!, locale)}
               </p>
             )}
           </div>
@@ -1008,12 +1012,12 @@ function InfoPanel({ event }: { event: EventData }) {
           {event.awards.sections.map((s, i) => (
             <div key={i} className="mb-1">
               {s.header && (
-                <p className="text-[11px] font-semibold text-blue-900">{s.header}</p>
+                <p className="text-[11px] font-semibold text-blue-900">{localizeText(s.header, locale)}</p>
               )}
               <ul className="space-y-0.5 mt-0.5">
                 {s.items.map((it, j) => (
                   <li key={j} className="text-[11px] text-text-secondary leading-relaxed">
-                    {it}
+                    {localizeText(it, locale)}
                   </li>
                 ))}
               </ul>
@@ -1030,12 +1034,12 @@ function InfoPanel({ event }: { event: EventData }) {
           {event.benefits.sections.map((s, i) => (
             <div key={i} className="mb-1">
               {s.header && (
-                <p className="text-[11px] font-semibold text-blue-900">{s.header}</p>
+                <p className="text-[11px] font-semibold text-blue-900">{localizeText(s.header, locale)}</p>
               )}
               <ul className="space-y-0.5 mt-0.5">
                 {s.items.map((it, j) => (
                   <li key={j} className="text-[11px] text-text-secondary leading-relaxed">
-                    {it}
+                    {localizeText(it, locale)}
                   </li>
                 ))}
               </ul>
@@ -1086,7 +1090,7 @@ function InfoPanel({ event }: { event: EventData }) {
             Notes
           </p>
           <ul className="space-y-1">
-            {event.notes.map((n, i) => (
+            {localizeArray(event.notes, locale).map((n, i) => (
               <li key={i} className="text-text-secondary text-[11px] leading-relaxed">
                 {n}
               </li>

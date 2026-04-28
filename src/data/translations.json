@@ -1,0 +1,778 @@
+{
+  "・同一Day 1でのリエントリーは3度まで認められます。": {
+    "en": "- Up to 3 re-entries are allowed within the same Day 1.",
+    "ko": "- 동일 Day 1 내 재 엔트리는 3회까지 허용됩니다."
+  },
+  "・Day 1D Turboは、Day 1AとDay 1Bの通過率を参考に通過率(定員)を決定します。決定された通過率に達したときDay 1D Turboを終了します。通過率は当日クロックに表示されます。また、Day 2開始時はブラインドの途中で終了した場合も含みLevel.16から再開します。": {
+    "en": "- For Day 1D Turbo, the qualifying rate (capacity) is determined based on the qualifying rates of Day 1A and Day 1B. Day 1D Turbo ends when the determined qualifying rate is reached. The qualifying rate is displayed on the clock on the day. Day 2 restarts from Level 16, including cases where Day 1D Turbo ended mid-blind.",
+    "ko": "- Day 1D Turbo는 Day 1A와 Day 1B의 통과율을 참고해 통과율(정원)을 결정합니다. 결정된 통과율에 도달하면 Day 1D Turbo가 종료됩니다. 통과율은 당일 클럭에 표시됩니다. Day 2는 블라인드 도중에 종료된 경우를 포함해 Level 16부터 재개합니다."
+  },
+  "・シートリドローは Day 2,Day 3スタート時、ファイナルテーブルスタート時、及びTDの判断で行われます。": {
+    "en": "- Seat redraws occur at the start of Day 2, Day 3, and the Final Table, or at the TD's discretion.",
+    "ko": "- 시트 리드로는 Day 2, Day 3 시작 시, 파이널 테이블 시작 시, 그리고 TD의 판단으로 진행됩니다."
+  },
+  "・複数のDay 1を通過した場合、最も多くのスタック数を獲得したDay 1を採用し、他Day 1での通過スタックは放棄となります。": {
+    "en": "- If you advance through multiple Day 1s, the Day 1 with the largest stack will be used, and stacks from other Day 1s will be forfeited.",
+    "ko": "- 여러 Day 1을 통과한 경우, 가장 많은 스택을 획득한 Day 1을 채택하며 다른 Day 1의 통과 스택은 포기됩니다."
+  },
+  "・Day2に進出したプレイヤーにのみプライズ獲得の権利が与えられます。": {
+    "en": "- Only players who advance to Day 2 are eligible for prizes.",
+    "ko": "- Day 2에 진출한 플레이어에게만 프라이즈 획득 권리가 주어집니다."
+  },
+  "・各Day 1ファーストエントリー時及びDay 2,Day 3開始時に別途ドリンク1,000円を頂戴します。": {
+    "en": "- A separate drink fee of JPY 1,000 will be charged at first entry to each Day 1, and at the start of Day 2 and Day 3.",
+    "ko": "- 각 Day 1 첫 엔트리 시, Day 2 및 Day 3 시작 시에 별도로 음료 요금 JPY 1,000을 청구합니다."
+  },
+  "・ルールは JOPT Official Rule を採用します。": {
+    "en": "- JOPT Official Rules apply.",
+    "ko": "- JOPT Official Rule을 적용합니다."
+  },
+  "Chip Leader賞はDay 1全日程終了時、Day 2終了時の総チップ数が多いプレイヤーに授与。": {
+    "en": "The Chip Leader award is given to the player with the highest total chip count at the end of all Day 1 flights and at the end of Day 2.",
+    "ko": "Chip Leader 상은 Day 1 전 일정 종료 시점과 Day 2 종료 시점에 총 칩 수가 가장 많은 플레이어에게 수여됩니다."
+  },
+  "Sprinter賞はDay 1A,B,C,D Turboにて30万点、Day 2 にて200万点 にいち早く到達したプレイヤーに授与。": {
+    "en": "The Sprinter award is given to the player who first reaches 300,000 in Day 1A/B/C/D Turbo, and 2,000,000 in Day 2.",
+    "ko": "Sprinter 상은 Day 1A/B/C/D Turbo에서 300,000점, Day 2에서 2,000,000점에 가장 먼저 도달한 플레이어에게 수여됩니다."
+  },
+  "AwardはPOKERWEB COINにて付与されます。": {
+    "en": "Awards will be paid out in POKERWEB COIN.",
+    "ko": "Award는 POKERWEB COIN으로 지급됩니다."
+  },
+  "プライズは賞金ではなく、対象ポーカートーナメント参加補助が受けられる任意の選手契約（委託料）です。\n詳しくはJOPTウェブページ\"プライズ（選手契約）について\"をご覧ください。\n※仮レート 150.00/$ のとき。選手契約は、実施日3日前に発表する固定為替レートで再計算した額が採用されます。契約日のレートは適応されません。": {
+    "en": "The prize is not cash but an optional player contract (consignment fee) that provides support for entering qualifying poker tournaments.\nSee the JOPT web page \"About Prizes (Player Contracts)\" for details.\n*At a reference rate of JPY 150.00/$. The player contract amount is recalculated using the fixed exchange rate announced 3 days before the event date; the rate on the contract date is not applied.",
+    "ko": "프라이즈는 상금이 아닌, 대상 포커 토너먼트 참가 지원을 받을 수 있는 임의의 선수 계약(위탁료)입니다.\n자세한 내용은 JOPT 웹페이지 \"프라이즈(선수 계약) 안내\"를 참조하세요.\n※가환율 JPY 150.00/$ 기준. 선수 계약은 실시일 3일 전에 발표되는 고정환율로 재계산된 금액이 적용되며, 계약일의 환율은 적용되지 않습니다."
+  },
+  "・ファーストエントリー時別途ドリンク代1,000円を頂戴します。": {
+    "en": "- A separate drink fee of JPY 1,000 will be charged at first entry.",
+    "ko": "- 첫 엔트리 시 별도로 음료 요금 JPY 1,000을 청구합니다."
+  },
+  "・シートリドローは Day 2スタート時、ファイナルテーブルスタート時、及びTDの判断で行われます。ただし、Day 1D TurboについてはDay 2開始時のシートリドローは行いません。": {
+    "en": "- Seat redraws occur at the start of Day 2, the Final Table, and at the TD's discretion. However, no seat redraw is performed at the start of Day 2 for Day 1D Turbo qualifiers.",
+    "ko": "- 시트 리드로는 Day 2 시작 시, 파이널 테이블 시작 시, TD 판단으로 진행됩니다. 단 Day 1D Turbo 통과자에 대해서는 Day 2 시작 시 시트 리드로를 진행하지 않습니다."
+  },
+  "・Day 1D Turboはlevel 4からスタートし、1 level20分で進行します。": {
+    "en": "- Day 1D Turbo starts from Level 4 with 20 minutes per level.",
+    "ko": "- Day 1D Turbo는 Level 4부터 시작하며, 1 레벨당 20분으로 진행됩니다."
+  },
+  "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリンク代1,000円を頂戴します。但し、 Day 1D Turbo通過者のDay 2開始時はドリンク代を頂戴いたしません。": {
+    "en": "- A separate drink fee of JPY 1,000 will be charged at first entry to each Day 1 and at the start of Day 2. However, no drink fee will be charged at the start of Day 2 for Day 1D Turbo qualifiers.",
+    "ko": "- 각 Day 1 첫 엔트리 시 및 Day 2 시작 시에 별도로 음료 요금 JPY 1,000을 청구합니다. 단 Day 1D Turbo 통과자의 Day 2 시작 시에는 음료 요금을 청구하지 않습니다."
+  },
+  "Chip Leader賞はDay 1全日程終了時の総チップ数が多いプレイヤーに授与。": {
+    "en": "The Chip Leader award is given to the player with the highest total chip count at the end of all Day 1 flights.",
+    "ko": "Chip Leader 상은 Day 1 전 일정 종료 시점에 총 칩 수가 가장 많은 플레이어에게 수여됩니다."
+  },
+  "Sprinter賞はDay 1A,B,C,D Turboにて40万点にいち早く到達したプレイヤーに授与。": {
+    "en": "The Sprinter award is given to the player who first reaches 400,000 in Day 1A/B/C/D Turbo.",
+    "ko": "Sprinter 상은 Day 1A/B/C/D Turbo에서 400,000점에 가장 먼저 도달한 플레이어에게 수여됩니다."
+  },
+  "・最大7maxで進行します。": {
+    "en": "- Played at a maximum of 7-max.",
+    "ko": "- 최대 7-max로 진행됩니다."
+  },
+  "・エントリー数の1/12が入賞人数となり、すべての入賞者が確定次第、トーナメントが終了します。": {
+    "en": "- 1/12 of total entries qualify as in-the-money. The tournament ends once all qualifiers are determined.",
+    "ko": "- 엔트리 수의 1/12가 입상 인원수가 되며, 모든 입상자가 확정되는 즉시 토너먼트가 종료됩니다."
+  },
+  "・120,000点を集めた方はフロアへ自己申告することで通過することができます。": {
+    "en": "- Players who reach 120,000 chips can self-declare to the floor to qualify.",
+    "ko": "- 120,000점에 도달한 플레이어는 플로어에 자진 신고함으로써 통과할 수 있습니다."
+  },
+  "・通過者のスタックはすべてゲームから取り除きます。": {
+    "en": "- All chips of qualifiers are removed from play.",
+    "ko": "- 통과자의 스택은 모두 게임에서 제거됩니다."
+  },
+  "・残りプライズ本数がアクティブ人数と同等となった場合プレイを終了とし、全員にプライズを付与します。": {
+    "en": "- If the number of remaining prizes equals the number of active players, play ends and all remaining players receive a prize.",
+    "ko": "- 남은 프라이즈 수가 액티브 플레이어 수와 같아지면 플레이가 종료되며, 남은 모든 플레이어에게 프라이즈가 지급됩니다."
+  },
+  "・規定チップ数を超えるなど、通過条件を満たしたプレイヤーには、50,000円または10,000円のVoucherを対象トーナメントの金額分付与します。なお、50,000円のVoucherを10,000円×5に分割することはできません。端数も順位に応じて付与します。": {
+    "en": "- Players meeting the qualifying conditions (such as exceeding the prescribed chip count) will receive Vouchers of JPY 50,000 or JPY 10,000 totaling the qualifying tournament's value. Note: a JPY 50,000 Voucher cannot be split into 5 × JPY 10,000. Fractional amounts will be awarded by rank.",
+    "ko": "- 규정 칩 수 초과 등 통과 조건을 충족한 플레이어에게는 대상 토너먼트 금액에 해당하는 JPY 50,000 또는 JPY 10,000 Voucher를 지급합니다. JPY 50,000 Voucher를 JPY 10,000 × 5장으로 분할할 수는 없습니다. 단수도 순위에 따라 지급됩니다."
+  },
+  "・Voucherの有効期限は1年間です。JOPT Tokyoでのみご使用いただけます。": {
+    "en": "- The Voucher is valid for 1 year and can only be used at JOPT Tokyo.",
+    "ko": "- Voucher 유효기간은 1년이며 JOPT Tokyo에서만 사용 가능합니다."
+  },
+  "・1エントリーで1権利のみ獲得できます。": {
+    "en": "- Only one award is granted per entry.",
+    "ko": "- 1 엔트리당 1 권리만 획득할 수 있습니다."
+  },
+  "・本トーナメントは2人1組で参加するトーナメントです。": {
+    "en": "- This tournament is played in teams of 2.",
+    "ko": "- 본 토너먼트는 2인 1조로 참가하는 토너먼트입니다."
+  },
+  "・エントリー時は代表者1名が受付へお越しください。": {
+    "en": "- At entry, please have one representative come to reception.",
+    "ko": "- 엔트리 시 대표자 1명이 접수처로 오시기 바랍니다."
+  },
+  "・同時に複数のチームを兼任することはできません。リエントリー時にチームを組み替えることが可能です。": {
+    "en": "- You cannot belong to multiple teams simultaneously. You may rearrange your team at re-entry.",
+    "ko": "- 동시에 여러 팀에 참가할 수 없습니다. 재 엔트리 시 팀을 재구성할 수 있습니다."
+  },
+  "・チーム内でハンド情報の共有やプレイの相談が可能です。": {
+    "en": "- Sharing hand information and consulting on play is allowed within a team.",
+    "ko": "- 팀 내에서 핸드 정보 공유 및 플레이 상담이 가능합니다."
+  },
+  "・着席していないチームプレイヤーのアクションも有効となります。": {
+    "en": "- Actions taken by team members not seated at the table are also valid.",
+    "ko": "- 테이블에 앉아 있지 않은 팀 플레이어의 액션도 유효합니다."
+  },
+  "・ファーストエントリー時別途ドリンク代2,000円を頂戴します。": {
+    "en": "- A separate drink fee of JPY 2,000 will be charged at first entry.",
+    "ko": "- 첫 엔트리 시 별도로 음료 요금 JPY 2,000을 청구합니다."
+  },
+  "・事前予約制です。なお、事前エントリー数が32名に達していない場合、当日受付を実施します。": {
+    "en": "- Reservation required in advance. If pre-entries do not reach 32, on-the-day registration will be available.",
+    "ko": "- 사전 예약제입니다. 사전 엔트리 수가 32명에 미달하는 경우 당일 접수를 진행합니다."
+  },
+  "・最大エントリー数32名です。": {
+    "en": "- Maximum entries: 32.",
+    "ko": "- 최대 엔트리 수는 32명입니다."
+  },
+  "・すべてのテーブルの決着がつき次第、次のRoundを再開いたします。": {
+    "en": "- The next Round resumes once every table has finished.",
+    "ko": "- 모든 테이블의 결과가 나오는 대로 다음 라운드를 재개합니다."
+  },
+  "・エントリー済みの未着席プレイヤーにはハンドは配られません。着席するまでの間、1分ごとにBTNは移動し、ブラインドは都度回収されます。": {
+    "en": "- Hands are not dealt to entered players who are not seated. While unseated, the BTN moves every minute and blinds are collected each time.",
+    "ko": "- 엔트리는 했지만 착석하지 않은 플레이어에게는 핸드가 배포되지 않습니다. 착석 전까지 1분마다 BTN이 이동하며 블라인드는 매번 회수됩니다."
+  },
+  "・6ハンドごとに次のプレイヤーがプレイするゲームを選択します。新規テーブルのゲーム開始時はボタンの人(空席の場合、次の人)がゲームを選択します。": {
+    "en": "- Every 6 hands the next player chooses the game to play. At a new table, the button player (or the next player if seat is empty) chooses the game.",
+    "ko": "- 6핸드마다 다음 플레이어가 플레이할 게임을 선택합니다. 신규 테이블 게임 시작 시에는 버튼 자리 플레이어(공석일 경우 다음 플레이어)가 게임을 선택합니다."
+  },
+  "・連続して同じゲームを選ぶことも可能です。": {
+    "en": "- It is also possible to choose the same game consecutively.",
+    "ko": "- 연속으로 같은 게임을 선택하는 것도 가능합니다."
+  },
+  "・BaDEUCEy": {
+    "en": "- BaDEUCEy",
+    "ko": "- BaDEUCEy"
+  },
+  "Badugiと2-7の役でそれぞれポットをスプリットします。": {
+    "en": "Pot is split between Badugi and 2-7 hands.",
+    "ko": "Badugi와 2-7 핸드로 각각 팟을 스플릿합니다."
+  },
+  "BaDEUCEyにおけるBadugiのナッツは2345レインボーになります。": {
+    "en": "In BaDEUCEy, the Badugi nuts is 2-3-4-5 rainbow.",
+    "ko": "BaDEUCEy에서 Badugi의 너츠는 2-3-4-5 레인보우입니다."
+  },
+  "Badugiが完成していないとき、Triハンド(3 cards Badugi）で役判定を行います。": {
+    "en": "When Badugi is not made, hand evaluation uses the Tri hand (3-card Badugi).",
+    "ko": "Badugi가 완성되지 않은 경우, Tri 핸드(3장 Badugi)로 핸드 평가를 진행합니다."
+  },
+  "・BadACEy": {
+    "en": "- BadACEy",
+    "ko": "- BadACEy"
+  },
+  "BadugiとA-5の役でそれぞれポットをスプリットします。": {
+    "en": "Pot is split between Badugi and A-5 hands.",
+    "ko": "Badugi와 A-5 핸드로 각각 팟을 스플릿합니다."
+  },
+  "・Archie": {
+    "en": "- Archie",
+    "ko": "- Archie"
+  },
+  "Archieにおける役の成立条件は以下の通りです。": {
+    "en": "Hand qualifying conditions for Archie are as follows.",
+    "ko": "Archie의 핸드 성립 조건은 다음과 같습니다."
+  },
+  "ハイハンド成立条件：9ペア以上": {
+    "en": "High hand qualifier: pair of 9s or better.",
+    "ko": "하이 핸드 성립 조건: 9 페어 이상."
+  },
+  "ローハンド成立条件：8ロー以下": {
+    "en": "Low hand qualifier: 8-low or better.",
+    "ko": "로우 핸드 성립 조건: 8-로우 이하."
+  },
+  "Archieにおいて全てのプレイヤーがハイローともに成立していない場合、ショーダウンしたプレイヤー全員でポットをチョップします。": {
+    "en": "In Archie, if no player makes either high or low, all players at showdown chop the pot.",
+    "ko": "Archie에서 모든 플레이어가 하이/로우 모두 성립하지 않으면, 쇼다운에 도달한 모든 플레이어가 팟을 분할합니다."
+  },
+  "PunkIPA　1年分\nTシャツ\nオリジナルグラス": {
+    "en": "1-year supply of PunkIPA\nT-shirt\nOriginal glass",
+    "ko": "PunkIPA 1년분\nT-셔츠\n오리지널 글라스"
+  },
+  "・コミュニティカードを上下3枚ずつ開いた状態からでフロップからアクションがスタートします。": {
+    "en": "- Action starts from the flop with 3 community cards exposed each on top and bottom.",
+    "ko": "- 커뮤니티 카드를 상하 3장씩 오픈한 상태에서 플랍부터 액션이 시작됩니다."
+  },
+  "・種目はPLOで進行します。": {
+    "en": "- The game played is PLO.",
+    "ko": "- 종목은 PLO로 진행됩니다."
+  },
+  "・NLHのAnteはBBと同額になります。": {
+    "en": "- For NLH, the Ante equals the BB amount.",
+    "ko": "- NLH의 Ante는 BB와 동일한 금액입니다."
+  },
+  "・両ゲームともスプリットポットゲームとなります。": {
+    "en": "- Both games are split-pot games.",
+    "ko": "- 두 게임 모두 스플릿 팟 게임입니다."
+  },
+  "・両ゲームともBadugiが完成していないとき、Triハンド(3 cards Badugi）で役判定を行います。": {
+    "en": "- In both games, when Badugi is not made, hand evaluation uses the Tri hand (3-card Badugi).",
+    "ko": "- 두 게임 모두 Badugi가 완성되지 않은 경우, Tri 핸드(3장 Badugi)로 핸드 평가를 진행합니다."
+  },
+  "・JOPT 2026 #01 各トーナメント優勝者のファーストエントリーにBountyが付与されます。": {
+    "en": "- A Bounty is awarded to first entries of winners of each JOPT 2026 #01 tournament.",
+    "ko": "- JOPT 2026 #01 각 토너먼트 우승자의 첫 엔트리에 Bounty가 부여됩니다."
+  },
+  "・対象のプレイヤーをシートアウトさせる事でBountyを1枚獲得できます。": {
+    "en": "- You earn 1 Bounty chip by eliminating a target player.",
+    "ko": "- 대상 플레이어를 시트아웃시켜 Bounty 1장을 획득할 수 있습니다."
+  },
+  "・複数のプレイヤーが同じ強さの役により同時に対象のプレイヤーをシートアウトさせた場合、Bountyは等分します。": {
+    "en": "- If multiple players eliminate the target simultaneously with the same hand strength, the Bounty is split equally.",
+    "ko": "- 여러 플레이어가 동일한 핸드 강도로 동시에 대상 플레이어를 시트아웃시킨 경우, Bounty는 균등 분할됩니다."
+  },
+  "・BountyはPOKERWEB COINでの付与となります。": {
+    "en": "- Bounty is paid out in POKERWEB COIN.",
+    "ko": "- Bounty는 POKERWEB COIN으로 지급됩니다."
+  },
+  "・JOPT 2026 #01 各トーナメント優勝者のファーストエントリーにBountyが付与されます。\n・対象のプレイヤーをシートアウトさせる事でBountyを1枚獲得できます。\n・複数のプレイヤーが同じ強さの役により同時に対象のプレイヤーをシートアウトさせた場合、Bountyは等分します。\n・BountyはPOKERWEB COINでの付与となります。\n・ファーストエントリー時別途ドリンク代1,000円を頂戴します。\n・ルールは JOPT Official Rule を採用します。": {
+    "en": "- A Bounty is awarded to first entries of winners of each JOPT 2026 #01 tournament.\n- You earn 1 Bounty chip by eliminating a target player.\n- If multiple players eliminate the target simultaneously with the same hand strength, the Bounty is split equally.\n- Bounty is paid out in POKERWEB COIN.\n- A separate drink fee of JPY 1,000 will be charged at first entry.\n- JOPT Official Rules apply.",
+    "ko": "- JOPT 2026 #01 각 토너먼트 우승자의 첫 엔트리에 Bounty가 부여됩니다.\n- 대상 플레이어를 시트아웃시켜 Bounty 1장을 획득할 수 있습니다.\n- 여러 플레이어가 동일한 핸드 강도로 동시에 대상 플레이어를 시트아웃시킨 경우, Bounty는 균등 분할됩니다.\n- Bounty는 POKERWEB COIN으로 지급됩니다.\n- 첫 엔트리 시 별도로 음료 요금 JPY 1,000을 청구합니다.\n- JOPT Official Rule을 적용합니다."
+  },
+  "・本トーナメントへの参加には、事前応募が必要です。": {
+    "en": "- Pre-application is required to participate in this tournament.",
+    "ko": "- 본 토너먼트 참가에는 사전 응모가 필요합니다."
+  },
+  "・リエントリーはできません。": {
+    "en": "- No re-entry allowed.",
+    "ko": "- 재 엔트리는 불가합니다."
+  },
+  "・本トーナメントは「ダブルスタック方式」を採用しております。初期スタックは10,000点とし、途中でチップを失った場合でも、受付締切時刻までであれば10,000点で再参加が可能です。なお、受付締切時までに初期スタックが残っている場合は、追加で10,000点が追加されます。": {
+    "en": "- This tournament uses the \"Double Stack\" format. Initial stack is 10,000. Players who lose chips may rebuy for 10,000 chips until registration close. If your initial stack is still alive at registration close, an additional 10,000 chips will be added.",
+    "ko": "- 본 토너먼트는 \"더블 스택 방식\"을 채택하고 있습니다. 초기 스택은 10,000점이며, 도중에 칩을 잃은 경우라도 접수 마감 시각까지는 10,000점으로 재참가가 가능합니다. 또한 접수 마감 시점에 초기 스택이 남아 있는 경우 추가로 10,000점이 추가됩니다."
+  },
+  "・参加賞のタイミーセットは先着50人のみで、無くなり次第終了です。": {
+    "en": "- The Timee participation set is limited to the first 50 entries, while supplies last.",
+    "ko": "- 참가상 Timee 세트는 선착순 50명 한정이며, 소진되는 대로 종료됩니다."
+  },
+  "・事前応募の受付は4月20日までとなります。": {
+    "en": "- Pre-application registration closes on April 20.",
+    "ko": "- 사전 응모 접수는 4월 20일까지입니다."
+  },
+  "・ルールは JOPT Official Rule を適用いたします。": {
+    "en": "- JOPT Official Rules apply.",
+    "ko": "- JOPT Official Rule을 적용합니다."
+  },
+  "iPad mini (第7世代)": {
+    "en": "iPad mini (7th generation)",
+    "ko": "iPad mini (7세대)"
+  },
+  "ディズニーペアチケット": {
+    "en": "Disney Pair Ticket",
+    "ko": "디즈니 페어 티켓"
+  },
+  "・限定カードプロテクター": {
+    "en": "- Limited-edition card protector",
+    "ko": "- 한정 카드 프로텍터"
+  },
+  "・タイミーセット": {
+    "en": "- Timee set",
+    "ko": "- Timee 세트"
+  },
+  "(ボールペン・メモ帳・ぬいぐるみ)": {
+    "en": "(Ballpoint pen, memo pad, plush toy)",
+    "ko": "(볼펜, 메모장, 인형)"
+  },
+  "・詳細はホームページをご確認ください。": {
+    "en": "- Please see the website for details.",
+    "ko": "- 자세한 내용은 홈페이지를 확인해 주세요."
+  },
+  "限定金属カードプロテクター": {
+    "en": "Limited-edition metal card protector",
+    "ko": "한정 메탈 카드 프로텍터"
+  },
+  "・お食事券 40,000円分\n・図書カード 5,000円分\n・似顔絵特製Tシャツ(漫画家 ピョコタン様協賛)\n・BURGER KING商品券 5,000円分\n・のむシリカ1箱+Nectalaska(ネタラスカ)\n・カンロ 飴とグミの詰め合わせ 1年分(360個)\n・GLORY ACADEMY 1ヶ月プラン無料パス 2名分\n・タイパ至上主義ポーカー\n・YAMAN ヴェーダリフトドライヤー カスタム\n・BLVCK PARIS オリジナルデック\n・Yogibo Pyramid & Yogibo Mate Shark\n・JOPT MAGAZINE\n・タカラトミー ベイブレード 2名分": {
+    "en": "- Meal vouchers worth JPY 40,000\n- Book card worth JPY 5,000\n- Custom caricature T-shirt (sponsored by manga artist Pyokotan)\n- BURGER KING gift voucher worth JPY 5,000\n- 1 box of Nomu Silica + Nectalaska\n- Kanro 1-year assortment of candies and gummies (360 pieces)\n- GLORY ACADEMY 1-month plan free pass for 2\n- Time-Performance Supremacist Poker book\n- YAMAN Veda Lift Dryer Custom\n- BLVCK PARIS original deck\n- Yogibo Pyramid & Yogibo Mate Shark\n- JOPT MAGAZINE\n- Takara Tomy Beyblade for 2",
+    "ko": "- 식사권 JPY 40,000\n- 도서 카드 JPY 5,000\n- 캐리커처 특제 T-셔츠 (만화가 피요코탄 님 협찬)\n- BURGER KING 상품권 JPY 5,000\n- 노무 실리카 1박스 + Nectalaska\n- 칸로 사탕·구미 모음 1년분 (360개)\n- GLORY ACADEMY 1개월 플랜 무료 패스 2인분\n- 시간 효율 지상주의 포커 책\n- YAMAN 베다 리프트 드라이어 커스텀\n- BLVCK PARIS 오리지널 덱\n- Yogibo Pyramid & Yogibo Mate Shark\n- JOPT MAGAZINE\n- 다카라토미 베이블레이드 2인분"
+  },
+  "・お食事券 30,000円分\n・図書カード 5,000円分\n・BURGER KING商品券 5,000円分\n・のむシリカ1箱\n・カンロ 飴とグミの詰め合わせ 半年分(180個)\n・GLORY ACADEMY 1ヶ月プラン無料パス 2名分\n・タイパ至上主義ポーカー 2名分\n・タカラトミー ベイブレード 2名分": {
+    "en": "- Meal vouchers worth JPY 30,000\n- Book card worth JPY 5,000\n- BURGER KING gift voucher worth JPY 5,000\n- 1 box of Nomu Silica\n- Kanro half-year assortment of candies and gummies (180 pieces)\n- GLORY ACADEMY 1-month plan free pass for 2\n- Time-Performance Supremacist Poker book for 2\n- Takara Tomy Beyblade for 2",
+    "ko": "- 식사권 JPY 30,000\n- 도서 카드 JPY 5,000\n- BURGER KING 상품권 JPY 5,000\n- 노무 실리카 1박스\n- 칸로 사탕·구미 모음 반년분 (180개)\n- GLORY ACADEMY 1개월 플랜 무료 패스 2인분\n- 시간 효율 지상주의 포커 책 2인분\n- 다카라토미 베이블레이드 2인분"
+  },
+  "・お食事券 20,000円分\n・図書カード 5,000円分\n・BURGER KING商品券 5,000円分\n・のむシリカ1箱\n・カンロ 飴とグミの詰め合わせ ３ヶ月分(90個)\n・GLORY ACADEMY 1ヶ月プラン無料パス 2名分\n・タイパ至上主義ポーカー 2名分\n・タカラトミー ベイブレード 2名分": {
+    "en": "- Meal vouchers worth JPY 20,000\n- Book card worth JPY 5,000\n- BURGER KING gift voucher worth JPY 5,000\n- 1 box of Nomu Silica\n- Kanro 3-month assortment of candies and gummies (90 pieces)\n- GLORY ACADEMY 1-month plan free pass for 2\n- Time-Performance Supremacist Poker book for 2\n- Takara Tomy Beyblade for 2",
+    "ko": "- 식사권 JPY 20,000\n- 도서 카드 JPY 5,000\n- BURGER KING 상품권 JPY 5,000\n- 노무 실리카 1박스\n- 칸로 사탕·구미 모음 3개월분 (90개)\n- GLORY ACADEMY 1개월 플랜 무료 패스 2인분\n- 시간 효율 지상주의 포커 책 2인분\n- 다카라토미 베이블레이드 2인분"
+  },
+  "・着席できるのはお子様のみとし、保護者の方は席にお座りいただけません。": {
+    "en": "- Only children may be seated; guardians cannot occupy a seat.",
+    "ko": "- 좌석은 어린이만 이용 가능하며 보호자는 좌석에 앉으실 수 없습니다."
+  },
+  "・相談カードは1チームにつき5枚お渡しいたします。": {
+    "en": "- 5 consultation cards are issued per team.",
+    "ko": "- 상담 카드는 1팀당 5장 지급됩니다."
+  },
+  "・アクション時に相談カードを使用することで、保護者の方と30秒間の相談が可能です。": {
+    "en": "- Using a consultation card during an action allows a 30-second consultation with a guardian.",
+    "ko": "- 액션 시 상담 카드를 사용하면 보호자와 30초간 상담이 가능합니다."
+  },
+  "・保護者の方がアクションを決定することはできません。": {
+    "en": "- Guardians cannot decide actions on the child's behalf.",
+    "ko": "- 보호자가 액션을 결정할 수는 없습니다."
+  },
+  "・保護者の方はカードおよびチップに触れることはできません。プレイは必ずお子様ご本人に行っていただきます。": {
+    "en": "- Guardians may not touch cards or chips. Play must be performed by the child themselves.",
+    "ko": "- 보호자는 카드와 칩에 손을 댈 수 없습니다. 플레이는 반드시 어린이 본인이 진행해야 합니다."
+  },
+  "・相談カードを5枚すべて使用した場合、それ以降の相談はできません。": {
+    "en": "- Once all 5 consultation cards are used, no further consultation is allowed.",
+    "ko": "- 상담 카드 5장을 모두 사용하면 이후 상담은 불가합니다."
+  },
+  "・参加賞のタイミーセットは先着50組のみで、無くなり次第終了です。": {
+    "en": "- The Timee participation set is limited to the first 50 teams, while supplies last.",
+    "ko": "- 참가상 Timee 세트는 선착순 50팀 한정이며, 소진되는 대로 종료됩니다."
+  },
+  "・ルールは「JOPT Official Rule」を適用いたします。": {
+    "en": "- JOPT Official Rules apply.",
+    "ko": "- JOPT Official Rule을 적용합니다."
+  },
+  "・招待制イベントです。": {
+    "en": "- Invitation-only event.",
+    "ko": "- 초청제 이벤트입니다."
+  },
+  "・6ハンドごとにブラインドが上がります。": {
+    "en": "- Blinds increase every 6 hands.",
+    "ko": "- 6핸드마다 블라인드가 상승합니다."
+  },
+  "・最大16チームで行います。": {
+    "en": "- Maximum 16 teams.",
+    "ko": "- 최대 16팀으로 진행합니다."
+  },
+  "・着席後のメンバー変更や、同一人物が別のチームで二重にエントリーすることは認められません。": {
+    "en": "- Member changes after being seated, or the same person entering as part of multiple teams, are not permitted.",
+    "ko": "- 착석 후 멤버 변경이나 동일 인물이 다른 팀으로 이중 엔트리하는 것은 허용되지 않습니다."
+  },
+  "・各チームは、3卓に分かれて同時にヘッズアップで対戦します。": {
+    "en": "- Each team is split across 3 tables to play heads-up simultaneously.",
+    "ko": "- 각 팀은 3개 테이블로 나뉘어 동시에 헤즈업으로 대전합니다."
+  },
+  "・開始と同時にスタックは置かれます。": {
+    "en": "- Stacks are placed when the tournament starts.",
+    "ko": "- 시작과 동시에 스택이 배치됩니다."
+  },
+  "・チーム全員がそれぞれ敗北したらチームの敗退となります。": {
+    "en": "- When every player in a team has lost, the team is eliminated.",
+    "ko": "- 팀 전원이 각각 패배하면 팀이 탈락합니다."
+  },
+  "・3試合の結果が「3勝0敗」の場合": {
+    "en": "- If the result of 3 matches is \"3 wins, 0 losses\":",
+    "ko": "- 3경기의 결과가 \"3승 0패\"일 경우:"
+  },
+  "3勝したチームの勝利となります。": {
+    "en": "The team with 3 wins is the winner.",
+    "ko": "3승을 거둔 팀이 승리합니다."
+  },
+  "・3試合の結果が「2勝1敗」となった場合、1勝したチームは、その1勝を挙げたプレイヤーが、2勝したチームの勝利プレイヤー2名と順番にヘッズアップの勝ち抜き戦を行います。": {
+    "en": "- If the result is \"2 wins, 1 loss\", the player who won the single match for the losing-side team plays a survival heads-up against the 2 winning players of the other team in order.",
+    "ko": "- 3경기 결과가 \"2승 1패\"인 경우, 1승을 거둔 팀은 그 1승을 따낸 플레이어가 2승을 거둔 팀의 승리 플레이어 2명과 순서대로 헤즈업 서바이벌 매치를 진행합니다."
+  },
+  "この勝ち抜き戦において、1勝チームのプレイヤーが相手2名に連続で勝利した場合、1勝チームの逆転勝利となります。": {
+    "en": "If that player wins both consecutive heads-up matches in the survival match, the 1-win team wins the come-from-behind victory.",
+    "ko": "이 서바이벌 매치에서 1승 팀의 플레이어가 상대 2명에게 연속으로 승리하면, 1승 팀의 역전 승리가 됩니다."
+  },
+  "限定リストバンド": {
+    "en": "Limited-edition wristband",
+    "ko": "한정 손목 밴드"
+  },
+  "JOPT × RunGoodキャップ\nJOPT × RunGood Tシャツ": {
+    "en": "JOPT × RunGood cap\nJOPT × RunGood T-shirt",
+    "ko": "JOPT × RunGood 캡\nJOPT × RunGood T-셔츠"
+  },
+  "シェラトン都ホテル東京\nペア招待券": {
+    "en": "Sheraton Miyako Hotel Tokyo\nPair invitation",
+    "ko": "셰라톤 미야코 호텔 도쿄\n페어 초대권"
+  },
+  "・トーナメントは6maxで進行します。FTは7maxで行います。": {
+    "en": "- The tournament is played 6-max. The Final Table is played 7-max.",
+    "ko": "- 토너먼트는 6-max로 진행되며 파이널 테이블은 7-max로 진행됩니다."
+  },
+  "・NLHのAnteはSB,BBを合わせた額になります。": {
+    "en": "- For NLH, the Ante equals the sum of SB + BB.",
+    "ko": "- NLH의 Ante는 SB와 BB의 합과 동일합니다."
+  },
+  "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリンク代1,000円を頂戴します。": {
+    "en": "- A separate drink fee of JPY 1,000 will be charged at first entry to each Day 1 and at the start of Day 2.",
+    "ko": "- 각 Day 1 첫 엔트리 시 및 Day 2 시작 시에 별도로 음료 요금 JPY 1,000을 청구합니다."
+  },
+  "・Legend PlayerのファーストエントリーにBountyが付与されます。": {
+    "en": "- A Bounty is awarded to first entries by Legend Players.",
+    "ko": "- Legend Player의 첫 엔트리에 Bounty가 부여됩니다."
+  },
+  "・Legend PlayerのファーストエントリーにBountyが付与されます。\n・対象のプレイヤーをシートアウトさせる事でBountyを1枚獲得できます。\n・複数のプレイヤーが同じ強さの役により同時に対象のプレイヤーをシートアウトさせた場合、Bountyは等分します。\n・BountyはPOKERWEB COINでの付与となります。\n・ファーストエントリー時別途ドリンク代1,000円を頂戴します。\n・ルールは JOPT Official Rule を採用します。": {
+    "en": "- A Bounty is awarded to first entries by Legend Players.\n- You earn 1 Bounty chip by eliminating a target player.\n- If multiple players eliminate the target simultaneously with the same hand strength, the Bounty is split equally.\n- Bounty is paid out in POKERWEB COIN.\n- A separate drink fee of JPY 1,000 will be charged at first entry.\n- JOPT Official Rules apply.",
+    "ko": "- Legend Player의 첫 엔트리에 Bounty가 부여됩니다.\n- 대상 플레이어를 시트아웃시켜 Bounty 1장을 획득할 수 있습니다.\n- 여러 플레이어가 동일한 핸드 강도로 동시에 대상 플레이어를 시트아웃시킨 경우, Bounty는 균등 분할됩니다.\n- Bounty는 POKERWEB COIN으로 지급됩니다.\n- 첫 엔트리 시 별도로 음료 요금 JPY 1,000을 청구합니다.\n- JOPT Official Rule을 적용합니다."
+  },
+  "・ハイハンドとローハンドのそれぞれで役判定を行いポットをスプリットするゲームです。役判定は6枚中、5枚で行います。": {
+    "en": "- A split-pot game where high and low hands are evaluated separately. Hand evaluation uses 5 of the 6 cards.",
+    "ko": "- 하이 핸드와 로우 핸드 각각으로 핸드 평가를 진행해 팟을 스플릿하는 게임입니다. 핸드 평가는 6장 중 5장으로 진행합니다."
+  },
+  "・全てのプレイヤーがハイローともに成立していない場合、ショーダウンしたプレイヤー全員でポットをチョップします。": {
+    "en": "- If no player makes either high or low, all players at showdown chop the pot.",
+    "ko": "- 모든 플레이어가 하이/로우 모두 성립하지 않으면, 쇼다운에 도달한 모든 플레이어가 팟을 분할합니다."
+  },
+  "JOPT MAGAZINE（サイン付き）": {
+    "en": "JOPT MAGAZINE (autographed)",
+    "ko": "JOPT MAGAZINE (사인본)"
+  },
+  "・参加108チームから、108 → 36 → 12 → 4 → 2 → 1 の計5回戦を行います。": {
+    "en": "- From 108 entered teams, 5 rounds are played: 108 → 36 → 12 → 4 → 2 → 1.",
+    "ko": "- 참가 108팀에서 108 → 36 → 12 → 4 → 2 → 1의 총 5회전을 진행합니다."
+  },
+  "※各ラウンドで勝ち上がった1チームが次のステージへ進出します。": {
+    "en": "*One team advances to the next stage from each round.",
+    "ko": "※각 라운드에서 승리한 1팀이 다음 스테이지로 진출합니다."
+  },
+  "・1,2,3回戦は3チーム×各チーム3人の9名で1テーブルを構成します。": {
+    "en": "- Rounds 1, 2, and 3 form a table with 3 teams × 3 players each (9 players total).",
+    "ko": "- 1, 2, 3회전은 3팀 × 각 팀 3명의 9명으로 테이블을 구성합니다."
+  },
+  "・4,5回戦は2チーム×各チーム3人の6名で1テーブルを構成します。": {
+    "en": "- Rounds 4 and 5 form a table with 2 teams × 3 players each (6 players total).",
+    "ko": "- 4, 5회전은 2팀 × 각 팀 3명의 6명으로 테이블을 구성합니다."
+  },
+  "・テーブル内に残っているプレイヤーが 全員同じチームになった時点で、その試合は終了します。": {
+    "en": "- The match ends as soon as all remaining players at the table are from the same team.",
+    "ko": "- 테이블에 남아 있는 플레이어가 모두 같은 팀이 되는 시점에 그 경기는 종료됩니다."
+  },
+  "例：残り2名になり、どちらもAチームのプレイヤーだった場合": {
+    "en": "Example: when 2 players remain and both are from Team A.",
+    "ko": "예: 남은 2명이 모두 A팀 플레이어인 경우."
+  },
+  "→その時点で終了（Aチームが次ラウンド進出）": {
+    "en": "→ Match ends at that point (Team A advances to the next round).",
+    "ko": "→ 그 시점에 종료 (A팀이 다음 라운드 진출)."
+  },
+  "・マックしたハンドに関する発言や、ハンドが特定できるような具体的な発言は禁止です。": {
+    "en": "- Talking about mucked hands or making specific comments that could reveal a hand is prohibited.",
+    "ko": "- 머크한 핸드에 관한 발언이나 핸드를 특정할 수 있는 구체적인 발언은 금지됩니다."
+  },
+  "・エントリー時に3名いない場合、チームメンバーが来るまで置きバケとなります。": {
+    "en": "- If a team does not have 3 members at entry, it operates as a placeholder seat until team members arrive.",
+    "ko": "- 엔트리 시 3명이 모두 없으면 팀 멤버가 도착할 때까지 자리만 채우는 상태가 됩니다."
+  },
+  "・事前予約を受け付けますが、エントリー上限に達していない場合に限り、当日受付が可能です。": {
+    "en": "- Pre-reservation is accepted; on-the-day registration is only available if the entry cap has not been reached.",
+    "ko": "- 사전 예약을 접수하지만, 엔트리 상한에 도달하지 않은 경우에 한해 당일 접수가 가능합니다."
+  },
+  "・スタックはトーナメント開始と同時に置かれます。": {
+    "en": "- Stacks are placed when the tournament starts.",
+    "ko": "- 스택은 토너먼트 시작과 동시에 배치됩니다."
+  },
+  "・エントリー時別途ドリンク代3,000円を頂戴します。": {
+    "en": "- A separate drink fee of JPY 3,000 will be charged at entry.",
+    "ko": "- 엔트리 시 별도로 음료 요금 JPY 3,000을 청구합니다."
+  },
+  "・ハイハンドとローハンドのそれぞれで役判定を行いポットをスプリットするゲームです。": {
+    "en": "- A split-pot game where high and low hands are evaluated separately.",
+    "ko": "- 하이 핸드와 로우 핸드 각각으로 핸드 평가를 진행해 팟을 스플릿하는 게임입니다."
+  },
+  "Sprinter賞はDay 1A,B,C,D,E Turboにて40万点にいち早く到達したプレイヤーに授与。": {
+    "en": "The Sprinter award is given to the player who first reaches 400,000 in Day 1A/B/C/D/E Turbo.",
+    "ko": "Sprinter 상은 Day 1A/B/C/D/E Turbo에서 400,000점에 가장 먼저 도달한 플레이어에게 수여됩니다."
+  },
+  "・2-7Razz": {
+    "en": "- 2-7 Razz",
+    "ko": "- 2-7 Razz"
+  },
+  "7枚中、5枚を用いて2-7の役で役判定を行います。": {
+    "en": "Hand evaluation uses 5 of the 7 cards under 2-7 ranking.",
+    "ko": "7장 중 5장을 사용해 2-7 핸드로 평가합니다."
+  },
+  "・Razzdugi": {
+    "en": "- Razzdugi",
+    "ko": "- Razzdugi"
+  },
+  "BadugiとA-5(Razz)のそれぞれで役判定を行い、ポットをスプリットするゲームです。": {
+    "en": "A split-pot game where Badugi and A-5 (Razz) hands are evaluated separately.",
+    "ko": "Badugi와 A-5(Razz) 각각으로 핸드 평가를 진행해 팟을 스플릿하는 게임입니다."
+  },
+  "Whopper 1年分 + 特別アパレル": {
+    "en": "1-year supply of Whopper + special apparel",
+    "ko": "Whopper 1년분 + 특별 어패럴"
+  },
+  "Whopper 半年分": {
+    "en": "Half-year supply of Whopper",
+    "ko": "Whopper 반년분"
+  },
+  "Whopper 3ヶ月分": {
+    "en": "3-month supply of Whopper",
+    "ko": "Whopper 3개월분"
+  },
+  "・Archieにおける役の成立条件は以下の通りです。": {
+    "en": "- Hand qualifying conditions for Archie are as follows.",
+    "ko": "- Archie의 핸드 성립 조건은 다음과 같습니다."
+  },
+  "・Archieにおいて全てのプレイヤーがハイローともに成立していない場合、ショーダウンしたプレイヤー全員でポットをチョップします。": {
+    "en": "- In Archie, if no player makes either high or low, all players at showdown chop the pot.",
+    "ko": "- Archie에서 모든 플레이어가 하이/로우 모두 성립하지 않으면, 쇼다운에 도달한 모든 플레이어가 팟을 분할합니다."
+  },
+  "・5-Card Draw Hiのチェンジラウンドは3度になります。": {
+    "en": "- The 5-Card Draw Hi has 3 change rounds.",
+    "ko": "- 5-Card Draw Hi의 체인지 라운드는 3회입니다."
+  },
+  "・エントリー7名でFlipoutを行い勝者1名を決定し通過とします。": {
+    "en": "- A Flipout of 7 entrants is held to determine a single winner who qualifies.",
+    "ko": "- 엔트리 7명으로 Flipout을 진행해 우승자 1명을 결정하여 통과로 합니다."
+  },
+  "・引き分けの場合対象者のみでもう一度行い1名になるまで行います。": {
+    "en": "- In case of a tie, only the tied players replay until 1 player remains.",
+    "ko": "- 동점일 경우 해당자들만으로 다시 진행해 1명이 남을 때까지 진행합니다."
+  },
+  "・通過条件を満たしたプレイヤーには、専用Voucherを付与いたします。": {
+    "en": "- Qualifying players will receive a dedicated Voucher.",
+    "ko": "- 통과 조건을 충족한 플레이어에게는 전용 Voucher가 지급됩니다."
+  },
+  "・エントリー時にBountyが付与されます。": {
+    "en": "- A Bounty is awarded at entry.",
+    "ko": "- 엔트리 시 Bounty가 부여됩니다."
+  },
+  "・プレイヤーをシートアウトさせる事でBountyを1枚獲得できます。": {
+    "en": "- You earn 1 Bounty chip by eliminating a player.",
+    "ko": "- 플레이어를 시트아웃시켜 Bounty 1장을 획득할 수 있습니다."
+  },
+  "・エントリー時にBountyが付与されます。\n・プレイヤーをシートアウトさせる事でBountyを1枚獲得できます。\n・複数のプレイヤーが同じ強さの役により同時に対象のプレイヤーをシートアウトさせた場合、Bountyは等分します。\n・BountyはPOKERWEB COINでの付与となります。\n・ファーストエントリー時別途ドリンク代1,000円を頂戴します。\n・ルールは JOPT Official Rule を採用します。": {
+    "en": "- A Bounty is awarded at entry.\n- You earn 1 Bounty chip by eliminating a player.\n- If multiple players eliminate the target simultaneously with the same hand strength, the Bounty is split equally.\n- Bounty is paid out in POKERWEB COIN.\n- A separate drink fee of JPY 1,000 will be charged at first entry.\n- JOPT Official Rules apply.",
+    "ko": "- 엔트리 시 Bounty가 부여됩니다.\n- 플레이어를 시트아웃시켜 Bounty 1장을 획득할 수 있습니다.\n- 여러 플레이어가 동일한 핸드 강도로 동시에 대상 플레이어를 시트아웃시킨 경우, Bounty는 균등 분할됩니다.\n- Bounty는 POKERWEB COIN으로 지급됩니다.\n- 첫 엔트리 시 별도로 음료 요금 JPY 1,000을 청구합니다.\n- JOPT Official Rule을 적용합니다."
+  },
+  "・5-Card Omahaと5-Card Drawのそれぞれで役判定を行い、ポットをスプリットするゲームです。5-Crad Drawは以下の役判定になります。": {
+    "en": "- A split-pot game where 5-Card Omaha and 5-Card Draw hands are evaluated separately. 5-Card Draw uses the following hand evaluation:",
+    "ko": "- 5-Card Omaha와 5-Card Draw 각각으로 핸드 평가를 진행해 팟을 스플릿하는 게임입니다. 5-Card Draw는 아래의 핸드 평가를 사용합니다."
+  },
+  "Hi：ハイハンド": {
+    "en": "Hi: high hand.",
+    "ko": "Hi: 하이 핸드."
+  },
+  "2-7：ローハンド(2-7)": {
+    "en": "2-7: low hand (2-7).",
+    "ko": "2-7: 로우 핸드 (2-7)."
+  },
+  "Badugi：5枚中、4枚を用いたBadugi役": {
+    "en": "Badugi: a Badugi hand using 4 of the 5 cards.",
+    "ko": "Badugi: 5장 중 4장을 사용한 Badugi 핸드."
+  },
+  "0：ホールカードのランク(数字)の合計の低さ": {
+    "en": "0: the lowest sum of hole card ranks (numerical values).",
+    "ko": "0: 홀 카드 랭크(숫자) 합계의 낮음."
+  },
+  "※Tは10点、J～Kは0点となります。": {
+    "en": "*T counts as 10 points; J–K count as 0.",
+    "ko": "※T는 10점, J~K는 0점입니다."
+  },
+  "49：ホールカードのランク(数字)の合計の高さ": {
+    "en": "49: the highest sum of hole card ranks (numerical values).",
+    "ko": "49: 홀 카드 랭크(숫자) 합계의 높음."
+  },
+  "・チェンジラウンドはフロップのベッティングラウンドの後の1度だけになります。": {
+    "en": "- The change round occurs only once, after the flop betting round.",
+    "ko": "- 체인지 라운드는 플랍 베팅 라운드 이후 1회만 진행됩니다."
+  },
+  "アパレル + オリジナルデック": {
+    "en": "Apparel + original deck",
+    "ko": "어패럴 + 오리지널 덱"
+  },
+  "オリジナルデック": {
+    "en": "Original deck",
+    "ko": "오리지널 덱"
+  },
+  "・ブリングイン額はAnteと同額になります。": {
+    "en": "- The Bring-in equals the Ante amount.",
+    "ko": "- 브링인 금액은 Ante와 동일합니다."
+  },
+  "・種目はNL 2-7 Single Drawで進行します。": {
+    "en": "- The game played is NL 2-7 Single Draw.",
+    "ko": "- 종목은 NL 2-7 Single Draw로 진행됩니다."
+  },
+  "・完全招待制のトーナメントです。": {
+    "en": "- This tournament is fully invitation-only.",
+    "ko": "- 완전 초청제 토너먼트입니다."
+  },
+  "・トーナメントは8maxで進行します。FTは7maxで行います。": {
+    "en": "- The tournament is played 8-max. The Final Table is played 7-max.",
+    "ko": "- 토너먼트는 8-max로 진행되며 파이널 테이블은 7-max로 진행됩니다."
+  },
+  "・プレイ中はソフトドリンクが飲み放題になります。": {
+    "en": "- Free-flow soft drinks during play.",
+    "ko": "- 플레이 중에는 소프트 드링크 무제한 제공됩니다."
+  },
+  "有効期限は獲得日から1年間であり、期限内のAPTシリーズ大会にてご利用いただけます\nSponsorship額はTotal Prizeに含まれいます": {
+    "en": "Valid for 1 year from the date earned, usable at any APT Series event within the validity period.\nThe Sponsorship amount is included in the Total Prize.",
+    "ko": "유효기간은 획득일로부터 1년이며, 기간 내 APT 시리즈 대회에서 사용 가능합니다.\nSponsorship 금액은 Total Prize에 포함되어 있습니다."
+  },
+  "・チェンジラウンドは1度だけになります。": {
+    "en": "- Only one change round.",
+    "ko": "- 체인지 라운드는 1회만입니다."
+  },
+  "・種目はFL Seven Card Studで進行します。": {
+    "en": "- The game played is FL Seven Card Stud.",
+    "ko": "- 종목은 FL Seven Card Stud로 진행됩니다."
+  },
+  "・エントリー受付終了以降残り人数が95名になった時Bounty Chipを1人1枚配布します。": {
+    "en": "- Once registration closes and the field reaches 95 players, each player is dealt 1 Bounty Chip.",
+    "ko": "- 엔트리 접수 종료 이후 남은 인원이 95명이 되면 1인당 Bounty Chip 1장을 배포합니다."
+  },
+  "・プレイヤーをシートアウトさせる事で相手のBountyを1枚獲得できます。": {
+    "en": "- You earn 1 of the eliminated player's Bounty chips by busting them.",
+    "ko": "- 플레이어를 시트아웃시켜 상대의 Bounty 1장을 획득할 수 있습니다."
+  },
+  "・複数のプレイヤーが同じ強さの役により同時に他のプレイヤーをシートアウトさせた場合、運営がBountyを引きプライズが等分されます。": {
+    "en": "- If multiple players eliminate another player simultaneously with the same hand strength, the operations team holds the Bounty and the prize is split equally.",
+    "ko": "- 여러 플레이어가 동일한 핸드 강도로 동시에 다른 플레이어를 시트아웃시킨 경우, 운영진이 Bounty를 보관하고 프라이즈가 균등 분할됩니다."
+  },
+  "・エントリー受付終了以降残り人数が95名になった時Bounty Chipを1人1枚配布します。\n・プレイヤーをシートアウトさせる事で相手のBountyを1枚獲得できます。\n・複数のプレイヤーが同じ強さの役により同時に他のプレイヤーをシートアウトさせた場合、運営がBountyを引きプライズが等分されます。\n・BountyはPOKERWEB COINでの付与となります。\n・ファーストエントリー時別途ドリンク代1,000円を頂戴します。\n・ルールは JOPT Official Rule を採用します。": {
+    "en": "- Once registration closes and the field reaches 95 players, each player is dealt 1 Bounty Chip.\n- You earn 1 of the eliminated player's Bounty chips by busting them.\n- If multiple players eliminate another player simultaneously with the same hand strength, the operations team holds the Bounty and the prize is split equally.\n- Bounty is paid out in POKERWEB COIN.\n- A separate drink fee of JPY 1,000 will be charged at first entry.\n- JOPT Official Rules apply.",
+    "ko": "- 엔트리 접수 종료 이후 남은 인원이 95명이 되면 1인당 Bounty Chip 1장을 배포합니다.\n- 플레이어를 시트아웃시켜 상대의 Bounty 1장을 획득할 수 있습니다.\n- 여러 플레이어가 동일한 핸드 강도로 동시에 다른 플레이어를 시트아웃시킨 경우, 운영진이 Bounty를 보관하고 프라이즈가 균등 분할됩니다.\n- Bounty는 POKERWEB COIN으로 지급됩니다.\n- 첫 엔트리 시 별도로 음료 요금 JPY 1,000을 청구합니다.\n- JOPT Official Rule을 적용합니다."
+  },
+  "のむシリカ 1年分 + Nectalaska": {
+    "en": "1-year supply of Nomu Silica + Nectalaska",
+    "ko": "노무 실리카 1년분 + Nectalaska"
+  },
+  "のむシリカ 半年分": {
+    "en": "Half-year supply of Nomu Silica",
+    "ko": "노무 실리카 반년분"
+  },
+  "のむシリカ 3ヶ月分": {
+    "en": "3-month supply of Nomu Silica",
+    "ko": "노무 실리카 3개월분"
+  },
+  "・男女ペア限定のトーナメントです。": {
+    "en": "- This tournament is exclusively for male-female pairs.",
+    "ko": "- 남녀 페어 한정 토너먼트입니다."
+  },
+  "・エントリー時は必ずペア揃って受付へお越しください。": {
+    "en": "- At entry, both members of the pair must come to reception together.",
+    "ko": "- 엔트리 시 반드시 페어가 함께 접수처로 오시기 바랍니다."
+  },
+  "・ファーストエントリー時に2,000円のドリンク代がかかります。また、 プレイ中はドリンクが飲み放題になります。": {
+    "en": "- A drink fee of JPY 2,000 applies at first entry. Free-flow drinks during play.",
+    "ko": "- 첫 엔트리 시 음료 요금 JPY 2,000이 부과됩니다. 플레이 중에는 음료 무제한 제공됩니다."
+  },
+  "・エントリー数の1/8が入賞人数となり、すべての入賞者が確定次第、トーナメントが終了します。": {
+    "en": "- 1/8 of total entries qualify as in-the-money. The tournament ends once all qualifiers are determined.",
+    "ko": "- 엔트리 수의 1/8이 입상 인원수가 되며, 모든 입상자가 확정되는 즉시 토너먼트가 종료됩니다."
+  },
+  "・80,000点を集めた方はフロアへ自己申告することで通過することができます。": {
+    "en": "- Players who reach 80,000 chips can self-declare to the floor to qualify.",
+    "ko": "- 80,000점에 도달한 플레이어는 플로어에 자진 신고함으로써 통과할 수 있습니다."
+  },
+  "・規定チップ数を超えるなど、通過条件を満たしたプレイヤーには、10,000円のVoucherを対象トーナメントの金額分付与します。端数も順位に応じて付与します。": {
+    "en": "- Players meeting the qualifying conditions will receive JPY 10,000 Vouchers totaling the qualifying tournament's value. Fractional amounts will be awarded by rank.",
+    "ko": "- 통과 조건을 충족한 플레이어에게는 대상 토너먼트 금액에 해당하는 JPY 10,000 Voucher를 지급합니다. 단수도 순위에 따라 지급됩니다."
+  },
+  "・240,000点を集めた方はフロアへ自己申告することで通過することができます。": {
+    "en": "- Players who reach 240,000 chips can self-declare to the floor to qualify.",
+    "ko": "- 240,000점에 도달한 플레이어는 플로어에 자진 신고함으로써 통과할 수 있습니다."
+  },
+  "・トーナメントは7maxで進行します。": {
+    "en": "- The tournament is played 7-max.",
+    "ko": "- 토너먼트는 7-max로 진행됩니다."
+  },
+  "・5-Card Draw Hiのチェンジラウンドは1度だけになります。": {
+    "en": "- The 5-Card Draw Hi has only 1 change round.",
+    "ko": "- 5-Card Draw Hi의 체인지 라운드는 1회만입니다."
+  },
+  "・本トーナメントでは、トーナメント開始時よりショットクロックが導入されます。": {
+    "en": "- A shot clock is in effect from the start of this tournament.",
+    "ko": "- 본 토너먼트는 토너먼트 시작 시점부터 샷 클럭이 도입됩니다."
+  },
+  "・エントリー時にTime Bank Cardを5枚配布いたします。さらに、ハンド・フォー・ハンド開始時およびファイナルテーブル開始時に、それぞれ追加でTime Bank Cardを1枚ずつ配布いたします。": {
+    "en": "- 5 Time Bank Cards are issued at entry. An additional Time Bank Card is issued at the start of Hand-for-Hand and at the start of the Final Table.",
+    "ko": "- 엔트리 시 Time Bank Card 5장을 지급합니다. 추가로 핸드-포-핸드 시작 시점 및 파이널 테이블 시작 시점에 각각 Time Bank Card 1장씩을 지급합니다."
+  },
+  "・プリフロップ20秒、ポストフロップ30秒の思考時間が与えられ、Time Bank Cardを使用することで、追加で30秒の思考時間が与えられます。": {
+    "en": "- 20 seconds preflop and 30 seconds postflop think time is granted; using a Time Bank Card adds 30 more seconds.",
+    "ko": "- 프리플랍 20초, 포스트플랍 30초 사고 시간이 주어지며, Time Bank Card를 사용하면 추가로 30초의 사고 시간이 주어집니다."
+  },
+  "・エントリー受付終了以降残り人数がエントリー数の20%になった時Bounty Chipを1人1枚配布します。": {
+    "en": "- Once registration closes and the field is reduced to 20% of total entries, each player is dealt 1 Bounty Chip.",
+    "ko": "- 엔트리 접수 종료 이후 남은 인원이 총 엔트리의 20%가 되면 1인당 Bounty Chip 1장을 배포합니다."
+  },
+  "・複数のプレイヤーが同じ強さの役により同時に他のプレイヤーをシートアウトさせた場合、Bountyは等分します。": {
+    "en": "- If multiple players eliminate another player simultaneously with the same hand strength, the Bounty is split equally.",
+    "ko": "- 여러 플레이어가 동일한 핸드 강도로 동시에 다른 플레이어를 시트아웃시킨 경우, Bounty는 균등 분할됩니다."
+  },
+  "・エントリー受付終了以降残り人数がエントリー数の20%になった時Bounty Chipを1人1枚配布します。\n・プレイヤーをシートアウトさせる事で相手のBountyを1枚獲得できます。\n・複数のプレイヤーが同じ強さの役により同時に他のプレイヤーをシートアウトさせた場合、Bountyは等分します。\n・BountyはPOKERWEB COINでの付与となります。\n・ファーストエントリー時別途ドリンク代1,000円を頂戴します。\n・ルールは JOPT Official Rule を採用します。": {
+    "en": "- Once registration closes and the field is reduced to 20% of total entries, each player is dealt 1 Bounty Chip.\n- You earn 1 of the eliminated player's Bounty chips by busting them.\n- If multiple players eliminate another player simultaneously with the same hand strength, the Bounty is split equally.\n- Bounty is paid out in POKERWEB COIN.\n- A separate drink fee of JPY 1,000 will be charged at first entry.\n- JOPT Official Rules apply.",
+    "ko": "- 엔트리 접수 종료 이후 남은 인원이 총 엔트리의 20%가 되면 1인당 Bounty Chip 1장을 배포합니다.\n- 플레이어를 시트아웃시켜 상대의 Bounty 1장을 획득할 수 있습니다.\n- 여러 플레이어가 동일한 핸드 강도로 동시에 다른 플레이어를 시트아웃시킨 경우, Bounty는 균등 분할됩니다.\n- Bounty는 POKERWEB COIN으로 지급됩니다.\n- 첫 엔트리 시 별도로 음료 요금 JPY 1,000을 청구합니다.\n- JOPT Official Rule을 적용합니다."
+  },
+  "全種セット + 限定タイパ至上主義": {
+    "en": "Full set + limited Time-Performance Supremacist",
+    "ko": "전 종류 세트 + 한정 시간 효율 지상주의"
+  },
+  "・エントリー受付終了以降残り人数がエントリー数の25%になった時にBounty Chipを1人1枚配布します。": {
+    "en": "- Once registration closes and the field is reduced to 25% of total entries, each player is dealt 1 Bounty Chip.",
+    "ko": "- 엔트리 접수 종료 이후 남은 인원이 총 엔트리의 25%가 되면 1인당 Bounty Chip 1장을 배포합니다."
+  },
+  "・本トーナメントでは、Bounty Chip配布時よりショットクロックが導入されます。": {
+    "en": "- A shot clock is in effect from when Bounty Chips are distributed in this tournament.",
+    "ko": "- 본 토너먼트는 Bounty Chip 배포 시점부터 샷 클럭이 도입됩니다."
+  },
+  "・Time Bank Cardは1人3枚配布され、ファイナルテーブル開始時に追加でTime Bank Cardを1枚ずつ配布いたします。": {
+    "en": "- 3 Time Bank Cards are issued per player, with 1 additional Time Bank Card issued at the start of the Final Table.",
+    "ko": "- Time Bank Card는 1인당 3장이 지급되며, 파이널 테이블 시작 시점에 추가로 Time Bank Card 1장씩이 지급됩니다."
+  },
+  "・プリフロップ20秒、ポストフロップ30秒の思考時間が与えられ、タイムバンクカードを使用することで、追加で30秒の思考時間が与えられます。": {
+    "en": "- 20 seconds preflop and 30 seconds postflop think time is granted; using a Time Bank Card adds 30 more seconds.",
+    "ko": "- 프리플랍 20초, 포스트플랍 30초 사고 시간이 주어지며, 타임 뱅크 카드를 사용하면 추가로 30초의 사고 시간이 주어집니다."
+  },
+  "・エントリー受付終了以降残り人数がエントリー数の25%になった時にBounty Chipを1人1枚配布します。\n・プレイヤーをシートアウトさせる事で相手のBountyを1枚獲得できます。\n・複数のプレイヤーが同じ強さの役により同時に他のプレイヤーをシートアウトさせた場合、Bountyは等分します。\n・BountyはPOKERWEB COINでの付与となります。\n・本トーナメントでは、Bounty Chip配布時よりショットクロックが導入されます。\n・Time Bank Cardは1人3枚配布され、ファイナルテーブル開始時に追加でTime Bank Cardを1枚ずつ配布いたします。\n・プリフロップ20秒、ポストフロップ30秒の思考時間が与えられ、タイムバンクカードを使用することで、追加で30秒の思考時間が与えられます。\n・ファーストエントリー時別途ドリンク代1,000円を頂戴します。\n・ルールは JOPT Official Rule を採用します。": {
+    "en": "- Once registration closes and the field is reduced to 25% of total entries, each player is dealt 1 Bounty Chip.\n- You earn 1 of the eliminated player's Bounty chips by busting them.\n- If multiple players eliminate another player simultaneously with the same hand strength, the Bounty is split equally.\n- Bounty is paid out in POKERWEB COIN.\n- A shot clock is in effect from when Bounty Chips are distributed in this tournament.\n- 3 Time Bank Cards are issued per player, with 1 additional Time Bank Card issued at the start of the Final Table.\n- 20 seconds preflop and 30 seconds postflop think time is granted; using a Time Bank Card adds 30 more seconds.\n- A separate drink fee of JPY 1,000 will be charged at first entry.\n- JOPT Official Rules apply.",
+    "ko": "- 엔트리 접수 종료 이후 남은 인원이 총 엔트리의 25%가 되면 1인당 Bounty Chip 1장을 배포합니다.\n- 플레이어를 시트아웃시켜 상대의 Bounty 1장을 획득할 수 있습니다.\n- 여러 플레이어가 동일한 핸드 강도로 동시에 다른 플레이어를 시트아웃시킨 경우, Bounty는 균등 분할됩니다.\n- Bounty는 POKERWEB COIN으로 지급됩니다.\n- 본 토너먼트는 Bounty Chip 배포 시점부터 샷 클럭이 도입됩니다.\n- Time Bank Card는 1인당 3장이 지급되며, 파이널 테이블 시작 시점에 추가로 Time Bank Card 1장씩이 지급됩니다.\n- 프리플랍 20초, 포스트플랍 30초 사고 시간이 주어지며, 타임 뱅크 카드를 사용하면 추가로 30초의 사고 시간이 주어집니다.\n- 첫 엔트리 시 별도로 음료 요금 JPY 1,000을 청구합니다.\n- JOPT Official Rule을 적용합니다."
+  },
+  "・本イベントは女性のみ参加できます。受付にて身分証の確認をする場合があります。参加資格がないことが発覚した場合は、失格やプライズの破棄などの措置が取られる場合があります。": {
+    "en": "- This event is open to women only. ID may be checked at reception. If lack of eligibility is discovered, disqualification or forfeiture of prizes may apply.",
+    "ko": "- 본 이벤트는 여성만 참가할 수 있습니다. 접수 시 신분증을 확인할 수 있으며, 참가 자격이 없는 사실이 발각된 경우 실격이나 프라이즈 박탈 등의 조치가 취해질 수 있습니다."
+  },
+  "・JOPT 2026 GF 5/5までのトーナメント優勝者のファーストエントリーにBountyが付与されます。": {
+    "en": "- A Bounty is awarded to first entries of JOPT 2026 GF tournament winners up to and including 5/5.",
+    "ko": "- 5/5까지의 JOPT 2026 GF 토너먼트 우승자의 첫 엔트리에 Bounty가 부여됩니다."
+  },
+  "・JOPT 2026 GF 5/5までのトーナメント優勝者のファーストエントリーにBountyが付与されます。\n・対象のプレイヤーをシートアウトさせる事でBountyを1枚獲得できます。\n・複数のプレイヤーが同じ強さの役により同時に対象のプレイヤーをシートアウトさせた場合、Bountyは等分します。\n・BountyはPOKERWEB COINでの付与となります。\n・ファーストエントリー時別途ドリンク代1,000円を頂戴します。\n・ルールは JOPT Official Rule を採用します。": {
+    "en": "- A Bounty is awarded to first entries of JOPT 2026 GF tournament winners up to and including 5/5.\n- You earn 1 Bounty chip by eliminating a target player.\n- If multiple players eliminate the target simultaneously with the same hand strength, the Bounty is split equally.\n- Bounty is paid out in POKERWEB COIN.\n- A separate drink fee of JPY 1,000 will be charged at first entry.\n- JOPT Official Rules apply.",
+    "ko": "- 5/5까지의 JOPT 2026 GF 토너먼트 우승자의 첫 엔트리에 Bounty가 부여됩니다.\n- 대상 플레이어를 시트아웃시켜 Bounty 1장을 획득할 수 있습니다.\n- 여러 플레이어가 동일한 핸드 강도로 동시에 대상 플레이어를 시트아웃시킨 경우, Bounty는 균등 분할됩니다.\n- Bounty는 POKERWEB COIN으로 지급됩니다.\n- 첫 엔트리 시 별도로 음료 요금 JPY 1,000을 청구합니다.\n- JOPT Official Rule을 적용합니다."
+  },
+  "・ホールカードが3枚配られます。": {
+    "en": "- 3 hole cards are dealt.",
+    "ko": "- 홀 카드가 3장 배포됩니다."
+  },
+  "・コミュニティカード5枚とホールカード3枚の8枚から任意の5枚で役を構成します。": {
+    "en": "- A 5-card hand is formed from any 5 of the 5 community cards plus 3 hole cards (8 cards total).",
+    "ko": "- 커뮤니티 카드 5장과 홀 카드 3장, 총 8장 중 임의의 5장으로 핸드를 구성합니다."
+  },
+  "・クロック表示に関わらずタイマーストップする場合があります。": {
+    "en": "- The timer may be stopped regardless of the clock display.",
+    "ko": "- 클럭 표시와 관계없이 타이머가 멈출 수 있습니다."
+  },
+  "・2,3,4,5のカードが取り除かれた36枚のデックを使用します。": {
+    "en": "- A 36-card deck with the 2, 3, 4, and 5 ranks removed is used.",
+    "ko": "- 2, 3, 4, 5 카드를 제거한 36장 덱을 사용합니다."
+  },
+  "・フラッシュがフルハウスより強い役になります。": {
+    "en": "- Flush ranks higher than Full House.",
+    "ko": "- 플러시가 풀하우스보다 높은 핸드입니다."
+  },
+  "・A-6-7-8-9でストレートが完成します。": {
+    "en": "- A-6-7-8-9 makes a straight.",
+    "ko": "- A-6-7-8-9가 스트레이트를 구성합니다."
+  },
+  "・本イベントで勤務した方のみエントリー可能です。": {
+    "en": "- Entry is restricted to those who worked at this event.",
+    "ko": "- 본 이벤트에 근무한 분만 엔트리 가능합니다."
+  },
+  "・エントリー数の1/6が入賞人数となり、すべての入賞者が確定次第、トーナメントが終了します。": {
+    "en": "- 1/6 of total entries qualify as in-the-money. The tournament ends once all qualifiers are determined.",
+    "ko": "- 엔트리 수의 1/6이 입상 인원수가 되며, 모든 입상자가 확정되는 즉시 토너먼트가 종료됩니다."
+  },
+  "・60,000点を集めた方はフロアへ自己申告することで通過することができます。": {
+    "en": "- Players who reach 60,000 chips can self-declare to the floor to qualify.",
+    "ko": "- 60,000점에 도달한 플레이어는 플로어에 자진 신고함으로써 통과할 수 있습니다."
+  },
+  "取得した Voucher は次回 JOPT Tokyo #02 までご使用いただけます。JOPT Tokyo でのみご使用いただけます。": {
+    "en": "Acquired Vouchers are valid until the next JOPT Tokyo #02 and can only be used at JOPT Tokyo.",
+    "ko": "획득한 Voucher는 다음 JOPT Tokyo #02까지 유효하며, JOPT Tokyo에서만 사용 가능합니다."
+  }
+}
