@@ -59,7 +59,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={notoSansJP.className}>
       <body className="flex flex-col min-h-dvh">
-        <NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale}>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
