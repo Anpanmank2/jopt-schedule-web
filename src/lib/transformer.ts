@@ -778,10 +778,10 @@ export function transformTournament(
 }
 
 function formatDayLabel(isoDate: string): string {
-  const [y, m, d] = isoDate.split("-").map(Number);
-  const dayObj = new Date(Date.UTC(y, m - 1, d));
-  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
-  return `${m}/${d} ${weekdays[dayObj.getUTCDay()]}`;
+  // weekday は UI 側 (page.tsx) で locale 別 Intl.DateTimeFormat により表示する。
+  // transformer は month/day のみ生成し locale 非依存に保つ。
+  const [, m, d] = isoDate.split("-").map(Number);
+  return `${m}/${d}`;
 }
 
 /**

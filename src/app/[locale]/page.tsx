@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo, useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import extractRaw from "@/data/extract.json";
 import currentRaw from "@/data/jopt_gf2026_data.json";
 import { transform } from "@/lib/transformer";
@@ -99,6 +99,11 @@ export default function SchedulePage() {
   const tHeader = useTranslations("header");
   const tCard = useTranslations("card");
   const tEventMeta = useTranslations("event_meta");
+  const locale = useLocale();
+  const formatWeekday = (isoDate: string) => {
+    const d = new Date(isoDate + "T00:00:00Z");
+    return new Intl.DateTimeFormat(locale, { weekday: "short", timeZone: "UTC" }).format(d);
+  };
   const [selectedIdx, setSelectedIdx] = useState<number | "all">("all");
   const [query, setQuery] = useState("");
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -250,10 +255,10 @@ export default function SchedulePage() {
               const active = i === selectedIdx;
               const date = new Date(d.date + "T00:00:00Z");
               const dayNum = date.getUTCDate();
-              const weekday = date.toLocaleDateString("en-US", {
+              const weekday = new Intl.DateTimeFormat(locale, {
                 weekday: "short",
                 timeZone: "UTC",
-              });
+              }).format(date);
               const month = date
                 .toLocaleDateString("en-US", { month: "short", timeZone: "UTC" })
                 .toUpperCase();
@@ -317,7 +322,7 @@ export default function SchedulePage() {
                 {groupedForAll.map((dg) => (
                   <section key={dg.date} id={`day-${dg.date}`} className="mb-6">
                     <h2 className="sticky top-[112px] md:top-[128px] z-30 bg-blue-50/95 backdrop-blur px-4 py-2 text-[11px] md:text-xs font-bold text-blue-900 uppercase tracking-wider border-b border-blue-200 flex items-baseline gap-2">
-                      <span>{dg.dayLabel}</span>
+                      <span>{dg.dayLabel} {formatWeekday(dg.date)}</span>
                       <span className="text-text-muted font-normal normal-case tracking-normal">
                         ({dg.events.length})
                       </span>

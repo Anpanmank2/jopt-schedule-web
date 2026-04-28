@@ -810,9 +810,9 @@ function InfoPanel({ event }: { event: EventData }) {
                 if (!num || !den) return null;
                 return (
                   <div>
-                    <span className="text-text-muted">Seat 付与率: </span>
+                    <span className="text-text-muted">{tDetail("seat_ratio_label")}</span>
                     <span className="font-medium text-text-primary">
-                      {den} エントリーにつき {num} Seat
+                      {tDetail("seat_ratio_format", { den, num })}
                     </span>
                   </div>
                 );
@@ -888,11 +888,11 @@ function InfoPanel({ event }: { event: EventData }) {
                   {md.turbo.label ?? "Day 1 Turbo"}:{" "}
                 </span>
                 {md.turbo.startLevel != null && (
-                  <span className="tabular-nums">Lv.{md.turbo.startLevel} 開始</span>
+                  <span className="tabular-nums">{tDetail("turbo_start_level", { level: md.turbo.startLevel })}</span>
                 )}
                 {md.turbo.levelTime != null && (
                   <span className="tabular-nums">
-                    {md.turbo.startLevel != null ? " / " : ""}各 {md.turbo.levelTime} 分 / Lv
+                    {md.turbo.startLevel != null ? " / " : ""}{tDetail("turbo_each_minutes", { time: md.turbo.levelTime })}
                   </span>
                 )}
               </p>
