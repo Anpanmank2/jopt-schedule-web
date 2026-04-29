@@ -774,5 +774,101 @@
   "取得した Voucher は次回 JOPT Tokyo #02 までご使用いただけます。JOPT Tokyo でのみご使用いただけます。": {
     "en": "Acquired Vouchers are valid until the next JOPT Tokyo #02 and can only be used at JOPT Tokyo.",
     "ko": "획득한 Voucher는 다음 JOPT Tokyo #02까지 유효하며, JOPT Tokyo에서만 사용 가능합니다."
+  },
+  "・取得した Voucher は次回 JOPT Tokyo #02 までご使用いただけます。JOPT Tokyo でのみご使用いただけます。": {
+    "en": "- Acquired Vouchers are valid until the next JOPT Tokyo #02 and can only be used at JOPT Tokyo.",
+    "ko": "- 획득한 Voucher는 다음 JOPT Tokyo #02까지 유효하며, JOPT Tokyo에서만 사용 가능합니다."
+  },
+  "NLH Tag Team Sponsored by クライナー": {
+    "en": "NLH Tag Team Sponsored by Kleiner",
+    "ko": "NLH Tag Team Sponsored by Kleiner"
+  },
+  "ジュニア1部": {
+    "en": "Junior Division 1",
+    "ko": "주니어 1부"
+  },
+  "第1部ポーカージュニア選手権": {
+    "en": "Section 1 Poker Junior Championship",
+    "ko": "제1부 포커 주니어 선수권"
+  },
+  "1位": {
+    "en": "1st",
+    "ko": "1위"
+  },
+  "VITAS ギフトセット1年分": {
+    "en": "VITAS gift set, 1-year supply",
+    "ko": "VITAS 기프트 세트 1년분"
+  },
+  "2位": {
+    "en": "2nd",
+    "ko": "2위"
+  },
+  "VITAS ギフトセット": {
+    "en": "VITAS gift set",
+    "ko": "VITAS 기프트 세트"
+  },
+  "3位": {
+    "en": "3rd",
+    "ko": "3위"
+  },
+  "ジュニア2部 Tag": {
+    "en": "Junior Division 2 Tag",
+    "ko": "주니어 2부 Tag"
+  },
+  "第2部ポーカージュニア選手権(親子タッグ戦)": {
+    "en": "Section 2 Poker Junior Championship (Parent-Child Tag)",
+    "ko": "제2부 포커 주니어 선수권 (부모-자녀 태그전)"
+  },
+  "第2部ポーカージュニア選手権（親子タッグ戦）": {
+    "en": "Section 2 Poker Junior Championship (Parent-Child Tag)",
+    "ko": "제2부 포커 주니어 선수권 (부모-자녀 태그전)"
+  },
+  "・シートリドローは Day 2スタート時、ファイナルテーブルスタート時、及びTDの判断で行われます。ただし、Day 1F Turboについては Day 2開始時のシートリドローは行いません。": {
+    "en": "- Seat redraws occur at the start of Day 2, the Final Table, and at the TD's discretion. However, no seat redraw is performed at the start of Day 2 for Day 1F Turbo qualifiers.",
+    "ko": "- 시트 리드로는 Day 2 시작 시, 파이널 테이블 시작 시, TD 판단으로 진행됩니다. 단 Day 1F Turbo 통과자에 대해서는 Day 2 시작 시 시트 리드로를 진행하지 않습니다."
+  },
+  "・Day 2に進出したプレイヤーにのみプライズ獲得の権利が与えられます。": {
+    "en": "- Only players who advance to Day 2 are eligible for prizes.",
+    "ko": "- Day 2에 진출한 플레이어에게만 프라이즈 획득 권리가 주어집니다."
+  },
+  "・Day 1F Turboはlevel 4からスタートし、1 level 20分で進行します。": {
+    "en": "- Day 1F Turbo starts from Level 4 with 20 minutes per level.",
+    "ko": "- Day 1F Turbo는 Level 4부터 시작하며, 1 레벨당 20분으로 진행됩니다."
+  },
+  "・各Day 1ファーストエントリー時及びDay 2開始時に別途ドリンク代1,000円を頂戴します。但し、Day 1F Turbo通過者のDay 2開始時はドリンク代を頂戴いたしません。": {
+    "en": "- A separate drink fee of JPY 1,000 will be charged at first entry to each Day 1 and at the start of Day 2. However, no drink fee will be charged at the start of Day 2 for Day 1F Turbo qualifiers.",
+    "ko": "- 각 Day 1 첫 엔트리 시 및 Day 2 시작 시에 별도로 음료 요금 JPY 1,000을 청구합니다. 단 Day 1F Turbo 통과자의 Day 2 시작 시에는 음료 요금을 청구하지 않습니다."
+  },
+  "NLH New Star Championship Sponsored by 日本旅行": {
+    "en": "NLH New Star Championship Sponsored by Nippon Travel Agency",
+    "ko": "NLH New Star Championship Sponsored by 닛폰 트래블 에이전시"
+  },
+  "・シートリドローは Day 2スタート時、ファイナルテーブルスタート時、及びTDの判断で行われます。": {
+    "en": "- Seat redraws occur at the start of Day 2, the Final Table, and at the TD's discretion.",
+    "ko": "- 시트 리드로는 Day 2 시작 시, 파이널 테이블 시작 시, TD 판단으로 진행됩니다."
+  },
+  "Whopper 1年分 + コラボベースボールシャツ + コラボブランケット + BKデック": {
+    "en": "1-year supply of Whopper + collab baseball shirt + collab blanket + BK deck",
+    "ko": "Whopper 1년분 + 콜라보 야구 셔츠 + 콜라보 블랭킷 + BK 덱"
+  },
+  "Whopper 半年分 + コラボベースボールシャツ + コラボブランケット + BKデック": {
+    "en": "Half-year supply of Whopper + collab baseball shirt + collab blanket + BK deck",
+    "ko": "Whopper 반년분 + 콜라보 야구 셔츠 + 콜라보 블랭킷 + BK 덱"
+  },
+  "Whopper 3ヶ月分 + コラボベースボールシャツ + コラボブランケット + BKデック": {
+    "en": "3-month supply of Whopper + collab baseball shirt + collab blanket + BK deck",
+    "ko": "Whopper 3개월분 + 콜라보 야구 셔츠 + 콜라보 블랭킷 + BK 덱"
+  },
+  "国別対抗戦 NLH Heads-up Team Event": {
+    "en": "International Team Match — NLH Heads-up Team Event",
+    "ko": "국가 대항전 NLH Heads-up Team Event"
+  },
+  "NLH Mystery Bounty Sponsored by のむシリカ": {
+    "en": "NLH Mystery Bounty Sponsored by Nomu Silica",
+    "ko": "NLH Mystery Bounty Sponsored by 노무 실리카"
+  },
+  "NLH Lucky7 Sponsored by タイパ至上主義": {
+    "en": "NLH Lucky7 Sponsored by Time-Performance Supremacist",
+    "ko": "NLH Lucky7 Sponsored by 시간 효율 지상주의"
   }
 }
