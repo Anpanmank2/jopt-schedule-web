@@ -94,6 +94,7 @@
     "#33": {
       "_source": "HP用レートFIX - Colossus.pdf",
       "_notesSource": "legacy.jopt_gf2026_data.json — Owner 2026-04-23 指摘: extract.json の #33 notes に #05 3on3 Tag Team ルール混入。legacy に canonical Colossus notes があるため override",
+      "_startTimeNote": "Owner 2026-04-29 指摘: extract.json (2026-04-24 抽出) の Day 2 start_time=13:30 は誤り。正解は 14:00。Sheets master 訂正未反映の可能性あり。pdf-overrides で明示 override する",
       "regCloseByFlight": {
         "Day 1A": { "time": "19:50", "level": 9 },
         "Day 1B": { "time": "15:50", "level": 9 },
@@ -102,6 +103,9 @@
         "Day 1E": { "time": "20:50", "level": 9 },
         "Day 1F Turbo": { "time": "12:10", "level": 9 },
         "Day 2": null
+      },
+      "startTimeByFlight": {
+        "Day 2": "14:00"
       },
       "notes": [
         "・同一Day 1でのリエントリーは3度まで認められます。",
