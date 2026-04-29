@@ -1,14 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import EventDetail, {
   formatNumber,
   isHighRoller,
   resolveEventBadge,
   type EventData,
 } from "./EventDetail";
+import { localizeText } from "@/lib/i18n-data";
 
 export default function EventCard({ event }: { event: EventData }) {
+  const t = useTranslations("card");
+  const locale = useLocale();
   const [open, setOpen] = useState(false);
 
   const badge = resolveEventBadge(event);
@@ -60,7 +64,7 @@ export default function EventCard({ event }: { event: EventData }) {
 
         <div className="flex items-start justify-between gap-2">
           <p className="text-sm font-medium text-text-primary leading-tight">
-            {event.name}
+            {localizeText(event.name, locale)}
           </p>
           <svg
             width="16"
@@ -135,7 +139,7 @@ export default function EventCard({ event }: { event: EventData }) {
             >
               <polyline points="18 15 12 9 6 15" />
             </svg>
-            タップで閉じる
+            {t("tap_to_close")}
           </button>
         </div>
       )}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo, useRef } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import extractRaw from "@/data/extract.json";
 import currentRaw from "@/data/jopt_gf2026_data.json";
 import { transform } from "@/lib/transformer";
@@ -95,6 +96,14 @@ const dayGroups = buildDayGroups();
 const allEvents: EventItem[] = dayGroups.flatMap((d) => d.events);
 
 export default function SchedulePage() {
+  const tHeader = useTranslations("header");
+  const tCard = useTranslations("card");
+  const tEventMeta = useTranslations("event_meta");
+  const locale = useLocale();
+  const formatWeekday = (isoDate: string) => {
+    const d = new Date(isoDate + "T00:00:00Z");
+    return new Intl.DateTimeFormat(locale, { weekday: "short", timeZone: "UTC" }).format(d);
+  };
   const [selectedIdx, setSelectedIdx] = useState<number | "all">("all");
   const [query, setQuery] = useState("");
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -173,7 +182,7 @@ export default function SchedulePage() {
             {EVENT_CONFIG.eventShortTitle}
           </h1>
           <p className="text-[11px] md:text-sm text-text-muted mt-1 md:mt-2">
-            {EVENT_CONFIG.dateRangeVenue}
+            {tEventMeta("date_range_venue")}
           </p>
 
           <label className="mt-4 md:mt-5 flex items-center gap-2 bg-white border border-blue-200 rounded-full px-3 py-2 md:py-2.5 max-w-xl shadow-sm">
@@ -195,16 +204,16 @@ export default function SchedulePage() {
               type="search"
               value={query}
               onChange={(e) => updateQuery(e.target.value)}
-              placeholder="トーナメント名で検索..."
+              placeholder={tHeader("search_placeholder")}
               className="flex-1 text-sm md:text-base text-text-primary placeholder:text-text-muted bg-transparent outline-none"
-              aria-label="トーナメント名で検索"
+              aria-label={tHeader("search_aria")}
             />
             {query && (
               <button
                 type="button"
                 onClick={() => updateQuery("")}
                 className="text-text-muted text-xs px-1"
-                aria-label="検索をクリア"
+                aria-label={tHeader("clear_search")}
               >
                 ✕
               </button>
@@ -246,10 +255,10 @@ export default function SchedulePage() {
               const active = i === selectedIdx;
               const date = new Date(d.date + "T00:00:00Z");
               const dayNum = date.getUTCDate();
-              const weekday = date.toLocaleDateString("en-US", {
+              const weekday = new Intl.DateTimeFormat(locale, {
                 weekday: "short",
                 timeZone: "UTC",
-              });
+              }).format(date);
               const month = date
                 .toLocaleDateString("en-US", { month: "short", timeZone: "UTC" })
                 .toUpperCase();
@@ -313,7 +322,7 @@ export default function SchedulePage() {
                 {groupedForAll.map((dg) => (
                   <section key={dg.date} id={`day-${dg.date}`} className="mb-6">
                     <h2 className="sticky top-[112px] md:top-[128px] z-30 bg-blue-50/95 backdrop-blur px-4 py-2 text-[11px] md:text-xs font-bold text-blue-900 uppercase tracking-wider border-b border-blue-200 flex items-baseline gap-2">
-                      <span>{dg.dayLabel}</span>
+                      <span>{dg.dayLabel} {formatWeekday(dg.date)}</span>
                       <span className="text-text-muted font-normal normal-case tracking-normal">
                         ({dg.events.length})
                       </span>
@@ -331,12 +340,12 @@ export default function SchedulePage() {
               </div>
             ) : (
               <div className="text-center py-16 text-sm md:text-base text-text-muted">
-                No events found
+                {tCard("no_events_found")}
               </div>
             )
           ) : filteredEvents.length === 0 ? (
             <div className="text-center py-16 text-sm md:text-base text-text-muted">
-              No events found
+              {tCard("no_events_found")}
             </div>
           ) : (
             <div className="max-w-2xl mx-auto flex flex-col gap-3 px-4 md:px-0 pt-3">

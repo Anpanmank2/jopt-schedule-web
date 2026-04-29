@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "description": "Tournament schedule for {organizer} {year} Grand Final ({dateRangeVenue})"
+  },
+  "header": {
+    "search_placeholder": "Search tournaments...",
+    "search_aria": "Search tournaments",
+    "clear_search": "Clear search",
+    "language_switcher_aria": "Switch language"
+  },
+  "card": {
+    "tap_to_close": "Tap to close",
+    "no_events_found": "No tournaments found"
+  },
+  "filter": {
+    "category_game": "Game",
+    "all": "All",
+    "result_count": "{count} events",
+    "result_filtered": "Filtered: {filters} — {count} events"
+  },
+  "photo": {
+    "open_in_flickr": "Open album in {label}",
+    "open_in_flickr_default": "Open album in Flickr",
+    "no_album_yet_line1": "An album for this tournament is being prepared.",
+    "no_album_yet_line2": "Browse the official JOPT album for full coverage.",
+    "official_album_link": "View official JOPT photo album"
+  },
+  "event_detail": {
+    "seat_ratio_label": "Seat ratio: ",
+    "seat_ratio_format": "{num} Seat per {den} entries",
+    "turbo_start_level": "Starts at Lv.{level}",
+    "turbo_each_minutes": "{time} min / Lv"
+  },
+  "event_meta": {
+    "date_range_venue": "2026-04-24 — 05-06 / Bellesalle Takadanobaba"
+  },
+  "language": {
+    "ja": "JP",
+    "en": "EN",
+    "ko": "KOR",
+    "ko_beta": "KOR (Beta)"
+  }
+}

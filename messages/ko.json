@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "description": "{organizer} {year} Grand Final 토너먼트 스케줄 ({dateRangeVenue})"
+  },
+  "header": {
+    "search_placeholder": "토너먼트 이름으로 검색...",
+    "search_aria": "토너먼트 이름으로 검색",
+    "clear_search": "검색 지우기",
+    "language_switcher_aria": "언어 전환"
+  },
+  "card": {
+    "tap_to_close": "탭하여 닫기",
+    "no_events_found": "해당하는 토너먼트를 찾을 수 없습니다"
+  },
+  "filter": {
+    "category_game": "게임 종류",
+    "all": "전체",
+    "result_count": "{count} events",
+    "result_filtered": "Filtered: {filters} — {count} events"
+  },
+  "photo": {
+    "open_in_flickr": "{label}에서 앨범 열기",
+    "open_in_flickr_default": "Flickr에서 앨범 열기",
+    "no_album_yet_line1": "이 토너먼트 단독 앨범은 준비 중입니다.",
+    "no_album_yet_line2": "JOPT 공식 포토 앨범에서 전체 사진을 보실 수 있습니다.",
+    "official_album_link": "JOPT 공식 포토 앨범 보기"
+  },
+  "event_detail": {
+    "seat_ratio_label": "Seat 비율: ",
+    "seat_ratio_format": "{den}회 엔트리당 Seat {num}장",
+    "turbo_start_level": "Lv.{level} 시작",
+    "turbo_each_minutes": "각 {time}분 / Lv"
+  },
+  "event_meta": {
+    "date_range_venue": "2026-04-24 ~ 05-06 / 벨살레 타카다노바바"
+  },
+  "language": {
+    "ja": "JP",
+    "en": "EN",
+    "ko": "KOR",
+    "ko_beta": "KOR (Beta)"
+  }
+}

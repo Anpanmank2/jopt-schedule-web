@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 // iframe 埋め込み許可ドメイン。env NEXT_PUBLIC_CSP_FRAME_ANCESTORS で上書き可
 // 例: "https://japanopenpoker.com https://*.japanopenpoker.com"
@@ -22,4 +25,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
