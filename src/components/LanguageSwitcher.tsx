@@ -20,7 +20,6 @@ export default function LanguageSwitcher() {
       {routing.locales.map((_, _idx) => null) /* keep type-check warning quiet */}
       {ORDER.map((l, i) => {
         const active = l === locale;
-        const labelKey = l === "ko" ? "ko_beta" : l;
         return (
           <Link
             key={l}
@@ -33,7 +32,7 @@ export default function LanguageSwitcher() {
               active ? "bg-blue-900 text-white" : "text-blue-900 hover:bg-blue-50"
             } ${i > 0 ? "border-l border-blue-200" : ""}`}
           >
-            {t(labelKey)}
+            {t(l)}
           </Link>
         );
       })}
