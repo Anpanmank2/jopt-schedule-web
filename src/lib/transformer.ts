@@ -970,9 +970,9 @@ export function transform(extract: any, currentData: any = null): TransformedDat
       }
     }
     // reg close override (flight suffix で dispatch)
+    const flightMatch = (e.name || "").match(/\/\s*(Day\s*\d+[A-Z]?(?:\s*Turbo)?|Day\s*\d+)\s*$/i);
+    const flightKey = flightMatch ? flightMatch[1].trim() : null;
     if (ov.regCloseByFlight && typeof ov.regCloseByFlight === "object") {
-      const flightMatch = (e.name || "").match(/\/\s*(Day\s*\d+[A-Z]?(?:\s*Turbo)?|Day\s*\d+)\s*$/i);
-      const flightKey = flightMatch ? flightMatch[1].trim() : null;
       if (flightKey && flightKey in ov.regCloseByFlight) {
         const rc = ov.regCloseByFlight[flightKey];
         if (rc && typeof rc === "object") {
@@ -989,6 +989,18 @@ export function transform(extract: any, currentData: any = null): TransformedDat
           if (e.structure) {
             e.structure = { ...e.structure, lateRegCloseAfterLevel: null };
           }
+        }
+      }
+    }
+    // startTime override (flight suffix で dispatch, Owner 指示 2026-04-29):
+    // extract.json (Sheets master) の start_time が誤りの場合に PDF 由来の正値で上書き。
+    // 例: #33 Colossus Day 2 を 13:30 → 14:00 に訂正。Sheets master 訂正と extract.json
+    // re-sync が反映されるまでの暫定 override。
+    if (ov.startTimeByFlight && typeof ov.startTimeByFlight === "object") {
+      if (flightKey && flightKey in ov.startTimeByFlight) {
+        const newStart = ov.startTimeByFlight[flightKey];
+        if (typeof newStart === "string" && newStart.trim()) {
+          e.startTime = newStart.trim();
         }
       }
     }
