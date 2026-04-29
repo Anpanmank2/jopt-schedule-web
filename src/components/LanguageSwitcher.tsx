@@ -1,8 +1,8 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 
 const ORDER: Locale[] = ["ja", "en", "ko"];
@@ -10,20 +10,16 @@ const ORDER: Locale[] = ["ja", "en", "ko"];
 export default function LanguageSwitcher() {
   const locale = useLocale() as Locale;
   const router = useRouter();
-  const pathname = usePathname() ?? "/";
+  const pathname = usePathname();
   const t = useTranslations("language");
   const tHeader = useTranslations("header");
   const [isPending, startTransition] = useTransition();
 
   function switchTo(next: Locale) {
     if (next === locale) return;
-
-    // 現在の path から locale prefix を取り除く
-    const stripped = stripLocalePrefix(pathname);
-    const target = next === routing.defaultLocale ? stripped : `/${next}${stripped}`;
-
     startTransition(() => {
-      router.replace(target || "/");
+      // next-intl の navigation で locale 指定 → middleware が prefix を反映
+      router.replace(pathname, { locale: next });
     });
   }
 
@@ -55,13 +51,4 @@ export default function LanguageSwitcher() {
       })}
     </div>
   );
-}
-
-function stripLocalePrefix(pathname: string): string {
-  for (const l of routing.locales) {
-    if (l === routing.defaultLocale) continue;
-    if (pathname === `/${l}`) return "";
-    if (pathname.startsWith(`/${l}/`)) return pathname.substring(`/${l}`.length);
-  }
-  return pathname;
 }
