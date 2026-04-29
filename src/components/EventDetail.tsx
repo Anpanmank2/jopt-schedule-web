@@ -926,7 +926,7 @@ function InfoPanel({ event }: { event: EventData }) {
           <ul className="space-y-1">
             {event.bounty.items.map((it, i) => (
               <li key={i} className="text-text-secondary text-[11px] leading-relaxed">
-                <span className="font-semibold text-text-primary">{it.rank}</span>
+                <span className="font-semibold text-text-primary">{localizeText(it.rank, locale)}</span>
                 {it.description && (
                   <>
                     <span className="mx-1">:</span>
@@ -1056,11 +1056,11 @@ function InfoPanel({ event }: { event: EventData }) {
           <ul className="space-y-1">
             {event.sponsorship.items.map((it, i) => (
               <li key={i} className="text-text-secondary text-[11px] leading-relaxed">
-                <span className="font-semibold text-text-primary">{it.rank}</span>
+                <span className="font-semibold text-text-primary">{localizeText(it.rank, locale)}</span>
                 {it.description && (
                   <>
                     <span className="mx-1">:</span>
-                    <span>{it.description}</span>
+                    <span>{localizeText(it.description, locale)}</span>
                   </>
                 )}
               </li>
