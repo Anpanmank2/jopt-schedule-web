@@ -779,6 +779,14 @@
     "en": "- Acquired Vouchers are valid until the next JOPT Tokyo #02 and can only be used at JOPT Tokyo.",
     "ko": "- 획득한 Voucher는 다음 JOPT Tokyo #02까지 유효하며, JOPT Tokyo에서만 사용 가능합니다."
   },
+  "取得した Voucher は今大会の対象トーナメントでのみご使用いただけます。": {
+    "en": "Acquired Vouchers can only be used at eligible tournaments in this festival.",
+    "ko": "획득한 Voucher는 본 페스티벌의 대상 토너먼트에서만 사용 가능합니다."
+  },
+  "・取得した Voucher は今大会の対象トーナメントでのみご使用いただけます。": {
+    "en": "- Acquired Vouchers can only be used at eligible tournaments in this festival.",
+    "ko": "- 획득한 Voucher는 본 페스티벌의 대상 토너먼트에서만 사용 가능합니다."
+  },
   "NLH Tag Team Sponsored by クライナー": {
     "en": "NLH Tag Team Sponsored by Kleiner",
     "ko": "NLH Tag Team Sponsored by Kleiner"

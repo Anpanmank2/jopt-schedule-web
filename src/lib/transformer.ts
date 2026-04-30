@@ -495,22 +495,35 @@ function transformBounty(
   return { label: (b.label || "Bounty").trim(), items };
 }
 
-function normalizeNotes(notes: string[] | undefined): string[] | null {
+function normalizeNotes(
+  notes: string[] | undefined,
+  eventTitle?: string,
+): string[] | null {
   if (!Array.isArray(notes) || notes.length === 0) return null;
+  // (s17) Flipout Satellite to Bounty Hunter は festival 内 NLH Bounty Hunter
+  // 限定の Voucher。他 satellite (次回 JOPT Tokyo #02 まで使える generic voucher)
+  // とは異なり、今大会の対象トーナメントでのみ使用可能が正。
+  // Owner 指示 2026-04-30 (カスタマーチーム指摘)。Sheets master 反映待ち。
+  const isS17 = !!eventTitle && /\(s17\)/.test(eventTitle);
   return notes.map((n) => {
     if (typeof n !== "string") return n;
     // 行頭の全角スペース (Ideographic Space U+3000) を除去。
     // 元データ (extract/legacy) でインデント目的に全角スペースが 1-2 個混入しており、
     // UI 上で 1 文字ぶん字下がりに見える違和感を除去する。Owner 指摘 2026-04-24。
     let out = n.replace(/^\u3000+/, "");
-    // Satellite voucher 有効期限の文言を上流仕様 (次回 JOPT Tokyo #02 まで) に合わせる。
-    // Owner 確認 2026-04-26 (カスタマーチーム指摘): プレイヤーズガイド表記「1 年」は誤り、
-    // 取得バウチャーは次回大会 JOPT Tokyo #02 まで有効が正しい。Sheets master の修正
-    // 待たずに transformer 層で文字列置換 (35 satellite event 全件に効く)
-    out = out.replace(
-      /Voucherの有効期限は1年間です。JOPT\s*Tokyoでのみご使用いただけます。?/g,
-      "取得した Voucher は次回 JOPT Tokyo #02 までご使用いただけます。JOPT Tokyo でのみご使用いただけます。"
-    );
+    // Satellite voucher 有効期限の文言を上流仕様に合わせる。
+    // Owner 確認 2026-04-26 (カスタマーチーム指摘): プレイヤーズガイド表記「1 年」は誤り。
+    if (isS17) {
+      out = out.replace(
+        /Voucherの有効期限は1年間です。JOPT\s*Tokyoでのみご使用いただけます。?/g,
+        "取得した Voucher は今大会の対象トーナメントでのみご使用いただけます。",
+      );
+    } else {
+      out = out.replace(
+        /Voucherの有効期限は1年間です。JOPT\s*Tokyoでのみご使用いただけます。?/g,
+        "取得した Voucher は次回 JOPT Tokyo #02 までご使用いただけます。JOPT Tokyo でのみご使用いただけます。",
+      );
+    }
     return out;
   });
 }
@@ -711,7 +724,7 @@ export function transformTournament(
         ticketEntry,
         games: extractGames(t.games),
         bounty: transformBounty(t.bounty),
-        notes: normalizeNotes(t.notes),
+        notes: normalizeNotes(t.notes, t.event_title),
         award: transformAward(t.award),
         awards: transformAwardsList(t.awards),
         benefits: transformAwardsList(t.benefits),
@@ -765,7 +778,7 @@ export function transformTournament(
       ticketEntry: isContinuationDay ? null : ticketEntry,
       games: extractGames(t.games),
       bounty: transformBounty(t.bounty),
-      notes: normalizeNotes(t.notes),
+      notes: normalizeNotes(t.notes, t.event_title),
       award: transformAward(t.award),
       awards: transformAwardsList(t.awards),
       benefits: transformAwardsList(t.benefits),
