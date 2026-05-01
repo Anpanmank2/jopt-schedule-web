@@ -153,6 +153,10 @@ export interface EventData {
   sponsorship?: { label: string; items: { rank: string; description: string }[] } | null;
   multiDay?: MultiDayInfo | null;
   stackPerRound?: { label: string; rounds: string[] } | null;
+  /** ディレイ等で当日に開始時間が変更された旨を Card / Detail に赤字 ※注記表示する文言 (Owner 指示 2026-05-01) */
+  delayNotice?: string | null;
+  /** Registration オープン時刻 (Card / Detail で Start の前段に表示). pdf-overrides.json 経由 (Owner 指示 2026-05-01) */
+  regOpen?: string | null;
   /** Photo タブの遷移先 manual override (Owner 指示 2026-04-28). null 時は Flickr matching → 公式 fallback */
   photoOverride?: PhotoLink[] | null;
 }
@@ -768,6 +772,12 @@ function InfoPanel({ event }: { event: EventData }) {
           Schedule
         </p>
         <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+          {event.regOpen && (
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-[10px] text-blue-200">Reg. Open</span>
+              <span className="text-sm font-bold tabular-nums">{event.regOpen}</span>
+            </div>
+          )}
           <div className="flex items-baseline gap-1.5">
             <span className="text-[10px] text-blue-200">Start</span>
             <span className="text-sm font-bold tabular-nums">{event.startTime}</span>
@@ -779,6 +789,11 @@ function InfoPanel({ event }: { event: EventData }) {
             </span>
           </div>
         </div>
+        {event.delayNotice && (
+          <p className="text-[11px] font-semibold text-red-300 mt-1.5">
+            ※{localizeText(event.delayNotice, locale)}
+          </p>
+        )}
       </div>
 
       {event.prize &&

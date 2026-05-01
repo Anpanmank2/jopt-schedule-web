@@ -102,6 +102,10 @@ export interface TransformedEvent {
   stackPerRound: { label: string; rounds: string[] } | null;
   /** Photo タブの遷移先 manual override. 配列空 or null の場合は Flickr matching → 公式 fallback の順 */
   photoOverride: PhotoLink[] | null;
+  /** ディレイ等で当日に開始時間が変更された旨を Card / Detail に赤字 ※注記表示する文言 (Owner 指示 2026-05-01) */
+  delayNotice: string | null;
+  /** Registration オープン時刻 (Card / Detail で Start の前段に表示). 通常は extract.json に source 無しで pdf-overrides.json 経由のみ (Owner 指示 2026-05-01) */
+  regOpen: string | null;
 }
 
 export interface TransformedDay {
@@ -732,6 +736,8 @@ export function transformTournament(
         multiDay,
         stackPerRound: transformStackPerRound(t.stack_per_round),
         photoOverride: null,
+        delayNotice: null,
+        regOpen: null,
       },
     ];
   }
@@ -786,6 +792,8 @@ export function transformTournament(
       multiDay,
       stackPerRound: transformStackPerRound(t.stack_per_round),
       photoOverride: null,
+      delayNotice: null,
+      regOpen: null,
     };
   });
 }
@@ -1029,6 +1037,24 @@ export function transform(extract: any, currentData: any = null): TransformedDat
         }
       }
     }
+    // single-flight startTime override (Owner 指示 2026-05-01):
+    // single-day event の Start 時刻を直接上書き。例: #109 21:00 → 22:00。
+    // delayNotice と組合せて使うことで「ディレイにより開始時間変更」を Card / Detail に
+    // 赤字 ※ 注記表示する。
+    if (typeof ov.startTime === "string" && ov.startTime.trim()) {
+      e.startTime = ov.startTime.trim();
+    }
+    // delayNotice override (Owner 指示 2026-05-01):
+    // Card / Detail の Start 時刻直下に赤字 ※ で表示する遅延注記。
+    if (typeof ov.delayNotice === "string" && ov.delayNotice.trim()) {
+      e.delayNotice = ov.delayNotice.trim();
+    }
+    // regOpen override (Owner 指示 2026-05-01):
+    // Registration オープン時刻 (Start の前段表示用)。extract.json に source 無し
+    // のため pdf-overrides.json で個別指定する。例: #109 Reg.Open 21:45。
+    if (typeof ov.regOpen === "string" && ov.regOpen.trim()) {
+      e.regOpen = ov.regOpen.trim();
+    }
     // award override (Owner 指示 2026-04-25): Apps Script の sprinter 抽出漏れ
     // に対する手動上書き。chipLeader / sprinter / currencyNote を section 別に
     // partial merge する。camelCase (transformer 後の形) で記述することに注意。
@@ -1186,6 +1212,8 @@ export function transform(extract: any, currentData: any = null): TransformedDat
         multiDay: extra.multiDay ?? null,
         stackPerRound: extra.stackPerRound ?? null,
         photoOverride: null,
+        delayNotice: null,
+        regOpen: extra.regOpen ?? null,
       });
     }
   }

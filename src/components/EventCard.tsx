@@ -104,6 +104,12 @@ export default function EventCard({ event }: { event: EventData }) {
         </div>
 
         <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-1 text-[11px] text-text-muted">
+          {event.regOpen && (
+            <span className="tabular-nums">
+              <span className="text-[9px] uppercase tracking-wider mr-1">Reg. Open</span>
+              {event.regOpen}
+            </span>
+          )}
           <span className="tabular-nums">
             <span className="text-[9px] uppercase tracking-wider mr-1">Start</span>
             {event.startTime}
@@ -120,6 +126,11 @@ export default function EventCard({ event }: { event: EventData }) {
             </span>
           )}
         </div>
+        {event.delayNotice && (
+          <p className="text-[11px] font-medium text-red-600 mt-1">
+            ※{localizeText(event.delayNotice, locale)}
+          </p>
+        )}
       </button>
 
       {open && (
