@@ -282,6 +282,30 @@
           { "rank": "3rd", "description": "Whopper 3ヶ月分 + コラボベースボールシャツ + コラボブランケット + BKデック" }
         ]
       }
+    },
+    "#109": {
+      "_source": "Owner 指示 2026-05-01: 当日ディレイにより開始時間変更",
+      "_note": "Reg.Open 21:45 / Start 22:00 / Late Reg 00:50 (Lv.8). 元: Start 21:00 / Reg.Close 23:50",
+      "regOpen": "21:45",
+      "startTime": "22:00",
+      "regClose": { "time": "00:50", "level": 8 },
+      "delayNotice": "ディレイにより開始時間変更"
+    },
+    "#112": {
+      "_source": "Owner 指示 2026-05-01: 当日ディレイにより開始時間変更",
+      "_note": "Reg.Open 00:15 / Start 00:30 / Late Reg 02:40 (Lv.6). 元: Start 00:00 / Reg.Close 02:10",
+      "regOpen": "00:15",
+      "startTime": "00:30",
+      "regClose": { "time": "02:40", "level": 6 },
+      "delayNotice": "ディレイにより開始時間変更"
+    },
+    "#114": {
+      "_source": "Owner 指示 2026-05-01: 当日ディレイにより開始時間変更",
+      "_note": "Reg.Open 02:00 / Start 02:30 / Late Reg 03:50 (Lv.7). 元: Start 02:00 / Reg.Close 03:20",
+      "regOpen": "02:00",
+      "startTime": "02:30",
+      "regClose": { "time": "03:50", "level": 7 },
+      "delayNotice": "ディレイにより開始時間変更"
     }
   },
   "extraEvents": [

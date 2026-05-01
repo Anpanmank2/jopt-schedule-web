@@ -878,5 +878,9 @@
   "NLH Lucky7 Sponsored by タイパ至上主義": {
     "en": "NLH Lucky7 Sponsored by Time-Performance Supremacist",
     "ko": "NLH Lucky7 Sponsored by 시간 효율 지상주의"
+  },
+  "ディレイにより開始時間変更": {
+    "en": "Start time changed due to delay",
+    "ko": "지연으로 인한 시작 시간 변경"
   }
 }
