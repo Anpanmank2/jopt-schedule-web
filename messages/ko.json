@@ -44,6 +44,7 @@
   "rules": {
     "info_link_label": "공식 룰 (일본어)",
     "footer_link_label": "Official Rule",
+    "back_to_schedule": "← 스케줄로 돌아가기",
     "page_title": "JOPT Official Rule",
     "page_subtitle": "Japan Open Poker Tour 2026 Grand Final 공식 룰",
     "japanese_only_notice": "※ 공식 룰은 일본어 버전만 제공됩니다.",

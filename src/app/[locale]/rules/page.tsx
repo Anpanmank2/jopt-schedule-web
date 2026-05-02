@@ -1,6 +1,7 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import manifest from "@/data/rule-pdf-manifest.json";
 
@@ -26,7 +27,16 @@ export default async function RulesPage({
   const pages = manifest.pages ?? 0;
 
   return (
-    <div className="max-w-4xl mx-auto px-3 md:px-6 py-6 md:py-10">
+    <div className="max-w-4xl mx-auto px-3 md:px-6 py-4 md:py-6">
+      <nav className="mb-3 md:mb-4">
+        <Link
+          href="/"
+          className="inline-flex items-center text-xs md:text-sm font-semibold text-blue-700 hover:text-blue-900 hover:underline"
+        >
+          {t("back_to_schedule")}
+        </Link>
+      </nav>
+
       <header className="mb-4 md:mb-6">
         <h1 className="text-xl md:text-2xl font-bold text-blue-900">
           {t("page_title")}
@@ -87,6 +97,15 @@ export default async function RulesPage({
           </p>
         </div>
       )}
+
+      <nav className="mt-6 md:mt-8 pt-4 border-t border-border-default">
+        <Link
+          href="/"
+          className="inline-flex items-center text-xs md:text-sm font-semibold text-blue-700 hover:text-blue-900 hover:underline"
+        >
+          {t("back_to_schedule")}
+        </Link>
+      </nav>
     </div>
   );
 }
