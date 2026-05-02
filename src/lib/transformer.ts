@@ -246,10 +246,13 @@ export function deriveGameType(t: any, isSatellite: boolean): string {
 
 /**
  * gameCategory: 4 バケット (Hold'em / Omaha / Other / Satellite) に正規化。
- * Owner 指示 (2026-04-22):
- *  - NLH / NL 系 / ジュニア / STARS TABLE → Hold'em
+ * Owner 指示 (2026-04-22 / 2026-05-02 修正):
+ *  - NLH / ジュニア / STARS TABLE / title に "Hold'em" を含む → Hold'em
  *  - PLO / PLO8 のみ → Omaha (FLO は Other)
- *  - その他 (FL, FLO, MIX, PL, 10-Game MIX 等) → Other
+ *  - extract.json の game_type === "NL" は NLH 以外の NL variant
+ *    (NL Stud / NL Draw / NL 2-7 / NL Archie 等) を指すため Other 扱い。
+ *    "NL Super Hold'em" 等 Hold'em 系は title regex で先に救済する。
+ *  - その他 (FL, FLO, MIX, PL, 10-Game MIX, Stud, HORSE 等) → Other
  *  - Satellite は最優先で Satellite カテゴリ
  */
 export function deriveGameCategory(
@@ -259,16 +262,11 @@ export function deriveGameCategory(
 ): "Hold'em" | "Omaha" | "Other" | "Satellite" {
   if (isSatellite) return "Satellite";
   const title = String(t.event_title || t.base_title || t.tab_name || "");
-  // Owner 明示の特殊 event (ジュニア / STARS TABLE) は Hold'em
   if (/ジュニア|STARS\s*TABLE/i.test(title)) return "Hold'em";
-  // NLH Heads-up 等 name に NLH を含む
   if (/NLH|Hold'?em/i.test(title)) return "Hold'em";
   const gt = gameType.trim();
-  // Hold'em: NLH / NL / NL ○○ (NL Stud 等)
-  if (gt === "NLH" || gt === "NL" || /^NL\s/.test(gt)) return "Hold'em";
-  // Omaha: PLO / PLO8 (FLO, FLO8 は除外)
+  if (gt === "NLH") return "Hold'em";
   if (gt === "PLO" || gt === "PLO8") return "Omaha";
-  // 明示的に Other: FL 系 / FLO / PL 系 / MIX 系 / Big Bet MIX / 10-Game MIX / Stud / HORSE 等
   return "Other";
 }
 
