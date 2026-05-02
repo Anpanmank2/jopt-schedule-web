@@ -40,5 +40,17 @@
     "en": "EN",
     "ko": "KOR",
     "ko_beta": "KOR (Beta)"
+  },
+  "rules": {
+    "info_link_label": "公式ルールはこちら",
+    "footer_link_label": "Official Rule",
+    "page_title": "JOPT Official Rule",
+    "page_subtitle": "Japan Open Poker Tour 2026 Grand Final 公式ルール",
+    "japanese_only_notice": "※ 公式ルールは日本語版のみとなります。",
+    "download_button": "PDF をダウンロード",
+    "open_pdf_button": "PDF を別タブで開く",
+    "page_alt": "公式ルール {n} / {total} ページ目",
+    "preparing_title": "公式ルールは現在準備中です",
+    "preparing_subtitle": "PDF が公開され次第、こちらのページで閲覧・ダウンロードいただけます。"
   }
 }

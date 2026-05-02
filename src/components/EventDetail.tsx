@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import PhotoPanel from "./PhotoPanel";
 import { EVENT_CONFIG } from "@/config/eventConfig";
 import structurePdfManifest from "@/data/structure-pdf-manifest.json";
@@ -767,6 +768,7 @@ function AwardSectionBlock({ section }: { section: AwardSection }) {
 
 function InfoPanel({ event }: { event: EventData }) {
   const tDetail = useTranslations("event_detail");
+  const tRules = useTranslations("rules");
   const locale = useLocale();
   const displayFee = event.feeDetail ? event.feeDetail.replace(/Â¥/g, "¥") : null;
   // rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E.) では variant 別 blinds が
@@ -1128,6 +1130,15 @@ function InfoPanel({ event }: { event: EventData }) {
           </ul>
         </div>
       )}
+
+      <div className="pt-2 mt-2 border-t border-border-default">
+        <Link
+          href="/rules"
+          className="text-[11px] text-blue-700 underline hover:text-blue-900"
+        >
+          {tRules("info_link_label")}
+        </Link>
+      </div>
     </div>
   );
 }
