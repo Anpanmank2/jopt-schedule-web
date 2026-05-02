@@ -6,7 +6,8 @@
     "search_placeholder": "Search tournaments...",
     "search_aria": "Search tournaments",
     "clear_search": "Clear search",
-    "language_switcher_aria": "Switch language"
+    "language_switcher_aria": "Switch language",
+    "home_link_aria": "Return to JOPT home page"
   },
   "card": {
     "tap_to_close": "Tap to close",

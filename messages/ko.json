@@ -6,7 +6,8 @@
     "search_placeholder": "토너먼트 이름으로 검색...",
     "search_aria": "토너먼트 이름으로 검색",
     "clear_search": "검색 지우기",
-    "language_switcher_aria": "언어 전환"
+    "language_switcher_aria": "언어 전환",
+    "home_link_aria": "JOPT 홈페이지로 돌아가기"
   },
   "card": {
     "tap_to_close": "탭하여 닫기",
