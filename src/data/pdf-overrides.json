@@ -6,10 +6,11 @@
       "_source": "Players Guide _ JOPT 2026 Grand Final - Main.pdf",
       "_incident": "Owner 2026-05-02 指摘: Main Event Structure タブで Day 1 Lv.3/6/9/12 欠落 / 中間 break 非表示 / Day 2 (Lv.16-28) が 20 分 level 表示。原因: jopt_gf2026_data.json (2026-04-09 snapshot) legacy fallback が破損 levels (55 件、Lv.3/6/9/12 欠落 + Lv.16-20=20min) で extract を上書き。extract.json は 20 levels しか持たないため legCount > curCount で fallback 採用。pdf-overrides で完成形 levels を inject し legacy を上書きで fix",
       "structure": {
-        "_source": "Players Guide PDF Day 1 + Day 2 & Day 3 連結。Day 1 通常 (Day 1A/B/C, 45min) + Day 1D Turbo (20min, multiDay.turbo.levelTime で UI 側 override) + Day 2/Day 3 (45min)。* マーク (PDF) は break_after。Day 1 break: Lv.3/6/9/12 後。Day 2/3 break: Lv.18/21/24/27/31/34/37/40/43/46 後。Lv.19 sb 10,000/bb 15,000 (1:1.5 比率) は PDF 通り、escalation 違和感は Players Guide 仕様",
+        "_source": "Players Guide PDF Day 1 + Day 2 & Day 3 連結。Day 1 通常 (Day 1A/B/C, 45min) + Day 1D Turbo (20min, multiDay.turbo.levelTime で UI 側 override) + Day 2/Day 3 (45min)。* マーク (PDF) は break_after。Day 1 break: Lv.3/6/9/12 後。Day 2/3 break: Lv.18/21/24/27/31/34/37/40/43/46 後。Lv.19 sb 10,000/bb 15,000 (1:1.5 比率) は PDF 通り、escalation 違和感は Players Guide 仕様。Day 1D Turbo の break (turboBreakAfterLevels) は PDF Lv.6/Lv.12 (45*/20* 行)。他 Turbo flight (#03/#33/#71) は従来通り reg close 直後 synthetic 1 回",
         "columns": ["Level", "Blinds", "BB Ante", "Minutes"],
         "lateRegCloseAfterLevel": 9,
         "day2EndLevel": 28,
+        "turboBreakAfterLevels": [6, 12],
         "levels": [
           { "level": 1, "sb": 100, "bb": 200, "ante": 200, "time": 45 },
           { "level": 2, "sb": 200, "bb": 300, "ante": 300, "time": 45 },

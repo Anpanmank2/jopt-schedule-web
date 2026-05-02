@@ -56,6 +56,9 @@ export interface TransformedStructure {
   isStud?: boolean;
   /** rotation game (MIX / HORSE / B.E.A.S.T. / T.O.R.S.E. 等). UI で Lv./Type/Ante/Blinds/Min. の 5 列構造 + variant rowSpan で表示 */
   isMixRotation?: boolean;
+  /** day1Turbo phase 用の break 位置 override。pdf-overrides.json で event 別に [Lv.X, Lv.Y] 配列で指定。
+   *  指定が無い event は従来通り reg close level 直後 1 回だけ synthetic break (UI 側 fallback) */
+  turboBreakAfterLevels?: number[];
   levels: TransformedLevel[];
 }
 
@@ -985,6 +988,10 @@ export function transform(extract: any, currentData: any = null): TransformedDat
         day2EndLevel: ov.structure.day2EndLevel ?? null,
         isMultiDay: true,
         levels: ov.structure.levels,
+        ...(Array.isArray(ov.structure.turboBreakAfterLevels) &&
+        ov.structure.turboBreakAfterLevels.length > 0
+          ? { turboBreakAfterLevels: ov.structure.turboBreakAfterLevels.slice() }
+          : {}),
       };
     }
     // notes override (extract 側 source data が他 event の notes と混線した場合の復元)

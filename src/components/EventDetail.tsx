@@ -48,6 +48,9 @@ export interface Structure {
   isStud?: boolean;
   /** rotation game (MIX / HORSE 等). UI で Lv./Type/Ante/Blinds/Min. の 5 列構造 + variant rowSpan で表示 */
   isMixRotation?: boolean;
+  /** day1Turbo phase 用の break 位置 override (Lv.X 後に break)。pdf-overrides.json で event 別に指定。
+   *  指定が無い event は従来通り reg close level 直後 1 回だけ synthetic break (Owner 仕様 v2.6.5)。 */
+  turboBreakAfterLevels?: number[];
   levels: Level[];
 }
 
@@ -359,6 +362,10 @@ function StructureTable({
     phase?.kind === "day1Turbo" ? multiDay?.turbo?.levelTime ?? null : null;
   const turboRegCloseLevel =
     phase?.kind === "day1Turbo" ? structure.lateRegCloseAfterLevel ?? null : null;
+  // event 別 turbo break 位置 override (PDF 通りに Lv.X 後 break を複数挿入する場合に使用)
+  // 例: #01 Main Event Day 1D Turbo は Lv.6 / Lv.12 後 break (PDF 仕様)
+  const turboBreakAfterLevels =
+    phase?.kind === "day1Turbo" ? structure.turboBreakAfterLevels ?? null : null;
 
   // Owner 指示 (2026-04-22): 単日トーナメントは 30 レベルまで記載。
   // Multi-day は phase filter (Day 1/2/3) で Day 範囲に絞られるため phase 基準で cap 決定。
@@ -373,12 +380,20 @@ function StructureTable({
     const base = getLimitedLevels(trimmed, maxLevels).map((lv) =>
       lv.break || turboLevelTime == null ? lv : { ...lv, time: turboLevelTime }
     );
-    if (turboRegCloseLevel == null) return base;
-    // Day 1 Turbo: reg close level の直後に 10 分 break を 1 件だけ合成挿入
+    // Day 1 Turbo: event 別 turboBreakAfterLevels 指定があればそれを優先
+    // (例: #01 Main は PDF で Lv.6/Lv.12 後 break)。
+    // 指定が無ければ従来通り reg close level (例: Lv.9) 直後に 1 回だけ synthetic break。
+    const breakAfterSet =
+      turboBreakAfterLevels && turboBreakAfterLevels.length > 0
+        ? new Set(turboBreakAfterLevels)
+        : turboRegCloseLevel != null
+        ? new Set([turboRegCloseLevel])
+        : null;
+    if (!breakAfterSet) return base;
     const result: Level[] = [];
     for (const lv of base) {
       result.push(lv);
-      if (!lv.break && lv.level === turboRegCloseLevel) {
+      if (!lv.break && lv.level != null && breakAfterSet.has(lv.level)) {
         result.push({ break: true, time: 10 } as Level);
       }
     }
