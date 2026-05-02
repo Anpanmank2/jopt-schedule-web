@@ -6,7 +6,8 @@
     "search_placeholder": "トーナメント名で検索...",
     "search_aria": "トーナメント名で検索",
     "clear_search": "検索をクリア",
-    "language_switcher_aria": "言語を切り替え"
+    "language_switcher_aria": "言語を切り替え",
+    "home_link_aria": "JOPT トップページに戻る"
   },
   "card": {
     "tap_to_close": "タップで閉じる",
