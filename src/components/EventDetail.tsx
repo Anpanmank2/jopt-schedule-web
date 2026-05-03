@@ -1083,7 +1083,7 @@ function InfoPanel({ event }: { event: EventData }) {
       {event.sponsorship && event.sponsorship.items.length > 0 && (
         <div>
           <p className="text-[10px] font-bold tracking-[1px] text-blue-900 uppercase mb-1">
-            Special Award
+            {event.sponsorship.label}
           </p>
           <ul className="space-y-1">
             {event.sponsorship.items.map((it, i) => (

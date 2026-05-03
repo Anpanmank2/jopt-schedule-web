@@ -383,6 +383,26 @@
       "startTime": "02:30",
       "regClose": { "time": "03:50", "level": 7 },
       "delayNotice": "ディレイにより開始時間変更"
+    },
+    "#130": {
+      "_source": "Owner 指示 2026-05-03: BULK HOMME 1位/2位/3位 sponsorship 詳細",
+      "_note": "extract.json は 1st のみ (Special Gift Set) で 2位/3位 欠落 + ラベル \"Sponsoredship\" タイポ。Owner 提供の正規データで全置換。上流 Sheets master 訂正依頼は別途",
+      "sponsorship": {
+        "label": "Sponsorship",
+        "items": [
+          { "rank": "1位", "description": "BULK HOMME SET 1年分" },
+          { "rank": "2位", "description": "BULK HOMME SET 6ヶ月分" },
+          { "rank": "3位", "description": "BULK HOMME SET 3ヶ月分" }
+        ]
+      }
+    },
+    "#133": {
+      "_source": "Owner 指示 2026-05-03: NLH Heads-up Championship Reg.Close 14:00 + 当日枠抽選注記",
+      "_note": "extract.json は reg_close_time/level 空 + entry_close_time 14:45 (32 Entry Cap) のみで UI に Reg.Close 欄が空表示。Owner 指定 14:00 で override (Lv 不指定) + 当日枠注記を notes で追加。上流 Sheets master 訂正依頼は別途",
+      "regClose": { "time": "14:00", "level": null },
+      "notes": [
+        "・当日枠は13:50-14:00に整理券配布し、14時に抽選を行います。"
+      ]
     }
   },
   "extraEvents": [
