@@ -47,11 +47,11 @@
     "back_to_schedule": "← スケジュールに戻る",
     "page_title": "JOPT Official Rule",
     "page_subtitle": "Japan Open Poker Tour 2026 Grand Final 公式ルール",
-    "japanese_only_notice": "※ 公式ルールは日本語版のみとなります。",
+    "translation_notice": "※ 公式原本は日本語 PDF です。下記は当ページ用の表示テキストです。",
     "download_button": "PDF をダウンロード",
     "open_pdf_button": "PDF を別タブで開く",
-    "page_alt": "公式ルール {n} / {total} ページ目",
-    "preparing_title": "公式ルールは現在準備中です",
-    "preparing_subtitle": "PDF が公開され次第、こちらのページで閲覧・ダウンロードいただけます。"
+    "toc_label": "目次",
+    "contract_list_aria": "選手契約 10 項目",
+    "email_link_aria": "customer@japanopenpoker.com にメールを送る"
   }
 }

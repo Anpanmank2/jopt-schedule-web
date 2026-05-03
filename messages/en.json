@@ -42,16 +42,16 @@
     "ko_beta": "KOR (Beta)"
   },
   "rules": {
-    "info_link_label": "Official Rule (JP)",
+    "info_link_label": "Official Rule",
     "footer_link_label": "Official Rule",
     "back_to_schedule": "← Back to Schedule",
     "page_title": "JOPT Official Rule",
     "page_subtitle": "Official rule of Japan Open Poker Tour 2026 Grand Final",
-    "japanese_only_notice": "* The official rule is available in Japanese only.",
+    "translation_notice": "* The Japanese PDF is the official original. The text below is a translation for display on this page.",
     "download_button": "Download PDF",
     "open_pdf_button": "Open PDF in new tab",
-    "page_alt": "Official rule page {n} of {total}",
-    "preparing_title": "The official rule is being prepared",
-    "preparing_subtitle": "Once the PDF is published, you will be able to view and download it on this page."
+    "toc_label": "Contents",
+    "contract_list_aria": "Player Contract: 10 items",
+    "email_link_aria": "Send email to customer@japanopenpoker.com"
   }
 }
