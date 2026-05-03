@@ -397,9 +397,12 @@
       }
     },
     "#133": {
-      "_source": "Owner 指示 2026-05-03: NLH Heads-up Championship Reg.Close 14:00 追加",
-      "_note": "extract.json は reg_close_time/level 空 + entry_close_time 14:45 (32 Entry Cap) のみで UI に Reg.Close 欄が空表示。Owner 指定 14:00 で override (Lv 不指定)。上流 Sheets master 訂正依頼は別途",
-      "regClose": { "time": "14:00", "level": null }
+      "_source": "Owner 指示 2026-05-03: NLH Heads-up Championship Reg.Close 14:00 + 当日枠抽選注記",
+      "_note": "extract.json は reg_close_time/level 空 + entry_close_time 14:45 (32 Entry Cap) のみで UI に Reg.Close 欄が空表示。Owner 指定 14:00 で override (Lv 不指定) + 当日枠注記を notes で追加。上流 Sheets master 訂正依頼は別途",
+      "regClose": { "time": "14:00", "level": null },
+      "notes": [
+        "・当日枠は13:50-14:00に整理券配布し、14時に抽選を行います。"
+      ]
     }
   },
   "extraEvents": [
