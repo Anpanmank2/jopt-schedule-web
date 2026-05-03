@@ -361,17 +361,17 @@
       }
     },
     "#109": {
-      "_source": "Owner 指示 2026-05-01: 当日ディレイにより開始時間変更",
-      "_note": "Reg.Open 21:45 / Start 22:00 / Late Reg 00:50 (Lv.8). 元: Start 21:00 / Reg.Close 23:50",
-      "regOpen": "21:45",
+      "_source": "Owner 指示 2026-05-03: 当日ディレイにより開始時間変更",
+      "_note": "Reg.Open 21:30 / Start 22:00 / Late Reg 00:50 (Lv.8). Sheets master: Start 21:00 / Reg.Close 23:50",
+      "regOpen": "21:30",
       "startTime": "22:00",
       "regClose": { "time": "00:50", "level": 8 },
       "delayNotice": "ディレイにより開始時間変更"
     },
     "#112": {
-      "_source": "Owner 指示 2026-05-01: 当日ディレイにより開始時間変更",
-      "_note": "Reg.Open 00:15 / Start 00:30 / Late Reg 02:40 (Lv.6). 元: Start 00:00 / Reg.Close 02:10",
-      "regOpen": "00:15",
+      "_source": "Owner 指示 2026-05-03: 当日ディレイにより開始時間変更",
+      "_note": "Reg.Open 00:00 / Start 00:30 / Late Reg 02:40 (Lv.6). Sheets master: Start 00:00 / Reg.Close 02:10",
+      "regOpen": "00:00",
       "startTime": "00:30",
       "regClose": { "time": "02:40", "level": 6 },
       "delayNotice": "ディレイにより開始時間変更"
