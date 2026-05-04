@@ -997,13 +997,13 @@ export function transform(extract: any, currentData: any = null): TransformedDat
       e.notes = ov.notes.slice();
     }
     // single-event 用 reg close 直接 override (flight 無 event 例: #07 PLO Heads-up)
+    // approx: true 指定時は "HH:MM ごろ (Lv.N)" 形式で曖昧表記 (Owner 指示 2026-05-04 火災報知器対応)
     if (ov.regClose && typeof ov.regClose === "object") {
-      const rc = ov.regClose as { time?: string; level?: number | null };
+      const rc = ov.regClose as { time?: string; level?: number | null; approx?: boolean };
       if (rc.time) {
-        e.lateRegClose = buildLateRegClose(
-          rc.time,
-          rc.level != null ? String(rc.level) : ""
-        );
+        e.lateRegClose = rc.approx
+          ? `${rc.time} ごろ${rc.level != null ? ` (Lv.${rc.level})` : ""}`
+          : buildLateRegClose(rc.time, rc.level != null ? String(rc.level) : "");
         e.lateRegLevel = rc.level ?? null;
       }
     }
@@ -1014,7 +1014,10 @@ export function transform(extract: any, currentData: any = null): TransformedDat
       if (flightKey && flightKey in ov.regCloseByFlight) {
         const rc = ov.regCloseByFlight[flightKey];
         if (rc && typeof rc === "object") {
-          e.lateRegClose = buildLateRegClose(rc.time, rc.level != null ? String(rc.level) : "");
+          const rcA = rc as { time: string; level?: number | null; approx?: boolean };
+          e.lateRegClose = rcA.approx
+            ? `${rcA.time} ごろ${rcA.level != null ? ` (Lv.${rcA.level})` : ""}`
+            : buildLateRegClose(rc.time, rc.level != null ? String(rc.level) : "");
           e.lateRegLevel = rc.level ?? null;
           // StructureTable の CLOSE バッジは structure.lateRegCloseAfterLevel を見るため
           // flight 別に structure を clone して上書き (Owner 確認 2026-04-25)
@@ -1053,6 +1056,19 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     // Card / Detail の Start 時刻直下に赤字 ※ で表示する遅延注記。
     if (typeof ov.delayNotice === "string" && ov.delayNotice.trim()) {
       e.delayNotice = ov.delayNotice.trim();
+    }
+    // delayNoticeByFlight (Owner 指示 2026-05-04 火災報知器対応):
+    // multi-day で flight 別に異なる delayNotice 文言を出す。global delayNotice より優先。
+    // 指定 flight に該当しない (or null) なら delayNotice 非表示。
+    // 例: #01 Day 1A-D / Day 2 は注記なし、Day 3 のみ注記、または #145 Day 1A は
+    // 「受付締切のみ変更」、Day 1B/C/D は「スケジュール変更」で文言を分ける。
+    if (ov.delayNoticeByFlight && typeof ov.delayNoticeByFlight === "object") {
+      if (flightKey && flightKey in ov.delayNoticeByFlight) {
+        const dn = ov.delayNoticeByFlight[flightKey];
+        e.delayNotice = (typeof dn === "string" && dn.trim()) ? dn.trim() : null;
+      } else {
+        e.delayNotice = null;
+      }
     }
     // regOpen override (Owner 指示 2026-05-01):
     // Registration オープン時刻 (Start の前段表示用)。extract.json に source 無し
