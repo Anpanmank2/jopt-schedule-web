@@ -77,7 +77,10 @@
           { "level": 49, "sb": 10000000, "bb": 15000000, "ante": 15000000, "time": 45 },
           { "level": 50, "sb": 10000000, "bb": 20000000, "ante": 20000000, "time": 45 }
         ]
-      }
+      },
+      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 3 (5/5 11:00→12:00) のみ +1h. Day 2 (5/4 11:00, 既進行中) は startTime 不変, reg_close 元値空のため regClose override なし",
+      "startTimeByFlight": { "Day 3": "12:00" },
+      "delayNotice": "諸事情によりスケジュール変更"
     },
     "#03": {
       "_source": "HP用レートFIX - Mini Main.pdf",
@@ -279,12 +282,18 @@
     },
     "#147": {
       "_source": "HP用レートFIX - PLO CS.pdf",
+      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 1A (5/4 13:00, 進行中) は startTime 不変 + Reg.Close +50min. Day 1B (5/4 18:00→19:00) / Day 1C (5/5 13:00→14:00) は startTime + Reg.Close +1h.",
       "regCloseByFlight": {
-        "Day 1A": { "time": "17:50", "level": 9 },
-        "Day 1B": { "time": "22:50", "level": 9 },
-        "Day 1C": { "time": "17:50", "level": 9 },
+        "Day 1A": { "time": "18:40", "level": 9 },
+        "Day 1B": { "time": "23:50", "level": 9 },
+        "Day 1C": { "time": "18:50", "level": 9 },
         "Day 2": null
       },
+      "startTimeByFlight": {
+        "Day 1B": "19:00",
+        "Day 1C": "14:00"
+      },
+      "delayNotice": "諸事情によりスケジュール変更",
       "structure": {
         "columns": ["Level", "Blinds", "Minutes"],
         "day1EndLevel": 16,
@@ -339,6 +348,19 @@
     "#145": {
       "_source": "Players Guide _ JOPT 2026 Grand Final - PPC.pdf",
       "_structureSource": "Owner 提示 PDF 2026-05-04: extract.json #145 (no=190) は structure 空、jopt_gf2026_data.json snapshot は Lv.4/8/12 抜け + Lv.6 後に誤 BREAK。PDF 正本で全 46 レベル + Normal break (Lv.4/8/12/20/24/28/32/36 後) + Turbo break (turboBreakAfterLevels [6, 12]) を override",
+      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 1A (5/4 11:00, 進行中) は startTime 不変 + Reg.Close +50min. Day 1B/C/D Turbo は startTime + Reg.Close +1h.",
+      "regCloseByFlight": {
+        "Day 1A": { "time": "18:00", "level": 10 },
+        "Day 1B": { "time": "00:10", "level": 10 },
+        "Day 1C": { "time": "18:10", "level": 10 },
+        "Day 1D Turbo": { "time": "21:30", "level": 10 }
+      },
+      "startTimeByFlight": {
+        "Day 1B": "18:00",
+        "Day 1C": "12:00",
+        "Day 1D Turbo": "18:00"
+      },
+      "delayNotice": "諸事情によりスケジュール変更",
       "structure": {
         "columns": ["Level", "Blinds", "BB Ante", "Minutes"],
         "lateRegCloseAfterLevel": 10,
@@ -416,7 +438,12 @@
         "・スタックの20枚積みはプレイヤーの義務となります。",
         "・ファーストエントリー時別途ドリンク代1,000円を頂戴します。",
         "・ルールは JOPT Official Rule を採用します。"
-      ]
+      ],
+      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_delayNote": "NLH Optimus: 元 Start 20:00 / Reg.Close 23:30 (Lv.10) → 新 Start 21:00 / Reg.Close 00:30 (Lv.10)",
+      "startTime": "21:00",
+      "regClose": { "time": "00:30", "level": 10 },
+      "delayNotice": "諸事情によりスケジュール変更"
     },
     "#177": {
       "_notesSource": "Owner 提示 2026-05-04: ショットクロック運用ルール (#177 NLH Super Heavy Bounty BBO sponsored)。extract.json の旧テンプレ (Bounty Chip配布時よりショットクロック+TBC 3枚) を Owner spec (トーナメント開始時よりショットクロック+TBC 5+1+1=7 枚) に上書き。既存 Bounty 4 件は保持",
@@ -527,6 +554,193 @@
       "startTime": "02:30",
       "regClose": { "time": "03:50", "level": 7 },
       "delayNotice": "ディレイにより開始時間変更"
+    },
+    "#146": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 受付締切 +50 分",
+      "_note": "NLH Megastack Sponsored by CAREER DRAFT: 元 Start 11:00 / Reg.Close 14:55 (Lv.9) → 新 Reg.Close 15:45 (Lv.9). startTime 不変",
+      "regClose": { "time": "15:45", "level": 9 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#148": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 受付締切 +50 分",
+      "_note": "FL Split MIX: 元 Start 13:00 / Reg.Close 16:30 (Lv.8) → 新 Reg.Close 17:20 (Lv.8). startTime 不変",
+      "regClose": { "time": "17:20", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#149": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Builder: 元 Start 15:00 / Reg.Close 17:50 (Lv.8) → 新 Start 16:00 / Reg.Close 18:50 (Lv.8)",
+      "startTime": "16:00",
+      "regClose": { "time": "18:50", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#150": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Platinum: 元 Start 16:00 / Reg.Close 20:20 (Lv.8) → 新 Start 17:00 / Reg.Close 21:20 (Lv.8)",
+      "startTime": "17:00",
+      "regClose": { "time": "21:20", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#151": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "FL Seven Card Stud Hi/Lo 8 or Better: 元 Start 17:00 / Reg.Close 19:50 (Lv.8) → 新 Start 18:00 / Reg.Close 20:50 (Lv.8)",
+      "startTime": "18:00",
+      "regClose": { "time": "20:50", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#152": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Arena: 元 Start 18:00 / Reg.Close 21:55 (Lv.9) → 新 Start 19:00 / Reg.Close 22:55 (Lv.9)",
+      "startTime": "19:00",
+      "regClose": { "time": "22:55", "level": 9 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#153": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "Big Bet MIX: 元 Start 19:00 / Reg.Close 22:55 (Lv.9) → 新 Start 20:00 / Reg.Close 23:55 (Lv.9)",
+      "startTime": "20:00",
+      "regClose": { "time": "23:55", "level": 9 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#155": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Deepstack NORTH STAR Sponsored by JT: 元 Start 21:00 / Reg.Close 23:50 (Lv.8) → 新 Start 22:00 / Reg.Close 00:50 (Lv.8)",
+      "startTime": "22:00",
+      "regClose": { "time": "00:50", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#156": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "PL 2-7 Triple Draw: 元 Start 23:00 / Reg.Close 01:30 (Lv.7) → 新 Start 00:00 / Reg.Close 02:30 (Lv.7)",
+      "startTime": "00:00",
+      "regClose": { "time": "02:30", "level": 7 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#157": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Turbo: 元 Start 00:00 / Reg.Close 01:40 (Lv.5) → 新 Start 01:00 / Reg.Close 02:40 (Lv.5)",
+      "startTime": "01:00",
+      "regClose": { "time": "02:40", "level": 5 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#158": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "PLO Midnight: 元 Start 01:00 / Reg.Close 02:45 (Lv.7) → 新 Start 02:00 / Reg.Close 03:45 (Lv.7)",
+      "startTime": "02:00",
+      "regClose": { "time": "03:45", "level": 7 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#159": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Bigstack Hyper: 元 Start 02:00 / Reg.Close 03:20 (Lv.7) → 新 Start 03:00 / Reg.Close 04:20 (Lv.7)",
+      "startTime": "03:00",
+      "regClose": { "time": "04:20", "level": 7 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#160": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Megastack: 元 Start 11:00 / Reg.Close 14:55 (Lv.9) → 新 Start 12:00 / Reg.Close 15:55 (Lv.9)",
+      "startTime": "12:00",
+      "regClose": { "time": "15:55", "level": 9 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#161": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Builder: 元 Start 15:00 / Reg.Close 17:50 (Lv.8) → 新 Start 16:00 / Reg.Close 18:50 (Lv.8)",
+      "startTime": "16:00",
+      "regClose": { "time": "18:50", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#162": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "FL H.O.R.S.E.: 元 Start 15:00 / Reg.Close 18:30 (Lv.8) → 新 Start 16:00 / Reg.Close 19:30 (Lv.8)",
+      "startTime": "16:00",
+      "regClose": { "time": "19:30", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#163": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Good Game 1000: 元 Start 16:00 / Reg.Close 19:55 (Lv.9) → 新 Start 17:00 / Reg.Close 20:55 (Lv.9)",
+      "startTime": "17:00",
+      "regClose": { "time": "20:55", "level": 9 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#164": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Climax Bounty: 元 Start 18:00 / Reg.Close 21:55 (Lv.9) → 新 Start 19:00 / Reg.Close 22:55 (Lv.9)",
+      "startTime": "19:00",
+      "regClose": { "time": "22:55", "level": 9 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#165": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "PLO Monster: 元 Start 18:00 / Reg.Close 21:30 (Lv.8) → 新 Start 19:00 / Reg.Close 22:30 (Lv.8)",
+      "startTime": "19:00",
+      "regClose": { "time": "22:30", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#166": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Tag Team Highroller: 元 Start 19:00 / Reg.Close 22:45 (Lv.9) → 新 Start 20:00 / Reg.Close 23:45 (Lv.9)",
+      "startTime": "20:00",
+      "regClose": { "time": "23:45", "level": 9 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#167": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Good Game 500: 元 Start 20:00 / Reg.Close 23:30 (Lv.10) → 新 Start 21:00 / Reg.Close 00:30 (Lv.10)",
+      "startTime": "21:00",
+      "regClose": { "time": "00:30", "level": 10 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#168": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Deepstack NORTH STAR Sponsored by JT: 元 Start 21:00 / Reg.Close 23:50 (Lv.8) → 新 Start 22:00 / Reg.Close 00:50 (Lv.8)",
+      "startTime": "22:00",
+      "regClose": { "time": "00:50", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#169": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "FL Triple Draw MIX: 元 Start 21:00 / Reg.Close 00:30 (Lv.8) → 新 Start 22:00 / Reg.Close 01:30 (Lv.8)",
+      "startTime": "22:00",
+      "regClose": { "time": "01:30", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#170": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "NLH Tag Team Turbo: 元 Start 23:00 / Reg.Close 01:40 (Lv.8) → 新 Start 00:00 / Reg.Close 02:40 (Lv.8)",
+      "startTime": "00:00",
+      "regClose": { "time": "02:40", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#171": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "PLO 5-Card: 元 Start 23:00 / Reg.Close 01:50 (Lv.8) → 新 Start 00:00 / Reg.Close 02:50 (Lv.8)",
+      "startTime": "00:00",
+      "regClose": { "time": "02:50", "level": 8 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "(s31)": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "(s31) Satellite to NLH Platinum at 1/12: 元 Start 15:00 / Reg.Close 16:00 (Lv.4) → 新 Start 16:00 / Reg.Close 17:00 (Lv.4)",
+      "startTime": "16:00",
+      "regClose": { "time": "17:00", "level": 4 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "(s32)": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "(s32) Satellite to NLH Poker Players Championship at 1/8: 元 Start 03:00 / Reg.Close 04:00 (Lv.4) → 新 Start 04:00 / Reg.Close 05:00 (Lv.4)",
+      "startTime": "04:00",
+      "regClose": { "time": "05:00", "level": 4 },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "(s33)": {
+      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
+      "_note": "(s33) Satellite to NLH Good Game 1000 at 1/12: 元 Start 15:00 / Reg.Close 16:00 (Lv.4) → 新 Start 16:00 / Reg.Close 17:00 (Lv.4)",
+      "startTime": "16:00",
+      "regClose": { "time": "17:00", "level": 4 },
+      "delayNotice": "諸事情によりスケジュール変更"
     }
   },
   "extraEvents": [
