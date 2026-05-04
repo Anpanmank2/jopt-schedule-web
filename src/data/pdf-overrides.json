@@ -2272,6 +2272,46 @@
         "level": 4
       },
       "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#157": {
+      "_source": "Owner 指示 2026-05-04 r5: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h. UI 上 5/4 night として表示 (5/5 dayLabel だが 5/4 営業日末尾)",
+      "_note": "NLH Turbo: 元 Start 00:00 / Reg.Close 01:40 (Lv.5) → 新 Start 01:00 / Reg.Close 02:40 (Lv.5)",
+      "startTime": "01:00",
+      "regClose": {
+        "time": "02:40",
+        "level": 5
+      },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#158": {
+      "_source": "Owner 指示 2026-05-04 r5: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h. UI 上 5/4 night として表示",
+      "_note": "PLO Midnight: 元 Start 01:00 / Reg.Close 02:45 (Lv.7) → 新 Start 02:00 / Reg.Close 03:45 (Lv.7)",
+      "startTime": "02:00",
+      "regClose": {
+        "time": "03:45",
+        "level": 7
+      },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "#159": {
+      "_source": "Owner 指示 2026-05-04 r5: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h. UI 上 5/4 night として表示",
+      "_note": "NLH Bigstack Hyper: 元 Start 02:00 / Reg.Close 03:20 (Lv.7) → 新 Start 03:00 / Reg.Close 04:20 (Lv.7)",
+      "startTime": "03:00",
+      "regClose": {
+        "time": "04:20",
+        "level": 7
+      },
+      "delayNotice": "諸事情によりスケジュール変更"
+    },
+    "(s32)": {
+      "_source": "Owner 指示 2026-05-04 r5: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h. UI 上 5/4 night として表示",
+      "_note": "(s32) Satellite to NLH Poker Players Championship at 1/8: 元 Start 03:00 / Reg.Close 04:00 (Lv.4) → 新 Start 04:00 / Reg.Close 05:00 (Lv.4)",
+      "startTime": "04:00",
+      "regClose": {
+        "time": "05:00",
+        "level": 4
+      },
+      "delayNotice": "諸事情によりスケジュール変更"
     }
   },
   "extraEvents": [
