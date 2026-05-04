@@ -54,7 +54,11 @@ function buildDayGroups(): DayGroup[] {
       const hour = parseInt(evt.startTime.split(":")[0], 10);
       let targetDate = evt.date;
 
-      if (hour < 9) {
+      // 営業日 grouping: 早朝 (hour < 9) の event は前日 day group に backstep。
+      // skipPrevDayGrouping=true の event はこの shift を skip し自分の date の day group
+      // に固定表示 (火災報知器ディレイで startTime 23:00→00:00 跨日した event の副作用回避用、
+      // Owner 指示 2026-05-04)。
+      if (hour < 9 && !(evt as unknown as { skipPrevDayGrouping?: boolean }).skipPrevDayGrouping) {
         const d = new Date(evt.date + "T00:00:00Z");
         d.setUTCDate(d.getUTCDate() - 1);
         const prevDate = d.toISOString().slice(0, 10);

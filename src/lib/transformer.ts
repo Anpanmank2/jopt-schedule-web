@@ -109,6 +109,8 @@ export interface TransformedEvent {
   delayNotice: string | null;
   /** Registration オープン時刻 (Card / Detail で Start の前段に表示). 通常は extract.json に source 無しで pdf-overrides.json 経由のみ (Owner 指示 2026-05-01) */
   regOpen: string | null;
+  /** 早朝 (hour < 9) の event を前日 day group に backstep する page.tsx 営業日 grouping を skip する flag. 火災報知器ディレイ等で startTime が 23:00→00:00 跨日した event が前日 day section に shift してしまう副作用を回避するため (Owner 指示 2026-05-04) */
+  skipPrevDayGrouping?: boolean;
 }
 
 export interface TransformedDay {
@@ -1075,6 +1077,14 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     // のため pdf-overrides.json で個別指定する。例: #109 Reg.Open 21:45。
     if (typeof ov.regOpen === "string" && ov.regOpen.trim()) {
       e.regOpen = ov.regOpen.trim();
+    }
+    // skipPrevDayGrouping override (Owner 指示 2026-05-04 火災報知器対応):
+    // 早朝 (hour < 9) の event を前日 day group に backstep する page.tsx の営業日
+    // grouping を skip する flag。火災報知器ディレイで #156 startTime 23:00→00:00
+    // 跨日した結果、UI 上 5/3 day section に shift してしまった副作用回避。
+    // true 指定 event は startTime が深夜でも自分の date の day group に固定表示。
+    if (ov.skipPrevDayGrouping === true) {
+      e.skipPrevDayGrouping = true;
     }
     // award override (Owner 指示 2026-04-25): Apps Script の sprinter 抽出漏れ
     // に対する手動上書き。chipLeader / sprinter / currencyNote を section 別に

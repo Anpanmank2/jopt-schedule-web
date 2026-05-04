@@ -2255,13 +2255,14 @@
     },
     "#156": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "PL 2-7 Triple Draw: 元 Start 23:00 / Reg.Close 01:30 (Lv.7) → 新 Start 00:00 / Reg.Close 02:30 (Lv.7)",
+      "_note": "PL 2-7 Triple Draw: 元 Start 23:00 / Reg.Close 01:30 (Lv.7) → 新 Start 00:00 / Reg.Close 02:30 (Lv.7). skipPrevDayGrouping: 元 startTime 23:00 で 5/4 day section に表示されていたが、+1h で 00:00 (跨日) になり page.tsx の hour<9 backstep で 5/3 day section に shift する副作用回避のため flag 付与 (Owner 指示 r6 2026-05-04)",
       "startTime": "00:00",
       "regClose": {
         "time": "02:30",
         "level": 7
       },
-      "delayNotice": "諸事情によりスケジュール変更"
+      "delayNotice": "諸事情によりスケジュール変更",
+      "skipPrevDayGrouping": true
     },
     "(s31)": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
