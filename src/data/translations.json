@@ -719,6 +719,22 @@
     "en": "- 20 seconds preflop and 30 seconds postflop think time is granted; using a Time Bank Card adds 30 more seconds.",
     "ko": "- 프리플랍 20초, 포스트플랍 30초 사고 시간이 주어지며, 타임 뱅크 카드를 사용하면 추가로 30초의 사고 시간이 주어집니다."
   },
+  "・必要に応じてフロアから追加の時間を与える場合があります。": {
+    "en": "- The floor may grant additional time as needed.",
+    "ko": "- 필요에 따라 플로어가 추가 시간을 부여하는 경우가 있습니다."
+  },
+  "・分かりづらいアクションはペナルティの対象となる場合があります。": {
+    "en": "- Unclear actions may be subject to penalty.",
+    "ko": "- 모호한 액션은 페널티 대상이 될 수 있습니다."
+  },
+  "・Time Bank Cardは規定時間が過ぎると自動消費されます。": {
+    "en": "- Time Bank Cards are consumed automatically once the allotted time elapses.",
+    "ko": "- Time Bank Card는 정해진 시간이 지나면 자동으로 소비됩니다."
+  },
+  "・スタックの20枚積みはプレイヤーの義務となります。": {
+    "en": "- It is the player's duty to keep their stack in stacks of 20.",
+    "ko": "- 스택을 20장씩 쌓는 것은 플레이어의 의무입니다."
+  },
   "・エントリー受付終了以降残り人数がエントリー数の25%になった時にBounty Chipを1人1枚配布します。\n・プレイヤーをシートアウトさせる事で相手のBountyを1枚獲得できます。\n・複数のプレイヤーが同じ強さの役により同時に他のプレイヤーをシートアウトさせた場合、Bountyは等分します。\n・BountyはPOKERWEB COINでの付与となります。\n・本トーナメントでは、Bounty Chip配布時よりショットクロックが導入されます。\n・Time Bank Cardは1人3枚配布され、ファイナルテーブル開始時に追加でTime Bank Cardを1枚ずつ配布いたします。\n・プリフロップ20秒、ポストフロップ30秒の思考時間が与えられ、タイムバンクカードを使用することで、追加で30秒の思考時間が与えられます。\n・ファーストエントリー時別途ドリンク代1,000円を頂戴します。\n・ルールは JOPT Official Rule を採用します。": {
     "en": "- Once registration closes and the field is reduced to 25% of total entries, each player is dealt 1 Bounty Chip.\n- You earn 1 of the eliminated player's Bounty chips by busting them.\n- If multiple players eliminate another player simultaneously with the same hand strength, the Bounty is split equally.\n- Bounty is paid out in POKERWEB COIN.\n- A shot clock is in effect from when Bounty Chips are distributed in this tournament.\n- 3 Time Bank Cards are issued per player, with 1 additional Time Bank Card issued at the start of the Final Table.\n- 20 seconds preflop and 30 seconds postflop think time is granted; using a Time Bank Card adds 30 more seconds.\n- A separate drink fee of JPY 1,000 will be charged at first entry.\n- JOPT Official Rules apply.",
     "ko": "- 엔트리 접수 종료 이후 남은 인원이 총 엔트리의 25%가 되면 1인당 Bounty Chip 1장을 배포합니다.\n- 플레이어를 시트아웃시켜 상대의 Bounty 1장을 획득할 수 있습니다.\n- 여러 플레이어가 동일한 핸드 강도로 동시에 다른 플레이어를 시트아웃시킨 경우, Bounty는 균등 분할됩니다.\n- Bounty는 POKERWEB COIN으로 지급됩니다.\n- 본 토너먼트는 Bounty Chip 배포 시점부터 샷 클럭이 도입됩니다.\n- Time Bank Card는 1인당 3장이 지급되며, 파이널 테이블 시작 시점에 추가로 Time Bank Card 1장씩이 지급됩니다.\n- 프리플랍 20초, 포스트플랍 30초 사고 시간이 주어지며, 타임 뱅크 카드를 사용하면 추가로 30초의 사고 시간이 주어집니다.\n- 첫 엔트리 시 별도로 음료 요금 JPY 1,000을 청구합니다.\n- JOPT Official Rule을 적용합니다."
