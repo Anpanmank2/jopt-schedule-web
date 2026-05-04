@@ -7,80 +7,427 @@
       "_incident": "Owner 2026-05-02 指摘: Main Event Structure タブで Day 1 Lv.3/6/9/12 欠落 / 中間 break 非表示 / Day 2 (Lv.16-28) が 20 分 level 表示。原因: jopt_gf2026_data.json (2026-04-09 snapshot) legacy fallback が破損 levels (55 件、Lv.3/6/9/12 欠落 + Lv.16-20=20min) で extract を上書き。extract.json は 20 levels しか持たないため legCount > curCount で fallback 採用。pdf-overrides で完成形 levels を inject し legacy を上書きで fix",
       "structure": {
         "_source": "Players Guide PDF Day 1 + Day 2 & Day 3 連結。Day 1 通常 (Day 1A/B/C, 45min) + Day 1D Turbo (20min, multiDay.turbo.levelTime で UI 側 override) + Day 2/Day 3 (45min)。* マーク (PDF) は break_after。Day 1 break: Lv.3/6/9/12 後。Day 2/3 break: Lv.18/21/24/27/31/34/37/40/43/46 後。Lv.19 sb 10,000/bb 15,000 (1:1.5 比率) は PDF 通り、escalation 違和感は Players Guide 仕様。Day 1D Turbo の break (turboBreakAfterLevels) は PDF Lv.6/Lv.12 (45*/20* 行)。他 Turbo flight (#03/#33/#71) は従来通り reg close 直後 synthetic 1 回",
-        "columns": ["Level", "Blinds", "BB Ante", "Minutes"],
+        "columns": [
+          "Level",
+          "Blinds",
+          "BB Ante",
+          "Minutes"
+        ],
         "lateRegCloseAfterLevel": 9,
         "day2EndLevel": 28,
-        "turboBreakAfterLevels": [6, 12],
+        "turboBreakAfterLevels": [
+          6,
+          12
+        ],
         "levels": [
-          { "level": 1, "sb": 100, "bb": 200, "ante": 200, "time": 45 },
-          { "level": 2, "sb": 200, "bb": 300, "ante": 300, "time": 45 },
-          { "level": 3, "sb": 200, "bb": 400, "ante": 400, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 4, "sb": 300, "bb": 500, "ante": 500, "time": 45 },
-          { "level": 5, "sb": 300, "bb": 600, "ante": 600, "time": 45 },
-          { "level": 6, "sb": 400, "bb": 800, "ante": 800, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 7, "sb": 500, "bb": 1000, "ante": 1000, "time": 45 },
-          { "level": 8, "sb": 600, "bb": 1200, "ante": 1200, "time": 45 },
-          { "level": 9, "sb": 1000, "bb": 1500, "ante": 1500, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 10, "sb": 1000, "bb": 2000, "ante": 2000, "time": 45 },
-          { "level": 11, "sb": 1500, "bb": 2500, "ante": 2500, "time": 45 },
-          { "level": 12, "sb": 1500, "bb": 3000, "ante": 3000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 13, "sb": 2000, "bb": 4000, "ante": 4000, "time": 45 },
-          { "level": 14, "sb": 2500, "bb": 5000, "ante": 5000, "time": 45 },
-          { "level": 15, "sb": 3000, "bb": 6000, "ante": 6000, "time": 45 },
-          { "level": 16, "sb": 4000, "bb": 8000, "ante": 8000, "time": 45 },
-          { "level": 17, "sb": 5000, "bb": 10000, "ante": 10000, "time": 45 },
-          { "level": 18, "sb": 6000, "bb": 12000, "ante": 12000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 19, "sb": 10000, "bb": 15000, "ante": 15000, "time": 45 },
-          { "level": 20, "sb": 10000, "bb": 20000, "ante": 20000, "time": 45 },
-          { "level": 21, "sb": 15000, "bb": 25000, "ante": 25000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 22, "sb": 15000, "bb": 30000, "ante": 30000, "time": 45 },
-          { "level": 23, "sb": 20000, "bb": 40000, "ante": 40000, "time": 45 },
-          { "level": 24, "sb": 25000, "bb": 50000, "ante": 50000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 25, "sb": 30000, "bb": 60000, "ante": 60000, "time": 45 },
-          { "level": 26, "sb": 40000, "bb": 80000, "ante": 80000, "time": 45 },
-          { "level": 27, "sb": 50000, "bb": 100000, "ante": 100000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 28, "sb": 60000, "bb": 120000, "ante": 120000, "time": 45 },
-          { "level": 29, "sb": 75000, "bb": 150000, "ante": 150000, "time": 45 },
-          { "level": 30, "sb": 100000, "bb": 200000, "ante": 200000, "time": 45 },
-          { "level": 31, "sb": 125000, "bb": 250000, "ante": 250000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 32, "sb": 150000, "bb": 300000, "ante": 300000, "time": 45 },
-          { "level": 33, "sb": 200000, "bb": 400000, "ante": 400000, "time": 45 },
-          { "level": 34, "sb": 250000, "bb": 500000, "ante": 500000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 35, "sb": 300000, "bb": 600000, "ante": 600000, "time": 45 },
-          { "level": 36, "sb": 400000, "bb": 800000, "ante": 800000, "time": 45 },
-          { "level": 37, "sb": 500000, "bb": 1000000, "ante": 1000000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 38, "sb": 600000, "bb": 1200000, "ante": 1200000, "time": 45 },
-          { "level": 39, "sb": 1000000, "bb": 1500000, "ante": 1500000, "time": 45 },
-          { "level": 40, "sb": 1000000, "bb": 2000000, "ante": 2000000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 41, "sb": 1500000, "bb": 2500000, "ante": 2500000, "time": 45 },
-          { "level": 42, "sb": 1500000, "bb": 3000000, "ante": 3000000, "time": 45 },
-          { "level": 43, "sb": 2000000, "bb": 4000000, "ante": 4000000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 44, "sb": 2500000, "bb": 5000000, "ante": 5000000, "time": 45 },
-          { "level": 45, "sb": 3000000, "bb": 6000000, "ante": 6000000, "time": 45 },
-          { "level": 46, "sb": 4000000, "bb": 8000000, "ante": 8000000, "time": 45 },
-          { "break": true, "time": 10 },
-          { "level": 47, "sb": 5000000, "bb": 10000000, "ante": 10000000, "time": 45 },
-          { "level": 48, "sb": 6000000, "bb": 12000000, "ante": 12000000, "time": 45 },
-          { "level": 49, "sb": 10000000, "bb": 15000000, "ante": 15000000, "time": 45 },
-          { "level": 50, "sb": 10000000, "bb": 20000000, "ante": 20000000, "time": 45 }
+          {
+            "level": 1,
+            "sb": 100,
+            "bb": 200,
+            "ante": 200,
+            "time": 45
+          },
+          {
+            "level": 2,
+            "sb": 200,
+            "bb": 300,
+            "ante": 300,
+            "time": 45
+          },
+          {
+            "level": 3,
+            "sb": 200,
+            "bb": 400,
+            "ante": 400,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 4,
+            "sb": 300,
+            "bb": 500,
+            "ante": 500,
+            "time": 45
+          },
+          {
+            "level": 5,
+            "sb": 300,
+            "bb": 600,
+            "ante": 600,
+            "time": 45
+          },
+          {
+            "level": 6,
+            "sb": 400,
+            "bb": 800,
+            "ante": 800,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 7,
+            "sb": 500,
+            "bb": 1000,
+            "ante": 1000,
+            "time": 45
+          },
+          {
+            "level": 8,
+            "sb": 600,
+            "bb": 1200,
+            "ante": 1200,
+            "time": 45
+          },
+          {
+            "level": 9,
+            "sb": 1000,
+            "bb": 1500,
+            "ante": 1500,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 10,
+            "sb": 1000,
+            "bb": 2000,
+            "ante": 2000,
+            "time": 45
+          },
+          {
+            "level": 11,
+            "sb": 1500,
+            "bb": 2500,
+            "ante": 2500,
+            "time": 45
+          },
+          {
+            "level": 12,
+            "sb": 1500,
+            "bb": 3000,
+            "ante": 3000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 13,
+            "sb": 2000,
+            "bb": 4000,
+            "ante": 4000,
+            "time": 45
+          },
+          {
+            "level": 14,
+            "sb": 2500,
+            "bb": 5000,
+            "ante": 5000,
+            "time": 45
+          },
+          {
+            "level": 15,
+            "sb": 3000,
+            "bb": 6000,
+            "ante": 6000,
+            "time": 45
+          },
+          {
+            "level": 16,
+            "sb": 4000,
+            "bb": 8000,
+            "ante": 8000,
+            "time": 45
+          },
+          {
+            "level": 17,
+            "sb": 5000,
+            "bb": 10000,
+            "ante": 10000,
+            "time": 45
+          },
+          {
+            "level": 18,
+            "sb": 6000,
+            "bb": 12000,
+            "ante": 12000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 19,
+            "sb": 10000,
+            "bb": 15000,
+            "ante": 15000,
+            "time": 45
+          },
+          {
+            "level": 20,
+            "sb": 10000,
+            "bb": 20000,
+            "ante": 20000,
+            "time": 45
+          },
+          {
+            "level": 21,
+            "sb": 15000,
+            "bb": 25000,
+            "ante": 25000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 22,
+            "sb": 15000,
+            "bb": 30000,
+            "ante": 30000,
+            "time": 45
+          },
+          {
+            "level": 23,
+            "sb": 20000,
+            "bb": 40000,
+            "ante": 40000,
+            "time": 45
+          },
+          {
+            "level": 24,
+            "sb": 25000,
+            "bb": 50000,
+            "ante": 50000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 25,
+            "sb": 30000,
+            "bb": 60000,
+            "ante": 60000,
+            "time": 45
+          },
+          {
+            "level": 26,
+            "sb": 40000,
+            "bb": 80000,
+            "ante": 80000,
+            "time": 45
+          },
+          {
+            "level": 27,
+            "sb": 50000,
+            "bb": 100000,
+            "ante": 100000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 28,
+            "sb": 60000,
+            "bb": 120000,
+            "ante": 120000,
+            "time": 45
+          },
+          {
+            "level": 29,
+            "sb": 75000,
+            "bb": 150000,
+            "ante": 150000,
+            "time": 45
+          },
+          {
+            "level": 30,
+            "sb": 100000,
+            "bb": 200000,
+            "ante": 200000,
+            "time": 45
+          },
+          {
+            "level": 31,
+            "sb": 125000,
+            "bb": 250000,
+            "ante": 250000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 32,
+            "sb": 150000,
+            "bb": 300000,
+            "ante": 300000,
+            "time": 45
+          },
+          {
+            "level": 33,
+            "sb": 200000,
+            "bb": 400000,
+            "ante": 400000,
+            "time": 45
+          },
+          {
+            "level": 34,
+            "sb": 250000,
+            "bb": 500000,
+            "ante": 500000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 35,
+            "sb": 300000,
+            "bb": 600000,
+            "ante": 600000,
+            "time": 45
+          },
+          {
+            "level": 36,
+            "sb": 400000,
+            "bb": 800000,
+            "ante": 800000,
+            "time": 45
+          },
+          {
+            "level": 37,
+            "sb": 500000,
+            "bb": 1000000,
+            "ante": 1000000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 38,
+            "sb": 600000,
+            "bb": 1200000,
+            "ante": 1200000,
+            "time": 45
+          },
+          {
+            "level": 39,
+            "sb": 1000000,
+            "bb": 1500000,
+            "ante": 1500000,
+            "time": 45
+          },
+          {
+            "level": 40,
+            "sb": 1000000,
+            "bb": 2000000,
+            "ante": 2000000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 41,
+            "sb": 1500000,
+            "bb": 2500000,
+            "ante": 2500000,
+            "time": 45
+          },
+          {
+            "level": 42,
+            "sb": 1500000,
+            "bb": 3000000,
+            "ante": 3000000,
+            "time": 45
+          },
+          {
+            "level": 43,
+            "sb": 2000000,
+            "bb": 4000000,
+            "ante": 4000000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 44,
+            "sb": 2500000,
+            "bb": 5000000,
+            "ante": 5000000,
+            "time": 45
+          },
+          {
+            "level": 45,
+            "sb": 3000000,
+            "bb": 6000000,
+            "ante": 6000000,
+            "time": 45
+          },
+          {
+            "level": 46,
+            "sb": 4000000,
+            "bb": 8000000,
+            "ante": 8000000,
+            "time": 45
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 47,
+            "sb": 5000000,
+            "bb": 10000000,
+            "ante": 10000000,
+            "time": 45
+          },
+          {
+            "level": 48,
+            "sb": 6000000,
+            "bb": 12000000,
+            "ante": 12000000,
+            "time": 45
+          },
+          {
+            "level": 49,
+            "sb": 10000000,
+            "bb": 15000000,
+            "ante": 15000000,
+            "time": 45
+          },
+          {
+            "level": 50,
+            "sb": 10000000,
+            "bb": 20000000,
+            "ante": 20000000,
+            "time": 45
+          }
         ]
-      },
-      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 3 (5/5 11:00→12:00) のみ +1h. Day 2 (5/4 11:00, 既進行中) は startTime 不変 / reg_close 元値空のため override なし. delayNotice は Day 3 のみに付与 (Day 1A-D 5/2-5/3 既終了 / Day 2 は変更なしのため注記非表示)",
-      "startTimeByFlight": { "Day 3": "12:00" },
-      "delayNoticeByFlight": { "Day 3": "諸事情によりスケジュール変更" }
+      }
     },
     "#03": {
       "_source": "HP用レートFIX - Mini Main.pdf",
@@ -91,97 +438,465 @@
         "levelTime": 20
       },
       "regCloseByFlight": {
-        "Day 1A": { "time": "23:35", "level": 9 },
-        "Day 1B": { "time": "16:35", "level": 9 },
-        "Day 1C": { "time": "21:35", "level": 9 },
-        "Day 1D Turbo": { "time": "12:10", "level": 9 },
+        "Day 1A": {
+          "time": "23:35",
+          "level": 9
+        },
+        "Day 1B": {
+          "time": "16:35",
+          "level": 9
+        },
+        "Day 1C": {
+          "time": "21:35",
+          "level": 9
+        },
+        "Day 1D Turbo": {
+          "time": "12:10",
+          "level": 9
+        },
         "Day 2": null
       },
       "structure": {
-        "columns": ["Level", "Blinds", "BB Ante", "Minutes"],
+        "columns": [
+          "Level",
+          "Blinds",
+          "BB Ante",
+          "Minutes"
+        ],
         "day1EndLevel": 16,
         "day2StartLevel": 17,
         "day2EndLevel": null,
         "lateRegCloseAfterLevel": 9,
         "levels": [
-          { "level": 1, "sb": 100, "bb": 200, "ante": 200, "time": 35 },
-          { "level": 2, "sb": 200, "bb": 300, "ante": 300, "time": 35 },
-          { "level": 3, "sb": 200, "bb": 400, "ante": 400, "time": 35 },
-          { "level": 4, "sb": 300, "bb": 500, "ante": 500, "time": 35 },
-          { "break": true, "time": 10 },
-          { "level": 5, "sb": 300, "bb": 600, "ante": 600, "time": 35 },
-          { "level": 6, "sb": 400, "bb": 800, "ante": 800, "time": 35 },
-          { "level": 7, "sb": 500, "bb": 1000, "ante": 1000, "time": 35 },
-          { "level": 8, "sb": 600, "bb": 1200, "ante": 1200, "time": 35 },
-          { "break": true, "time": 10 },
-          { "level": 9, "sb": 1000, "bb": 1500, "ante": 1500, "time": 35 },
-          { "level": 10, "sb": 1000, "bb": 2000, "ante": 2000, "time": 35 },
-          { "level": 11, "sb": 1500, "bb": 2500, "ante": 2500, "time": 35 },
-          { "level": 12, "sb": 1500, "bb": 3000, "ante": 3000, "time": 35 },
-          { "break": true, "time": 10 },
-          { "level": 13, "sb": 2000, "bb": 4000, "ante": 4000, "time": 35 },
-          { "level": 14, "sb": 2500, "bb": 5000, "ante": 5000, "time": 35 },
-          { "level": 15, "sb": 3000, "bb": 6000, "ante": 6000, "time": 35 },
-          { "level": 16, "sb": 4000, "bb": 8000, "ante": 8000, "time": 35 },
-          { "level": 17, "sb": 5000, "bb": 10000, "ante": 10000, "time": 30 },
-          { "level": 18, "sb": 6000, "bb": 12000, "ante": 12000, "time": 30 },
-          { "level": 19, "sb": 10000, "bb": 15000, "ante": 15000, "time": 30 },
-          { "level": 20, "sb": 10000, "bb": 20000, "ante": 20000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 21, "sb": 15000, "bb": 25000, "ante": 25000, "time": 30 },
-          { "level": 22, "sb": 15000, "bb": 30000, "ante": 30000, "time": 30 },
-          { "level": 23, "sb": 20000, "bb": 40000, "ante": 40000, "time": 30 },
-          { "level": 24, "sb": 25000, "bb": 50000, "ante": 50000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 25, "sb": 30000, "bb": 60000, "ante": 60000, "time": 30 },
-          { "level": 26, "sb": 40000, "bb": 80000, "ante": 80000, "time": 30 },
-          { "level": 27, "sb": 50000, "bb": 100000, "ante": 100000, "time": 30 },
-          { "level": 28, "sb": 60000, "bb": 120000, "ante": 120000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 29, "sb": 75000, "bb": 150000, "ante": 150000, "time": 30 },
-          { "level": 30, "sb": 100000, "bb": 200000, "ante": 200000, "time": 30 },
-          { "level": 31, "sb": 125000, "bb": 250000, "ante": 250000, "time": 30 },
-          { "level": 32, "sb": 150000, "bb": 300000, "ante": 300000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 33, "sb": 200000, "bb": 400000, "ante": 400000, "time": 30 },
-          { "level": 34, "sb": 250000, "bb": 500000, "ante": 500000, "time": 30 },
-          { "level": 35, "sb": 300000, "bb": 600000, "ante": 600000, "time": 30 },
-          { "level": 36, "sb": 400000, "bb": 800000, "ante": 800000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 37, "sb": 500000, "bb": 1000000, "ante": 1000000, "time": 30 },
-          { "level": 38, "sb": 600000, "bb": 1200000, "ante": 1200000, "time": 30 },
-          { "level": 39, "sb": 1000000, "bb": 1500000, "ante": 1500000, "time": 30 },
-          { "level": 40, "sb": 1000000, "bb": 2000000, "ante": 2000000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 41, "sb": 1500000, "bb": 2500000, "ante": 2500000, "time": 30 },
-          { "level": 42, "sb": 1500000, "bb": 3000000, "ante": 3000000, "time": 30 },
-          { "level": 43, "sb": 2000000, "bb": 4000000, "ante": 4000000, "time": 30 },
-          { "level": 44, "sb": 2500000, "bb": 5000000, "ante": 5000000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 45, "sb": 3000000, "bb": 6000000, "ante": 6000000, "time": 30 },
-          { "level": 46, "sb": 4000000, "bb": 8000000, "ante": 8000000, "time": 30 },
-          { "level": 47, "sb": 5000000, "bb": 10000000, "ante": 10000000, "time": 30 },
-          { "level": 48, "sb": 6000000, "bb": 12000000, "ante": 12000000, "time": 30 },
-          { "level": 49, "sb": 10000000, "bb": 15000000, "ante": 15000000, "time": 30 },
-          { "level": 50, "sb": 10000000, "bb": 20000000, "ante": 20000000, "time": 30 }
+          {
+            "level": 1,
+            "sb": 100,
+            "bb": 200,
+            "ante": 200,
+            "time": 35
+          },
+          {
+            "level": 2,
+            "sb": 200,
+            "bb": 300,
+            "ante": 300,
+            "time": 35
+          },
+          {
+            "level": 3,
+            "sb": 200,
+            "bb": 400,
+            "ante": 400,
+            "time": 35
+          },
+          {
+            "level": 4,
+            "sb": 300,
+            "bb": 500,
+            "ante": 500,
+            "time": 35
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 5,
+            "sb": 300,
+            "bb": 600,
+            "ante": 600,
+            "time": 35
+          },
+          {
+            "level": 6,
+            "sb": 400,
+            "bb": 800,
+            "ante": 800,
+            "time": 35
+          },
+          {
+            "level": 7,
+            "sb": 500,
+            "bb": 1000,
+            "ante": 1000,
+            "time": 35
+          },
+          {
+            "level": 8,
+            "sb": 600,
+            "bb": 1200,
+            "ante": 1200,
+            "time": 35
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 9,
+            "sb": 1000,
+            "bb": 1500,
+            "ante": 1500,
+            "time": 35
+          },
+          {
+            "level": 10,
+            "sb": 1000,
+            "bb": 2000,
+            "ante": 2000,
+            "time": 35
+          },
+          {
+            "level": 11,
+            "sb": 1500,
+            "bb": 2500,
+            "ante": 2500,
+            "time": 35
+          },
+          {
+            "level": 12,
+            "sb": 1500,
+            "bb": 3000,
+            "ante": 3000,
+            "time": 35
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 13,
+            "sb": 2000,
+            "bb": 4000,
+            "ante": 4000,
+            "time": 35
+          },
+          {
+            "level": 14,
+            "sb": 2500,
+            "bb": 5000,
+            "ante": 5000,
+            "time": 35
+          },
+          {
+            "level": 15,
+            "sb": 3000,
+            "bb": 6000,
+            "ante": 6000,
+            "time": 35
+          },
+          {
+            "level": 16,
+            "sb": 4000,
+            "bb": 8000,
+            "ante": 8000,
+            "time": 35
+          },
+          {
+            "level": 17,
+            "sb": 5000,
+            "bb": 10000,
+            "ante": 10000,
+            "time": 30
+          },
+          {
+            "level": 18,
+            "sb": 6000,
+            "bb": 12000,
+            "ante": 12000,
+            "time": 30
+          },
+          {
+            "level": 19,
+            "sb": 10000,
+            "bb": 15000,
+            "ante": 15000,
+            "time": 30
+          },
+          {
+            "level": 20,
+            "sb": 10000,
+            "bb": 20000,
+            "ante": 20000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 21,
+            "sb": 15000,
+            "bb": 25000,
+            "ante": 25000,
+            "time": 30
+          },
+          {
+            "level": 22,
+            "sb": 15000,
+            "bb": 30000,
+            "ante": 30000,
+            "time": 30
+          },
+          {
+            "level": 23,
+            "sb": 20000,
+            "bb": 40000,
+            "ante": 40000,
+            "time": 30
+          },
+          {
+            "level": 24,
+            "sb": 25000,
+            "bb": 50000,
+            "ante": 50000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 25,
+            "sb": 30000,
+            "bb": 60000,
+            "ante": 60000,
+            "time": 30
+          },
+          {
+            "level": 26,
+            "sb": 40000,
+            "bb": 80000,
+            "ante": 80000,
+            "time": 30
+          },
+          {
+            "level": 27,
+            "sb": 50000,
+            "bb": 100000,
+            "ante": 100000,
+            "time": 30
+          },
+          {
+            "level": 28,
+            "sb": 60000,
+            "bb": 120000,
+            "ante": 120000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 29,
+            "sb": 75000,
+            "bb": 150000,
+            "ante": 150000,
+            "time": 30
+          },
+          {
+            "level": 30,
+            "sb": 100000,
+            "bb": 200000,
+            "ante": 200000,
+            "time": 30
+          },
+          {
+            "level": 31,
+            "sb": 125000,
+            "bb": 250000,
+            "ante": 250000,
+            "time": 30
+          },
+          {
+            "level": 32,
+            "sb": 150000,
+            "bb": 300000,
+            "ante": 300000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 33,
+            "sb": 200000,
+            "bb": 400000,
+            "ante": 400000,
+            "time": 30
+          },
+          {
+            "level": 34,
+            "sb": 250000,
+            "bb": 500000,
+            "ante": 500000,
+            "time": 30
+          },
+          {
+            "level": 35,
+            "sb": 300000,
+            "bb": 600000,
+            "ante": 600000,
+            "time": 30
+          },
+          {
+            "level": 36,
+            "sb": 400000,
+            "bb": 800000,
+            "ante": 800000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 37,
+            "sb": 500000,
+            "bb": 1000000,
+            "ante": 1000000,
+            "time": 30
+          },
+          {
+            "level": 38,
+            "sb": 600000,
+            "bb": 1200000,
+            "ante": 1200000,
+            "time": 30
+          },
+          {
+            "level": 39,
+            "sb": 1000000,
+            "bb": 1500000,
+            "ante": 1500000,
+            "time": 30
+          },
+          {
+            "level": 40,
+            "sb": 1000000,
+            "bb": 2000000,
+            "ante": 2000000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 41,
+            "sb": 1500000,
+            "bb": 2500000,
+            "ante": 2500000,
+            "time": 30
+          },
+          {
+            "level": 42,
+            "sb": 1500000,
+            "bb": 3000000,
+            "ante": 3000000,
+            "time": 30
+          },
+          {
+            "level": 43,
+            "sb": 2000000,
+            "bb": 4000000,
+            "ante": 4000000,
+            "time": 30
+          },
+          {
+            "level": 44,
+            "sb": 2500000,
+            "bb": 5000000,
+            "ante": 5000000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 45,
+            "sb": 3000000,
+            "bb": 6000000,
+            "ante": 6000000,
+            "time": 30
+          },
+          {
+            "level": 46,
+            "sb": 4000000,
+            "bb": 8000000,
+            "ante": 8000000,
+            "time": 30
+          },
+          {
+            "level": 47,
+            "sb": 5000000,
+            "bb": 10000000,
+            "ante": 10000000,
+            "time": 30
+          },
+          {
+            "level": 48,
+            "sb": 6000000,
+            "bb": 12000000,
+            "ante": 12000000,
+            "time": 30
+          },
+          {
+            "level": 49,
+            "sb": 10000000,
+            "bb": 15000000,
+            "ante": 15000000,
+            "time": 30
+          },
+          {
+            "level": 50,
+            "sb": 10000000,
+            "bb": 20000000,
+            "ante": 20000000,
+            "time": 30
+          }
         ]
       }
     },
     "#07": {
       "_source": "Owner 指示 2026-04-24: PLO Heads-up の Reg.Close は 19:45 (Lv 不明、Round 形式 event のため level 概念なし)",
-      "regClose": { "time": "19:45", "level": null }
+      "regClose": {
+        "time": "19:45",
+        "level": null
+      }
     },
     "#33": {
       "_source": "HP用レートFIX - Colossus.pdf",
       "_notesSource": "legacy.jopt_gf2026_data.json — Owner 2026-04-23 指摘: extract.json の #33 notes に #05 3on3 Tag Team ルール混入。legacy に canonical Colossus notes があるため override",
       "_startTimeNote": "Owner 2026-04-29 指摘: extract.json (2026-04-24 抽出) の Day 2 start_time=13:30 は誤り。正解は 14:00。Sheets master 訂正未反映の可能性あり。pdf-overrides で明示 override する",
       "regCloseByFlight": {
-        "Day 1A": { "time": "19:50", "level": 9 },
-        "Day 1B": { "time": "15:50", "level": 9 },
-        "Day 1C": { "time": "20:50", "level": 9 },
-        "Day 1D": { "time": "15:50", "level": 9 },
-        "Day 1E": { "time": "20:50", "level": 9 },
-        "Day 1F Turbo": { "time": "12:10", "level": 9 },
+        "Day 1A": {
+          "time": "19:50",
+          "level": 9
+        },
+        "Day 1B": {
+          "time": "15:50",
+          "level": 9
+        },
+        "Day 1C": {
+          "time": "20:50",
+          "level": 9
+        },
+        "Day 1D": {
+          "time": "15:50",
+          "level": 9
+        },
+        "Day 1E": {
+          "time": "20:50",
+          "level": 9
+        },
+        "Day 1F Turbo": {
+          "time": "12:10",
+          "level": 9
+        },
         "Day 2": null
       },
       "startTimeByFlight": {
@@ -200,238 +915,1081 @@
     "#46": {
       "_source": "HP用レートFIX - 10-Game（全体）.pdf",
       "regCloseByFlight": {
-        "Day 1A": { "time": "18:20", "level": 8 },
-        "Day 1B": { "time": "22:20", "level": 8 },
-        "Day 1C": { "time": "18:20", "level": 8 },
+        "Day 1A": {
+          "time": "18:20",
+          "level": 8
+        },
+        "Day 1B": {
+          "time": "22:20",
+          "level": 8
+        },
+        "Day 1C": {
+          "time": "18:20",
+          "level": 8
+        },
         "Day 2": null
       }
     },
     "#71": {
       "_source": "HP用レートFIX - Millions.pdf",
       "regCloseByFlight": {
-        "Day 1A": { "time": "18:20", "level": 10 },
-        "Day 1B": { "time": "16:20", "level": 10 },
-        "Day 1C": { "time": "16:20", "level": 10 },
-        "Day 1D": { "time": "20:20", "level": 10 },
-        "Day 1E Turbo": { "time": "23:30", "level": 10 },
+        "Day 1A": {
+          "time": "18:20",
+          "level": 10
+        },
+        "Day 1B": {
+          "time": "16:20",
+          "level": 10
+        },
+        "Day 1C": {
+          "time": "16:20",
+          "level": 10
+        },
+        "Day 1D": {
+          "time": "20:20",
+          "level": 10
+        },
+        "Day 1E Turbo": {
+          "time": "23:30",
+          "level": 10
+        },
         "Day 2": null
       },
       "structure": {
-        "columns": ["Level", "Blinds", "BB Ante", "Minutes"],
+        "columns": [
+          "Level",
+          "Blinds",
+          "BB Ante",
+          "Minutes"
+        ],
         "day1EndLevel": 15,
         "day2StartLevel": 16,
         "day2EndLevel": null,
         "lateRegCloseAfterLevel": 10,
         "levels": [
-          { "level": 1, "sb": 100, "bb": 200, "ante": 200, "time": 30 },
-          { "level": 2, "sb": 200, "bb": 300, "ante": 300, "time": 30 },
-          { "level": 3, "sb": 200, "bb": 400, "ante": 400, "time": 30 },
-          { "level": 4, "sb": 300, "bb": 500, "ante": 500, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 5, "sb": 300, "bb": 600, "ante": 600, "time": 30 },
-          { "level": 6, "sb": 400, "bb": 800, "ante": 800, "time": 30 },
-          { "level": 7, "sb": 500, "bb": 1000, "ante": 1000, "time": 30 },
-          { "level": 8, "sb": 600, "bb": 1200, "ante": 1200, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 9, "sb": 1000, "bb": 1500, "ante": 1500, "time": 30 },
-          { "level": 10, "sb": 1000, "bb": 2000, "ante": 2000, "time": 30 },
-          { "level": 11, "sb": 1500, "bb": 3000, "ante": 3000, "time": 30 },
-          { "level": 12, "sb": 2000, "bb": 4000, "ante": 4000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 13, "sb": 2500, "bb": 5000, "ante": 5000, "time": 30 },
-          { "level": 14, "sb": 3000, "bb": 6000, "ante": 6000, "time": 30 },
-          { "level": 15, "sb": 4000, "bb": 8000, "ante": 8000, "time": 30 },
-          { "level": 16, "sb": 5000, "bb": 10000, "ante": 10000, "time": 30 },
-          { "level": 17, "sb": 6000, "bb": 12000, "ante": 12000, "time": 30 },
-          { "level": 18, "sb": 10000, "bb": 15000, "ante": 15000, "time": 30 },
-          { "level": 19, "sb": 10000, "bb": 20000, "ante": 20000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 20, "sb": 15000, "bb": 30000, "ante": 30000, "time": 30 },
-          { "level": 21, "sb": 20000, "bb": 40000, "ante": 40000, "time": 30 },
-          { "level": 22, "sb": 25000, "bb": 50000, "ante": 50000, "time": 30 },
-          { "level": 23, "sb": 30000, "bb": 60000, "ante": 60000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 24, "sb": 40000, "bb": 80000, "ante": 80000, "time": 30 },
-          { "level": 25, "sb": 50000, "bb": 100000, "ante": 100000, "time": 30 },
-          { "level": 26, "sb": 60000, "bb": 120000, "ante": 120000, "time": 30 },
-          { "level": 27, "sb": 75000, "bb": 150000, "ante": 150000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 28, "sb": 100000, "bb": 200000, "ante": 200000, "time": 30 },
-          { "level": 29, "sb": 150000, "bb": 300000, "ante": 300000, "time": 30 },
-          { "level": 30, "sb": 200000, "bb": 400000, "ante": 400000, "time": 30 },
-          { "level": 31, "sb": 250000, "bb": 500000, "ante": 500000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 32, "sb": 300000, "bb": 600000, "ante": 600000, "time": 30 },
-          { "level": 33, "sb": 400000, "bb": 800000, "ante": 800000, "time": 30 },
-          { "level": 34, "sb": 500000, "bb": 1000000, "ante": 1000000, "time": 30 },
-          { "level": 35, "sb": 600000, "bb": 1200000, "ante": 1200000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 36, "sb": 1000000, "bb": 1500000, "ante": 1500000, "time": 30 },
-          { "level": 37, "sb": 1000000, "bb": 2000000, "ante": 2000000, "time": 30 },
-          { "level": 38, "sb": 1500000, "bb": 3000000, "ante": 3000000, "time": 30 },
-          { "level": 39, "sb": 2000000, "bb": 4000000, "ante": 4000000, "time": 30 },
-          { "level": 40, "sb": 2500000, "bb": 5000000, "ante": 5000000, "time": 30 },
-          { "level": 41, "sb": 3000000, "bb": 6000000, "ante": 6000000, "time": 30 },
-          { "level": 42, "sb": 4000000, "bb": 8000000, "ante": 8000000, "time": 30 },
-          { "level": 43, "sb": 5000000, "bb": 10000000, "ante": 10000000, "time": 30 },
-          { "level": 44, "sb": 6000000, "bb": 12000000, "ante": 12000000, "time": 30 },
-          { "level": 45, "sb": 10000000, "bb": 15000000, "ante": 15000000, "time": 30 },
-          { "level": 46, "sb": 10000000, "bb": 20000000, "ante": 20000000, "time": 30 }
+          {
+            "level": 1,
+            "sb": 100,
+            "bb": 200,
+            "ante": 200,
+            "time": 30
+          },
+          {
+            "level": 2,
+            "sb": 200,
+            "bb": 300,
+            "ante": 300,
+            "time": 30
+          },
+          {
+            "level": 3,
+            "sb": 200,
+            "bb": 400,
+            "ante": 400,
+            "time": 30
+          },
+          {
+            "level": 4,
+            "sb": 300,
+            "bb": 500,
+            "ante": 500,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 5,
+            "sb": 300,
+            "bb": 600,
+            "ante": 600,
+            "time": 30
+          },
+          {
+            "level": 6,
+            "sb": 400,
+            "bb": 800,
+            "ante": 800,
+            "time": 30
+          },
+          {
+            "level": 7,
+            "sb": 500,
+            "bb": 1000,
+            "ante": 1000,
+            "time": 30
+          },
+          {
+            "level": 8,
+            "sb": 600,
+            "bb": 1200,
+            "ante": 1200,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 9,
+            "sb": 1000,
+            "bb": 1500,
+            "ante": 1500,
+            "time": 30
+          },
+          {
+            "level": 10,
+            "sb": 1000,
+            "bb": 2000,
+            "ante": 2000,
+            "time": 30
+          },
+          {
+            "level": 11,
+            "sb": 1500,
+            "bb": 3000,
+            "ante": 3000,
+            "time": 30
+          },
+          {
+            "level": 12,
+            "sb": 2000,
+            "bb": 4000,
+            "ante": 4000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 13,
+            "sb": 2500,
+            "bb": 5000,
+            "ante": 5000,
+            "time": 30
+          },
+          {
+            "level": 14,
+            "sb": 3000,
+            "bb": 6000,
+            "ante": 6000,
+            "time": 30
+          },
+          {
+            "level": 15,
+            "sb": 4000,
+            "bb": 8000,
+            "ante": 8000,
+            "time": 30
+          },
+          {
+            "level": 16,
+            "sb": 5000,
+            "bb": 10000,
+            "ante": 10000,
+            "time": 30
+          },
+          {
+            "level": 17,
+            "sb": 6000,
+            "bb": 12000,
+            "ante": 12000,
+            "time": 30
+          },
+          {
+            "level": 18,
+            "sb": 10000,
+            "bb": 15000,
+            "ante": 15000,
+            "time": 30
+          },
+          {
+            "level": 19,
+            "sb": 10000,
+            "bb": 20000,
+            "ante": 20000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 20,
+            "sb": 15000,
+            "bb": 30000,
+            "ante": 30000,
+            "time": 30
+          },
+          {
+            "level": 21,
+            "sb": 20000,
+            "bb": 40000,
+            "ante": 40000,
+            "time": 30
+          },
+          {
+            "level": 22,
+            "sb": 25000,
+            "bb": 50000,
+            "ante": 50000,
+            "time": 30
+          },
+          {
+            "level": 23,
+            "sb": 30000,
+            "bb": 60000,
+            "ante": 60000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 24,
+            "sb": 40000,
+            "bb": 80000,
+            "ante": 80000,
+            "time": 30
+          },
+          {
+            "level": 25,
+            "sb": 50000,
+            "bb": 100000,
+            "ante": 100000,
+            "time": 30
+          },
+          {
+            "level": 26,
+            "sb": 60000,
+            "bb": 120000,
+            "ante": 120000,
+            "time": 30
+          },
+          {
+            "level": 27,
+            "sb": 75000,
+            "bb": 150000,
+            "ante": 150000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 28,
+            "sb": 100000,
+            "bb": 200000,
+            "ante": 200000,
+            "time": 30
+          },
+          {
+            "level": 29,
+            "sb": 150000,
+            "bb": 300000,
+            "ante": 300000,
+            "time": 30
+          },
+          {
+            "level": 30,
+            "sb": 200000,
+            "bb": 400000,
+            "ante": 400000,
+            "time": 30
+          },
+          {
+            "level": 31,
+            "sb": 250000,
+            "bb": 500000,
+            "ante": 500000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 32,
+            "sb": 300000,
+            "bb": 600000,
+            "ante": 600000,
+            "time": 30
+          },
+          {
+            "level": 33,
+            "sb": 400000,
+            "bb": 800000,
+            "ante": 800000,
+            "time": 30
+          },
+          {
+            "level": 34,
+            "sb": 500000,
+            "bb": 1000000,
+            "ante": 1000000,
+            "time": 30
+          },
+          {
+            "level": 35,
+            "sb": 600000,
+            "bb": 1200000,
+            "ante": 1200000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 36,
+            "sb": 1000000,
+            "bb": 1500000,
+            "ante": 1500000,
+            "time": 30
+          },
+          {
+            "level": 37,
+            "sb": 1000000,
+            "bb": 2000000,
+            "ante": 2000000,
+            "time": 30
+          },
+          {
+            "level": 38,
+            "sb": 1500000,
+            "bb": 3000000,
+            "ante": 3000000,
+            "time": 30
+          },
+          {
+            "level": 39,
+            "sb": 2000000,
+            "bb": 4000000,
+            "ante": 4000000,
+            "time": 30
+          },
+          {
+            "level": 40,
+            "sb": 2500000,
+            "bb": 5000000,
+            "ante": 5000000,
+            "time": 30
+          },
+          {
+            "level": 41,
+            "sb": 3000000,
+            "bb": 6000000,
+            "ante": 6000000,
+            "time": 30
+          },
+          {
+            "level": 42,
+            "sb": 4000000,
+            "bb": 8000000,
+            "ante": 8000000,
+            "time": 30
+          },
+          {
+            "level": 43,
+            "sb": 5000000,
+            "bb": 10000000,
+            "ante": 10000000,
+            "time": 30
+          },
+          {
+            "level": 44,
+            "sb": 6000000,
+            "bb": 12000000,
+            "ante": 12000000,
+            "time": 30
+          },
+          {
+            "level": 45,
+            "sb": 10000000,
+            "bb": 15000000,
+            "ante": 15000000,
+            "time": 30
+          },
+          {
+            "level": 46,
+            "sb": 10000000,
+            "bb": 20000000,
+            "ante": 20000000,
+            "time": 30
+          }
         ]
       }
     },
     "#147": {
       "_source": "HP用レートFIX - PLO CS.pdf",
-      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 1A (5/4 13:00, 進行中) は startTime 不変 + Reg.Close +50min. Day 1B (5/4 18:00→19:00) / Day 1C (5/5 13:00→14:00) は startTime + Reg.Close +1h.",
+      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 1A (5/4 13:00, 進行中) は startTime 不変 + Reg.Close +50min ごろ表記. Day 1B (5/4 18:00→19:00) は startTime + Reg.Close +1h. Day 1C (5/5 dayLabel) は影響なし",
       "regCloseByFlight": {
-        "Day 1A": { "time": "18:40", "level": 9, "approx": true },
-        "Day 1B": { "time": "23:50", "level": 9 },
-        "Day 1C": { "time": "18:50", "level": 9 },
+        "Day 1A": {
+          "time": "18:40",
+          "level": 9,
+          "approx": true
+        },
+        "Day 1B": {
+          "time": "23:50",
+          "level": 9
+        },
         "Day 2": null
       },
       "startTimeByFlight": {
-        "Day 1B": "19:00",
-        "Day 1C": "14:00"
+        "Day 1B": "19:00"
       },
       "delayNoticeByFlight": {
         "Day 1A": "諸事情により受付締切時刻のみ変更",
-        "Day 1B": "諸事情によりスケジュール変更",
-        "Day 1C": "諸事情によりスケジュール変更"
+        "Day 1B": "諸事情によりスケジュール変更"
       },
       "structure": {
-        "columns": ["Level", "Blinds", "Minutes"],
+        "columns": [
+          "Level",
+          "Blinds",
+          "Minutes"
+        ],
         "day1EndLevel": 16,
         "day2StartLevel": 17,
         "day2EndLevel": null,
         "lateRegCloseAfterLevel": 9,
         "levels": [
-          { "level": 1, "sb": 100, "bb": 200, "time": 30 },
-          { "level": 2, "sb": 200, "bb": 300, "time": 30 },
-          { "level": 3, "sb": 200, "bb": 400, "time": 30 },
-          { "level": 4, "sb": 300, "bb": 500, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 5, "sb": 300, "bb": 600, "time": 30 },
-          { "level": 6, "sb": 400, "bb": 800, "time": 30 },
-          { "level": 7, "sb": 500, "bb": 1000, "time": 30 },
-          { "level": 8, "sb": 600, "bb": 1200, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 9, "sb": 1000, "bb": 1500, "time": 30 },
-          { "level": 10, "sb": 1000, "bb": 2000, "time": 30 },
-          { "level": 11, "sb": 1500, "bb": 2500, "time": 30 },
-          { "level": 12, "sb": 1500, "bb": 3000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 13, "sb": 2000, "bb": 4000, "time": 30 },
-          { "level": 14, "sb": 2500, "bb": 5000, "time": 30 },
-          { "level": 15, "sb": 3000, "bb": 6000, "time": 30 },
-          { "level": 16, "sb": 4000, "bb": 8000, "time": 30 },
-          { "level": 17, "sb": 5000, "bb": 10000, "time": 30 },
-          { "level": 18, "sb": 6000, "bb": 12000, "time": 30 },
-          { "level": 19, "sb": 10000, "bb": 15000, "time": 30 },
-          { "level": 20, "sb": 10000, "bb": 20000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 21, "sb": 15000, "bb": 25000, "time": 30 },
-          { "level": 22, "sb": 15000, "bb": 30000, "time": 30 },
-          { "level": 23, "sb": 20000, "bb": 40000, "time": 30 },
-          { "level": 24, "sb": 25000, "bb": 50000, "time": 30 },
-          { "level": 25, "sb": 30000, "bb": 60000, "time": 30 },
-          { "level": 26, "sb": 40000, "bb": 80000, "time": 30 },
-          { "level": 27, "sb": 50000, "bb": 100000, "time": 30 },
-          { "level": 28, "sb": 60000, "bb": 120000, "time": 30 },
-          { "level": 29, "sb": 75000, "bb": 150000, "time": 30 },
-          { "level": 30, "sb": 100000, "bb": 200000, "time": 30 },
-          { "level": 31, "sb": 125000, "bb": 250000, "time": 30 },
-          { "level": 32, "sb": 150000, "bb": 300000, "time": 30 },
-          { "level": 33, "sb": 200000, "bb": 400000, "time": 30 },
-          { "level": 34, "sb": 250000, "bb": 500000, "time": 30 },
-          { "level": 35, "sb": 300000, "bb": 600000, "time": 30 },
-          { "level": 36, "sb": 400000, "bb": 800000, "time": 30 },
-          { "level": 37, "sb": 500000, "bb": 1000000, "time": 30 }
+          {
+            "level": 1,
+            "sb": 100,
+            "bb": 200,
+            "time": 30
+          },
+          {
+            "level": 2,
+            "sb": 200,
+            "bb": 300,
+            "time": 30
+          },
+          {
+            "level": 3,
+            "sb": 200,
+            "bb": 400,
+            "time": 30
+          },
+          {
+            "level": 4,
+            "sb": 300,
+            "bb": 500,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 5,
+            "sb": 300,
+            "bb": 600,
+            "time": 30
+          },
+          {
+            "level": 6,
+            "sb": 400,
+            "bb": 800,
+            "time": 30
+          },
+          {
+            "level": 7,
+            "sb": 500,
+            "bb": 1000,
+            "time": 30
+          },
+          {
+            "level": 8,
+            "sb": 600,
+            "bb": 1200,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 9,
+            "sb": 1000,
+            "bb": 1500,
+            "time": 30
+          },
+          {
+            "level": 10,
+            "sb": 1000,
+            "bb": 2000,
+            "time": 30
+          },
+          {
+            "level": 11,
+            "sb": 1500,
+            "bb": 2500,
+            "time": 30
+          },
+          {
+            "level": 12,
+            "sb": 1500,
+            "bb": 3000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 13,
+            "sb": 2000,
+            "bb": 4000,
+            "time": 30
+          },
+          {
+            "level": 14,
+            "sb": 2500,
+            "bb": 5000,
+            "time": 30
+          },
+          {
+            "level": 15,
+            "sb": 3000,
+            "bb": 6000,
+            "time": 30
+          },
+          {
+            "level": 16,
+            "sb": 4000,
+            "bb": 8000,
+            "time": 30
+          },
+          {
+            "level": 17,
+            "sb": 5000,
+            "bb": 10000,
+            "time": 30
+          },
+          {
+            "level": 18,
+            "sb": 6000,
+            "bb": 12000,
+            "time": 30
+          },
+          {
+            "level": 19,
+            "sb": 10000,
+            "bb": 15000,
+            "time": 30
+          },
+          {
+            "level": 20,
+            "sb": 10000,
+            "bb": 20000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 21,
+            "sb": 15000,
+            "bb": 25000,
+            "time": 30
+          },
+          {
+            "level": 22,
+            "sb": 15000,
+            "bb": 30000,
+            "time": 30
+          },
+          {
+            "level": 23,
+            "sb": 20000,
+            "bb": 40000,
+            "time": 30
+          },
+          {
+            "level": 24,
+            "sb": 25000,
+            "bb": 50000,
+            "time": 30
+          },
+          {
+            "level": 25,
+            "sb": 30000,
+            "bb": 60000,
+            "time": 30
+          },
+          {
+            "level": 26,
+            "sb": 40000,
+            "bb": 80000,
+            "time": 30
+          },
+          {
+            "level": 27,
+            "sb": 50000,
+            "bb": 100000,
+            "time": 30
+          },
+          {
+            "level": 28,
+            "sb": 60000,
+            "bb": 120000,
+            "time": 30
+          },
+          {
+            "level": 29,
+            "sb": 75000,
+            "bb": 150000,
+            "time": 30
+          },
+          {
+            "level": 30,
+            "sb": 100000,
+            "bb": 200000,
+            "time": 30
+          },
+          {
+            "level": 31,
+            "sb": 125000,
+            "bb": 250000,
+            "time": 30
+          },
+          {
+            "level": 32,
+            "sb": 150000,
+            "bb": 300000,
+            "time": 30
+          },
+          {
+            "level": 33,
+            "sb": 200000,
+            "bb": 400000,
+            "time": 30
+          },
+          {
+            "level": 34,
+            "sb": 250000,
+            "bb": 500000,
+            "time": 30
+          },
+          {
+            "level": 35,
+            "sb": 300000,
+            "bb": 600000,
+            "time": 30
+          },
+          {
+            "level": 36,
+            "sb": 400000,
+            "bb": 800000,
+            "time": 30
+          },
+          {
+            "level": 37,
+            "sb": 500000,
+            "bb": 1000000,
+            "time": 30
+          }
         ]
       }
     },
     "#145": {
       "_source": "Players Guide _ JOPT 2026 Grand Final - PPC.pdf",
       "_structureSource": "Owner 提示 PDF 2026-05-04: extract.json #145 (no=190) は structure 空、jopt_gf2026_data.json snapshot は Lv.4/8/12 抜け + Lv.6 後に誤 BREAK。PDF 正本で全 46 レベル + Normal break (Lv.4/8/12/20/24/28/32/36 後) + Turbo break (turboBreakAfterLevels [6, 12]) を override",
-      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 1A (5/4 11:00, 進行中) は startTime 不変 + Reg.Close +50min. Day 1B/C/D Turbo は startTime + Reg.Close +1h.",
+      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 1A (5/4 11:00, 進行中) は startTime 不変 + Reg.Close +50min ごろ表記. Day 1B (5/4 17:00→18:00) は startTime + Reg.Close +1h. Day 1C/Day 1D Turbo (5/5 dayLabel) は影響なし",
       "regCloseByFlight": {
-        "Day 1A": { "time": "18:00", "level": 10, "approx": true },
-        "Day 1B": { "time": "00:10", "level": 10 },
-        "Day 1C": { "time": "18:10", "level": 10 },
-        "Day 1D Turbo": { "time": "21:30", "level": 10 }
+        "Day 1A": {
+          "time": "18:00",
+          "level": 10,
+          "approx": true
+        },
+        "Day 1B": {
+          "time": "00:10",
+          "level": 10
+        }
       },
       "startTimeByFlight": {
-        "Day 1B": "18:00",
-        "Day 1C": "12:00",
-        "Day 1D Turbo": "18:00"
+        "Day 1B": "18:00"
       },
       "delayNoticeByFlight": {
         "Day 1A": "諸事情により受付締切時刻のみ変更",
-        "Day 1B": "諸事情によりスケジュール変更",
-        "Day 1C": "諸事情によりスケジュール変更",
-        "Day 1D Turbo": "諸事情によりスケジュール変更"
+        "Day 1B": "諸事情によりスケジュール変更"
       },
       "structure": {
-        "columns": ["Level", "Blinds", "BB Ante", "Minutes"],
+        "columns": [
+          "Level",
+          "Blinds",
+          "BB Ante",
+          "Minutes"
+        ],
         "lateRegCloseAfterLevel": 10,
         "day1EndLevel": 16,
         "day2StartLevel": 17,
         "day2EndLevel": null,
-        "turboBreakAfterLevels": [6, 12],
+        "turboBreakAfterLevels": [
+          6,
+          12
+        ],
         "levels": [
-          { "level": 1, "sb": 100, "bb": 200, "ante": 200, "time": 35 },
-          { "level": 2, "sb": 200, "bb": 300, "ante": 300, "time": 35 },
-          { "level": 3, "sb": 200, "bb": 400, "ante": 400, "time": 35 },
-          { "level": 4, "sb": 300, "bb": 500, "ante": 500, "time": 35 },
-          { "break": true, "time": 10 },
-          { "level": 5, "sb": 300, "bb": 600, "ante": 600, "time": 35 },
-          { "level": 6, "sb": 400, "bb": 800, "ante": 800, "time": 35 },
-          { "level": 7, "sb": 500, "bb": 1000, "ante": 1000, "time": 35 },
-          { "level": 8, "sb": 600, "bb": 1200, "ante": 1200, "time": 35 },
-          { "break": true, "time": 10 },
-          { "level": 9, "sb": 1000, "bb": 1500, "ante": 1500, "time": 35 },
-          { "level": 10, "sb": 1000, "bb": 2000, "ante": 2000, "time": 35 },
-          { "level": 11, "sb": 1500, "bb": 3000, "ante": 3000, "time": 35 },
-          { "level": 12, "sb": 2000, "bb": 4000, "ante": 4000, "time": 35 },
-          { "break": true, "time": 10 },
-          { "level": 13, "sb": 2500, "bb": 5000, "ante": 5000, "time": 35 },
-          { "level": 14, "sb": 3000, "bb": 6000, "ante": 6000, "time": 35 },
-          { "level": 15, "sb": 4000, "bb": 8000, "ante": 8000, "time": 35 },
-          { "level": 16, "sb": 5000, "bb": 10000, "ante": 10000, "time": 35 },
-          { "level": 17, "sb": 6000, "bb": 12000, "ante": 12000, "time": 30 },
-          { "level": 18, "sb": 10000, "bb": 15000, "ante": 15000, "time": 30 },
-          { "level": 19, "sb": 10000, "bb": 20000, "ante": 20000, "time": 30 },
-          { "level": 20, "sb": 15000, "bb": 30000, "ante": 30000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 21, "sb": 20000, "bb": 40000, "ante": 40000, "time": 30 },
-          { "level": 22, "sb": 25000, "bb": 50000, "ante": 50000, "time": 30 },
-          { "level": 23, "sb": 30000, "bb": 60000, "ante": 60000, "time": 30 },
-          { "level": 24, "sb": 40000, "bb": 80000, "ante": 80000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 25, "sb": 50000, "bb": 100000, "ante": 100000, "time": 30 },
-          { "level": 26, "sb": 60000, "bb": 120000, "ante": 120000, "time": 30 },
-          { "level": 27, "sb": 75000, "bb": 150000, "ante": 150000, "time": 30 },
-          { "level": 28, "sb": 100000, "bb": 200000, "ante": 200000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 29, "sb": 150000, "bb": 300000, "ante": 300000, "time": 30 },
-          { "level": 30, "sb": 200000, "bb": 400000, "ante": 400000, "time": 30 },
-          { "level": 31, "sb": 250000, "bb": 500000, "ante": 500000, "time": 30 },
-          { "level": 32, "sb": 300000, "bb": 600000, "ante": 600000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 33, "sb": 400000, "bb": 800000, "ante": 800000, "time": 30 },
-          { "level": 34, "sb": 500000, "bb": 1000000, "ante": 1000000, "time": 30 },
-          { "level": 35, "sb": 600000, "bb": 1200000, "ante": 1200000, "time": 30 },
-          { "level": 36, "sb": 1000000, "bb": 1500000, "ante": 1500000, "time": 30 },
-          { "break": true, "time": 10 },
-          { "level": 37, "sb": 1000000, "bb": 2000000, "ante": 2000000, "time": 30 },
-          { "level": 38, "sb": 1500000, "bb": 3000000, "ante": 3000000, "time": 30 },
-          { "level": 39, "sb": 2000000, "bb": 4000000, "ante": 4000000, "time": 30 },
-          { "level": 40, "sb": 2500000, "bb": 5000000, "ante": 5000000, "time": 30 },
-          { "level": 41, "sb": 3000000, "bb": 6000000, "ante": 6000000, "time": 30 },
-          { "level": 42, "sb": 4000000, "bb": 8000000, "ante": 8000000, "time": 30 },
-          { "level": 43, "sb": 5000000, "bb": 10000000, "ante": 10000000, "time": 30 },
-          { "level": 44, "sb": 6000000, "bb": 12000000, "ante": 12000000, "time": 30 },
-          { "level": 45, "sb": 10000000, "bb": 15000000, "ante": 15000000, "time": 30 },
-          { "level": 46, "sb": 10000000, "bb": 20000000, "ante": 20000000, "time": 30 }
+          {
+            "level": 1,
+            "sb": 100,
+            "bb": 200,
+            "ante": 200,
+            "time": 35
+          },
+          {
+            "level": 2,
+            "sb": 200,
+            "bb": 300,
+            "ante": 300,
+            "time": 35
+          },
+          {
+            "level": 3,
+            "sb": 200,
+            "bb": 400,
+            "ante": 400,
+            "time": 35
+          },
+          {
+            "level": 4,
+            "sb": 300,
+            "bb": 500,
+            "ante": 500,
+            "time": 35
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 5,
+            "sb": 300,
+            "bb": 600,
+            "ante": 600,
+            "time": 35
+          },
+          {
+            "level": 6,
+            "sb": 400,
+            "bb": 800,
+            "ante": 800,
+            "time": 35
+          },
+          {
+            "level": 7,
+            "sb": 500,
+            "bb": 1000,
+            "ante": 1000,
+            "time": 35
+          },
+          {
+            "level": 8,
+            "sb": 600,
+            "bb": 1200,
+            "ante": 1200,
+            "time": 35
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 9,
+            "sb": 1000,
+            "bb": 1500,
+            "ante": 1500,
+            "time": 35
+          },
+          {
+            "level": 10,
+            "sb": 1000,
+            "bb": 2000,
+            "ante": 2000,
+            "time": 35
+          },
+          {
+            "level": 11,
+            "sb": 1500,
+            "bb": 3000,
+            "ante": 3000,
+            "time": 35
+          },
+          {
+            "level": 12,
+            "sb": 2000,
+            "bb": 4000,
+            "ante": 4000,
+            "time": 35
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 13,
+            "sb": 2500,
+            "bb": 5000,
+            "ante": 5000,
+            "time": 35
+          },
+          {
+            "level": 14,
+            "sb": 3000,
+            "bb": 6000,
+            "ante": 6000,
+            "time": 35
+          },
+          {
+            "level": 15,
+            "sb": 4000,
+            "bb": 8000,
+            "ante": 8000,
+            "time": 35
+          },
+          {
+            "level": 16,
+            "sb": 5000,
+            "bb": 10000,
+            "ante": 10000,
+            "time": 35
+          },
+          {
+            "level": 17,
+            "sb": 6000,
+            "bb": 12000,
+            "ante": 12000,
+            "time": 30
+          },
+          {
+            "level": 18,
+            "sb": 10000,
+            "bb": 15000,
+            "ante": 15000,
+            "time": 30
+          },
+          {
+            "level": 19,
+            "sb": 10000,
+            "bb": 20000,
+            "ante": 20000,
+            "time": 30
+          },
+          {
+            "level": 20,
+            "sb": 15000,
+            "bb": 30000,
+            "ante": 30000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 21,
+            "sb": 20000,
+            "bb": 40000,
+            "ante": 40000,
+            "time": 30
+          },
+          {
+            "level": 22,
+            "sb": 25000,
+            "bb": 50000,
+            "ante": 50000,
+            "time": 30
+          },
+          {
+            "level": 23,
+            "sb": 30000,
+            "bb": 60000,
+            "ante": 60000,
+            "time": 30
+          },
+          {
+            "level": 24,
+            "sb": 40000,
+            "bb": 80000,
+            "ante": 80000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 25,
+            "sb": 50000,
+            "bb": 100000,
+            "ante": 100000,
+            "time": 30
+          },
+          {
+            "level": 26,
+            "sb": 60000,
+            "bb": 120000,
+            "ante": 120000,
+            "time": 30
+          },
+          {
+            "level": 27,
+            "sb": 75000,
+            "bb": 150000,
+            "ante": 150000,
+            "time": 30
+          },
+          {
+            "level": 28,
+            "sb": 100000,
+            "bb": 200000,
+            "ante": 200000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 29,
+            "sb": 150000,
+            "bb": 300000,
+            "ante": 300000,
+            "time": 30
+          },
+          {
+            "level": 30,
+            "sb": 200000,
+            "bb": 400000,
+            "ante": 400000,
+            "time": 30
+          },
+          {
+            "level": 31,
+            "sb": 250000,
+            "bb": 500000,
+            "ante": 500000,
+            "time": 30
+          },
+          {
+            "level": 32,
+            "sb": 300000,
+            "bb": 600000,
+            "ante": 600000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 33,
+            "sb": 400000,
+            "bb": 800000,
+            "ante": 800000,
+            "time": 30
+          },
+          {
+            "level": 34,
+            "sb": 500000,
+            "bb": 1000000,
+            "ante": 1000000,
+            "time": 30
+          },
+          {
+            "level": 35,
+            "sb": 600000,
+            "bb": 1200000,
+            "ante": 1200000,
+            "time": 30
+          },
+          {
+            "level": 36,
+            "sb": 1000000,
+            "bb": 1500000,
+            "ante": 1500000,
+            "time": 30
+          },
+          {
+            "break": true,
+            "time": 10
+          },
+          {
+            "level": 37,
+            "sb": 1000000,
+            "bb": 2000000,
+            "ante": 2000000,
+            "time": 30
+          },
+          {
+            "level": 38,
+            "sb": 1500000,
+            "bb": 3000000,
+            "ante": 3000000,
+            "time": 30
+          },
+          {
+            "level": 39,
+            "sb": 2000000,
+            "bb": 4000000,
+            "ante": 4000000,
+            "time": 30
+          },
+          {
+            "level": 40,
+            "sb": 2500000,
+            "bb": 5000000,
+            "ante": 5000000,
+            "time": 30
+          },
+          {
+            "level": 41,
+            "sb": 3000000,
+            "bb": 6000000,
+            "ante": 6000000,
+            "time": 30
+          },
+          {
+            "level": 42,
+            "sb": 4000000,
+            "bb": 8000000,
+            "ante": 8000000,
+            "time": 30
+          },
+          {
+            "level": 43,
+            "sb": 5000000,
+            "bb": 10000000,
+            "ante": 10000000,
+            "time": 30
+          },
+          {
+            "level": 44,
+            "sb": 6000000,
+            "bb": 12000000,
+            "ante": 12000000,
+            "time": 30
+          },
+          {
+            "level": 45,
+            "sb": 10000000,
+            "bb": 15000000,
+            "ante": 15000000,
+            "time": 30
+          },
+          {
+            "level": 46,
+            "sb": 10000000,
+            "bb": 20000000,
+            "ante": 20000000,
+            "time": 30
+          }
         ]
       }
     },
@@ -451,7 +2009,10 @@
       "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
       "_delayNote": "NLH Optimus: 元 Start 20:00 / Reg.Close 23:30 (Lv.10) → 新 Start 21:00 / Reg.Close 00:30 (Lv.10)",
       "startTime": "21:00",
-      "regClose": { "time": "00:30", "level": 10 },
+      "regClose": {
+        "time": "00:30",
+        "level": 10
+      },
       "delayNotice": "諸事情によりスケジュール変更"
     },
     "#177": {
@@ -478,9 +2039,18 @@
       "sponsorship": {
         "label": "Sponsorship",
         "items": [
-          { "rank": "1位", "description": "VITAS ギフトセット1年分" },
-          { "rank": "2位", "description": "VITAS ギフトセット" },
-          { "rank": "3位", "description": "VITAS ギフトセット" }
+          {
+            "rank": "1位",
+            "description": "VITAS ギフトセット1年分"
+          },
+          {
+            "rank": "2位",
+            "description": "VITAS ギフトセット"
+          },
+          {
+            "rank": "3位",
+            "description": "VITAS ギフトセット"
+          }
         ]
       }
     },
@@ -490,9 +2060,18 @@
       "sponsorship": {
         "label": "Sponsorship",
         "items": [
-          { "rank": "1st", "description": "Whopper 1年分 + コラボベースボールシャツ + コラボブランケット + BKデック" },
-          { "rank": "2nd", "description": "Whopper 半年分 + コラボベースボールシャツ + コラボブランケット + BKデック" },
-          { "rank": "3rd", "description": "Whopper 3ヶ月分 + コラボベースボールシャツ + コラボブランケット + BKデック" }
+          {
+            "rank": "1st",
+            "description": "Whopper 1年分 + コラボベースボールシャツ + コラボブランケット + BKデック"
+          },
+          {
+            "rank": "2nd",
+            "description": "Whopper 半年分 + コラボベースボールシャツ + コラボブランケット + BKデック"
+          },
+          {
+            "rank": "3rd",
+            "description": "Whopper 3ヶ月分 + コラボベースボールシャツ + コラボブランケット + BKデック"
+          }
         ]
       }
     },
@@ -501,7 +2080,10 @@
       "_note": "Reg.Open 21:45 / Start 22:00 / Late Reg 00:50 (Lv.8). 元: Start 21:00 / Reg.Close 23:50",
       "regOpen": "21:45",
       "startTime": "22:00",
-      "regClose": { "time": "00:50", "level": 8 },
+      "regClose": {
+        "time": "00:50",
+        "level": 8
+      },
       "delayNotice": "ディレイにより開始時間変更"
     },
     "#112": {
@@ -509,7 +2091,10 @@
       "_note": "Reg.Open 00:15 / Start 00:30 / Late Reg 02:40 (Lv.6). 元: Start 00:00 / Reg.Close 02:10",
       "regOpen": "00:15",
       "startTime": "00:30",
-      "regClose": { "time": "02:40", "level": 6 },
+      "regClose": {
+        "time": "02:40",
+        "level": 6
+      },
       "delayNotice": "ディレイにより開始時間変更"
     },
     "#114": {
@@ -517,7 +2102,10 @@
       "_note": "Reg.Open 02:00 / Start 02:30 / Late Reg 03:50 (Lv.7). 元: Start 02:00 / Reg.Close 03:20",
       "regOpen": "02:00",
       "startTime": "02:30",
-      "regClose": { "time": "03:50", "level": 7 },
+      "regClose": {
+        "time": "03:50",
+        "level": 7
+      },
       "delayNotice": "ディレイにより開始時間変更"
     },
     "#130": {
@@ -526,16 +2114,28 @@
       "sponsorship": {
         "label": "Sponsorship",
         "items": [
-          { "rank": "1位", "description": "BULK HOMME SET 1年分" },
-          { "rank": "2位", "description": "BULK HOMME SET 6ヶ月分" },
-          { "rank": "3位", "description": "BULK HOMME SET 3ヶ月分" }
+          {
+            "rank": "1位",
+            "description": "BULK HOMME SET 1年分"
+          },
+          {
+            "rank": "2位",
+            "description": "BULK HOMME SET 6ヶ月分"
+          },
+          {
+            "rank": "3位",
+            "description": "BULK HOMME SET 3ヶ月分"
+          }
         ]
       }
     },
     "#133": {
       "_source": "Owner 指示 2026-05-03: NLH Heads-up Championship Reg.Close 14:00 + 当日枠抽選注記",
       "_note": "extract.json は reg_close_time/level 空 + entry_close_time 14:45 (32 Entry Cap) のみで UI に Reg.Close 欄が空表示。Owner 指定 14:00 で override (Lv 不指定) + 当日枠注記を notes で追加。上流 Sheets master 訂正依頼は別途",
-      "regClose": { "time": "14:00", "level": null },
+      "regClose": {
+        "time": "14:00",
+        "level": null
+      },
       "notes": [
         "・当日枠は13:50-14:00に整理券配布し、14時に抽選を行います。"
       ]
@@ -545,7 +2145,10 @@
       "_note": "5/3 運営日 Deepstack。Reg.Open 21:30 / Start 22:00 / Late Reg 00:50 (Lv.8). Sheets master: Start 21:00 / Reg.Close 23:50",
       "regOpen": "21:30",
       "startTime": "22:00",
-      "regClose": { "time": "00:50", "level": 8 },
+      "regClose": {
+        "time": "00:50",
+        "level": 8
+      },
       "delayNotice": "ディレイにより開始時間変更"
     },
     "#142": {
@@ -553,7 +2156,10 @@
       "_note": "5/3 運営日末尾 Superstack Turbo (5/4 dayLabel)。Reg.Open 00:00 / Start 00:30 / Late Reg 02:40 (Lv.6). Sheets master: Start 00:00 / Reg.Close 02:10",
       "regOpen": "00:00",
       "startTime": "00:30",
-      "regClose": { "time": "02:40", "level": 6 },
+      "regClose": {
+        "time": "02:40",
+        "level": 6
+      },
       "delayNotice": "ディレイにより開始時間変更"
     },
     "#144": {
@@ -561,194 +2167,110 @@
       "_note": "5/3 運営日末尾 Bigstack Hyper (5/4 dayLabel)。Reg.Open 02:00 / Start 02:30 / Late Reg 03:50 (Lv.7). Sheets master: Start 02:00 / Reg.Close 03:20",
       "regOpen": "02:00",
       "startTime": "02:30",
-      "regClose": { "time": "03:50", "level": 7 },
+      "regClose": {
+        "time": "03:50",
+        "level": 7
+      },
       "delayNotice": "ディレイにより開始時間変更"
     },
     "#146": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 受付締切 +50 分",
       "_note": "NLH Megastack Sponsored by CAREER DRAFT: 元 Start 11:00 / Reg.Close 14:55 (Lv.9) → 新 Reg.Close 15:45 (Lv.9). startTime 不変",
-      "regClose": { "time": "15:45", "level": 9, "approx": true },
+      "regClose": {
+        "time": "15:45",
+        "level": 9,
+        "approx": true
+      },
       "delayNotice": "諸事情により受付締切時刻のみ変更"
     },
     "#148": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 受付締切 +50 分",
       "_note": "FL Split MIX: 元 Start 13:00 / Reg.Close 16:30 (Lv.8) → 新 Reg.Close 17:20 (Lv.8). startTime 不変",
-      "regClose": { "time": "17:20", "level": 8, "approx": true },
+      "regClose": {
+        "time": "17:20",
+        "level": 8,
+        "approx": true
+      },
       "delayNotice": "諸事情により受付締切時刻のみ変更"
     },
     "#149": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
       "_note": "NLH Builder: 元 Start 15:00 / Reg.Close 17:50 (Lv.8) → 新 Start 16:00 / Reg.Close 18:50 (Lv.8)",
       "startTime": "16:00",
-      "regClose": { "time": "18:50", "level": 8 },
+      "regClose": {
+        "time": "18:50",
+        "level": 8
+      },
       "delayNotice": "諸事情によりスケジュール変更"
     },
     "#150": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
       "_note": "NLH Platinum: 元 Start 16:00 / Reg.Close 20:20 (Lv.8) → 新 Start 17:00 / Reg.Close 21:20 (Lv.8)",
       "startTime": "17:00",
-      "regClose": { "time": "21:20", "level": 8 },
+      "regClose": {
+        "time": "21:20",
+        "level": 8
+      },
       "delayNotice": "諸事情によりスケジュール変更"
     },
     "#151": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
       "_note": "FL Seven Card Stud Hi/Lo 8 or Better: 元 Start 17:00 / Reg.Close 19:50 (Lv.8) → 新 Start 18:00 / Reg.Close 20:50 (Lv.8)",
       "startTime": "18:00",
-      "regClose": { "time": "20:50", "level": 8 },
+      "regClose": {
+        "time": "20:50",
+        "level": 8
+      },
       "delayNotice": "諸事情によりスケジュール変更"
     },
     "#152": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
       "_note": "NLH Arena: 元 Start 18:00 / Reg.Close 21:55 (Lv.9) → 新 Start 19:00 / Reg.Close 22:55 (Lv.9)",
       "startTime": "19:00",
-      "regClose": { "time": "22:55", "level": 9 },
+      "regClose": {
+        "time": "22:55",
+        "level": 9
+      },
       "delayNotice": "諸事情によりスケジュール変更"
     },
     "#153": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
       "_note": "Big Bet MIX: 元 Start 19:00 / Reg.Close 22:55 (Lv.9) → 新 Start 20:00 / Reg.Close 23:55 (Lv.9)",
       "startTime": "20:00",
-      "regClose": { "time": "23:55", "level": 9 },
+      "regClose": {
+        "time": "23:55",
+        "level": 9
+      },
       "delayNotice": "諸事情によりスケジュール変更"
     },
     "#155": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
       "_note": "NLH Deepstack NORTH STAR Sponsored by JT: 元 Start 21:00 / Reg.Close 23:50 (Lv.8) → 新 Start 22:00 / Reg.Close 00:50 (Lv.8)",
       "startTime": "22:00",
-      "regClose": { "time": "00:50", "level": 8 },
+      "regClose": {
+        "time": "00:50",
+        "level": 8
+      },
       "delayNotice": "諸事情によりスケジュール変更"
     },
     "#156": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
       "_note": "PL 2-7 Triple Draw: 元 Start 23:00 / Reg.Close 01:30 (Lv.7) → 新 Start 00:00 / Reg.Close 02:30 (Lv.7)",
       "startTime": "00:00",
-      "regClose": { "time": "02:30", "level": 7 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#157": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "NLH Turbo: 元 Start 00:00 / Reg.Close 01:40 (Lv.5) → 新 Start 01:00 / Reg.Close 02:40 (Lv.5)",
-      "startTime": "01:00",
-      "regClose": { "time": "02:40", "level": 5 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#158": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "PLO Midnight: 元 Start 01:00 / Reg.Close 02:45 (Lv.7) → 新 Start 02:00 / Reg.Close 03:45 (Lv.7)",
-      "startTime": "02:00",
-      "regClose": { "time": "03:45", "level": 7 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#159": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "NLH Bigstack Hyper: 元 Start 02:00 / Reg.Close 03:20 (Lv.7) → 新 Start 03:00 / Reg.Close 04:20 (Lv.7)",
-      "startTime": "03:00",
-      "regClose": { "time": "04:20", "level": 7 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#160": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "NLH Megastack: 元 Start 11:00 / Reg.Close 14:55 (Lv.9) → 新 Start 12:00 / Reg.Close 15:55 (Lv.9)",
-      "startTime": "12:00",
-      "regClose": { "time": "15:55", "level": 9 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#161": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "NLH Builder: 元 Start 15:00 / Reg.Close 17:50 (Lv.8) → 新 Start 16:00 / Reg.Close 18:50 (Lv.8)",
-      "startTime": "16:00",
-      "regClose": { "time": "18:50", "level": 8 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#162": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "FL H.O.R.S.E.: 元 Start 15:00 / Reg.Close 18:30 (Lv.8) → 新 Start 16:00 / Reg.Close 19:30 (Lv.8)",
-      "startTime": "16:00",
-      "regClose": { "time": "19:30", "level": 8 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#163": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "NLH Good Game 1000: 元 Start 16:00 / Reg.Close 19:55 (Lv.9) → 新 Start 17:00 / Reg.Close 20:55 (Lv.9)",
-      "startTime": "17:00",
-      "regClose": { "time": "20:55", "level": 9 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#164": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "NLH Climax Bounty: 元 Start 18:00 / Reg.Close 21:55 (Lv.9) → 新 Start 19:00 / Reg.Close 22:55 (Lv.9)",
-      "startTime": "19:00",
-      "regClose": { "time": "22:55", "level": 9 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#165": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "PLO Monster: 元 Start 18:00 / Reg.Close 21:30 (Lv.8) → 新 Start 19:00 / Reg.Close 22:30 (Lv.8)",
-      "startTime": "19:00",
-      "regClose": { "time": "22:30", "level": 8 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#166": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "NLH Tag Team Highroller: 元 Start 19:00 / Reg.Close 22:45 (Lv.9) → 新 Start 20:00 / Reg.Close 23:45 (Lv.9)",
-      "startTime": "20:00",
-      "regClose": { "time": "23:45", "level": 9 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#167": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "NLH Good Game 500: 元 Start 20:00 / Reg.Close 23:30 (Lv.10) → 新 Start 21:00 / Reg.Close 00:30 (Lv.10)",
-      "startTime": "21:00",
-      "regClose": { "time": "00:30", "level": 10 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#168": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "NLH Deepstack NORTH STAR Sponsored by JT: 元 Start 21:00 / Reg.Close 23:50 (Lv.8) → 新 Start 22:00 / Reg.Close 00:50 (Lv.8)",
-      "startTime": "22:00",
-      "regClose": { "time": "00:50", "level": 8 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#169": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "FL Triple Draw MIX: 元 Start 21:00 / Reg.Close 00:30 (Lv.8) → 新 Start 22:00 / Reg.Close 01:30 (Lv.8)",
-      "startTime": "22:00",
-      "regClose": { "time": "01:30", "level": 8 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#170": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "NLH Tag Team Turbo: 元 Start 23:00 / Reg.Close 01:40 (Lv.8) → 新 Start 00:00 / Reg.Close 02:40 (Lv.8)",
-      "startTime": "00:00",
-      "regClose": { "time": "02:40", "level": 8 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "#171": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "PLO 5-Card: 元 Start 23:00 / Reg.Close 01:50 (Lv.8) → 新 Start 00:00 / Reg.Close 02:50 (Lv.8)",
-      "startTime": "00:00",
-      "regClose": { "time": "02:50", "level": 8 },
+      "regClose": {
+        "time": "02:30",
+        "level": 7
+      },
       "delayNotice": "諸事情によりスケジュール変更"
     },
     "(s31)": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
       "_note": "(s31) Satellite to NLH Platinum at 1/12: 元 Start 15:00 / Reg.Close 16:00 (Lv.4) → 新 Start 16:00 / Reg.Close 17:00 (Lv.4)",
       "startTime": "16:00",
-      "regClose": { "time": "17:00", "level": 4 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "(s32)": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "(s32) Satellite to NLH Poker Players Championship at 1/8: 元 Start 03:00 / Reg.Close 04:00 (Lv.4) → 新 Start 04:00 / Reg.Close 05:00 (Lv.4)",
-      "startTime": "04:00",
-      "regClose": { "time": "05:00", "level": 4 },
-      "delayNotice": "諸事情によりスケジュール変更"
-    },
-    "(s33)": {
-      "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",
-      "_note": "(s33) Satellite to NLH Good Game 1000 at 1/12: 元 Start 15:00 / Reg.Close 16:00 (Lv.4) → 新 Start 16:00 / Reg.Close 17:00 (Lv.4)",
-      "startTime": "16:00",
-      "regClose": { "time": "17:00", "level": 4 },
+      "regClose": {
+        "time": "17:00",
+        "level": 4
+      },
       "delayNotice": "諸事情によりスケジュール変更"
     }
   },
