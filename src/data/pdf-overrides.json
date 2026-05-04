@@ -284,7 +284,7 @@
       "_source": "HP用レートFIX - PLO CS.pdf",
       "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 1A (5/4 13:00, 進行中) は startTime 不変 + Reg.Close +50min. Day 1B (5/4 18:00→19:00) / Day 1C (5/5 13:00→14:00) は startTime + Reg.Close +1h.",
       "regCloseByFlight": {
-        "Day 1A": { "time": "18:40", "level": 9 },
+        "Day 1A": { "time": "18:40", "level": 9, "approx": true },
         "Day 1B": { "time": "23:50", "level": 9 },
         "Day 1C": { "time": "18:50", "level": 9 },
         "Day 2": null
@@ -350,7 +350,7 @@
       "_structureSource": "Owner 提示 PDF 2026-05-04: extract.json #145 (no=190) は structure 空、jopt_gf2026_data.json snapshot は Lv.4/8/12 抜け + Lv.6 後に誤 BREAK。PDF 正本で全 46 レベル + Normal break (Lv.4/8/12/20/24/28/32/36 後) + Turbo break (turboBreakAfterLevels [6, 12]) を override",
       "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 1A (5/4 11:00, 進行中) は startTime 不変 + Reg.Close +50min. Day 1B/C/D Turbo は startTime + Reg.Close +1h.",
       "regCloseByFlight": {
-        "Day 1A": { "time": "18:00", "level": 10 },
+        "Day 1A": { "time": "18:00", "level": 10, "approx": true },
         "Day 1B": { "time": "00:10", "level": 10 },
         "Day 1C": { "time": "18:10", "level": 10 },
         "Day 1D Turbo": { "time": "21:30", "level": 10 }
@@ -558,13 +558,13 @@
     "#146": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 受付締切 +50 分",
       "_note": "NLH Megastack Sponsored by CAREER DRAFT: 元 Start 11:00 / Reg.Close 14:55 (Lv.9) → 新 Reg.Close 15:45 (Lv.9). startTime 不変",
-      "regClose": { "time": "15:45", "level": 9 },
+      "regClose": { "time": "15:45", "level": 9, "approx": true },
       "delayNotice": "諸事情によりスケジュール変更"
     },
     "#148": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 受付締切 +50 分",
       "_note": "FL Split MIX: 元 Start 13:00 / Reg.Close 16:30 (Lv.8) → 新 Reg.Close 17:20 (Lv.8). startTime 不変",
-      "regClose": { "time": "17:20", "level": 8 },
+      "regClose": { "time": "17:20", "level": 8, "approx": true },
       "delayNotice": "諸事情によりスケジュール変更"
     },
     "#149": {

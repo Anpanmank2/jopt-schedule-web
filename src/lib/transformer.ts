@@ -997,13 +997,13 @@ export function transform(extract: any, currentData: any = null): TransformedDat
       e.notes = ov.notes.slice();
     }
     // single-event 用 reg close 直接 override (flight 無 event 例: #07 PLO Heads-up)
+    // approx: true 指定時は "HH:MM ごろ (Lv.N)" 形式で曖昧表記 (Owner 指示 2026-05-04 火災報知器対応)
     if (ov.regClose && typeof ov.regClose === "object") {
-      const rc = ov.regClose as { time?: string; level?: number | null };
+      const rc = ov.regClose as { time?: string; level?: number | null; approx?: boolean };
       if (rc.time) {
-        e.lateRegClose = buildLateRegClose(
-          rc.time,
-          rc.level != null ? String(rc.level) : ""
-        );
+        e.lateRegClose = rc.approx
+          ? `${rc.time} ごろ${rc.level != null ? ` (Lv.${rc.level})` : ""}`
+          : buildLateRegClose(rc.time, rc.level != null ? String(rc.level) : "");
         e.lateRegLevel = rc.level ?? null;
       }
     }
@@ -1014,7 +1014,10 @@ export function transform(extract: any, currentData: any = null): TransformedDat
       if (flightKey && flightKey in ov.regCloseByFlight) {
         const rc = ov.regCloseByFlight[flightKey];
         if (rc && typeof rc === "object") {
-          e.lateRegClose = buildLateRegClose(rc.time, rc.level != null ? String(rc.level) : "");
+          const rcA = rc as { time: string; level?: number | null; approx?: boolean };
+          e.lateRegClose = rcA.approx
+            ? `${rcA.time} ごろ${rcA.level != null ? ` (Lv.${rcA.level})` : ""}`
+            : buildLateRegClose(rc.time, rc.level != null ? String(rc.level) : "");
           e.lateRegLevel = rc.level ?? null;
           // StructureTable の CLOSE バッジは structure.lateRegCloseAfterLevel を見るため
           // flight 別に structure を clone して上書き (Owner 確認 2026-04-25)
