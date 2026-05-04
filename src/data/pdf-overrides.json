@@ -78,9 +78,9 @@
           { "level": 50, "sb": 10000000, "bb": 20000000, "ante": 20000000, "time": 45 }
         ]
       },
-      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 3 (5/5 11:00→12:00) のみ +1h. Day 2 (5/4 11:00, 既進行中) は startTime 不変, reg_close 元値空のため regClose override なし",
+      "_delaySource": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ. Day 3 (5/5 11:00→12:00) のみ +1h. Day 2 (5/4 11:00, 既進行中) は startTime 不変 / reg_close 元値空のため override なし. delayNotice は Day 3 のみに付与 (Day 1A-D 5/2-5/3 既終了 / Day 2 は変更なしのため注記非表示)",
       "startTimeByFlight": { "Day 3": "12:00" },
-      "delayNotice": "諸事情によりスケジュール変更"
+      "delayNoticeByFlight": { "Day 3": "諸事情によりスケジュール変更" }
     },
     "#03": {
       "_source": "HP用レートFIX - Mini Main.pdf",
@@ -293,7 +293,11 @@
         "Day 1B": "19:00",
         "Day 1C": "14:00"
       },
-      "delayNotice": "諸事情によりスケジュール変更",
+      "delayNoticeByFlight": {
+        "Day 1A": "諸事情により受付締切時刻のみ変更",
+        "Day 1B": "諸事情によりスケジュール変更",
+        "Day 1C": "諸事情によりスケジュール変更"
+      },
       "structure": {
         "columns": ["Level", "Blinds", "Minutes"],
         "day1EndLevel": 16,
@@ -360,7 +364,12 @@
         "Day 1C": "12:00",
         "Day 1D Turbo": "18:00"
       },
-      "delayNotice": "諸事情によりスケジュール変更",
+      "delayNoticeByFlight": {
+        "Day 1A": "諸事情により受付締切時刻のみ変更",
+        "Day 1B": "諸事情によりスケジュール変更",
+        "Day 1C": "諸事情によりスケジュール変更",
+        "Day 1D Turbo": "諸事情によりスケジュール変更"
+      },
       "structure": {
         "columns": ["Level", "Blinds", "BB Ante", "Minutes"],
         "lateRegCloseAfterLevel": 10,
@@ -559,13 +568,13 @@
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 受付締切 +50 分",
       "_note": "NLH Megastack Sponsored by CAREER DRAFT: 元 Start 11:00 / Reg.Close 14:55 (Lv.9) → 新 Reg.Close 15:45 (Lv.9). startTime 不変",
       "regClose": { "time": "15:45", "level": 9, "approx": true },
-      "delayNotice": "諸事情によりスケジュール変更"
+      "delayNotice": "諸事情により受付締切時刻のみ変更"
     },
     "#148": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 受付締切 +50 分",
       "_note": "FL Split MIX: 元 Start 13:00 / Reg.Close 16:30 (Lv.8) → 新 Reg.Close 17:20 (Lv.8). startTime 不変",
       "regClose": { "time": "17:20", "level": 8, "approx": true },
-      "delayNotice": "諸事情によりスケジュール変更"
+      "delayNotice": "諸事情により受付締切時刻のみ変更"
     },
     "#149": {
       "_source": "Owner 指示 2026-05-04: 火災報知器 (13:30) ディレイ - 開始/受付締切 +1h",

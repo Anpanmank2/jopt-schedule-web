@@ -1057,6 +1057,19 @@ export function transform(extract: any, currentData: any = null): TransformedDat
     if (typeof ov.delayNotice === "string" && ov.delayNotice.trim()) {
       e.delayNotice = ov.delayNotice.trim();
     }
+    // delayNoticeByFlight (Owner 指示 2026-05-04 火災報知器対応):
+    // multi-day で flight 別に異なる delayNotice 文言を出す。global delayNotice より優先。
+    // 指定 flight に該当しない (or null) なら delayNotice 非表示。
+    // 例: #01 Day 1A-D / Day 2 は注記なし、Day 3 のみ注記、または #145 Day 1A は
+    // 「受付締切のみ変更」、Day 1B/C/D は「スケジュール変更」で文言を分ける。
+    if (ov.delayNoticeByFlight && typeof ov.delayNoticeByFlight === "object") {
+      if (flightKey && flightKey in ov.delayNoticeByFlight) {
+        const dn = ov.delayNoticeByFlight[flightKey];
+        e.delayNotice = (typeof dn === "string" && dn.trim()) ? dn.trim() : null;
+      } else {
+        e.delayNotice = null;
+      }
+    }
     // regOpen override (Owner 指示 2026-05-01):
     // Registration オープン時刻 (Start の前段表示用)。extract.json に source 無し
     // のため pdf-overrides.json で個別指定する。例: #109 Reg.Open 21:45。
