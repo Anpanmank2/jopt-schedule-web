@@ -7,7 +7,7 @@
  *
  * Output: prints transformed JSON to stdout
  *
- * Mapping rules: see .company/engineering/docs/jopt-schedule-web-extract-mapping.md (Owner approved 2026-04-21)
+ * Mapping rules: see the private extraction mapping specification (approved 2026-04-21)
  */
 
 import fs from "node:fs";

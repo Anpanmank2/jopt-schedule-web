@@ -3,9 +3,11 @@ import { spawn } from "child_process";
 import { setTimeout as sleep } from "timers/promises";
 import { chromium } from "playwright";
 import fs from "fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const PORT = 3781;
-const REPO = "/Users/unoishikawa/アンケートフォーム/jopt-schedule-web";
+const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = "/tmp/jopt-img-smoke";
 
 await fs.rm(OUT, { recursive: true, force: true });

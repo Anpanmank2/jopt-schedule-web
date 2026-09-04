@@ -1,7 +1,7 @@
 /**
  * extract.json → display JSON transformer (TS port)
  *
- * 仕様: .company/engineering/docs/jopt-schedule-web-extract-mapping.md (Owner approved 2026-04-21)
+ * 仕様: 抽出マッピング仕様書（2026-04-21 承認・非公開）
  * Owner ポリシー決定:
  *   - lateRegClose: "21:30 (Lv.8)" 形式で統一
  *   - gameType: サブカテゴリ (FL/NL/10-Game MIX 等) をそのまま表示
